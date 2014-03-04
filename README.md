@@ -5,9 +5,6 @@ Sharesoft-14
 
 22-2932 Adel Zee
 
-
-
-
 Name: Sarah Fathallah ID :25-0270
 
 Tharey El-Deen ID :25-7751
@@ -30,3 +27,5 @@ Ahmed ElSafty ID
 25-2104 Heba
 
 Yomn El-Mistikawy 25-0571
+
+amr gamal 25-5975
