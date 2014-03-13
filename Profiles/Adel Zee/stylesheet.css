@@ -1,0 +1,23 @@
+h1 {
+	font-family: Arial;
+	color: black;
+	text-align: center;
+}
+
+span {
+	width: 100px;
+	height: 100px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+p {
+	margin-right: 500px;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
