@@ -1,0 +1,21 @@
+Class: Entity 
+Inherits class (User)
+Attributes: link to Facebook, link to twitter, link to youtube, and link to linkedin, work status, videos, internship availability, portfolio
+Functions: createAccount(), defineHeadquarters(location) 
+
+Class: Investor
+Inherits class Entity
+Attributes: contact information
+Functions: setContactPrivacy(), contactStartup()
+
+Class: Startup
+Inherits class Entity
+Attributes: needs, jobs, goals
+
+Class: Admin
+Inherits class (User)
+Functions: verifyEntity()
+
+Class: User
+Functions: viewInvestor(), viewServicesBillboard()	
+
