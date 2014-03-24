@@ -1,0 +1,2 @@
+class GeographicalLocationGroupsController < ApplicationController
+end
