@@ -1,5 +1,12 @@
-class GroupMembersController < ApplicationController
-  before_action :set_group_member, only: [:show, :edit, :update, :destroy]
+class CreateGroupMembers < ActiveRecord::Migration
+  def change
+    create_table :group_members do |t|
+      t.t.integer :enitity_id
+      t.t.datetime :datejoined
+      t.t.boolean :groupcreator
+      t.string :user_name
+      t.string :group_name
+ before_action :set_group_member, only: [:show, :edit, :update, :destroy]
 
   # GET /group_members
   # GET /group_members.json
@@ -69,6 +76,11 @@ class GroupMembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_member_params
-      params.require(:group_member).permit(:enitity_id, :datejoined, :groupcreator)
+      params.require(:group_member).permit(:user_name, :group_name)
     end
+
+
+      t.timestamps
+    end
+  end
 end
