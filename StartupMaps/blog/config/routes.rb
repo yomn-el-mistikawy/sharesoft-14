@@ -3,7 +3,11 @@ Blog::Application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  #adding the methods I created to the routes
+  resources :investor do
+    get "investor/search"
+    get "investor/searching"
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -3,12 +3,12 @@ class CreateStartups < ActiveRecord::Migration
     create_table :startups do |t|
       t.integerresources :entity_id
       t.integer :milestones
-      t.String :needs
+      t.string :needs
       t.boolean :online_Status
       t.boolean :launched_Status
-	  t.string :joint_Ventures
+	    t.string :joint_Ventures
   	  t.string :sector
-	  t.integer :number_of_working_years
+	    t.integer :number_of_working_years
 
       t.timestamps
     end
