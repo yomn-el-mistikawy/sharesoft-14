@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  sender_id: 1
+  receiver_id: 1
   project_id: 1
-  requirements: 
+  response: 1
 
 two:
+  sender_id: 1
+  receiver_id: 1
   project_id: 1
-  requirements: 
+  response: 1

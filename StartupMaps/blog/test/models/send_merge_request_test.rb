@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GoalProjectTest < ActiveSupport::TestCase
+class SendMergeRequestTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
