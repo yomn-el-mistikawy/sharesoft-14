@@ -1,9 +1,9 @@
 class CreateStartups < ActiveRecord::Migration
   def change
     create_table :startups do |t|
-      t.integerresources :entity_id
+      t.integer :entity_id
       t.integer :milestones
-      t.String :needs
+      t.string :needs
       t.boolean :online_Status
       t.boolean :launched_Status
 	  t.string :joint_Ventures
