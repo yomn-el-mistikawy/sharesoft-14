@@ -1,0 +1,29 @@
+<h1>Listing join_public_groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>Group name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @join_public_groups.each do |join_public_group| %>
+      <tr>
+        <td><%= join_public_group.user_name %></td>
+        <td><%= join_public_group.group_name %></td>
+        <td><%= link_to 'View', join_public_group %></td>
+      
+        <td><%= link_to 'Leave Group', join_public_group, method: :delete, data: { confirm: 'Are you sure you would like to leave group?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Join Group', new_join_public_group_path %>
