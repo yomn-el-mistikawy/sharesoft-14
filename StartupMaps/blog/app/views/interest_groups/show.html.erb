@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User name:</strong>
+  <%= @join_public_group.user_name %>
+</p>
+
+<p>
+  <strong>Group name:</strong>
+  <%= @join_public_group.group_name %>
+</p>
+
+<%= link_to 'Edit', edit_join_public_group_path(@join_public_group) %> |
+<%= link_to 'Back', join_public_groups_path %>
