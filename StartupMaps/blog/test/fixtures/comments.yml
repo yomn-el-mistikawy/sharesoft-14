@@ -2,8 +2,10 @@
 
 one:
   group_id: 1
-  location: MyString
+  date: 2014-03-28 11:25:26
+  numofLikes: 1
 
 two:
   group_id: 1
-  location: MyString
+  date: 2014-03-28 11:25:26
+  numofLikes: 1

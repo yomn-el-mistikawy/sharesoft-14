@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  groupofInterest: 
+  entity_id: 1
+  number: 1
+  e_mail: MyString
 
 two:
-  groupofInterest: 
+  entity_id: 1
+  number: 1
+  e_mail: MyString

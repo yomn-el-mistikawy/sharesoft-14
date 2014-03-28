@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  groupofInterest: 
+  entity_id: 1
+  workstatus: 
 
 two:
-  groupofInterest: 
+  entity_id: 1
+  workstatus: 

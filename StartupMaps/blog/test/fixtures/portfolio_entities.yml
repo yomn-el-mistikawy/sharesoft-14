@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  entity_id: 1
   name: 
   description: 
-  location: 
-  industry: 
-  headquarters: 
+  date: 2014-03-28 11:13:51
 
 two:
+  entity_id: 1
   name: 
   description: 
-  location: 
-  industry: 
-  headquarters: 
+  date: 2014-03-28 11:13:51
