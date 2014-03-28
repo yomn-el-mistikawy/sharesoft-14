@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+
 =begin
 	This methods queries the table project for projects that are in the same category and location as the current project
 	Input: selected project id
@@ -18,4 +19,27 @@ end
 def showSuggested
     @project= Project.find(params[:project])
 end
+
+
+def new
+
+end
+
+def create
+		]
+	@project = Projects.new(project_params)
+	@project.save
+	redirect_to @project
+end
+
+	
+
+def show
+	@project = Projects.find(params[:id])
+end
+private
+def project_params
+	params.require(:project).permit(:name, :category, :location, :discription)
+end
+
 end
