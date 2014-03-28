@@ -1,1 +1,1 @@
-json.extract! @portfolio, :id, :name, :date, :description, :created_at, :updated_at
+json.extract! @portfolio, :id, :name, :descripton, :date, :created_at, :updated_at
