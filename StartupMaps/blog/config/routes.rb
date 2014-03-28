@@ -1,11 +1,8 @@
 Blog::Application.routes.draw do
-  resources :portfolios
-
-  resources :group_members
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
- resources :investor do
+  #adding the methods I created to the routes
+  resources :investor do
     get "investor/search"
     get "investor/searching"
   end
