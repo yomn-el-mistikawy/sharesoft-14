@@ -1,0 +1,15 @@
+<h1> search for your company</h1>
+<%= form_for :startups, url: compare_years_list_path do |f| %>
+  <p>
+    <%= f.label :NumberOfYears%><br>
+    <%= f.text_field :san %>
+  </p>
+
+  
+
+
+ 
+  <p>
+    <%= f.submit ("search")  %>
+  </p>
+<% end %>
