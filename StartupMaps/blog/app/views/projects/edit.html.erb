@@ -1,0 +1,27 @@
+<h1>Zawed 3al "Project"</h1>
+
+<style type="text/css">
+h1 {color:#FF3399;}
+</style>
+ 
+<%= form_for :projects, url: project_path(@project), method: :patch do |f| %>
+  <p>
+    <%= f.label :goals %><br>
+    <%= f.text_area :goals %>
+  </p>
+
+ 
+  <p>
+    <%= f.label :milestones %><br>
+    <%= f.text_area :milestones %>
+  </p>
+
+  <p>
+    <%= f.label :requirements %><br>
+    <%= f.text_area :requirements %>
+  </p>
+ 
+  <p>
+    <%= f.submit ("Edit Project") %>
+  </p>
+<% end %>

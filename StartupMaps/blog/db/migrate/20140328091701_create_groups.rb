@@ -1,10 +1,10 @@
 class CreateGroups < ActiveRecord::Migration
   def change
     create_table :groups do |t|
-      t.String :name
-      t.String :location
+      t.string :name
+      t.string :location
       t.datetime :dateCreated
-      t.String :description
+      t.string :description
       t.integer :numberOfMembers
       t.integer :groupCreatorId
 
