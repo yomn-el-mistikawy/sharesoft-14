@@ -1,4 +1,29 @@
 Blog::Application.configure do
+
+config.action_mailer.delivery_method = :sendmail
+# this shows the method of the delivery
+config.action_mailer.perform_deliveries = true
+# this enables the delivery
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'no-reply@example.com'}
+
+config.action_mailer.delivery_method = :smtp
+# this allows us to use the smtp method to send the email
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            'sharesoft.2014@gmail.com',
+  password:             'Sharesoft1234',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+  # here we say that we will be using a gmail account to send the verification email
+  # 587 is the gmail port used
+  # the domain is irrelevant
+  # a new gmail account was created to test this function and the username and password are defined
+  # this works by sending the new users emails welcoming them to the site and including a url in the email
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
