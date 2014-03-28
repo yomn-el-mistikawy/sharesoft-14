@@ -2,6 +2,7 @@ class CreateStartups < ActiveRecord::Migration
   def change
     create_table :startups do |t|
       t.integerresources :entity_id
+        t.string :name
       t.integer :milestones
       t.String :needs
       t.boolean :online_Status
