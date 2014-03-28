@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<!-- prints the input given by the user -->
+<p>
+  <strong>Username:</strong>
+  <%= @sign_up.username %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @sign_up.password %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @sign_up.email %>
+</p>
+
+<%= link_to 'Edit', edit_sign_up_path(@sign_up) %> |
+<%= link_to 'Back', sign_ups_path %>

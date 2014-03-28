@@ -5,7 +5,7 @@ config.action_mailer.delivery_method = :sendmail
 config.action_mailer.perform_deliveries = true
 # this enables the delivery
 config.action_mailer.raise_delivery_errors = true
-config.action_mailer.default_options = {from: 'no-reply@example.com'}
+config.action_mailer.default_options = {from: 'no-replay@example.com'}
 
 config.action_mailer.delivery_method = :smtp
 # this allows us to use the smtp method to send the email
