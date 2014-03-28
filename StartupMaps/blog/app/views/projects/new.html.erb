@@ -1,0 +1,30 @@
+<h1> Create New Project </h1>
+
+
+
+
+<%= form_for :project, url: projects_path do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :Name %>
+  </p>
+ 
+  <p>
+    <%= f.label :category %><br>
+    <%= f.text_field :Category %>
+  </p>
+
+  <p>
+    <%= f.label :location %><br>
+    <%= f.text_field :Location %>
+  </p>
+
+  <p>
+    <%= f.label :discription %><br>
+    <%= f.text_area :Discription %>
+  </p>
+ 
+  <p>
+    <%= submit_tag("Create project") %>
+  </p>
+<% end %>
