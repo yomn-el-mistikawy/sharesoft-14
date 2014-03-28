@@ -1,0 +1,17 @@
+<h1>Listing suggested projects</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Location</th>
+  </tr>
+  <% @suggested.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <td><%= p.category%></td>
+      <td><%= p.location%></td>
+     <td><%= link_to 'Show',project_showSuggested_path(project: p)%></td>
+    </tr>
+  <% end %>
+</table>
