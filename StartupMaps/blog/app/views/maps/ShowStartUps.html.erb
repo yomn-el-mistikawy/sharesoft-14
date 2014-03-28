@@ -1,0 +1,14 @@
+
+
+ 
+<% @startups.each do |startup| %>
+  <tr>
+    <td><%= startup.title %></td>
+    <td><%= startup.text %></td>
+    <td><%= link_to 'Show', start %></td>
+    <td><%= link_to 'Edit', edit_startup_path(startup) %></td>
+  </tr>
+<% end %>
+
+
+
