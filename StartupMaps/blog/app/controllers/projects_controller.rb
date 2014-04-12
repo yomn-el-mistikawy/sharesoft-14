@@ -8,8 +8,7 @@ class ProjectsController < ApplicationController
 =end
 
 def suggest
-	@project= Project.find(1)
-  @suggested= Project.where(:location => "cairo", :category => "baking").where.not(:id => "1", :startup_id => "1")
+	@suggested = Project.get_suggested(Project.find( 1 ))
 end
 
 
@@ -21,28 +20,6 @@ end
 =end
 
 def show_suggested
-  @project= Project.find(params[:project])
+  @project = Project.find( params[:project] )
 end
-
-
-def new
-
-end
-
-def create
-	@project = Projects.new(project_params)
-	@project.save
-	redirect_to @project
-end
-
-	
-
-def show
-	@project = Projects.find(params[:id])
-end
-private
-def project_params
-	params.require(:project).permit(:name, :category, :location, :discription)
-end
-
 end
