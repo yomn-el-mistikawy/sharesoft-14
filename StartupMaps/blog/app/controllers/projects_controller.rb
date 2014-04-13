@@ -2,13 +2,13 @@ class ProjectsController < ApplicationController
 
 =begin
 	This methods queries the table project for projects that are in the same category and location as the current project
-	Input: selected project id
+	Input: project_ID
 	Output: @suggested
 	Author: Yomn El-Mistikawy
 =end
 
 def suggest
-	@suggested = Project.get_suggested( Project.find( params[:project_id] ) )
+	@suggested = Project.get_suggest( Project.find( params[:project_id] ) )
 end
 
 
@@ -20,6 +20,6 @@ end
 =end
 
 def show_suggested
-  @project = Project.find( params[:project] )
+  @project = Project.find( params[:suggested_project] )
 end
 end

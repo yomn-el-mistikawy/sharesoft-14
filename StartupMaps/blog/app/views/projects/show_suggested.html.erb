@@ -33,4 +33,4 @@
   <%= @project.milestone %>
 </p>
 
-<button type="button">Send merge request</button>
+<%= button_to "Send merge request", project_temp_path( suggested_project: @project) %>
