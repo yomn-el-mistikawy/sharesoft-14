@@ -22,4 +22,9 @@ end
 def show_suggested
   @project = Project.find( params[:suggested_project] )
 end
+
+def temp
+	@suggested_project = Project.find( params[:suggested_project] )
+	@project = Project.find( params[:project_id] )
+end
 end
