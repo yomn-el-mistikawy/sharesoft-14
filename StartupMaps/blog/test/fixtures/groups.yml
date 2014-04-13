@@ -1,17 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 
-  location: 
-  dateCreated: 2014-03-28 11:17:02
-  description: 
-  numberOfMembers: 1
-  groupCreatorId: 1
+  private: false
+  description: MyString
+  name: MyString
+  location: MyString
 
 two:
-  name: 
-  location: 
-  dateCreated: 2014-03-28 11:17:02
-  description: 
-  numberOfMembers: 1
-  groupCreatorId: 1
+  private: false
+  description: MyString
+  name: MyString
+  location: MyString

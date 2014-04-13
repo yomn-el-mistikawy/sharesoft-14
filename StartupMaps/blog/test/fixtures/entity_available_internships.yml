@@ -2,16 +2,10 @@
 
 one:
   name: MyString
-  username: MyString
-  password: MyString
-  location: MyString
-  headquarter: MyString
   description: MyString
+  available: false
 
 two:
   name: MyString
-  username: MyString
-  password: MyString
-  location: MyString
-  headquarter: MyString
   description: MyString
+  available: false
