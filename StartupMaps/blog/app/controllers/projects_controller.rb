@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 =end
 
 def suggest
-	@suggested = Project.get_suggested(Project.find( 1 ))
+	@suggested = Project.get_suggested( Project.find( params[:project_id] ) )
 end
 
 
