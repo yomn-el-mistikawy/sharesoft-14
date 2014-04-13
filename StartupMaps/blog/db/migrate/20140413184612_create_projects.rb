@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name
       t.integer :milestones
       t.string :category
-      t.datetime :launch
+      t.boolean :launch
       t.string :description
       t.string :requirements
 
