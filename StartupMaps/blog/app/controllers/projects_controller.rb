@@ -26,7 +26,7 @@ def new
 end
 
 def create
-		]
+	
 	@project = Projects.new(project_params)
 	@project.save
 	redirect_to @project

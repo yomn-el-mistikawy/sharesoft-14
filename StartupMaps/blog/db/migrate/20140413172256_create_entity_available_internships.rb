@@ -4,7 +4,7 @@ class CreateEntityAvailableInternships < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.boolean :available
-	  	t.integer :entities_id
+	  	t.belongs_to :entity
       t.timestamps
     end
   end

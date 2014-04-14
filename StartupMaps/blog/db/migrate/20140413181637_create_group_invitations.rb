@@ -1,9 +1,9 @@
 class CreateGroupInvitations < ActiveRecord::Migration
   def change
     create_table :group_invitations do |t|
-			t.integer :receiver_id 
-			t.integer :sender_id 
-			t.integer :group_id 
+			t.belongs_to :receiver
+			t.belongs_to :sender
+			t.belongs_to :group
       t.timestamps
     end
   end

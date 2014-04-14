@@ -3,8 +3,11 @@ class CreateServices < ActiveRecord::Migration
 		create_table :services do |t|
 			t.float :longitude
 			t.float :latitude 
-			t.integer :entities_id 
-			t.timestamps
+			t.belongs_to :entity
+			t.string :name
+      t.string :sector
+      t.string :location
+      t.timestamps
 		end
 	end
 		def self.down

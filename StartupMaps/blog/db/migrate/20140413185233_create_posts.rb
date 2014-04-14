@@ -3,8 +3,8 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :title
       t.string :text
-      t.integer :group_id 
-      t.integer :entities_id 
+      t.belongs_to :group
+      t.belongs_to :entity
       t.timestamps
     end
   end

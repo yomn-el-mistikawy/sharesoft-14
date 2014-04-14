@@ -4,7 +4,7 @@ class CreateEntityWorkPortfolios < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.datetime :launch
-			t.integer :entities_id
+			t.belongs_to :entity
       t.timestamps
     end
   end

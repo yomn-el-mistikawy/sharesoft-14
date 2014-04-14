@@ -1,4 +1,4 @@
 class StartupHasGroups < ActiveRecord::Base
-	has_many :startups, foreign_key: "startup_id"
-	has_many :groups, foreign_key: "group_id"
+	has_many :startups
+	has_many :groups
 end

@@ -1,8 +1,8 @@
-class CreateStartupNeeds < ActiveRecord::Migration
+class CreateEntityNeeds < ActiveRecord::Migration
   def self.up
-    create_table :startup_needs do |t|
+    create_table :entity_needs do |t|
       t.string :needs
-	    t.integer :startup_id
+	    t.belongs_to :entity
       t.timestamps
     end
   end

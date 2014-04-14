@@ -5,7 +5,14 @@ class CreateStartups < ActiveRecord::Migration
       t.float :latitude
       t.string :initiatior_name
       t.integer :milestones
-			t.integer :entities_id
+			t.belongs_to :entity
+      t.string :location
+      t.string :name
+      t.boolean :online_status
+      t.boolean :launch_status
+      t.string :joint_ventures
+      t.string :sector
+      t.integer :number_of_working_years
       t.timestamps
     end
   end

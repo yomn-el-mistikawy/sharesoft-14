@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140413190053) do
+ActiveRecord::Schema.define(version: 20140414153050) do
 
   create_table "comments", force: true do |t|
     t.string   "comment"
-    t.integer  "entities_id"
+    t.integer  "entity_id"
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20140413190053) do
     t.string   "name"
     t.string   "username"
     t.string   "password"
+    t.string   "e_mail"
+    t.string   "verification_code"
     t.string   "location"
     t.string   "headquarter"
     t.string   "description"
@@ -36,14 +38,42 @@ ActiveRecord::Schema.define(version: 20140413190053) do
     t.string   "name"
     t.string   "description"
     t.boolean  "available"
-    t.integer  "enity_id"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_goals", force: true do |t|
+    t.string   "goals"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_jobs", force: true do |t|
+    t.string   "jobs"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_needs", force: true do |t|
+    t.string   "needs"
+    t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "entity_social_links", force: true do |t|
     t.string   "socialLinks"
-    t.integer  "enity_id"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_video_links", force: true do |t|
+    t.string   "url"
+    t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,20 +82,19 @@ ActiveRecord::Schema.define(version: 20140413190053) do
     t.string   "name"
     t.string   "description"
     t.datetime "launch"
-    t.integer  "enity_id"
+    t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "entity_work_statuses", force: true do |t|
     t.string   "workstatus"
-    t.integer  "enity_id"
+    t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "group_invitations", force: true do |t|
-    t.boolean  "accept"
     t.integer  "receiver_id"
     t.integer  "sender_id"
     t.integer  "group_id"
@@ -79,6 +108,7 @@ ActiveRecord::Schema.define(version: 20140413190053) do
     t.string   "name"
     t.string   "location"
     t.integer  "creator_id"
+    t.string   "interest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -87,7 +117,10 @@ ActiveRecord::Schema.define(version: 20140413190053) do
     t.float    "longitude"
     t.float    "latitude"
     t.string   "contact_information"
-    t.integer  "entities_id"
+    t.integer  "entity_id"
+    t.string   "name"
+    t.string   "sector"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,10 +133,10 @@ ActiveRecord::Schema.define(version: 20140413190053) do
   end
 
   create_table "posts", force: true do |t|
-    t.string   "tittle"
+    t.string   "title"
     t.string   "text"
     t.integer  "group_id"
-    t.integer  "entities_id"
+    t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -114,9 +147,18 @@ ActiveRecord::Schema.define(version: 20140413190053) do
     t.string   "name"
     t.integer  "milestones"
     t.string   "category"
-    t.datetime "launch"
+    t.boolean  "launch"
     t.string   "description"
     t.string   "requirements"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "send_merge_requests", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.integer  "project_id"
+    t.integer  "response"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,14 +166,24 @@ ActiveRecord::Schema.define(version: 20140413190053) do
   create_table "services", force: true do |t|
     t.float    "longitude"
     t.float    "latitude"
-    t.integer  "enity_id"
+    t.integer  "entity_id"
+    t.string   "name"
+    t.string   "sector"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "startup_needs", force: true do |t|
-    t.string   "needs"
+  create_table "startup_has_groups", force: true do |t|
     t.integer  "startup_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startup_have_projects", force: true do |t|
+    t.integer  "startup_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -149,6 +201,20 @@ ActiveRecord::Schema.define(version: 20140413190053) do
     t.string   "initiatior_name"
     t.integer  "milestones"
     t.integer  "entities_id"
+    t.string   "location"
+    t.string   "name"
+    t.boolean  "online_status"
+    t.boolean  "launch_status"
+    t.string   "joint_ventures"
+    t.string   "sector"
+    t.integer  "number_of_working_years"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "tags"
+    t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

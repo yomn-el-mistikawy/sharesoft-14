@@ -1,3 +1,4 @@
 class Startup < ActiveRecord::Base
-	belongs_to :Entity, foreign_key: "entities_id"
+	belongs_to :Entity
+	has_many :startup_resources
 end

@@ -1,9 +1,9 @@
 class CreateSendMergeRequests < ActiveRecord::Migration
   def change
     create_table :send_merge_requests do |t|
-      t.integer :sender_id
-      t.integer :receiver_id
-      t.integer :project_id
+      t.belongs_to :sender
+      t.belongs_to :receiver
+      t.belongs_to :project
       t.integer :response
 
       t.timestamps

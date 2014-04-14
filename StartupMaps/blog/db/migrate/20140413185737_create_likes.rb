@@ -1,8 +1,8 @@
 class CreateLikes < ActiveRecord::Migration
   def self.up
     create_table :likes do |t|
-    	t.integer :post_id 
-    	t.integer :comment_id 
+    	t.belongs_to :post
+    	t.belongs_to :comment
       t.timestamps
     end
   end

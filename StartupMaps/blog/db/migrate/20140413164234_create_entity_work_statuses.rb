@@ -2,7 +2,9 @@ class CreateEntityWorkStatuses < ActiveRecord::Migration
   def self.up
     create_table :entity_work_statuses do |t|
       t.string :workstatus
-			t.integer :entities_id
+			t.belongs_to :entity
+      
+
       t.timestamps
    end
   end

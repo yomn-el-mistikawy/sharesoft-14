@@ -4,7 +4,10 @@ class CreateInvestors < ActiveRecord::Migration
       t.float :longitude
       t.float :latitude
       t.string :contact_information
-			t.integer :entities_id 
+			t.belongs_to :entity
+      t.string :name
+      t.string :sector
+      t.string :location
       t.timestamps
     end
   end
