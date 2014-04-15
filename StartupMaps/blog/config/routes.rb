@@ -1,14 +1,20 @@
-Blog::Application.routes.draw do
-  resources :group_members
+ Blog::Application.routes.draw do
+  resources :locations
 
+  get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :projects do
-     get "suggest"
-     get "showSuggested"
-  end
+
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  resources :maps do
+    get "show_merged"
+  end
+
+  resources :locations do
+    get "indexr"
+    
+  end
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
