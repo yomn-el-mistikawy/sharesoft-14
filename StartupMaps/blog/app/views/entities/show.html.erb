@@ -18,6 +18,24 @@
   <%= @entity.password %>
 </p>
 
+<!-- Added verification text box to page -->
+<!-- Omar El-Menawy -->
+
+<%= form_for(@sign_up) do |f| %>
+<div class="field">
+    <%= f.label :verification_code %><br>
+    <%= f.text_field :verification_code %>
+  </div>
+
+  <br>
+  
+  <div class="actions">
+    <%= f.submit "Submit Verification Code" %>
+  </div>
+  
+<% end %>
+
+
 <!-- The following two lines link to "Edit" and "Back" urls -->
 <!-- Adel Zee Badawy -->
 <%= link_to 'Edit', edit_entity_path(@entity) %> |

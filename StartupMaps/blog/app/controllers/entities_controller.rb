@@ -22,11 +22,14 @@ class EntitiesController < ApplicationController
 
  #Creates accounts
  # Adel Zee Badawy
+ # Added UserMailer when entity signs up
+    # Omar El-Menawy
   def create
     @entity = Entity.new(entity_params)
 
     respond_to do |format|
       if @entity.save
+        UserMailer.welcome_email(@sign_up).deliver
         format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
         format.json { render action: 'show', status: :created, location: @entity }
       else
@@ -69,8 +72,10 @@ class EntitiesController < ApplicationController
 
     # Allows the method to read the inputs
     # Adel Zee Badawy
+    # Added verification_code as a param in entity_params
+    # Omar El-Menawy
     def entity_params
-      params.require(:entity).permit(:name, :email, :password, :availability)
+      params.require(:entity).permit(:name, :email, :password, :availability, :verification_code)
     end
 
     def self.request(sender_id, recevier_id)
