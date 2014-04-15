@@ -1,12 +1,12 @@
 class EntitiesController < ApplicationController
 	
-  #The user writes the status in the text box and clicks on the button "enter" then the status is updated in the above header
-  #Author: Ola Enaba
-  #Inpput: Status
-  #Output: Updated Status
-  def update
+  # Definition: The user writes the status in the text box and click the button.
+  # Input: Status.
+  # Output: Updated Status.
+  # Author: Ola Enaba.
+  
+  def  update
     @post = Post.find(params[1])
-   
     if @post.update(params[:post].permit(:title, :text))
       redirect_to @post
     else
@@ -15,10 +15,22 @@ class EntitiesController < ApplicationController
   end
 
 
-  def editStatus
+  # Definition: Finds the status that should be updated.
+  # Input: Status.
+  # Output: Updated Status.
+  # Author: Ola Enaba.
+ 
+  def  editStatus
 		  @entity = Entity.find(1)
 	end
-	def updateStatus
+
+
+  # Definition: Redirects to the new updated status.
+  # Input: Status.
+  # Output: Updated Status.
+  # Author: Ola Enaba.
+
+	def  updateStatus
 		 @entity = Entity.find(1) 
   		 @entity.update(params[:entity].permit(:work_status))
   		 redirect_to entity_editStatus_path
