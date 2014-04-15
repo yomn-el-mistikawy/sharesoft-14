@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  entity_id: 1
-  Name: 
-  description: 
+  longitude: 1.5
+  latitude: 1.5
+  contact_information: MyString
 
 two:
-  entity_id: 1
-  Name: 
-  description: 
+  longitude: 1.5
+  latitude: 1.5
+  contact_information: MyString

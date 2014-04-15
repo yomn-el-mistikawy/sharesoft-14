@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
 	
+
 	# Defintion: This method takes a project as input
 	# and searches the projects table for projects of
 	# same geographical location and category and sends
@@ -15,3 +16,4 @@ class Project < ActiveRecord::Base
 		Project.where(:location => project.location, :category => project.category).where.not(:id => project.id, :startup_id => project.startup_id)
 	end	
 end
+

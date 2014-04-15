@@ -1,21 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyString
-  category: MyString
-  goal: MyString
-  requirements: MyString
-  milestone: 1
-  startup_id: 1
   location: MyString
+  goals: MyString
+  name: MyString
+  milestones: 1
+  category: MyString
+  launch: 2014-04-13 20:46:12
+  description: MyString
+  requirements: MyString
 
 two:
-  name: MyString
-  description: MyString
-  category: MyString
-  goal: MyString
-  requirements: MyString
-  milestone: 1
-  startup_id: 1
   location: MyString
+  goals: MyString
+  name: MyString
+  milestones: 1
+  category: MyString
+  launch: 2014-04-13 20:46:12
+  description: MyString
+  requirements: MyString

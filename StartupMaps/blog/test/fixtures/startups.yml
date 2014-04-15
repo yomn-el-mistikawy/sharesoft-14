@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  entity_id: 
-  milestones: 1
-  needs: 
+  longitude: 1.5
+  latitude: 1.5
+  initiatior_name: MyString
 
 two:
-  entity_id: 
-  milestones: 1
-  needs: 
+  longitude: 1.5
+  latitude: 1.5
+  initiatior_name: MyString

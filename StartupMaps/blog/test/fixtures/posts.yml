@@ -1,13 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  group_id: 1
-  date: 2014-03-28 11:25:01
-  numofLikes: 1
-  numofComments: 1
+  tittle: MyString
+  text: MyString
 
 two:
-  group_id: 1
-  date: 2014-03-28 11:25:01
-  numofLikes: 1
-  numofComments: 1
+  tittle: MyString
+  text: MyString

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
 
+
 	# Defintion: This method takes the following input 
 	# and calls get_suggested() to show a list of 
 	# projects with the same geographical location and
@@ -25,32 +26,27 @@ class ProjectsController < ApplicationController
   	@project = Project.find(params[:suggested_project])
 	end
 
-	 def create
- 	@project = Projects.new(project_params)
+	  
 
- 	@project.save
+def new
 
- 	redirect_to @project
+end
 
- end
+def create
+	
+	@project = Projects.new(project_params)
+	@project.save
+	redirect_to @project
+end
 
- 
+	
 
- 	
+def show
+	@project = Projects.find(params[:id])
+end
+private
+def project_params
+	params.require(:project).permit(:name, :category, :location, :discription)
+end
 
- 
-
- def show
-
- 	@project = Projects.find(params[:id])
-
- end
-
- private
-
- def project_params
-
- 	params.require(:project).permit(:name, :category, :location, :discription)
-
- end
 end
