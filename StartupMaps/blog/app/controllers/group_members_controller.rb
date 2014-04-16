@@ -1,31 +1,29 @@
 class GroupMembersController < ApplicationController
-  before_action :set_group_member, only: [:show, :edit, :update, :destroy]
-
-  # GET /group_members
-  # GET /group_members.json
+  before_action :search_group_member, only: [:show, :edit, :update, :destroy]
+  
+    
   def index
     @group_members = GroupMember.all
   end
+  
 
-  # GET /group_members/1
-  # GET /group_members/1.json
-  def show
-  end
+  # Definition: takes the input from the user
+  # Input: user_name, group_name
+  # Output: none
+  # Author: Essam Azzam
 
-  # GET /group_members/new
   def new
     @group_member = GroupMember.new
   end
 
-  # GET /group_members/1/edit
-  def edit
-  end
+  
+  # Definition: Creates a new record in the database with the input given
+  # Input: group_member
+  # Output: void
+  # Author: Essam Azzam
 
-  # POST /group_members
-  # POST /group_members.json
   def create
     @group_member = GroupMember.new(group_member_params)
-
     respond_to do |format|
       if @group_member.save
         format.html { redirect_to @group_member, notice: 'Group member was successfully created.' }
@@ -36,9 +34,14 @@ class GroupMembersController < ApplicationController
       end
     end
   end
+  
 
-  # PATCH/PUT /group_members/1
-  # PATCH/PUT /group_members/1.json
+  # Definition: Edits the chosen group member
+  # Input: @group_member
+  # Output: void
+  # Author: Essam Azzam
+  
+
   def update
     respond_to do |format|
       if @group_member.update(group_member_params)
@@ -51,8 +54,13 @@ class GroupMembersController < ApplicationController
     end
   end
 
-  # DELETE /group_members/1
-  # DELETE /group_members/1.json
+
+  # Definition: deletes the group_members record chosen by the user
+  # Input: group_member
+  # Output: void
+  # Author: Essam Azzam
+
+
   def destroy
     @group_member.destroy
     respond_to do |format|
@@ -61,14 +69,25 @@ class GroupMembersController < ApplicationController
     end
   end
 
+
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group_member
+    
+    # Definition: returns the pressed group member
+    # Input: id
+    # Output: group_member
+
+    def search_group_member
       @group_member = GroupMember.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+     
+    # Definition: gets the parameters of the group member controller
+    # Input: 
+    # Output:
+    # Author: Essam Azzam
+    
     def group_member_params
-      params.require(:group_member).permit(:enitity_id, :datejoined, :groupcreator)
+      params.require(:group_member).permit(:UserName, :GroupName)
     end
+
 end
+
