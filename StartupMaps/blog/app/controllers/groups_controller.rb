@@ -1,7 +1,11 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
-  # GET /groups
+  def list_group_members
+    @group_members = Group.get_group_members(Group.find(params[:group_id]))
+  end
+
+    # GET /groups
   # GET /groups.json
   def index
     @groups = Group.all
@@ -59,7 +63,7 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url }
       format.json { head :no_content }
     end
-  end
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,5 +74,5 @@ class GroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
       params.require(:group).permit(:name, :group_name, :description)
-    end
+    end 
 end
