@@ -7,8 +7,8 @@ class ProjectsController < ApplicationController
   # are only shown for project owners. Moreover, if there are no 
   # suggestions, a message is shown stating so.
   # Input: project_id, entity_id
-	# Output: project_id, suggested_project
-	# Author: Yomn El-Mistikawy
+  # Output: project_id, suggested_project
+  # Author: Yomn El-Mistikawy
 
   def suggest
     if (StartupHaveProject.check_ownership(Project.find(params[:project_id]), Startup.find(session[:entity_id])).size != 0)
