@@ -1,0 +1,17 @@
+<h1>Listing group members</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Sector</th>
+    <th>Location</th>
+  </tr>
+  <% @group_members.each do |g| %>
+    <tr>
+      <td><%= g.name %></td>
+      <td><%= g.sector%></td>
+      <td><%= g.location%></td>
+     <td><%= link_to 'Show', g%></td>
+    </tr>
+  <% end %>
+</table>
