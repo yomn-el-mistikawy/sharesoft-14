@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
 
-
 	# Defintion: This method takes the following input 
 	# and calls get_suggested() to show a list of 
 	# projects with the same geographical location and
@@ -10,7 +9,7 @@ class ProjectsController < ApplicationController
 	# Author: Yomn El-Mistikawy
 
 	def suggest
-		@suggested = Project.get_suggest(Project.find(params[:project_id]))
+		@suggested = Project.get_suggest(Project.find(params[:project_id]), Startup.find(1))
 	end
 
 
@@ -20,7 +19,6 @@ class ProjectsController < ApplicationController
 	# Input: suggested_project
 	# Output: project_id, suggested_project
 	# Author: Yomn El-Mistikawy
-	# End 
 
 	def show_suggested
   	@project = Project.find(params[:suggested_project])

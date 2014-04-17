@@ -11,9 +11,19 @@ class Project < ActiveRecord::Base
 	# Author: Yomn El-Mistikawy
 	# End 
 
-	def  self.get_suggest(project)
-		# @startup_ids = startup_have_project.where(:project => project.id)
-		Project.where(:location => project.location, :category => project.category).where.not(:id => project.id, :startup_id => project.startup_id)
+	def  self.get_suggest(project, startup)
+		@projects_owned_by_startup_id = StartupHaveProject.where(:startup_id => startup.id)
+		@projects_owned_by_startup_id.each do |p|
+			@temp = @projects_owned_by_startup
+			@projects_owned_by_startup = Project.where(:id => p.project_id)
+			@projects_owned_by_startup.merge(@temp)
+		end
+		#@projects_owned_by_startup.each do |p|
+			#@project_not_owned_by_startup = Project.where.not(:id => p.project_id)
+			#project = Project.find(projects_owned_by_startup.id)
+			#@suggested_projects = project_not_owned_by_startup.where(:location => project.location, :category => project.category).where.not(:id => project.id)
+		#end
+	#	return @suggested_projects
+	return @projects_owned_by_startup
 	end	
 end
-
