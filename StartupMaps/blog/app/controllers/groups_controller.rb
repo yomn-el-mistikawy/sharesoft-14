@@ -1,8 +1,13 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
-  def list_group_members
-    @group_members = Group.get_group_members(Group.find(params[:group_id]))
+  def list_group_members 
+    @startup = Startup.find(session[:entity_id])
+    if (StartupHasGroups.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
+      @group_members = Group.get_group_members(Group.find(params[:group_id]))
+    else
+      render text: "You are not a group member" 
+    end
   end
 
     # GET /groups
