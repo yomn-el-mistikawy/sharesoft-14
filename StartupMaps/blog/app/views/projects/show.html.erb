@@ -15,6 +15,30 @@
 </p>
 
 <p>
-  <strong>Discription:</strong>
-  <%= @project.discription %>
+  <strong>Description:</strong>
+  <%= @project.description %>
 </p>
+
+
+<p>
+  <strong>Requirements:</strong>
+  <%= @project.requirements %>
+</p>
+
+<p>
+  <strong>Goals:</strong>
+  <%= @project.goals %>
+</p>
+
+<p>
+  <strong>Milestones:</strong>
+  <%= @project.milestones %>
+</p>
+
+<p>
+  <strong>Launched?</strong>
+  <%= @project.launched? %>
+  <%= link_to( (@project.launch ? "Unlaunch" : "Launch"), launch_project_path) %>
+</p>
+
+<%= link_to "Edit this project", edit_project_path(@project) %>
