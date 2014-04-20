@@ -1,5 +1,7 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
+  
+
 
   #Homepage of entities, which lists all created accounts
   # Adel Zee Badawy
@@ -72,5 +74,6 @@ class EntitiesController < ApplicationController
     def entity_params
       params.require(:entity).permit(:name, :email, :password, :availability)
     end
-end
 
+
+end

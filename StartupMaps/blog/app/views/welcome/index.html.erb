@@ -1,2 +1,4 @@
 <h1>Welcome#index</h1>
-<%= link_to "Create a new account!", controller: "entities" %>
+<%= link_to "Create a new account!", {controller: "entities", :action => 'create'} %>
+<%= link_to "Update Your account!", {controller: "entities" , :action => 'update'}%>
+<%= link_to "Create a new account!", {controller: "entities" , :action => 'delete'}%>

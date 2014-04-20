@@ -7,7 +7,10 @@ Blog::Application.routes.draw do
      get "merge_request"
   end
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  #get 'welcome#index'
+  get 'entities/create'
+  get 'entities/update'
+  get 'entities/delete'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
