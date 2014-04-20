@@ -7,6 +7,11 @@ Blog::Application.routes.draw do
      get "suggest"
      get "showSuggested"
   end
+
+
+  resources :posts do
+    resources :comments
+end
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
