@@ -1,4 +1,13 @@
 Blog::Application.routes.draw do
+  get "entity_work_portfolio/create_portfolio"
+  get "entity_work_portfolio/edit_portfolio"
+  get "entity_work_portfolio/delete_portfolio"
+  get "entity_work_portfolio/delete"
+  get "entity_work_portfolio/list"
+  get "entity_work_portfolio/update_portfolio"
+  get "entity_work_portfolio/new"
+
+  
   resources :group_members
 
   # The priority is based upon order of creation: first created -> highest priority.
