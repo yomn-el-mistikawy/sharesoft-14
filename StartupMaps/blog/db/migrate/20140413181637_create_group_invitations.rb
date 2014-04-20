@@ -2,8 +2,8 @@ class CreateGroupInvitations < ActiveRecord::Migration
   def change
     create_table :group_invitations do |t|
 			t.belongs_to :receiver
-			t.belongs_to :sender
-			t.belongs_to :group
+			t.references :sender
+			t.references :group
       t.timestamps
     end
   end

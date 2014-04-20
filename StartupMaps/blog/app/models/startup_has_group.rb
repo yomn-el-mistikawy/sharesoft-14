@@ -1,7 +1,7 @@
-class StartupHasGroups < ActiveRecord::Base
+class StartupHasGroup < ActiveRecord::Base
 	has_many :startups
 	has_many :groups
-
+	
   # Defintion: This checks if the startup is a member
   # of the opened group and returns the record containing 
   # both the startup_id and group_id.
