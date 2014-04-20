@@ -11,6 +11,218 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140414153050) do
+
+  create_table "comments", force: true do |t|
+    t.string   "comment"
+    t.integer  "entity_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entities", force: true do |t|
+    t.string   "name"
+    t.string   "username"
+    t.string   "password"
+    t.string   "e_mail"
+    t.string   "verification_code"
+    t.string   "location"
+    t.string   "headquarter"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_available_internships", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.boolean  "available"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_goals", force: true do |t|
+    t.string   "goals"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_jobs", force: true do |t|
+    t.string   "jobs"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_needs", force: true do |t|
+    t.string   "needs"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_social_links", force: true do |t|
+    t.string   "socialLinks"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_video_links", force: true do |t|
+    t.string   "url"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_work_portfolios", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "launch"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_work_statuses", force: true do |t|
+    t.string   "workstatus"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_invitations", force: true do |t|
+    t.integer  "receiver_id"
+    t.integer  "sender_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.boolean  "private"
+    t.string   "description"
+    t.string   "name"
+    t.string   "location"
+    t.integer  "creator_id"
+    t.string   "interest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "investors", force: true do |t|
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "contact_information"
+    t.integer  "entity_id"
+    t.string   "name"
+    t.string   "sector"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "comment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.string   "text"
+    t.integer  "group_id"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "location"
+    t.string   "goals"
+    t.string   "name"
+    t.integer  "milestones"
+    t.string   "category"
+    t.boolean  "launch"
+    t.string   "description"
+    t.string   "requirements"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "send_merge_requests", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.integer  "project_id"
+    t.integer  "response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", force: true do |t|
+    t.float    "longitude"
+    t.float    "latitude"
+    t.integer  "entity_id"
+    t.string   "name"
+    t.string   "sector"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startup_has_groups", force: true do |t|
+    t.integer  "startup_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startup_have_projects", force: true do |t|
+    t.integer  "startup_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startup_resources", force: true do |t|
+    t.string   "resources"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startups", force: true do |t|
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "initiatior_name"
+    t.integer  "milestones"
+    t.integer  "entity_id"
+    t.string   "location"
+    t.string   "name"
+    t.boolean  "online_status"
+    t.boolean  "launch_status"
+    t.string   "joint_ventures"
+    t.string   "sector"
+    t.integer  "number_of_working_years"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "tags"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "social_account"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

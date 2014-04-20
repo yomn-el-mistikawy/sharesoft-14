@@ -1,0 +1,15 @@
+<%= form_for :join_request, url: join_requests_path do |f| %>
+  <p>
+    <%= f.label :sender %><br>
+    <%= f.text_field :sender %>
+  </p>
+ 
+  <p>
+    <%= f.label :group_name %><br>
+    <%= f.text_field :group_name %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  enity_id: 1
-  dateJoined: 2014-03-28 11:36:09
-  groupCreator: false
+  enitity_id: 
+  datejoined: 
+  groupcreator: 
 
 two:
-  enity_id: 1
-  dateJoined: 2014-03-28 11:36:09
-  groupCreator: false
+  enitity_id: 
+  datejoined: 
+  groupcreator: 

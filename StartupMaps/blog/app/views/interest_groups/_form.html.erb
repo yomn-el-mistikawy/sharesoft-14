@@ -1,0 +1,25 @@
+<%= form_for(@join_public_group) do |f| %>
+  <% if @join_public_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@join_public_group.errors.count, "error") %> prohibited this join_public_group from being saved:</h2>
+
+      <ul>
+      <% @join_public_group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_name %><br>
+    <%= f.text_field :user_name %>
+  </div>
+  <div class="field">
+    <%= f.label :group_name %><br>
+    <%= f.text_field :group_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
