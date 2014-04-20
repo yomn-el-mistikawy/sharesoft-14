@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.float    "latitude"
     t.string   "initiatior_name"
     t.integer  "milestones"
-    t.integer  "entities_id"
+    t.integer  "entity_id"
     t.string   "location"
     t.string   "name"
     t.boolean  "online_status"
