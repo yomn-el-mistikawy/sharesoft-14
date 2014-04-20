@@ -1,21 +1,23 @@
 class MapsController < ApplicationController
-end
-lass MapsController < ApplicationController
 
-# Defintion: gets all startups in the db and creates markers.
+# Defintion: gets all startups in the db and shows them on the map.
 # Input: Startup Table.
 # Output: online Startups.
 # Author: Alia Tarek.
 
 	def  show_startups
-		@startups = User.all
+		@startups = Starup.all
 		@hash = Gmaps4rails.build_markers(@startups) do |t, marker|
         	marker.lat t.latitude
         	marker.lng t.longitude
         	marker.infowindow t.name
-
-        	#marker.picture({"url" =>" ","width" => 32,u]y"height"=> 32})
-		 end
+              marker.picture({
+                  "url" => "http://mapicons.nicolasmollet.com/wp-content/uploads/mapicons/shape-default/color-265cb2/shapecolor-color/shadow-1/border-dark/symbolstyle-contrast/symbolshadowstyle-dark/gradient-iphone/foodcan.png",
+                  "width"   => 32,
+                  "height"  => 32
+                 })
+               end
+        render :template => 'maps/index'
 	end
 
 
@@ -26,6 +28,19 @@ lass MapsController < ApplicationController
 
 	def  show_investors
 		@investors = Investor.all
+        @hash = Gmaps4rails.build_markers(@investors) do |t, marker|
+        	marker.lat t.latitude
+        	marker.lng t.longitude
+        	marker.infowindow t.name
+        	  marker.picture({
+                  :picture => "app/assets/images/panoramicview.png",
+                  :width   => "32",
+                  :height  => "32"
+                 }) 
+        end
+    
+        render :template => 'maps/index'
+
     end
 
 
@@ -36,6 +51,19 @@ lass MapsController < ApplicationController
 
 	def  show_services
 		@services = Service.all
+        @hash = Gmaps4rails.build_markers(@services) do |t, marker|
+        	marker.lat t.latitude
+        	marker.lng t.longitude
+        	marker.infowindow t.name
+        	  marker.picture({
+                  :picture => "",
+                  :width   => "32",
+                  :height  => "32"
+                 }) 
+        end
+    
+        render :template => 'maps/index'
+
 	end
 
 
@@ -46,6 +74,19 @@ lass MapsController < ApplicationController
 
 	def  show_merged
 		@merged = Startup.where(:joint_ventures != "")
+        @hash = Gmaps4rails.build_markers(@merged) do |t, marker|
+        	marker.lat t.latitude
+        	marker.lng t.longitude
+        	marker.infowindow t.name
+        	  marker.picture({
+                  :picture => "",
+                  :width   => "32",
+                  :height  => "32"
+                 }) 
+        end
+    
+        render :template => 'maps/index'
+
 	end
 
 
@@ -55,7 +96,19 @@ lass MapsController < ApplicationController
 # Author: Alia Tarek.
 
 	def  show_launched
-		@launched = Startup.where(:launched_Status => true)
+		@launched = Startup.where(:launch_status => true)
+		 @hash = Gmaps4rails.build_markers(@launched) do |t, marker|
+        	marker.lat t.latitude
+        	marker.lng t.longitude
+        	marker.infowindow t.name
+        	  marker.picture({
+                  :picture => "",
+                  :width   => "32",
+                  :height  => "32"
+                 }) 
+        end
+    
+        render :template => 'maps/index'
 	end
 
 
@@ -65,7 +118,19 @@ lass MapsController < ApplicationController
 # Author: Alia Tarek.
 
 	def  show_not_launched
-		@not_launched = Startup.where(:launched_Status => false)
+		@not_launched = Startup.where(:launch_status => false)
+		 @hash = Gmaps4rails.build_markers(@not_launched) do |t, marker|
+        	marker.lat t.latitude
+        	marker.lng t.longitude
+        	marker.infowindow t.name
+        	  marker.picture({
+                  :picture => "",
+                  :width   => "32",
+                  :height  => "32"
+                 }) 
+        end
+    
+        render :template => 'maps/index'
 	end
 
 
@@ -75,7 +140,19 @@ lass MapsController < ApplicationController
 # Author: Alia Tarek.
 
 	def  show_online
-		@online = Startup.where(:online_Status => true)
+		@online = Startup.where(:online_status => true)
+		 @hash = Gmaps4rails.build_markers(@online) do |t, marker|
+        	marker.lat t.latitude
+        	marker.lng t.longitude
+        	marker.infowindow t.name
+        	  marker.picture({
+                  :picture => "",
+                  :width   => "32",
+                  :height  => "32"
+                 }) 
+        end
+    
+        render :template => 'maps/index'
 	end
 
 
@@ -85,7 +162,19 @@ lass MapsController < ApplicationController
 # Author: Alia Tarek.
 
 	def  show_offline
-		@offline = Startup.where(:online_Status => false)
+		@offline = Startup.where(:online_status => false)
+		 @hash = Gmaps4rails.build_markers(@offline) do |t, marker|
+        	marker.lat t.latitude
+        	marker.lng t.longitude
+        	marker.infowindow t.name
+        	  marker.picture({
+                  :picture => "app/assets/images/panoramicview.png",
+                  :width   => "32",
+                  :height  => "32"
+                 }) 
+        end
+    
+        render :template => 'maps/index'
 	end
 end
 
