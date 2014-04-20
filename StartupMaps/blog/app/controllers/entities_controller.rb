@@ -22,42 +22,20 @@ class EntitiesController < ApplicationController
 
  #Creates accounts
  # Adel Zee Badawy
-  def create
+  def  create
     @entity = Entity.new(entity_params)
 
     respond_to do |format|
       if @entity.save
-        format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @entity }
+        format.html {redirect_to root_path, notice: 'Entity was successfully created.'}
+        format.json {render action: 'index', status: :created, location: @entity}
       else
-        format.html { render action: 'new' }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
+        format.html {render action: 'new'}
+        format.json {render json: @entity.errors, status: :unprocessable_entity}
       end
     end
   end
 
-  
-  def update
-    respond_to do |format|
-      if @entity.update(entity_params)
-        format.html { redirect_to @entity, notice: 'Entity was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
- #Deletes created accounts
- # Adel Zee Badawy
-  def destroy
-    @entity.destroy
-    respond_to do |format|
-      format.html { redirect_to entities_url }
-      format.json { head :no_content }
-    end
-  end
 #Private disallows the view to use the methods inside, but lets methods in the same controller to use the methods.
 # Adel Zee Badawy
   private

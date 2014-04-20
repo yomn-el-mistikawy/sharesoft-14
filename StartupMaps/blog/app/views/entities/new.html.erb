@@ -1,9 +1,41 @@
 <h1>New account</h1>
+
+
 <!-- Runs form -->
 <!-- Adel Zee Badawy -->
 
-<%= render 'form' %>
+<%= form_for(@entity) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id = "error_explanation">
+      <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+      <% @entity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class = "field">
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %> <br>
+    <%= f.label :email %> <br>
+    <%= f.text_field :email %> <br>
+    <%= f.label :password %> <br>
+    <%= f.text_field :password %> <br>
+    <%= f.label :type %> <br>
+    <%= f.select :type, [['Startup','startup'],['Investor','investor'],['Service','service']] %>
+    <!-- The error here is that i need to insert the input from the dropdown list into the corresponding tables -->
+  </div>
+  <div class = "actions">
+    <%= f.submit "Create Account" %>
+  </div>
+<% end %>
+
+
 <!-- Links to entity page -->
 <!-- Adel Zee Badawy -->
 
-<%= link_to 'Back', entities_path %>
+<%= link_to 'Back', root_path %>
