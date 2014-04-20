@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+  
   end
 
   # GET /groups/1
@@ -14,61 +14,51 @@ class GroupsController < ApplicationController
 
   # GET /groups/new
   def new
-    @group = Group.new
+ 
   end
 
   # GET /groups/1/edit
   def edit
   end
 
-  # POST /groups
-  # POST /groups.json
+
+ # This method creates a group
+ # creator_id takes the creator id as an input in the form of an integer
+ # name takes the name of the group as an input in the form of a string
+ # description takes the description of the group as an input in the form of a string
+ # location takes the location of the group as an input in the form of a string
+ # private takes the type of the group's privacy as an input in the form of "0" or "1"
+ # interest takes the interest of the group as an input in the form of a string
+ # Author: Sherouk A. Said
+
   def create
-    @group = Group.new(group_params)
+    group = Group.new
+    group.creator_id = params[:id]
+    group.name = params[:name] 
+    group.description = params[:description] 
+    group.location = params[:location]
+    group.private = params[:private]
+    group.interest = params[:interests]
+    group.save
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Description Added.' }
-        format.json { render action: 'show', status: :created, location: @group }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
   end
-
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
-    @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url }
-      format.json { head :no_content }
-    end
+
+  
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
+    
+  def set_group
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name, :group_name, :description)
-    end
-end
+    .
+    
+  end
