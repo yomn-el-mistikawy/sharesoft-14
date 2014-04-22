@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414153050) do
+ActiveRecord::Schema.define(version: 20140417101049) do
 
   create_table "comments", force: true do |t|
     t.string   "comment"
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.string   "requirements"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "entity_id"
   end
 
   create_table "send_merge_requests", force: true do |t|
@@ -200,7 +201,7 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.float    "latitude"
     t.string   "initiatior_name"
     t.integer  "milestones"
-    t.integer  "entities_id"
+    t.integer  "entity_id"
     t.string   "location"
     t.string   "name"
     t.boolean  "online_status"
