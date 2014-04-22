@@ -2,7 +2,6 @@ class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
 def subscribe
-session[:user_id] = 1
 @subscribing = Subscription.create( :subscriber_id => session[:user_id], :subscribee_id => params[:entity_id])
 end
 
