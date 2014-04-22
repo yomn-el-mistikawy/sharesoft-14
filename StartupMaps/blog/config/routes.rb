@@ -8,7 +8,14 @@ Blog::Application.routes.draw do
      get "showSuggested"
   end
   # You can have the root of your site routed with "root"
+ resources :entities do
+ get "subscribe" 
+ post "subscribe"
+end
+
   root to: 'welcome#index'
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
