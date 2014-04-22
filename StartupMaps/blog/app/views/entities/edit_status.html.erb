@@ -1,0 +1,17 @@
+<!--   
+# Definition: The user writes the status in the text box and clicks on the button 
+# then the status is updated in the above header.
+# Input: Status.
+# Output: Updated Status.
+# Author: Ola Enaba.
+-->
+
+<p>
+  <strong>Work status</strong>
+</p>
+<br>
+<%= text_field_tag(:work_status) %>
+ 
+<%= button_to "Post", entity_update_status_path(:work_status) %>
+
+
