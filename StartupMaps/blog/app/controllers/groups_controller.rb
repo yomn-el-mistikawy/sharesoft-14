@@ -13,8 +13,9 @@ class GroupsController < ApplicationController
   # Author: Yomn El-Mistikawy
 
   def list_group_members 
+    session[:entity_id] = 4
     @startup = Startup.find(session[:entity_id])
-    if (StartupHasGroup.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
+    if (GroupsStartup.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
       @group_members = Group.get_group_members(Group.find(params[:group_id]))
     else
       render text: "You are not a group member" 
