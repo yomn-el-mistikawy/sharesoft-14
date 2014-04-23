@@ -1,0 +1,47 @@
+<!--    == Begin  == 
+  Definition: "As a startup, I can set a project goal, milestone,
+  requirements (roles, resources)"
+  Allows editing the project's details, specifically goals, milestones and requirements
+  Redirects user to project's page (show project) on success
+  Re-renders the edit project page on error.
+  Input: project_id. "on the show page". then user enters input.
+  Output: project_id, on click it redirects to the whole project
+  "all project description along successfully edited goals, 
+  milestones and requirements".
+  Author: Hana Magdy. -->
+   
+<style type="text/css">
+
+  h1 {
+    color: #FF3399;
+  }
+
+  p {
+    color: #0099FF;
+  }
+  </style>
+
+<h1>Editing '<%= @project.name %>' Project</h1>
+ 
+<%= form_for @project do |f| %>
+  <p>
+    <%= f.label :goals %><br>
+    <%= f.text_area :goals %>
+  </p>
+
+ 
+  <p>
+    <%= f.label :milestones %><br>
+    <%= f.text_area :milestones %>
+  </p>
+
+  <p>
+    <%= f.label :requirements %><br>
+    <%= f.text_area :requirements %>
+  </p>
+ 
+  <p>
+    <%= f.submit ("Edit Project") %>
+  </p>
+<% end %>
+  <!-- == End  ==   -->
