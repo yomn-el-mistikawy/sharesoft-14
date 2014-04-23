@@ -5,5 +5,5 @@ class Startup < ActiveRecord::Base
 	has_many :posts, through: :groups
 	has_many :comments, through: :groups
 	has_many :likes, through: :groups
-	has_many :postAttachments, through: :groups
+	has_many :resumes, through: :groups
 end
