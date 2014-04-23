@@ -9,14 +9,11 @@ Blog::Application.routes.draw do
      get "showSuggested"
   end
 
-resources :entity do
-    get "editStatus"
-    get "updateStatus"
-    get "entityedit"
+resources :entities do
+    get "edit_status"
+    post "update_status"
   end
 
-  You can have the root of your site routed with "root"
-  root  to: 'welcome#index'
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
