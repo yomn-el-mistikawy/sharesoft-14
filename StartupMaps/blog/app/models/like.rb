@@ -1,4 +1,4 @@
 class Like < ActiveRecord::Base
-	has_one :post 
-	has_one :comment
+  belongs_to :startup
+  belongs_to :likable, :polymorphic => true
 end
