@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419163446) do
+ActiveRecord::Schema.define(version: 20140421031737) do
 
   create_table "comments", force: true do |t|
     t.string   "comment"
@@ -114,6 +114,13 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.string   "location"
     t.integer  "creator_id"
     t.string   "interest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups_startups", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "startup_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
