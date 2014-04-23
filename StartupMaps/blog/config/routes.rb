@@ -12,6 +12,9 @@ Blog::Application.routes.draw do
 resources :entities do
     get "edit_status"
     post "update_status"
+    post "edit_email_and_password"
+    post "update_email_and_password"
+    get "entity_params"
   end
 
 

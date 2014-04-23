@@ -20,11 +20,10 @@ class EntitiesController < ApplicationController
 
   def  update_status
      @entity = Entity.find(session[:entity_id]) 
-     @work_status = EntityWorkStatus.create(:workstatus => params[:work_status]
-      , :entity_id => params[:entity_id])
+     @work_status = EntityWorkStatus.create(:workstatus => params[:work_status], :entity_id => params[:entity_id])
   end
  
-
+  
   #Homepage of entities, which lists all created accounts
   # Adel Zee Badawy
   def index
@@ -121,6 +120,10 @@ class EntitiesController < ApplicationController
     request.save!
   end
  
+
+
+
+
 
 end
 
