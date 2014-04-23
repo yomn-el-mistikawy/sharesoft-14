@@ -16,5 +16,16 @@ class Entity < ActiveRecord::Base
 	has_many :receivers, :through => :send_merge_requests
 	has_many :subscriber, :through => :subscrtipion
 	has_many :subscribee, :through => :subscrtipion
+
+	validates_confirmation_of :password
+	attr_accessor :password, :password_confirmation, :e_mail, :name, :type
+
+	TYPE_REGEX = /[^0]/i
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :name, presence: true, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
+  validates :e_mail, presence: true, format: { with: VALID_EMAIL_REGEX } ,uniqueness: { case_sensitive: false }
+  validates :password, presence: true, length: { minimum: 6 }
+  validates :type, format: { with: /[^0]/, message: " is not selected." }
+
 end
 
