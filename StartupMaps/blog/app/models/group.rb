@@ -3,5 +3,5 @@ class Group < ActiveRecord::Base
 	has_many :posts
 	has_many :comments, through: :posts
 	has_many :likes, through: :posts
-	has_many :postAttachments
+	has_many :resumes
 end
