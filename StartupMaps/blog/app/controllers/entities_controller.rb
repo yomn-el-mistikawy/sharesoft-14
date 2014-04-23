@@ -1,36 +1,46 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
-  # Homepage of entities, which lists all created accounts
-  # Adel Zee Badawy
+
   def  index
-    @entities = Entity.all
   end
 
-  # Leads to the show webpages which views created accounts
-  # Adel Zee Badawy
+
   def show
-    @entities = session(1)
-    # @availability = entity_available_internship
   end
 
-  # Gives access to new accounts
-  # Adel Zee Badawy
+
   def new
     @entity = Entity.new
   end
 
 
+  # Definition: This method creates an input in the table entity and in the table corresponding to the 
+  # entity type. The inputs are taken in the form of text and dropdown lists, and insert into the
+  # database the input provided.
+  # Input: Name, Password, Email, Entity Type.
+  # Output: Void.
+  # Author: Adel Badawy.
 
-  # Creates accounts
-  # Adel Zee Badawy
   def  create
     @entity = Entity.new(entity_params)
-    @startup = Startup.new
-    type = params['type']
+    type = entity_params[:type]
+    name = entity_params[:name]
+    p name
     p type
+    
     respond_to do |format|
       if @entity.save
+        if type = '1'
+          @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
+            :entity_id => @entity.id).save
+        elsif type = '2'
+          @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
+            :entity_id => @entity.id).save
+        elsif type = '3'
+          @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
+            :entity_id => @entity.id).save
+        end            
         format.html {redirect_to root_path, notice: 'Entity was successfully created.'}
         format.json {render action: 'index', status: :created, location: @entity}
       else
@@ -40,20 +50,18 @@ class EntitiesController < ApplicationController
     end
   end
 
-# Private disallows the view to use the methods inside, but lets methods in the same controller to use the methods.
-# Adel Zee Badawy
-  private
-# Use callbacks to share common setup or constraints between actions.
-# Adel Zee Badawy
-    def set_entity
-      Entity.find(1)
-    end
 
-# Allows the method to read the inputs
-# Adel Zee Badawy
+  private
+
+
+    # Definition: This method passes the parameters for use by the model and the controller, including the
+    # attributes password confirmaion and type.
+    # Input: Name, Email, Password, Password Confirmation, Type.
+    # Output: Void.
+    # Author: Adel Zee Badawy.
 
     def entity_params
-      params.require(:entity).permit(:name, :e_mail, :password, :password_confirmation, :type)
+      params.require(:entity).permit(:name, :e_mail, :password, :password_confirmation, :type, :location)
     end
 
     def self.request(sender_id, recevier_id)

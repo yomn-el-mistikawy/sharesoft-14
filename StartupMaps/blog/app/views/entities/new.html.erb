@@ -1,13 +1,16 @@
 <h1>New account</h1>
 
 
-<!-- Runs form -->
+<!-- This form submits the inputs that are to be put into the databases. -->
 <!-- Adel Zee Badawy -->
 
 <%= form_for(@entity) do |f| %>
+  <!-- This part posts the errors that are met in the model. These are errors are made by conditions 
+  not being met.-->
+  <!-- Adel Zee Badawy -->
   <% if @entity.errors.any? %>
     <div id = "error_explanation">
-      <h2>Errors:</h2>
+      <h2>Please fix the following errors:</h2>
       <ul>
       <% @entity.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -18,25 +21,22 @@
 
 
   <div class = "field">
-    <%= f.label :name, "Username" %> <br>
+    <%= f.label :name, "Username (at least 3 characters)" %> <br>
     <%= f.text_field :name %> <br>
     <%= f.label :e_mail, "E-Mail" %> <br>
     <%= f.text_field :e_mail %> <br>
-    <%= f.label :password %> <br>
+    <%= f.label :password, "Password (at least 6 characters)"%> <br>
     <%= f.password_field :password %> <br>
     <%= f.label :password_confirmation, "Confirm Password" %> <br>
     <%= f.password_field :password_confirmation %><br>
     <%= f.label :type, "Entity Type" %> <br>
-    <%= f.select(:type, options_for_select([['Please select an entity type...', '0'], ['Investor', '1'], ['Service', '2'], ['Startup', '3']], selected: :type )) %>
-    <!-- # The error here is that i need to insert the input from the dropdown list into the corresponding tables -->
+    <%= f.select(:type, options_for_select([['Please select an entity type...', '0'], ['Investor', '1'], ['Service', '2'], ['Startup', '3']], selected: :type )) %> <br> <br>
+    <%= f.label :location, "Insert City and Street Name in this format: City, Street Name." %> <br>
+    <%= f.text_field :location %>
   </div>
   <div class = "actions">
     <%= f.submit "Create Account" %>
   </div>
 <% end %>
-
-
-<!-- Links to entity page -->
-<!-- Adel Zee Badawy -->
 
 <%= link_to 'Back', root_path %>
