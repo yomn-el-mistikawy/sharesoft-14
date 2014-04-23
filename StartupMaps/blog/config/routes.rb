@@ -1,6 +1,12 @@
 Blog::Application.routes.draw do
+  
+  get "password_resets/new"
   resources :group_members
-
+  resources :entities do 
+    # post "password_reset"
+    # get "password_resets"
+  end
+  resources :password_resets
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :projects do

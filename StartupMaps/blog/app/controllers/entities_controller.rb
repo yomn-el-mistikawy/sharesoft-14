@@ -49,6 +49,16 @@ class EntitiesController < ApplicationController
     end
   end
 
+def password_resets
+end
+
+def password_reset
+  @entity = Entity.find_by_e_mail(params[:e_mail])
+  UserMailer.password_reset(@entity).deliver
+  # entity.send_password_reset if entity
+  redirect_to root_url, :notice => "Email sent with password reset instructions."
+end
+
  #Deletes created accounts
  # Adel Zee Badawy
   def destroy
