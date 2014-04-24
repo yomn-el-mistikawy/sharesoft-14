@@ -20,7 +20,8 @@ class EntitiesController < ApplicationController
   # Definition: Redirects to the new updated status.
   # Input: Status.
   # Output: Updated Status.
-  # Author: Ola Enaba.
+  # Author: Ola Enaba.test/models/entity_work_status_test.rb
+
 
   def  update_status
     
@@ -168,5 +169,5 @@ class EntitiesController < ApplicationController
 
 
 
-end
+
 

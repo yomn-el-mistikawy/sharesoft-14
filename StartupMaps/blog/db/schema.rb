@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414153050) do
+ActiveRecord::Schema.define(version: 20140423162012) do
 
   create_table "comments", force: true do |t|
     t.string   "comment"
@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.datetime "updated_at"
   end
 
+  create_table "entity_statuses", force: true do |t|
+    t.string   "Status"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "entity_video_links", force: true do |t|
     t.string   "url"
     t.integer  "entity_id"
@@ -94,6 +101,11 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.datetime "updated_at"
   end
 
+  create_table "friendships", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "group_invitations", force: true do |t|
     t.integer  "receiver_id"
     t.integer  "sender_id"
@@ -113,6 +125,13 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.datetime "updated_at"
   end
 
+  create_table "groups_startups", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "investors", force: true do |t|
     t.float    "longitude"
     t.float    "latitude"
@@ -128,6 +147,14 @@ ActiveRecord::Schema.define(version: 20140414153050) do
   create_table "likes", force: true do |t|
     t.integer  "post_id"
     t.integer  "comment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "post_attachments", force: true do |t|
+    t.datetime "date"
+    t.string   "description"
+    t.integer  "groups_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -212,6 +239,13 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.datetime "updated_at"
   end
 
+  create_table "subscriptions", force: true do |t|
+    t.integer  "subscriber_id"
+    t.integer  "subscribee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tags", force: true do |t|
     t.string   "tags"
     t.integer  "entity_id"
@@ -223,6 +257,9 @@ ActiveRecord::Schema.define(version: 20140414153050) do
     t.string   "social_account"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
+
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

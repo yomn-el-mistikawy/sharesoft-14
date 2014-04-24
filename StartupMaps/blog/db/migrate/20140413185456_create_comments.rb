@@ -2,7 +2,8 @@ class CreateComments < ActiveRecord::Migration
   def self.up
     create_table :comments do |t|
       t.string :comment
-      t.belongs_to :entity
+      t.string :commenter
+      t.belongs_to :startup
       t.belongs_to :post
       t.timestamps
     end
