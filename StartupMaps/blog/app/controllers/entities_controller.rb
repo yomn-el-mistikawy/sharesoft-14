@@ -6,11 +6,39 @@ class EntitiesController < ApplicationController
   end
 
 
+  # Definition: The show method initializes the variables @entity and @avail, which are both used in the 
+  # view. The parameter (1) is being used since the session has not been implemented. Displays the 
+  # internship availability in the view. Green square denotes available == true, and red light denotes
+  # available == false.
+  # Input: Entity and EntityAvailableInternship tuples.
+  # Output: Variables @entity and @available which are based on the session.
+  # Author: Adel Zee Badawy.
+
   def show
     @entity = Entity.find(1)
     @avail = EntityAvailableInternship.find_by_entity_id(@entity.id)
-    p @avail.name
-    p @avail.available
+  end
+
+
+  # Definition: The show method initializes the variables @entity and @avail, which are both used in the 
+  # view. The parameter (1) is being used since the session has not been implemented. Updates the 
+  # database based on the value that is currently in the table. If it is true, then the column value
+  # is changed to false, and vice versa.
+  # Input: Entity and EntityAvailableInternship tuples.
+  # Output: Variables @entity and @available which are based on the session, also, the column available 
+  # is updated in the table based on the already available tuple.
+  # EntityAvailableInternships is upda
+  # Author: Adel Zee Badawy.
+
+  def update
+    @entity = Entity.find(1)
+    @avail = EntityAvailableInternship.find_by_entity_id(@entity.id)
+    if @avail.update_attribute(:available, !@avail.available)
+        redirect_to entity_path
+        flash.alert = "Successfully changed!"
+      else
+        flash.alert = "Sorry, couldn't change the status."
+      end
   end
 
 
@@ -42,10 +70,10 @@ class EntitiesController < ApplicationController
           @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
             :entity_id => @entity.id).save
         elsif type = '2'
-          @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
+          @x = Service.create(:name => entity_params[:name], :location => entity_params[:location],
             :entity_id => @entity.id).save
         elsif type = '3'
-          @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
+          @x = Startup.create(:name => entity_params[:name], :location => entity_params[:location],
             :entity_id => @entity.id).save
         end            
         format.html {redirect_to root_path, notice: 'Entity was successfully created.'}
@@ -68,7 +96,7 @@ class EntitiesController < ApplicationController
     # Author: Adel Zee Badawy.
 
     def entity_params
-      params.require(:entity).permit(:name, :e_mail, :password, :password_confirmation, :type, :location)
+      params.require(:entity).permit(:name, :e_mail, :password, :password_confirmation, :type, :location, :available)
     end
 
     def self.request(sender_id, recevier_id)
