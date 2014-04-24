@@ -2,7 +2,7 @@ class Entity < ActiveRecord::Base
 	has_many :services 
 	has_many :startups
 	has_many :investors
-	has_many :entity_work_statuses
+	has_many :entity_statuses
 	has_many :entity_work_portfolio 
 	has_many :entity_video_links
 	has_many :entity_social_links
@@ -17,6 +17,7 @@ class Entity < ActiveRecord::Base
 	has_many :subscriber, :through => :subscrtipion
 	has_many :subscribee, :through => :subscrtipion
 
+<<<<<<< HEAD
 
   # Definition: This line checks whether the password field is equivalent to the password_confirmation
   # field.
@@ -57,5 +58,7 @@ class Entity < ActiveRecord::Base
   validates :type, format: { with: /[^0]/, message: " is not selected." }
   validates :location, presence: true
 
+=======
+>>>>>>> 5d8c8e772d6131b6d82273b06dfd47aa50ddc4d1
 end
 

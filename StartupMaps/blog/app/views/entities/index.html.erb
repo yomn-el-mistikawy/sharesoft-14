@@ -1,3 +1,56 @@
+<<<<<<< HEAD
 <h2>This is meant to be the profile page of the entity.</h2>
 
 <%= link_to 'Back to home page.', root_path %>
+=======
+
+<h1>Listing entities</h1>
+<!-- The actual list of accounts  -->
+<!-- Adel Zee Badawy -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+        <td><%= entity.name %></td>
+        <td><%= entity.email %></td>
+        <td><%= entity.password %></td>
+        <td><%= link_to 'Show', entity %></td>
+        <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
+        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<!-- Link to create a new account -->
+<!-- Adel Zee Badawy -->
+
+<%= link_to 'New Account', new_entity_path %>
+
+<!-- This was meant to be the view entity accounts to view and edit the availability -->
+<!-- Adel Zee Badawy -->
+
+<!-- <h1>Select a entity!</h1>
+<p>Select your entity and click submit to go to the page!</p>
+<%= form_tag(@allEntities) do |f| %>
+	<div class="field">
+  		<%= f.collection_select(:id, Entity.all, :email, :entityname, :include_blank => "Please select a entity..." ) %>
+	</div>
+	<%= f.submit_tag "Go!"%>
+<% end %> -->
+
+
+>>>>>>> 5d8c8e772d6131b6d82273b06dfd47aa50ddc4d1

@@ -1,25 +1,34 @@
 class ProjectsController < ApplicationController
 
-=begin
-	This methods queries the table project for projects that are in the same category and location as the current project
-	Input: selected project id
-	Output: @suggested
-	Author: Yomn El-Mistikawy
-=end
-def suggest
-	@project= Project.find(1)
-    @suggested= Project.where(:location => "cairo", :category => "baking").where.not(:id => "1", :startup_id => "1")
-end
-=begin
-	This method shows the profile of the selected suggested project
-	Input: selected project id
-	Output: view showing the profile of the project with a merge request button
-	Author: Yomn El-Mistikawy
-=end
-def showSuggested
-    @project= Project.find(params[:project])
-end
+  # Defintion: This method takes the project_id and session id
+  # as input and calls get_suggested() to show a list of 
+  # projects with the same geographical location and
+  # category to the startup's opened project.The suggestions 
+  # are only shown for project owners. Moreover, if there are no 
+  # suggestions, a message is shown stating so.
+  # Input: project_id, entity_id
+  # Output: project_id, suggested_project
+  # Author: Yomn El-Mistikawy
 
+  def suggest
+    if (StartupHaveProject.check_ownership(Project.find(params[:project_id]), Startup.find(session[:entity_id])).size != 0)
+      @suggested = Project.get_suggest(Project.find(params[:project_id]), Startup.find(session[:entity_id]))
+    else
+      render text: ""
+    end
+  end
+
+
+  # Defintion: This method takes the suggested project id
+  # as input and views the project with a button for the startup
+  # to send a merge request to the project owner.
+  # Input: suggested_project
+  # Output: project_id, suggested_project
+  # Author: Yomn El-Mistikawy
+
+  def show_suggested
+    @project = Project.find(params[:suggested_project])
+  end
 
 def new
 
