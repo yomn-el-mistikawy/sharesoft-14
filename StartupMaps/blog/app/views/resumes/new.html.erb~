@@ -3,9 +3,7 @@
   # Input:
   # Output:
   # Author: Essam Azzam
-
 -->
-
 
 <% if !@resume.errors.empty? %>
   <div class="alert alert-error">
@@ -17,15 +15,12 @@
   </div>
 <% end %>
 
-
 <!--  
   # Definition: Takes as an input the name and the uploaded file then redirects to index page
   # Input: name, attachment
   # Output: void
   # Author: Essam Azzam
-
 -->
-
 
 <div class="well">
   <%= form_for @resume, html: { multipart: true } do |f| %>
