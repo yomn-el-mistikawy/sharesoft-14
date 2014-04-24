@@ -24,6 +24,26 @@ class ProjectsController < ApplicationController
     end
   end
 
+  
+  # Definition: "As a startup, I can set a project goal, milestone,
+  # requirements (roles, resources) "
+  # This method shows all details of a project
+  # that belong to a specific startup and is linked to the show HTML file
+  # which also includes the launch and editing part
+  # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
+  # it's reachable and knows what's happening in the file.
+  # Input: Project_id.
+  # Output: Project_id "all project description".
+  # Author: Hana Magdy.
+
+  def show
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
 =begin
 	This methods queries the table project for projects that are in the same category and location as the current project
 	Input: selected project id
