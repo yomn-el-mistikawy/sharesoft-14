@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  has_many :startups, :through => :startup_have_project
 	
   # Defintion: This method takes a project as input
   # and searches the projects table for projects of
@@ -14,3 +15,4 @@ class Project < ActiveRecord::Base
     @suggested_projects = Project.where(:location => project.location, :category => project.category).where.not(:id => project.id, :id => @projects_owned_by_startup_ids)
   end	
 end
+
