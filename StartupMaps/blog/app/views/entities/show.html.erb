@@ -1,0 +1,6 @@
+<h2>Welcome to your profile, <%= @entity.name %>!</h2>
+
+Internship Availability: <% if @avail.available == true %> <div style="background-color: green; width: 30px; height:30px"></div> <% elsif @avail.available == false %> <div style="background-color: green; width: 30px; height:30px"></div> <% end %>
+
+<small>(green square denotes available, red square denotes unavailable)</small>
+

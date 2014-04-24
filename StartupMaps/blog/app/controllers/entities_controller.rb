@@ -8,6 +8,9 @@ class EntitiesController < ApplicationController
 
   def show
     @entity = Entity.find(1)
+    @avail = EntityAvailableInternship.find_by_entity_id(@entity.id)
+    p @avail.name
+    p @avail.available
   end
 
 
