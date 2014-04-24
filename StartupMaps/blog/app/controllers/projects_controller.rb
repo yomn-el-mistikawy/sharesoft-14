@@ -57,34 +57,40 @@ class ProjectsController < ApplicationController
 	# Output: @suggested
 	# Author: Yomn El-Mistikawy
   #  =end
-def suggest
-	@project= Project.find(1)
+
+  def suggest
+	 @project= Project.find(1)
     @suggested= Project.where(:location => "cairo", :category => "baking").where.not(:id => "1", :startup_id => "1")
-end
+  end
+  
+
   #  =begin
 	# This method shows the profile of the selected suggested project
 	# Input: selected project id
 	# Output: view showing the profile of the project with a merge request button
 	# Author: Yomn El-Mistikawy
   #  =end
-def showSuggested
-  @project= Project.find(params[:project])
-end
+
+  def showSuggested
+    @project= Project.find(params[:project])
+  end
 
 
-def new
-  @project = Project.new
-end
+  def new
+    @project = Project.new
+  end
 
-def create
-	@project = Project.new(project_params)
-	@project.save
-	redirect_to @project
-end
 
-private
-def project_params
-	params[:project].permit(:name, :category, :location, :description)
-end
+  def create
+	  @project = Project.new(project_params)
+	  @project.save
+	  redirect_to @project
+  end
+
+
+  private
+  def project_params
+	  params[:project].permit(:name, :category, :location, :description)
+  end
 
 end
