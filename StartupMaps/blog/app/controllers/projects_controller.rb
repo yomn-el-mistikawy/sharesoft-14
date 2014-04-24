@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html
     end
@@ -47,7 +46,6 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-
     respond_to do |format|
       if @project.update_attributes(params[:project].permit(:goals, :milestones, :requirements))
         format.html { redirect_to @project, notice: "Successfully updated project" }
@@ -59,7 +57,6 @@ class ProjectsController < ApplicationController
   end
 
  
-
 =begin
 	This methods queries the table project for projects that are in the same category and location as the current project
 	Input: selected project id
