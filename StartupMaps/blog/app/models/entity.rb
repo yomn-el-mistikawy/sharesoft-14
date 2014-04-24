@@ -2,7 +2,7 @@ class Entity < ActiveRecord::Base
 	has_many :services 
 	has_many :startups
 	has_many :investors
-	has_many :entity_work_statuses
+	has_many :entity_statuses
 	has_many :entity_work_portfolio 
 	has_many :entity_video_links
 	has_many :entity_social_links
