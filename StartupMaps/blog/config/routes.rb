@@ -1,4 +1,5 @@
 Blog::Application.routes.draw do
+<<<<<<< HEAD
   
   get "password_resets/new"
   resources :group_members
@@ -6,6 +7,8 @@ Blog::Application.routes.draw do
     # post "password_reset"
     # get "password_resets"
   end
+=======
+>>>>>>> 5d8c8e772d6131b6d82273b06dfd47aa50ddc4d1
 
   
   resources :password_resets
@@ -13,7 +16,8 @@ Blog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :projects do
      get "suggest"
-     get "showSuggested"
+     get "show_suggested"
+     get "merge_request"
   end
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'

@@ -2,7 +2,7 @@ class Entity < ActiveRecord::Base
 	has_many :services 
 	has_many :startups
 	has_many :investors
-	has_many :entity_work_statuses
+	has_many :entity_statuses
 	has_many :entity_work_portfolio 
 	has_many :entity_video_links
 	has_many :entity_social_links
@@ -16,8 +16,7 @@ class Entity < ActiveRecord::Base
 	has_many :receivers, :through => :send_merge_requests
 	has_many :subscriber, :through => :subscrtipion
 	has_many :subscribee, :through => :subscrtipion
-
-	# Generates authentication token that is unique to every user
+# Generates authentication token that is unique to every user
 	# Author: Omar El-Menawy
 
 	before_create { generate_token(:auth_token) }
@@ -42,6 +41,5 @@ class Entity < ActiveRecord::Base
     self[column] = SecureRandom.urlsafe_base64
   	end while Entity.exists?(column => self[column])
 	end
-
 end
 
