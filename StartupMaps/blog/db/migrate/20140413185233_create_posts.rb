@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.string :text
       t.belongs_to :group
-      t.belongs_to :entity
+      t.belongs_to :startup
       t.timestamps
     end
   end
