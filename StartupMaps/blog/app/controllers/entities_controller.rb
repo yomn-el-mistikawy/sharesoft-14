@@ -69,7 +69,6 @@ class EntitiesController < ApplicationController
       params.require(:entity).permit(:name, :e_mail, :password, :password_confirmation, :type, :location)
     end
 
-<<<<<<< HEAD
     def self.request(sender_id, recevier_id)
       unless sender_id == recevier_id or SendFriendRequest.exists?(sender_id, recevier_id)
         transaction do
@@ -86,7 +85,6 @@ class EntitiesController < ApplicationController
       accept_one_side(recevier_id, sender_id, accepted_at)
       end
     end
-=======
   def friends
     @title = "Friends"
     @user = User.find(params[:id])
@@ -100,7 +98,6 @@ class EntitiesController < ApplicationController
     @users = @user.pending_friends.paginate(:page => params[:page])
     render 'show_friends'
   end
->>>>>>> 5d8c8e772d6131b6d82273b06dfd47aa50ddc4d1
 
   def requested_friends
     @title = "Requested friends"
