@@ -23,26 +23,4 @@
 <%= link_to 'Edit', edit_entity_path(@entity) %> |
 <%= link_to 'Back', entities_path %>
 
-<table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-      <%= render 'friendship_form' if signed_in? %>
-      <% unless @user.cards.empty? %>
-        <table class="cards" summary="User cards">
-          <%= render @cards %>
-        </table>
-        <%= will_paginate @cards %>
-      <% end %>
-    </td>
-    <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
-      <strong>Cards</strong> <%= @user.cards.count %>
-      <%= render 'shared/stats' %>
-    </td>
-  </tr>
 </table>
