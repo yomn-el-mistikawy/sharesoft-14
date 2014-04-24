@@ -1,3 +1,18 @@
+<!-- Just added the colors :)
+Author: Hana Magdy  -->
+
+<style type="text/css">
+
+  h1 {
+    color: #FF3399;
+  }
+
+  p {
+    color: #0099FF;
+  }
+
+</style>
+
 <h1> Your project details </h1>
 <p>
   <strong>Name:</strong>
@@ -19,12 +34,6 @@
   <%= @project.description %>
 </p>
 
-
-<p>
-  <strong>Requirements:</strong>
-  <%= @project.requirements %>
-</p>
-
 <p>
   <strong>Goals:</strong>
   <%= @project.goals %>
@@ -36,9 +45,19 @@
 </p>
 
 <p>
-  <strong>Launched?</strong>
-  <%= @project.launched? %>
-  <%= link_to( (@project.launch ? "Unlaunch" : "Launch"), launch_project_path) %>
+  <strong>Requirements:</strong>
+  <%= @project.requirements %>
 </p>
 
+
+<!--Definition: "As a startup, I can set a project goal, milestone,
+requirements (roles, resources)"
+Allows editing the project's details, specifically goals, milestones and requirements
+This method allows you to click on an underlined 
+link "button" that redirects to the edit page.
+Input: project_id. then user enters input.
+Output: Void, because it does not return anything, it just redirects.
+Author: Hana Magdy. -->
+ 
 <%= link_to "Edit this project", edit_project_path(@project) %>
+<!-- == End  ==   -->

@@ -1,18 +1,15 @@
 class ProjectsController < ApplicationController
 
-  # == Listing Projects / Author:Hana ==
-  ##
-  # Action: index
-  # Allows you to get a list of projects that belong to a specific entity
-  # 
-  def index
-    @projects = Entity.find(params[:entity_id]).projects
-
-    respond_to do |format|
-      format.html
-    end
-  end
-  # == End listing projects == 
+  # Definition: "As a startup, I can set a project goal, milestone,
+  # requirements (roles, resources) "
+  # This method shows all details of a project
+  # that belong to a specific startup and is linked to the show HTML file
+  # which also includes the launch and editing part
+  # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
+  # it's reachable and knows what's happening in the file.
+  # Input: Project_id.
+  # Output: Project_id "all project description".
+  # Author: Hana Magdy.
 
   def show
     @project = Project.find(params[:id])
@@ -23,20 +20,31 @@ class ProjectsController < ApplicationController
   end
 
 
-  # == Editing Projects / Author:Hana ==
-  ##
-  # Action: edit
-  # Allows you to edit a project given its project +id+
-  # 
+  # Definition: "As a startup, I can set a project goal, milestone,
+  # requirements (roles, resources)"
+  # This method allows you to edit a project given its project's id.
+  # Input: Project_id.
+  # Output: Project_id "specifically goals, milestones and requirements".
+  # Author: Hana Magdy.
+
   def edit
     @project = Project.find(params[:id])
   end
 
-  ##
-  # Action: update
-  # Allows editing of project details, specifically goals, milestones and requirements
+
+  # Definition: "As a startup, I can set a project goal, milestone,
+  # requirements (roles, resources)"
+  # Allows editing the project's details, specifically goals, milestones and requirements
   # Redirects user to project's page (show project) on success
-  # Re-renders the edit project page on error
+  # Re-renders the edit project page on error and is linked to the edit HTML file
+  # update_attribute --> updates the rows
+  # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
+  # it's reachable and knows what's happening in the file.
+  # Input: project_id. "on the show page".
+  # Output: project "all project description along successfully edited goals, 
+  # milestones and requirements".
+  # Author: Hana Magdy.
+
   def update
     @project = Project.find(params[:id])
 
@@ -50,29 +58,7 @@ class ProjectsController < ApplicationController
 
   end
 
-  ##
-  # Action: change_launch_status
-  # Changes the status of a project and redirects to the project's page (show project) on success or error
-  # with the exception of displaying a success/error message
-  def change_launch_status
-    project = Project.find(params[:id])
-    respond_to do |format|
-
-      if project.update_attribute(:launch, !project.launch)
-        flash.notice = "Successfully launched project"
-      else
-        flash.alert = "Oops, couldn't launch project"
-      end
-
-      format.html { redirect_to project }
-
-    end
-  end
-
-  # == End Editing projects == 
-
-
-  
+ 
 
 =begin
 	This methods queries the table project for projects that are in the same category and location as the current project
