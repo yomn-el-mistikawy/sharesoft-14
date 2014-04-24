@@ -1,6 +1,4 @@
 class FriendshipController < ApplicationController
-  
-
   # Definition: searches for the desired user id, and saves it. The method also calls the method request 
   # from the model friend ship to update the database.
   # Input: void 
