@@ -7,11 +7,15 @@ class EntitiesController < ApplicationController
 
 
   def show
+    @entity = Entity.find(1)
   end
 
 
   def new
     @entity = Entity.new
+  end
+
+  def set_entity
   end
 
 

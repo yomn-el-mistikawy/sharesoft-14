@@ -1,2 +1,4 @@
 <h1>WELCOME!</h1>
-<%= link_to "Create a new account!", :controller => :entities, :action => :new %>
+<%= link_to "Create a new account!", :controller => :entities, :action => :new %><br><br>
+
+<%= link_to "Click here to view your account", entity_path(@entity) %>
