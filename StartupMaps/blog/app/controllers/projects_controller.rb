@@ -34,21 +34,36 @@ def new
 
 end
 
-def create
-	
-	@project = Projects.new(project_params)
-	@project.save
-	redirect_to @project
-end
+# Definition: Creates a new project and add it to the database.
+# Input: Project attributes. name, ctaegory, lcation and description.
+# Output: void.
+# Author: Amr Gamal.
+  def create
+    @project = Project.new(project_params)
+    if @project.save
+      redirect_to @project 
+    else
+        redirect_to( { action: 'new' } )
+        flash[:notice] = "Post successfully created"
+    end 
+  end
 
-	
-
-def show
-	@project = Projects.find(params[:id])
-end
-private
-def project_params
-	params.require(:project).permit(:name, :category, :location, :discription)
-end
+# Definition: show the project created.
+# Input: no inout.
+# Output: the project attributes are listed.
+# Author: Amr Gamal.
+  def show 
+    @project = Project.find(params[:id])
+    flash[:error] = "project not found" and return unless @project
+  end
+  
+# Definition: helper method to take the parameters.
+# Input: no inout.
+# Output: the parameters entered.
+# Author: Amr Gamal.
+  private  
+  def project_params
+    params.require(:project).permit(:name, :category, :location, :description)    
+  end
 
 end
