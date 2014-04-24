@@ -3,8 +3,8 @@
   # Input: 
   # Output: error message "name can't be blank"
   # Author: Essam Azzam
-
 -->
+
 <% if !flash[:notice].blank? %>
   <div class="alert alert-info">
   <%= flash[:notice] %>
@@ -12,14 +12,13 @@
 <% end %>
 <br />
 
-
 <!--
   # Definition: Uploads a new file and make it downladable and deletable
   # Input: name, attachment
   # Output: void
   # Author: Essam Azzam
-
 -->
+
 <%= link_to "New upload", new_resume_path, class: "btn btn-primary" %>
 <br />
 <br />
