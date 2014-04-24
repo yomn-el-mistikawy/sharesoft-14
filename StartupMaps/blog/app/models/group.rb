@@ -12,6 +12,6 @@ class Group < ActiveRecord::Base
   # Author: Yomn El-Mistikawy
 
   def self.get_group_members(group)
-     Startup.where(:id => (GroupsStartup.where(:group_id => group.id)))
+    Startup.where(:id => (GroupsStartup.where(:group_id => group.id)))
   end
 end
