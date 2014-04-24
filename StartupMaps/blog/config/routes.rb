@@ -1,7 +1,8 @@
 Blog::Application.routes.draw do
 <<<<<<< HEAD
+<<<<<<< HEAD
   
-  get "password_resets/new"
+  
   resources :group_members
   resources :entities do 
     # post "password_reset"
@@ -9,11 +10,22 @@ Blog::Application.routes.draw do
   end
 =======
 >>>>>>> 5d8c8e772d6131b6d82273b06dfd47aa50ddc4d1
+=======
+ 
+  resources :groups do
+    get "list_group_members"
+  end  
+
+  resources :startups
+>>>>>>> a3ccc203d7dbc4e23d186b5c6a386424cc15c5e0
 
   
-  resources :password_resets
+  resources :password_resets do 
+    get "new"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  
   resources :projects do
      get "suggest"
      get "show_suggested"
