@@ -1,3 +1,6 @@
+<!-- Just added the colors :)
+Author: Hana Magdy  -->
+
 <style type="text/css">
 
   h1 {
@@ -31,12 +34,6 @@
   <%= @project.description %>
 </p>
 
-
-<p>
-  <strong>Requirements:</strong>
-  <%= @project.requirements %>
-</p>
-
 <p>
   <strong>Goals:</strong>
   <%= @project.goals %>
@@ -48,9 +45,25 @@
 </p>
 
 <p>
+  <strong>Requirements:</strong>
+  <%= @project.requirements %>
+</p>
+
+  <!--   == Begin  == 
+  Definition: "A project is launched after all requirements are met"
+  Changes the status of a project and redirects to the project's 
+  page (show project) on success or error
+  update the status of launch project from unlaunch to launched and vice versa.
+  Input: project_id. "on the show page".
+  Output: Void "it's an action" returns the success of the
+  changeable button of launch upon of it's previous status. 
+  Author: Hana Magdy. -->
+
+<p>
   <strong>Launched?</strong>
   <%= @project.launched? %>
   <%= link_to( (@project.launch ? "Unlaunch" : "Launch"), launch_project_path) %>
 </p>
 
-<%= link_to "Edit this project", edit_project_path(@project) %>
+
+<!-- == End  ==   -->
