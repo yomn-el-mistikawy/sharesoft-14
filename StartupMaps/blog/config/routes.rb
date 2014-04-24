@@ -1,19 +1,14 @@
 Blog::Application.routes.draw do
   resources :group_members
 
-
-  resources :entities do
-    resources :projects
-  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   #generate everything except the route of index
   #I only need the index beta3 el foo2s
-  resources :projects, except: :index do
-     get "suggest"
-     get "showSuggested"
+  resources :projects do
+    get "suggest"
+    get "showSuggested"
 
-     get "change_launch_status", on: :member, as: :launch
   end
 
 

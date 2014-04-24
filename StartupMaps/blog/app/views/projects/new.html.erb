@@ -1,9 +1,13 @@
 <h1> Create New Project </h1>
+<<<<<<< HEAD
 
 
 
 
 <%= form_for @project do |f| %>
+=======
+<%= form_for :project, url: projects_path do |f| %>
+>>>>>>> 6728fe915c8f6a5988591d68e78f16afacedf7ea
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
