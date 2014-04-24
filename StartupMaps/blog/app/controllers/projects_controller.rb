@@ -30,8 +30,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:suggested_project])
   end
 
-	  
-
 def new
 
 end
