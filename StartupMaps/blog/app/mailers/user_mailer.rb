@@ -13,14 +13,13 @@ class UserMailer < ActionMailer::Base
     # subject of the email
   end
 
- 
+# Definition: Sends the password retrieval email to the entity with the inputted email with the subject of the email defined.
+# Input: Entity, E-mail
+# Output: E-mail with the existing password.
+# Author: Omar El-Menawy
 def password_reset(entity)
   @entity = entity
   mail(to: @entity.e_mail, subject: 'Password Reset')
 end
 end
 
-# mail(to: @sign_up.email, subject: 'Welcome to Startups!')
-
- # @sign_up = sign_up
- #  mail :to => sign_up.email, :subject => "Password Reset"

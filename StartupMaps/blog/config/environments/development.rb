@@ -1,16 +1,27 @@
 Blog::Application.configure do
 
-   config.action_mailer.default_url_options = { :host => "localhost:3000" }
+# Define default URL when sent in any email
+# Author: Omar El-Menawy
 
-  config.action_mailer.delivery_method = :sendmail
-# Defaults to:
-# config.action_mailer.sendmail_settings = {
-#   location: '/usr/sbin/sendmail',
-#   arguments: '-i -t'
-# }
+config.action_mailer.default_url_options = { :host => "localhost:3000" }
+  
+# Define delivery method
+# Author: Omar El-Menawy 
+
+config.action_mailer.delivery_method = :sendmail
+# Enables the action mailer
+# Enables error description
+# Sets default options
+# Author: Omar El-Menawy
+
 config.action_mailer.perform_deliveries = true
 config.action_mailer.raise_delivery_errors = true
 config.action_mailer.default_options = {from: 'no-replay@example.com'}
+
+# Defines delivery method 
+# Give gmail smtp number in order to send from gmail account
+# Input my personal information (Email and Password)
+# Author: Omar El-Menawy
 
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {
@@ -21,6 +32,10 @@ config.action_mailer.smtp_settings = {
   password:             'Oam12345',
   authentication:       'plain',
   enable_starttls_auto: true  }
+
+
+
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
 
+# Definition: Identifies current user
+# Input: Entity
+# Output: Void
+# Author: Omar El-Menawy
+
 def current_user
   @current_user ||= Entity.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
 end
