@@ -1,27 +1,27 @@
 Blog::Application.configure do
 
-#Define default URL when sent in any email.
-#Author: Omar El-Menawy.
+# Define default URL when sent in any email.
+# Author: Omar El-Menawy.
 
 config.action_mailer.default_url_options = { :host => "localhost:3000" }
   
-#Define delivery method.
-#Author: Omar El-Menawy. 
+# Define delivery method.
+# Author: Omar El-Menawy. 
 
 config.action_mailer.delivery_method = :sendmail
-#Enables the action mailer.
-#Enables error description.
-#Sets default options.
-#Author: Omar El-Menawy.
+# Enables the action mailer.
+# Enables error description.
+# Sets default options.
+# Author: Omar El-Menawy.
 
 config.action_mailer.perform_deliveries = true
 config.action_mailer.raise_delivery_errors = true
 config.action_mailer.default_options = {from: 'no-replay@example.com'}
 
-#Defines delivery method.
-#Give gmail smtp number in order to send from gmail account.
-#Input my personal information (Email and Password).
-#Author: Omar El-Menawy.
+# Defines delivery method.
+# Give gmail smtp number in order to send from gmail account.
+# Input my personal information (Email and Password).
+# Author: Omar El-Menawy.
 
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.smtp_settings = {

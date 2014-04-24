@@ -1,6 +1,5 @@
 Blog::Application.routes.draw do
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   
   
   resources :group_members
@@ -8,16 +7,14 @@ Blog::Application.routes.draw do
     # post "password_reset"
     # get "password_resets"
   end
-=======
->>>>>>> 5d8c8e772d6131b6d82273b06dfd47aa50ddc4d1
-=======
+
  
   resources :groups do
     get "list_group_members"
   end  
 
   resources :startups
->>>>>>> a3ccc203d7dbc4e23d186b5c6a386424cc15c5e0
+
 
   
   resources :password_resets do 
