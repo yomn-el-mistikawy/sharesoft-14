@@ -16,15 +16,16 @@ class Entity < ActiveRecord::Base
 	has_many :receivers, :through => :send_merge_requests
 	has_many :subscriber, :through => :subscrtipion
 	has_many :subscribee, :through => :subscrtipion
-# Generates authentication token that is unique to every user
-	# Author: Omar El-Menawy
+	
+	#Generates authentication token that is unique to every user.
+	#Author: Omar El-Menawy.
 
 	before_create { generate_token(:auth_token) }
 
-	# Definition: Saves password reset token, and calls on the user mailer to send the email.
-	# Input: authentication token
-	# Output: email sent
-	# Author: Omar El-Menawy
+	#Definition: Saves password reset token, and calls on the user mailer to send the email.
+	#Input: authentication token.
+	#Output: email sent.
+	#Author: Omar El-Menawy.
 
   def send_password_reset
     generate_token(:password_reset_token)
@@ -33,8 +34,8 @@ class Entity < ActiveRecord::Base
   	UserMailer.password_reset(self).deliver
   end
 
-  # Definition: Generates token
-  # Author: Omar El-Menawy
+  #Definition: Generates token.
+  #Author: Omar El-Menawy.
 
 	def generate_token(column)
   	begin
