@@ -1,6 +1,10 @@
 <h2>Welcome to your profile, <%= @entity.name %>!</h2>
 
-Internship Availability: <% if @avail.available == true %> <div style="background-color: green; width: 30px; height:30px"></div> <% elsif @avail.available == false %> <div style="background-color: green; width: 30px; height:30px"></div> <% end %>
-
+Internship Availability: <% if @avail.available == true %>
+<div style="background-color: green; width: 30px; height:30px"></div>
+<% link_to "Make Unavailable", entity_path %>
+<% elsif @avail.available == false %>
+<div style="background-color: red; width: 30px; height:30px"></div>
+<% link_to "Make Available", entity_path %>
+<% end %>
 <small>(green square denotes available, red square denotes unavailable)</small>
-
