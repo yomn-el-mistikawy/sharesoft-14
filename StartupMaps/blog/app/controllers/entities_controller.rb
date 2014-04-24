@@ -3,37 +3,16 @@ class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
 
-# Definition: Finds the status that should be updated.
-  # Input: Status.
-  # Output: Updated Status.
-  # Author: Ola Enaba.
- 
-  def  edit_status
-      @entity = Entity.find(session[:entity_id])
-      
-  end
-
-
-  # Definition: Redirects to the new updated status.
-  # Input: Status.
-  # Output: Updated Status.
-  # Author: Ola Enaba.
-
-  def  update_status
-     @entity = Entity.find(session[:entity_id]) 
-     @status = EntityStatus.create(:Status => params[:status], :entity_id => params[:entity_id])
-  end
-
-
   # Definition: Finds the status that should be updated.
   # Input: Status.
   # Output: Updated Status.
   # Author: Ola Enaba.
  
   def  edit_status
-      @entity = Entity.find(session[:entity_id])
+    @entity = Entity.find(session[:entity_id])
       
   end
+
 
   def set_entity
   end
@@ -44,8 +23,9 @@ class EntitiesController < ApplicationController
   # Author: Ola Enaba.
 
   def  update_status
-     @entity = Entity.find(session[:entity_id]) 
-     @status = EntityStatus.create(:Status => params[:status], :entity_id => params[:entity_id])
+    
+    @entity = Entity.find(session[:entity_id]) 
+    @status = EntityStatus.create(:Status => params[:status], :entity_id => @entity.id).save
   end
 
 
@@ -61,7 +41,7 @@ class EntitiesController < ApplicationController
   def update_email_and_password
   @entity = Entity.find(params[:entity_id])
  
-  if @entity.update_attributes(params[:entities].permit(:email, :password))
+  if @entity.update_attributes(params[:entities].permit(:email, :password)).save
     redirect_to entity_update_email_and_password_path , notice: "Successfully edited"
   else
     render 'edit'
@@ -73,8 +53,11 @@ class EntitiesController < ApplicationController
 
 
   # OLA work status
-#   def edit_work_status
-# end
+  #def edit_work_status
+
+
+
+  # end
  
 
   #private
