@@ -7,11 +7,18 @@ class EntitiesController < ApplicationController
 
 
   def show
+    @entity = Entity.find(1)
+    p @entity.name
+    # @avail = EntityAvailableInternships.find_by_entity_id(1)
   end
 
 
   def new
     @entity = Entity.new
+  end
+
+
+  def set_entity
   end
 
 
@@ -26,8 +33,6 @@ class EntitiesController < ApplicationController
     @entity = Entity.new(entity_params)
     type = entity_params[:type]
     name = entity_params[:name]
-    p name
-    p type
     
     respond_to do |format|
       if @entity.save
@@ -35,16 +40,16 @@ class EntitiesController < ApplicationController
           @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
             :entity_id => @entity.id).save
         elsif type = '2'
-          @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
+          @x = Service.create(:name => entity_params[:name], :location => entity_params[:location],
             :entity_id => @entity.id).save
         elsif type = '3'
-          @x = Investor.create(:name => entity_params[:name], :location => entity_params[:location],
+          @x = Startup.create(:name => entity_params[:name], :location => entity_params[:location],
             :entity_id => @entity.id).save
-        end            
+        end
         format.html {redirect_to root_path, notice: 'Entity was successfully created.'}
         format.json {render action: 'index', status: :created, location: @entity}
       else
-        format.html {render action: 'new' }
+        format.html {render action: 'new'}
         format.json {render json: @entity.errors, status: :unprocessable_entity}
       end
     end
