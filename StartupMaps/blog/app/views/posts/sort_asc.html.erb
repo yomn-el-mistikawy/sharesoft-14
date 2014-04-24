@@ -1,0 +1,21 @@
+<!-- 
+# Definition: list posts in asc prder
+#Input: no input
+#Outputs: posts listed
+#Author: Amr Gamal  -->
+<h1>Listing posts asc</h1>
+
+<table>
+  <tr>
+    <th>post</th>
+    <th>date</th>
+  </tr>
+ 
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.post %></td>
+      <td><%= post.date %></td>
+    </tr>
+  <% end %>
+</table>
+
