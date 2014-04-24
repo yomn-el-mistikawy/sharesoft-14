@@ -44,40 +44,47 @@ class ProjectsController < ApplicationController
     end
   end
 
-=begin
-	This methods queries the table project for projects that are in the same category and location as the current project
-	Input: selected project id
-	Output: @suggested
-	Author: Yomn El-Mistikawy
-=end
-def suggest
-	@project= Project.find(1)
+
+  #   =begin
+	# This methods queries the table project for projects that are in the same category and location as the current project
+	# Input: selected project id
+	# Output: @suggested
+	# Author: Yomn El-Mistikawy
+  #   =end
+
+  def suggest
+	  @project= Project.find(1)
     @suggested= Project.where(:location => "cairo", :category => "baking").where.not(:id => "1", :startup_id => "1")
-end
-=begin
-	This method shows the profile of the selected suggested project
-	Input: selected project id
-	Output: view showing the profile of the project with a merge request button
-	Author: Yomn El-Mistikawy
-=end
-def showSuggested
-  @project= Project.find(params[:project])
-end
+  end
 
 
-def new
-  @project = Project.new
-end
+  #  =begin
+	# This method shows the profile of the selected suggested project
+	# Input: selected project id
+	# Output: view showing the profile of the project with a merge request button
+	# Author: Yomn El-Mistikawy
+  #  =end
 
-def create
-	@project = Project.new(project_params)
-	@project.save
-	redirect_to @project
-end
+  def showSuggested
+    @project= Project.find(params[:project])
+  end
 
-private
-def project_params
-	params[:project].permit(:name, :category, :location, :description)
-end
+
+  def new
+    @project = Project.new
+  end
+
+
+  def create
+	  @project = Project.new(project_params)
+	  @project.save
+	  redirect_to @project
+  end
+
+
+  private
+  def project_params
+	  params[:project].permit(:name, :category, :location, :description)
+  end
 
 end
