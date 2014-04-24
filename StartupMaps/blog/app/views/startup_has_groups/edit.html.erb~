@@ -1,0 +1,11 @@
+<h1>Editing startup_has_group</h1>
+
+<%= render 'form' %>
+<!--
+  # Definition: 
+  # Input:
+  # Output:
+  # Author: Essam Azzam
+-->
+<%= link_to 'Show', @startup_has_group %> |
+<%= link_to 'Back', startup_has_groups_path %>

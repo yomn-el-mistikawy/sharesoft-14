@@ -115,12 +115,25 @@ class EntitiesController < ApplicationController
       accept_one_side(recevier_id, sender_id, accepted_at)
       end
     end
+  def friends
+    @title = "Friends"
+    @user = User.find(params[:id])
+    @users = @user.friends.paginate(:page => params[:page])
+    render 'show_friends'
+  end
 
-  def self.accept_one_side(sender_id, recevier_id, accepted_at)
-    request = find_by_sender_id_and_recevier_id(sender_id, recevier_id)
-    request.status = 'accepted'
-    request.accepted_at = accepted_at
-    request.save!
+  def pending_friends
+    @title = "Pending friends"
+    @user = User.find(params[:id])
+    @users = @user.pending_friends.paginate(:page => params[:page])
+    render 'show_friends'
+  end
+
+  def requested_friends
+    @title = "Requested friends"
+    @user = User.find(params[:id])
+    @users = @user.requested_friends.paginate(:page => params[:page])
+    render 'show_friends'
   end
 end
 

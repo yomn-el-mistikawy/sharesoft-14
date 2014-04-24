@@ -1,0 +1,23 @@
+<h1>Listing group members</h1>
+
+<!-- # Defintion: This shows a list of group members
+     # of the group opened.
+     # Input: @group_members
+     # Output: group_member
+     # Author: Yomn El-Mistikawy -->
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Sector</th>
+    <th>Location</th>
+  </tr>
+  <% @group_members.each do |group_member| %>
+    <tr>
+      <td><%= group_member.name %></td>
+      <td><%= group_member.sector %></td>
+      <td><%= group_member.location%></td>
+      <td><%= link_to 'Show', group_member %></td>
+    </tr>
+  <% end %>
+</table>
