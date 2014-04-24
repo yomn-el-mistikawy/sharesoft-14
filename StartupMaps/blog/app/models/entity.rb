@@ -17,6 +17,7 @@ class Entity < ActiveRecord::Base
 	has_many :subscriber, :through => :subscrtipion
 	has_many :subscribee, :through => :subscrtipion
 
+
   # Definition: This line checks whether the password field is equivalent to the password_confirmation
   # field.
   # Input: Password.
@@ -31,6 +32,7 @@ class Entity < ActiveRecord::Base
   # Input: Name, Password, Email, Entity Type.
   # Output: Void.
   # Author: Adel Zee Badawy.
+
 	attr_accessor :type
 
 
