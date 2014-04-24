@@ -1,6 +1,4 @@
 class Group < ActiveRecord::Base
-	has_one :entity
-  has_many :files
 	has_and_belongs_to_many :startups
   has_many :posts
   has_many :comments, through: :posts
