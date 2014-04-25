@@ -1,7 +1,9 @@
-  <!-- # Definition: Form for destroying a friend request.-->
-  <!-- # Input: user.-->
-  <!-- # Input: void.-->
-  <!-- # Author: Sarah Fathallah.-->
+  <!-- 
+  # Definition: Form for destroying a friend request.
+  # Input: User.
+  # Input: Void.
+  # Author: Sarah Fathallah.
+  -->
   
   <%= form_for current_user.friendships.find_by_friend_id(@user),
   	:html => { :method => :delete },

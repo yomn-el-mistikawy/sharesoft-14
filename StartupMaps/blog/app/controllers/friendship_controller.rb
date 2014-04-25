@@ -1,10 +1,10 @@
 class FriendshipController < ApplicationController
   
 
-  # Definition: searches for the desired user id, and saves it. The method also calls the method request 
+  # Definition: Searches for the desired user id, and saves it. The method also calls the method request 
   # from the model friend ship to update the database.
-  # Input: user id (seesion id), friend id. 
-  # Output: void.
+  # Input: User id (seesion id), friend id. 
+  # Output: Void.
   # Author: Sarah Fathallah.
 
   def create
@@ -17,10 +17,10 @@ class FriendshipController < ApplicationController
   end
   
 
-  # Definition: checks if there is a request and calls the accept method from the model if the accept button is 
+  # Definition: Checks if there is a request and calls the accept method from the model if the accept button is 
   # clicked. 
-  # Input: user id (seesion id), friend id. 
-  # Output: void.
+  # Input: User id (seesion id), friend id. 
+  # Output: Void.
   # Author: Sarah Fathallah.
 
   def update
@@ -35,10 +35,10 @@ class FriendshipController < ApplicationController
   end
 
 
-  # Definition: checks if there is a request and calls the breakup method from the model to remove the friendship if 
+  # Definition: Checks if there is a request and calls the breakup method from the model to remove the friendship if 
   # it is pending, requested or already done.
-  # Input: user id (seesion id), friend id. 
-  # Output: void.
+  # Input: User id (seesion id), friend id. 
+  # Output: Void.
   # Author: Sarah Fathallah.
 
   def destroy
