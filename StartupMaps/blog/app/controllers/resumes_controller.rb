@@ -6,7 +6,7 @@ class ResumesController < ApplicationController
   # Author: Essam Azzam
 
   def index
-   @resumes = Resume.all
+    @resumes = Resume.all
   end
   
   
@@ -16,7 +16,7 @@ class ResumesController < ApplicationController
   # Author: Essam Azzam
 
   def new
-   @resume = Resume.new
+    @resume = Resume.new
   end
 
 
@@ -26,12 +26,12 @@ class ResumesController < ApplicationController
   # Author: Essam Azzam
 
   def create
-   @resume = Resume.new(resume_params)
+    @resume = Resume.new(resume_params)
      if @resume.save
       redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
      else
       render "new"
-    end
+     end
   end
 
 
@@ -41,9 +41,9 @@ class ResumesController < ApplicationController
   # Author: Essam Azzam
 
   def destroy
-   @resume = Resume.find(params[:id])
-   @resume.destroy
-   redirect_to resumes_path, notice:  "The resume #{@resume.name} has been deleted."
+    @resume = Resume.find(params[:id])
+    @resume.destroy
+    redirect_to resumes_path, notice:  "The resume #{@resume.name} has been deleted."
    end
   
    
@@ -54,6 +54,6 @@ class ResumesController < ApplicationController
 	
   private
   def resume_params
-   params.require(:resume).permit(:name, :attachment)
-  end
+    params.require(:resume).permit(:name, :attachment)
+    end
   end
