@@ -19,7 +19,7 @@ validates_presence_of :entity_id, :friend_id
   # Defintion: Records the two side request, a pending friend request and a requested friend request.
   # Input: entity, friend.
   # Output: void.
-  # Author: Sarah Fathallah .
+  # Author: Sarah Fathallah.
 
   def self.request(entity, friend)
     unless entity == friend or Friendship.exists?(entity, friend)
