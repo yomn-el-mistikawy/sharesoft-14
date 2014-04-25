@@ -1,3 +1,9 @@
+<!-- # Defintion: This shows a project profile with
+     # a send merge request button
+     # Input: project_id, suggested_project
+     # Output: project_id, suggested_project
+     # Author: Yomn El-Mistikawy -->
+
 <p>
   <strong>Name:</strong>
   <%= @project.name %>
@@ -25,12 +31,10 @@
 
 <p>
   <strong>Goals:</strong>
-  <%= @project.goal %>
+  <%= @project.goals %>
 </p>
 
 <p>
   <strong>Milestones:</strong>
-  <%= @project.milestone %>
+  <%= @project.milestones %>
 </p>
-
-<button type="button">Send merge request</button>
