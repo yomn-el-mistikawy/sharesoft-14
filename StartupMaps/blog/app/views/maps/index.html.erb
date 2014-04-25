@@ -4,137 +4,80 @@
 <title>Welcome To StartupMaps</title>
 </head>
 <body>
+  <!-- Creating a checkbox for each type (startup, investor and service) and linking the checkbox to each marker inorder to appear or dissapear   -->
+  <!-- Youssef Attaby -->
 <div style = "width:550px;">
 <center><h3>StartupMaps</h3></center>
-
-<!--<div id="map" style="height: 500px; width: 900px;">
-</div>-->
-
-<!-- Creating a checkbox for each type (startup, investor and service) and linking the checkbox to each marker inorder to appear or dissapear   -->
-<!-- Youssef Attaby -->
-
 <br>StartupMaps:<br>
 <img src = "http://rideforclimate.com/nukes/all/images/blue.png">  <input type = "checkbox" id = "Services" onclick = "Markers('Services')" checked = "checked" />Services<br>
 <img src = "http://rideforclimate.com/nukes/all/images/yellow.png">  <input type = "checkbox" id = "Startups" onclick = "Markers('Startups')" checked = "checked" />Startups<br>
 <img src = "http://rideforclimate.com/nukes/all/images/green.png">  <input type = "checkbox" id = "Investors" onclick = "Markers('Investors')" checked = "checked" />Investors<br>
 </div>
-
-<script type = "text/javascript">
-  
-  /*handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    markers = handler.addMarkers([{
-      "lat": 0,
-      "lng": 0,
-      "picture": {
-        "url": "",
-        "width":  36,
-        "height": 36
-      },
-    "infowindow": ""
-    }]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  });
-  */
-
-  // change this latutude and longitude to set the center of your map
-  //Youssef Attaby
-
-  /*var latlng = new google.maps.LatLng(38, -95);
-  var myOptions = {
-  zoom: 3,
-  center: latlng,
-  mapTypeId: google.maps.MapTypeId.ROADMAP,
-  mapTypeControl: false,
-  panControl: false,
-  streetViewControl: false,
-  zoomControlOptions: {style:google.maps.ZoomControlStyle.DEFAULT}
-
-  };
-  */
-  
-  //the code draws a google map in the html div tag that has an id of "map"
-  // Youssef Attaby
-
-  var map = new google.maps.Map(document.getElementById("map"), myOptions); 
-  
-  // theMarkers2 array is created inorder to use it in the dissapear method
+<script type = "text/javascript"> 
+  // theMarkers2 array is created inorder to use it in the dissapear method.
   // Youssef Attaby
 
   var theMarkers2 = [];
-  var theMarkers = [(<%=raw @a.to_json %>)];
-  var theMarkers = [(<%=raw @b.to_json %>)];
-  var theMarkers = [(<%=raw @c.to_json %>)];
-
-  // inofwindow is created to make the marker show a pop up bar with the name or information
+  var theMarkers = [(<%=raw @start.to_json %>)];
+  var theMarkers = [(<%=raw @serv.to_json %>)];
+  var theMarkers = [(<%=raw @inv.to_json %>)];
+  // inofwindow is created to make the marker show a pop up bar with the name or information.
   // Youssef Attaby
 
   var infowindow = new google.maps.InfoWindow();
-
-  // a loop inorder to create the markers to enter the createrMarker function
+  // a loop inorder to create the markers to enter the createrMarker function.
   // Youssef Attaby
 
   for (var i = 0; i < theMarkers.length; i++) {     
     createMarker(theMarkers[i]);
   }
-
-  // a createMarker function is created in order to create and show markers in the map
-  // Youssef Attaby
+  // A createMarker function is created in order to create and show markers in the map.
+  // Choose different colors for different marker types.
+  // Markers is added with categories which must be in the same format of google maps.
+  // Makes the markers clickable.
+  // Puts the markers into theMarkers2 array.
+  // Youssef Attaby.
   
   function createMarker(themarker) {  
-
-    //Choose different colors for different marker types
-    // Youssef Attaby
-
     var marker_image = "";
-    if(themarker.type == "Investors"){marker_image = "http://rideforclimate.com/nukes/all/images/green.png";}
-    if(themarker.type == "Entities"){marker_image = "http://rideforclimate.com/nukes/all/images/orange.png";}
-    if(themarker.type == "Startups"){marker_image = "http://rideforclimate.com/nukes/all/images/yellow.png";}  
-    if(themarker.type == "Services"){marker_image = "http://rideforclimate.com/nukes/all/images/blue.png";}  
-
-    // Markers is added here with categories which must be in the same format of google maps
-    // Youssef Attaby
-
+    if(themarker.type == "Investors"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/green.png";
+    }
+    if(themarker.type == "Entities"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/orange.png";
+    }
+    if(themarker.type == "Startups"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/yellow.png";
+    }  
+    if(themarker.type == "Services"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/blue.png";
+    }  
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(themarker.lat, themarker.lng),
-        map: map,
-        popuptext: themarker.popuptext,
-        type: themarker.type,
-        icon: new google.maps.MarkerImage(marker_image),
-        name: themarker.name
+      position: new google.maps.LatLng(themarker.lat, themarker.lng),
+      map: map,
+      popuptext: themarker.popuptext,
+      type: themarker.type,
+      icon: new google.maps.MarkerImage(marker_image),
+      name: themarker.name
      });
-
-    // This part makes the markers clickable 
-    // Youssef Attaby
-
     google.maps.event.addListener(marker, 'click', function() { 
       infowindow.close();
       infowindow.setContent(infoWindowHtml(themarker));
       infowindow.open(map, marker); 
     });   
-
-    //This puts the markers into theMarkers2 array
-    // Youssef Attaby
-
     theMarkers2.push(marker);
     return marker;
   }
-
-  
-    //This generates the html infowindow in order to make its shape better
-    // Youssef Attbay
+  // Generate the html infowindow in order to make its shape better.
+  // Youssef Attaby.
 
   function infoWindowHtml(themarker){
     var html = "<center><strong>"+themarker.name+"</strong></center><br>"+themarker.popuptext;
     return html;   
   }
-
-
   // This is the function that makes the markers disappear linked with theMarkers2 which I 
   // alreadycreated.
-  // Youssef Attaby
+  // Youssef Attaby.
 
   function Markers(type){
     var newValue = document.getElementById(type).checked;
@@ -149,15 +92,6 @@
       }
     }
   }
-  
 </script> 
-
 </body>
 </html>
-
-
-
-
-
-
-
