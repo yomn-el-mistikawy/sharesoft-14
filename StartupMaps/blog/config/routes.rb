@@ -6,7 +6,6 @@ Blog::Application.routes.draw do
 
   resources :startups
 
-
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -23,19 +22,10 @@ Blog::Application.routes.draw do
     get "show_merged"
     end
 
- 
-  # You can have the root of your site routed with "root"
+ # You can have the root of your site routed with "root"
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes"
-
-  
-  resources :projects do
-     get "suggest"
-     get "show_suggested"
-     get "merge_request"
-  end
-  
   resources :projects do
 
     get "change_launch_status", on: :member, as: :launch
