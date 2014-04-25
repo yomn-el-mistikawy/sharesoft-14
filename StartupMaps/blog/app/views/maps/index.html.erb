@@ -30,9 +30,9 @@
 -->
 <script type = "text/javascript"> 
   var theMarkers2 = [];
-  var theMarkers = [(<%=raw @start.to_json %>)];
-  var theMarkers = [(<%=raw @serv.to_json %>)];
-  var theMarkers = [(<%=raw @inv.to_json %>)];
+  var theMarkers = [(<%=raw @startup_marker.to_json %>)];
+  var theMarkers = [(<%=raw @service_marker.to_json %>)];
+  var theMarkers = [(<%=raw @investor_marker.to_json %>)];
   var infowindow = new google.maps.InfoWindow();
   for (var i = 0; i < theMarkers.length; i++) {     
     createMarker(theMarkers[i]);
