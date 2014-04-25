@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
 	def current_user
-  	@current_user ||= Entity.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+		@current_user ||= Entity.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
 	end
 
   # Prevent CSRF attacks by raising an exception.
