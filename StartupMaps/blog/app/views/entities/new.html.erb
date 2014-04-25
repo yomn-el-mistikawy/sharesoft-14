@@ -2,12 +2,19 @@
 
 
 <!-- This form submits the inputs that are to be put into the databases. -->
-<!-- Adel Zee Badawy -->
+<!-- Input: Takes the attribute @entity. -->
+<!-- Output: Inputs into database. -->
+<!-- Adel Zee Badawy. -->
 
 <%= form_for(@entity) do |f| %>
+
+
   <!-- This part posts the errors that are met in the model. These are errors are made by conditions 
   not being met.-->
-  <!-- Adel Zee Badawy -->
+  <!-- Input: The array consisting of the errors. -->
+  <!-- Output: The error messages. -->
+  <!-- Adel Zee Badawy. -->
+
   <% if @entity.errors.any? %>
     <div id = "error_explanation">
       <h2>Please fix the following errors:</h2>

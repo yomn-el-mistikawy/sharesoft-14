@@ -51,7 +51,7 @@ class EntitiesController < ApplicationController
   # database the input provided.
   # Input: Name, Password, Email, Entity Type.
   # Output: Void.
-  # Author: Adel Badawy.
+  # Author: Adel Zee Badawy.
 
   def  create
     @entity = Entity.new(entity_params)
