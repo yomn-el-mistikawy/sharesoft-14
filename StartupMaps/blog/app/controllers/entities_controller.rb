@@ -1,24 +1,17 @@
 class EntitiesController < ApplicationController
-  before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
 
-  def  index
+  def index
   end
 
 
   def show
     @entity = Entity.find(1)
-    p @entity.name
-    # @avail = EntityAvailableInternships.find_by_entity_id(1)
   end
 
 
   def new
     @entity = Entity.new
-  end
-
-
-  def set_entity
   end
 
 
@@ -29,7 +22,7 @@ class EntitiesController < ApplicationController
   # Output: Void.
   # Author: Adel Zee Badawy.
 
-  def  create
+  def create
     @entity = Entity.new(entity_params)
     type = entity_params[:type]
     name = entity_params[:name]
