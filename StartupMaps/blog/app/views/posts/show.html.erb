@@ -1,27 +1,25 @@
-<h2>Comments</h2>
-<% @post.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.comment %>
-  </p>
-<% end %>
+<p id="notice"><%= notice %></p>
 
-<h2>Add a comment:</h2>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-  <% end %>
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @post.text %>
+</p>
+
+<!-- <p>
+  <strong>Group:</strong>
+  <%= @post.group %>
+</p>
+
+<p>
+  <strong>Startup:</strong>
+  <%= @post.startup %>
+</p> -->
+<!-- 
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %> -->
+

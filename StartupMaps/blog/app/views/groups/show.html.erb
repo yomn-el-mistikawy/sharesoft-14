@@ -18,38 +18,65 @@
 <% @group.posts.each do |post| %>
 	<%= @post = post %>
 
-<!-- This part loops on all comments related to the specified post and displays them under heading "Comments". 
+  <h2>Posts</h2>
+  <% @group.posts.each do |post| %>
+    <%= @post = post %>
+    <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+    </p>
+ 
+    <p>
+    <strong>Text:</strong>
+    <%= post.text %>
+    </p>
+
+<!-- This part displays all the comments for a specific post. 
 Author: Maha Salah Eldin. -->
 
-	<h2>Comments</h2>
-	<% @post.comments.each do |comment| %>
-  		<p>
-   		<strong>Commenter:</strong>
-    	<%= comment.commenter %>
-  		</p>
+    <h2>Comments</h2>
+    <% @post.comments.each do |comment| %>
+      <p>
+      <strong>Commenter:</strong>
+      <%= comment.commenter %>
+      </p>
  
-  		<p>
-    	<strong>Comment:</strong>
-    	<%= comment.comment %>
-  		</p>
-	<% end %>
+      <p>
+      <strong>Comment:</strong>
+      <%= comment.comment %>
+    </p>
+  <% end %>
 
 
  <!--  After, all the comments are displayed, the user can add a comment on this post. This form takes the text comment as input from the user and then calls the create action in comments controller when clicking submit.  
  Author: Maha Salah Eldin. -->
 
- 	<h2>Add a comment:</h2>
- 	<%= form_for([@group,@post, @post.comments.build]) do |f| %>
-        <p>
-    	<%= f.label :comment %><br>
-      	<%= f.text_area :comment %>
-    	</p>
-    	<p>
+    <h2>Add a comment:</h2>
+    <%= form_for([@group,@post, @post.comments.build]) do |f| %>
+      <p>
+        <%= f.label :comment %><br>
+        <%= f.text_area :comment %>
+      </p>
+      <p>
        <%= f.submit %>
-    	</p>
-  <% end %>
-
+     </p>
+    <% end %>
 <% end %> 
+
+<h2>Add a post:</h2>
+<%= form_for([@group, @group.posts.build]) do |f| %>
+  <p>
+    <%= f.label :Title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :Text %><br>
+    <%= f.text_area :text %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

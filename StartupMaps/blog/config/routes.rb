@@ -21,8 +21,8 @@ Blog::Application.routes.draw do
   end
 
   resources :groups do
-     resources :posts, concerns: :likable do
-     resources :comments, concerns: :likable
+    resources :posts, concerns: :likable do
+      resources :comments, concerns: :likable
     end
   end
   # You can have the root of your site routed with "root"
