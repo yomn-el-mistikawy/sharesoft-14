@@ -1,6 +1,8 @@
 Blog::Application.routes.draw do
   resources :group_members
 
+  resources :groups_startups
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :projects do
