@@ -6,7 +6,7 @@ class PostAttachment < ApplicationController
     # Author: Essam Azzam
   
     def index
-      @resumes = Resume.all
+       @resumes = Resume.all
     end
   
   
@@ -16,7 +16,7 @@ class PostAttachment < ApplicationController
     # Author: Essam Azzam
   
     def new
-      @resume = Resume.new
+       @resume = Resume.new
     end
   
     
@@ -26,12 +26,12 @@ class PostAttachment < ApplicationController
     # Author: Essam Azzam
   
     def create
-     @resume = Resume.new(resume_params)
-       if @resume.save
-        redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
-       else
-        render "new"
-       end
+      @resume = Resume.new(resume_params)
+        if @resume.save
+         redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
+        else
+         render "new"
+        end
     end
   
     # Definition: Deletes a record from the database
