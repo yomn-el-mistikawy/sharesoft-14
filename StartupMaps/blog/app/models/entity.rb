@@ -51,10 +51,10 @@ class Entity < ActiveRecord::Base
   # Output: The error messages, if any.
   # Author: Adel Zee Badawy.
   
-  validates :name, presence: true, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
-  validates :e_mail, presence: true, format: { with: VALID_EMAIL_REGEX } ,uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :type, format: { with: /[^0]/, message: " is not selected." }
+  validates :name, presence: true, length: {minimum: 3}, uniqueness: {case_sensitive: false}
+  validates :e_mail, presence: true, format: {with: VALID_EMAIL_REGEX} ,uniqueness: {case_sensitive: false}
+  validates :password, presence: true, length: {minimum: 6}
+  validates :type, format: {with: /[^0]/, message: " is not selected."}
   validates :location, presence: true
   
 end

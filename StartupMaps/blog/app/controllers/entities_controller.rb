@@ -1,5 +1,4 @@
 class EntitiesController < ApplicationController
-  before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
 
   def  index
@@ -46,9 +45,6 @@ class EntitiesController < ApplicationController
     @entity = Entity.new
   end
 
-  def set_entity
-  end
-
 
   # Definition: This method creates an input in the table entity and in the table corresponding to the 
   # entity type. The inputs are taken in the form of text and dropdown lists, and insert into the
@@ -79,7 +75,7 @@ class EntitiesController < ApplicationController
         format.html {redirect_to root_path, notice: 'Entity was successfully created.'}
         format.json {render action: 'index', status: :created, location: @entity}
       else
-        format.html {render action: 'new' }
+        format.html {render action: 'new'}
         format.json {render json: @entity.errors, status: :unprocessable_entity}
       end
     end

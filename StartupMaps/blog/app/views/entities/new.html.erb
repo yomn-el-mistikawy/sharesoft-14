@@ -30,7 +30,7 @@
     <%= f.label :password_confirmation, "Confirm Password" %> <br>
     <%= f.password_field :password_confirmation %><br>
     <%= f.label :type, "Entity Type" %> <br>
-    <%= f.select(:type, options_for_select([['Please select an entity type...', '0'], ['Investor', '1'], ['Service', '2'], ['Startup', '3']], selected: :type )) %> <br> <br>
+    <%= f.select(:type, options_for_select([['Please select an entity type...', '0'], ['Investor', '1'], ['Service', '2'], ['Startup', '3']], selected: :type)) %> <br> <br>
     <%= f.label :location, "Insert City and Street Name in this format: City, Street Name." %> <br>
     <%= f.text_field :location %>
   </div>
