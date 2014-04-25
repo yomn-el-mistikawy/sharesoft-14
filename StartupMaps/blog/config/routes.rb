@@ -11,6 +11,17 @@ Blog::Application.routes.draw do
 
   
   resources :projects do
+    get "suggest"
+    get "showSuggested"
+    get "merge_request"
+  end
+
+  resources :entities do
+    # post ':entities(/:post(/:id(.:format)))'
+    # get ':entities(/:post(/:id(.:format)))'
+    
+    post 'entities/show'
+    get 'entities/show'
 
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
