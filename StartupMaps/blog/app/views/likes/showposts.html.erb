@@ -1,4 +1,3 @@
-
 <!-- 
 Defintion: This method takes nothing as input and views 
 the comments and posts with the amount of likes for each
@@ -14,53 +13,55 @@ Author: Samar Fikri.
 
 <h1> Group Page </h1>
 
-<% @lik.each do |c| %> 
+  <% @lik.each do |c| %> 
 <!-- The first element is always null so it is discarded and 
 the next one is considered, this makes the c variable hold 
 the group of likes -->
 
-<%c = c[1]%>
+  <%c = c[1]%>
 <!-- This makes the v variable has the first like in this 
 group, v is needed to hold a member of the group in order 
 to get its id -->
 
-<%v = c[1]%>
-<%v.likable_id%><br><br>
-<%if v.likable_type == "comment"%>
+  <%v = c[1]%>
+  <%v.likable_id%><br><br>
+  <%if v.likable_type == "comment"%>
 <%#=  c.last().last().likable_id%>
-<% if v.likable_id != nil %>
-<!-- search for the comment in table comments -->
-<%@comm =Comment.find(v.likable_id)%> 
-<br><%= @comm.comment%>	
-<!-- Start of Samar's part-->
-<% @count = 0%>
-	<%if c!= nil %>
-		<% c.each do |cou|%>
-			<%@count = @count +1%>
-		<%end%>
-	<br><%= @count%> likes
-	<a href ="like?currentcontrol=likes&currentaction=showposts&type='comment'&likable=<%= @comm.id%> " > <button> like</button> </a>
-	<%end%>
-	<!-- end of Samar's part -- >
-	<%end%>
-<%else%>
-	<% if v.likable_id != nil %>
-	<%@comm =Post.find(v.likable_id)%> 
-	<br><%= @comm.post%>
-	<!--  Start of Samar's part -->
-	<% @count = 0%>
-		<%if c!= nil %>
-			<% c.each do |cou|%>
-				<%@count = @count +1%>
-			<%end%>
-		<%= @count%> likes
 
-		<a href ="like?currentcontrol=likes&currentaction=showposts&type='post'&likable=<%= @comm.id%> " > <button> like</button> </a>
-		<%end%>
-		<!-- end of Samar's part -->
-		<%end%>
+    <% if v.likable_id != nil %>
+<!-- search for the comment in table comments -->
+
+      <%@comm =Comment.find(v.likable_id)%> 
+      <br><%= @comm.comment%>	
+<!-- Start of likes part-->
+
+      <% @count = 0%>
+      <%if c!= nil %>
+        <% c.each do |cou|%>
+        <%@count = @count +1%>
+      <%end%>
+      <br><%= @count%> likes
+      <a href ="like?currentcontrol=likes&currentaction=showposts&type='comment'&likable=<%= @comm.id%> " > <button> like</button> </a>
+    <%end%>
+<!-- end of likes part -- >
+  <%end%>
+  <%else%>
+  <% if v.likable_id != nil %>
+    <%@comm =Post.find(v.likable_id)%> 
+    <br><%= @comm.post%>
+<!--  Start of likes part -->
+    <% @count = 0%>
+      <%if c!= nil %>
+        <% c.each do |cou|%>
+        <%@count = @count +1%>
+      <%end%>
+      <%= @count%> likes
+      <a href ="like?currentcontrol=likes&currentaction=showposts&type='post'&likable=<%= @comm.id%> " > <button> like</button> </a>
+  <%end%>
+<!-- end of likes part -->
+    <%end%>
 <%#= posts.find(c.id).post%><br><br>
-<%end%>
-<%end%>
+      <%end%>
+  <%end%>
 
 </html>
