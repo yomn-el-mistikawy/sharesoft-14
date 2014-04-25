@@ -1,9 +1,9 @@
 class MapsController < ApplicationController
 
 
-#  Defintion: gets all startups in the db and shows them on the map.
+#  Defintion: Gets all startups in the db and shows them on the map.
 #  Input: Startup Table.
-#  Output: online Startups.
+#  Output: Online Startups.
 #  Author: Alia Tarek.
 
   def  show_startups
@@ -21,9 +21,9 @@ class MapsController < ApplicationController
   end
 
 
-#  Defintion: gets all Investors in the db and shows them on the map.
+#  Defintion: Gets all Investors in the db and shows them on the map.
 #  Input: Investors Table.
-#  Output: all Investors.
+#  Output: All Investors.
 #  Author: Alia Tarek.
 
   def  show_investors
@@ -41,9 +41,9 @@ class MapsController < ApplicationController
   end
 
 
-#  Defintion: gets all Services in the db and shows them on the map.
+#  Defintion: Gets all Services in the db and shows them on the map.
 #  Input: Services Table.
-#  Output: all Services.
+#  Output: All Services.
 #  Author: Alia Tarek.
 
   def  show_services
@@ -61,9 +61,9 @@ class MapsController < ApplicationController
   end
 
 
-  # Defintion: gets all merged startups in the db and shows them on the map.
+  # Defintion: Gets all merged startups in the db and shows them on the map.
   # Input: Startup Table.
-  # Output: merged Startups.
+  # Output: Merged Startups.
   # Author: Alia Tarek.
 
   def  show_merged
@@ -81,9 +81,9 @@ class MapsController < ApplicationController
   end
 
 
-#  Defintion: gets all launched startups in the db and shows them on the map.
+#  Defintion: Gets all launched startups in the db and shows them on the map.
 #  Input: Startup Table.
-#  Output: launched Startups.
+#  Output: Launched Startups.
 #  Author: Alia Tarek.
 
   def  show_launched
@@ -101,9 +101,9 @@ class MapsController < ApplicationController
   end
 
 
-#  Defintion: gets all not yet launched in the db and shows them on the map.
+#  Defintion: Gets all not yet launched in the db and shows them on the map.
 #  Input: Startup Table.
-#  Output: not yet launched Startups.
+#  Output: Not yet launched Startups.
 #  Author: Alia Tarek.
 
   def  show_not_launched
@@ -121,9 +121,9 @@ class MapsController < ApplicationController
   end
 
 
-#  Defintion: gets all online startups in the db and shows them on the map.
+#  Defintion: Gets all online startups in the db and shows them on the map.
 #  Input: Startup Table.
-#  tput: online Startups.
+#  tput: Online Startups.
 #  Author: Alia Tarek.
 
   def  show_online
@@ -141,9 +141,9 @@ class MapsController < ApplicationController
   end
 
 
-#  Defintion: gets all offline startups in the db and shows them on the map.
+#  Defintion: Gets all offline startups in the db and shows them on the map.
 #  Input: Startup Table.
-#  Output: onffline Startups.
+#  Output: Onffline Startups.
 #  Author: Alia Tarek.
 
   def  show_offline
@@ -161,4 +161,4 @@ class MapsController < ApplicationController
   end
 
 
-end
+endS
