@@ -22,7 +22,6 @@ end
 
 
 def new
-
 end
 
 def create
@@ -40,16 +39,14 @@ end
 	# Author: Mozdan Ahmed.
 	
   def merge_request
-  	if session[:entity_id] == 0
-
+    if session[:entity_id] == 0
   	else	
 		@suggested_project = Project.find(params[:suggested_project])
 		@project = Project.find(params[:project_id])
     @send_request = SendMergeRequest.create(:sender_id => @project.startup_id, :receiver_id => @suggested_project.startup_id, :project_id => @suggested_project.id)
-	end
-end
+	  end
+  end
 
-
-def show_suggested
-end
+  def show_suggested
+  end
 end
