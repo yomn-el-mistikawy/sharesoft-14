@@ -1,0 +1,13 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @startup.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @startup.location %>
+</p>
+
+<%= link_to 'Edit', edit_startup_path(@startup) %> |
+<%= link_to 'Back', startups_path %>
