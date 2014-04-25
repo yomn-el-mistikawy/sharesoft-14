@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-	 has_many :startups, :through => :startup_have_project
+   has_many :startups, :through => :startup_have_project
    
 
   # Definition: "A startup can see a list of his projects" 
@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
     @startups_listing_projects = StartupHaveProject.select(:project_id).where(:startup_id => startup.id)
     Project.where(:id => @startups_listing_projects)
 
-	end
+  end
 
 
   # Defintion: This method takes a project as input
@@ -30,7 +30,6 @@ class Project < ActiveRecord::Base
   def  self.get_suggest(project, startup)
     @projects_owned_by_startup_ids = StartupHaveProject.select(:project_id).where(:startup_id => startup.id)
     @suggested_projects = Project.where(:location => project.location, :category => project.category).where.not(:id => project.id, :id => @projects_owned_by_startup_ids)
-  end	
+  end 
 
 end
-

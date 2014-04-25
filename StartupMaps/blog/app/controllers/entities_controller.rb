@@ -94,4 +94,3 @@ class EntitiesController < ApplicationController
     render 'show_friends'
   end
 end
-

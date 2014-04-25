@@ -19,4 +19,3 @@ class Entity < ActiveRecord::Base
 	has_many :subscribee, :through => :subscrtipion
 
 end
-

@@ -11,5 +11,5 @@ class StartupHaveProject < ActiveRecord::Base
 
   def self.check_ownership(project, startup)
     StartupHaveProject.where(:startup_id => startup.id, :project_id => project.id)
-  end	
+  end 
 end
