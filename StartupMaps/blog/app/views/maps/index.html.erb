@@ -1,9 +1,9 @@
-
-
 <h1>Startup Map</h1>
 
-<%= link_to 'Show Startups' , href="/maps/1/show_startups" %>
 
+<!-- Those are the links that will call the actions in the maps controller and show the markers on the map --> 
+
+ <%= link_to 'Show Startups' , href="/maps/1/show_startups" %>
  <br>
  <%= link_to 'Show Investors', href="/maps/1/show_investors" %>
  <br>
@@ -19,10 +19,7 @@
  <br>
  <%= link_to 'Show joint Ventures', href = "/maps/1/show_merged" %>
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 1000px; height: 500px;'></div>
-</div>
- 
- 
- 
- 
+
+<!-- this gets the hash variable from the maps controller in which the markers are saved and adds them on the map. It should be placed in the javascript code of the map -->
+
+markers = handler.addMarkers(<%=raw @hash.to_json %>);
