@@ -13,9 +13,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-      "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
-      "width" => 32, 
-      "height" => 32})
+        "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
+        "width" => 32, 
+        "height" => 32})
     end
     render :template => 'maps/index'
   end
@@ -33,9 +33,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({ 
-      "url" => "http://rideforclimate.com/nukes/all/images/orange.png",
-      "width" => 32, 
-      "height" => 32})
+        "url" => "http://rideforclimate.com/nukes/all/images/orange.png",
+        "width" => 32, 
+        "height" => 32})
     end
     render :template => 'maps/index'
   end
@@ -53,9 +53,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({ 
-      "url" => "http://rideforclimate.com/nukes/all/images/green.png",
-      "width" => 32, 
-      "height" => 32})
+        "url" => "http://rideforclimate.com/nukes/all/images/green.png",
+        "width" => 32, 
+        "height" => 32})
     end
     render :template => 'maps/index'
   end
@@ -73,9 +73,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-      "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
-      "width" => 32, 
-      "height" => 32})
+        "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
+        "width" => 32, 
+        "height" => 32})
     end
     render :template => 'maps/index'
   end
@@ -93,9 +93,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-      "url" => "http://rideforclimate.com/nukes/all/images/blue.png", 
-      "width" => 32, 
-      "height" => 32})      
+        "url" => "http://rideforclimate.com/nukes/all/images/blue.png", 
+        "width" => 32, 
+        "height" => 32})      
     end
     render :template => 'maps/index'
   end
@@ -113,9 +113,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({ 
-      "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
-      "width" => 32, 
-      "height" => 32})
+        "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
+        "width" => 32, 
+        "height" => 32})
     end
     render :template => 'maps/index'
   end
@@ -133,9 +133,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-      "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
-      "width" => 32, 
-      "height" => 32})
+        "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
+        "width" => 32, 
+        "height" => 32})
     end
     render :template => 'maps/index'
   end
@@ -153,9 +153,9 @@ class MapsController < ApplicationController
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-      "url" => "http://rideforclimate.com/nukes/all/images/blue.png", 
-      "width" => 32, 
-      "height" => 32})      
+        "url" => "http://rideforclimate.com/nukes/all/images/blue.png", 
+        "width" => 32, 
+        "height" => 32})      
     end
     render :template => 'maps/index'
   end
