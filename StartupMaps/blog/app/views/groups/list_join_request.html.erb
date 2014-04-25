@@ -1,0 +1,13 @@
+
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    <% @requester.each do |r| %>
+      <tr>
+        <td><%= r.name %></td>
+        <td><%= link_to 'accept', group_accept_join_request_path(requester: r)%></td>
+        <td><%= link_to 'reject', group_reject_join_request_path(requester: r)%></td>
+      </tr>
+    <% end %>
+  </table>

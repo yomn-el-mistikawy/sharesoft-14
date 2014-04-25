@@ -3,6 +3,9 @@ Blog::Application.routes.draw do
   resources :groups do
     get "list_group_members"
     post "join_request"
+    get "list_join_request"
+    get "accept_join_request"
+    get "reject_join_request"
   end  
 
   resources :startups

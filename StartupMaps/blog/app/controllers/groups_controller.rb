@@ -40,6 +40,31 @@ class GroupsController < ApplicationController
     end   
   end
 
+  def list_join_request
+    @requester = JoinRequest.get_startups(Group.find(params[:group_id]))
+  end 
+
+  def accept_join_request
+    if session[:entity_id] != Group.find(params[:group_id]).creator_id
+      render text: "You aren't the creator"
+    else  
+      GroupsStartup.create(:startup_id => params[:requester], :group_id => params[:group_id])
+      if JoinRequest.where(:sender_id => params[:requester], :group_id => params[:group_id]).delete_all
+        render text: "request accepted" 
+      end
+    end  
+  end
+
+  def reject_join_request
+    if session[:entity_id] != Group.find(params[:group_id]).creator_id
+      render text: "You aren't the creator"
+    else  
+      if JoinRequest.where(:sender_id => params[:requester], :group_id => params[:group_id]).delete_all
+        render text: "request rejected"
+      end 
+    end       
+  end 
+
   # GET /groups/new
   def new
     @group = Group.new
