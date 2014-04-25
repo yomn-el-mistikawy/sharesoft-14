@@ -8,8 +8,8 @@ class MapsController < ApplicationController
   # Output: the Startup, Service and Investor database and the markers linked to the startup, service and investor.
   # Author: Youssef Attaby.
   def Index
-	  @startups = Startup.all
-	  @start = Gmaps4rails.build_markers(@startups) do |startup, marker|
+    @startups = Startup.all
+    @start = Gmaps4rails.build_markers(@startups) do |startup, marker|
       marker.lat startup.latitude
       marker.lng startup.longitude
       marker.infowindow startup.name
