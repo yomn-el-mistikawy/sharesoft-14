@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :location
       t.string :goals
       t.string :name
-      t.integer :milestones
+      t.string :milestones
       t.string :category
       t.boolean :launch
       t.string :description
