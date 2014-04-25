@@ -27,11 +27,11 @@ class PostAttachment < ApplicationController
   
     def create
      @resume = Resume.new(resume_params)
-      if @resume.save
-       redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
-      else
-       render "new"
-      end
+       if @resume.save
+        redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
+       else
+        render "new"
+       end
     end
   
     # Definition: Deletes a record from the database
