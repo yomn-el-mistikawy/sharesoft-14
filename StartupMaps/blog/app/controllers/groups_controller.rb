@@ -33,6 +33,12 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
   end
+  
+
+  # Definition: This method adds join requests in the database.
+  # input: group_id and session.
+  # output: void.
+  # Author: Sherouk A.Said.
 
   def join_request
     if JoinRequest.create(:group_id => params[:group_id], :sender_id => session[:entity_id])
@@ -40,9 +46,24 @@ class GroupsController < ApplicationController
     end   
   end
 
+  
+  # Definition: This method lists the join requests.
+  # input: group_id.
+  # output: void.
+  # Authour: Sherouk A.Said.
+
   def list_join_request
     @requester = JoinRequest.get_startups(Group.find(params[:group_id]))
   end 
+
+  
+  # Definition: This method accepts join request
+  # inserts in table groups_startup the request
+  # deletes the request from join request table after the acceptance
+  # and checks if the user is the creator.
+  # input: group_id requester_id session.
+  # output: void.
+  # Author: Sherouk A.Said.
 
   def accept_join_request
     if session[:entity_id] != Group.find(params[:group_id]).creator_id
@@ -54,6 +75,14 @@ class GroupsController < ApplicationController
       end
     end  
   end
+
+  
+  # Definition: This method rejects join request
+  # deletes the request from join request table after the acceptance
+  # and checks if the user is the creator.
+  # input: group_id requester_id session.
+  # output: void.
+  # Author: Sherouk A.Said.
 
   def reject_join_request
     if session[:entity_id] != Group.find(params[:group_id]).creator_id
