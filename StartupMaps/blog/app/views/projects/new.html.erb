@@ -1,26 +1,32 @@
-<h1> Create New Project </h1>
+<!-- 
+# Definition: containing fields for users to insert
+# Input: no input
+# Outputs: text fields
+# Author: Amr Gamal -->
+<h1> new project </h1>
 <%= form_for :project, url: projects_path do |f| %>
+
   <p>
     <%= f.label :name %><br>
-    <%= f.text_field :Name %>
+    <%= f.text_field :name %>
   </p>
  
   <p>
     <%= f.label :category %><br>
-    <%= f.text_field :Category %>
+    <%= f.text_field :category %>
   </p>
 
   <p>
     <%= f.label :location %><br>
-    <%= f.text_field :Location %>
+    <%= f.text_field :location %>
   </p>
 
   <p>
-    <%= f.label :discription %><br>
-    <%= f.text_area :Discription %>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </p>
  
   <p>
-    <%= submit_tag("Create project") %>
+    <%= f.submit 'create project' %>
   </p>
 <% end %>
