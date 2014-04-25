@@ -1,11 +1,11 @@
 class MapsController < ApplicationController
 
-  # Defintion: gets all startups and services and investors in the db and shows them on the map and
+  # Defintion: Gets all startups and services and investors in the db and shows them on the map and
   # Then linking the markers with the startups with an image to be easily identified in the map and
   # Then putting the name or information on a box when clicking on the marker it pops up with the name,
   # The @startup_marker and @serv and @inv is the link between map_controller and the map index to be easily accessed.
   # Input: Startup, Service and Investor Table and the @start, @serv and @inv.
-  # Output: the Startup, Service and Investor database and the markers linked to the startup, service and investor.
+  # Output: The Startup, Service and Investor database and the markers linked to the startup, service and investor.
   # Author: Youssef Attaby.
   def Index
     @startups = Startup.all
