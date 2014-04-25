@@ -8,6 +8,7 @@ Blog::Application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
   
   resources :projects do
     get "suggest"
@@ -19,10 +20,15 @@ Blog::Application.routes.draw do
     # post ':entities(/:post(/:id(.:format)))'
     # get ':entities(/:post(/:id(.:format)))'
     
-     end
-  post 'entities/show'
-  get 'entities/show'
- 
+    post 'entities/show'
+    get 'entities/show'
+
+    get "change_launch_status", on: :member, as: :launch
+    get "suggest"
+    get "show_suggested"
+    get "merge_request"
+  end  
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 

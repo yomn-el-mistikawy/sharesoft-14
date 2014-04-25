@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419163446) do
+ActiveRecord::Schema.define(version: 20140425121046) do
 
   create_table "comments", force: true do |t|
     t.string   "comment"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
+    t.string   "password_reset"
+    t.datetime "sent_at"
   end
 
   create_table "entity_available_internships", force: true do |t|
@@ -66,6 +69,13 @@ ActiveRecord::Schema.define(version: 20140419163446) do
 
   create_table "entity_social_links", force: true do |t|
     t.string   "socialLinks"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "entity_statuses", force: true do |t|
+    t.string   "status"
     t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -118,6 +128,13 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.datetime "updated_at"
   end
 
+  create_table "groups_startups", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "investors", force: true do |t|
     t.float    "longitude"
     t.float    "latitude"
@@ -126,6 +143,13 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.string   "name"
     t.string   "sector"
     t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "join_requests", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -163,6 +187,13 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.boolean  "launch"
     t.string   "description"
     t.string   "requirements"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resumes", force: true do |t|
+    t.string   "name"
+    t.string   "attachement"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
