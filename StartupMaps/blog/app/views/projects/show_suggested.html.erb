@@ -32,6 +32,12 @@
   <strong>Milestones:</strong>
   <%= @project.milestone %>
 </p>
+ 
+ 
+  # Definition: This is a button the sends merge request
+  # Input: suggested_project
+  # Output: merge request.
+  # Author: Mozdan Ahmed.
 
 <%= button_to "Send merge request", project_merge_request_path( suggested_project: @project ) %>
 <button type="button">Send merge request</button>
