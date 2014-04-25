@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+<<<<<<< HEAD
  #Definition: this action show the names of startups ,investors and the sevices that are in 
     #sectors agriculture,manufacturing,trading,clothing,telecommunications on the map 
     #and buid markers according to the sectors.
@@ -34,3 +35,8 @@ class MapsController < ApplicationController
 
         end
         end
+=======
+
+
+end
+>>>>>>> master
