@@ -13,7 +13,6 @@ Blog::Application.routes.draw do
   
   # Maps routes by Alia Tarek
    resources :maps do
-
     get "show_startups" 
     get "show_investors"
     get "show_services"
@@ -22,7 +21,6 @@ Blog::Application.routes.draw do
     get "show_offline"
     get "show_online"
     get "show_merged"
-  
     end
 
  

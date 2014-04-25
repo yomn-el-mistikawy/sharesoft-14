@@ -8,7 +8,7 @@ class MapsController < ApplicationController
 
   def  show_startups
     @startups = Startup.all
-    @hash = Gmaps4rails.build_markers(@startups) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@startups) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -28,7 +28,7 @@ class MapsController < ApplicationController
 
   def  show_investors
     @investors = Startup.all
-    @hash = Gmaps4rails.build_markers(@investors) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@investors) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -48,7 +48,7 @@ class MapsController < ApplicationController
 
   def  show_services
     @services = Service.all
-    @hash = Gmaps4rails.build_markers(@services) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@services) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -68,7 +68,7 @@ class MapsController < ApplicationController
 
   def  show_merged
     @merged = Startup.where(:joint_ventures != "")
-    @hash = Gmaps4rails.build_markers(@merged) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@merged) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -88,7 +88,7 @@ class MapsController < ApplicationController
 
   def  show_launched
     @launched = Startup.where(:launch_status => true)  
-    @hash = Gmaps4rails.build_markers(@launched) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@launched) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -108,7 +108,7 @@ class MapsController < ApplicationController
 
   def  show_not_launched
     @not_launched = Startup.where(:launch_status => false)
-    @hash = Gmaps4rails.build_markers(@not_launched) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@not_launched) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -128,7 +128,7 @@ class MapsController < ApplicationController
 
   def  show_online
     @online = Startup.where(:online_status => true)
-    @hash = Gmaps4rails.build_markers(@online) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@online) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -148,7 +148,7 @@ class MapsController < ApplicationController
 
   def  show_offline
     @offline = Startup.where(:online_status => false)
-    @hash = Gmaps4rails.build_markers(@offline) do |t, marker| 
+    @markers = Gmaps4rails.build_markers(@offline) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
@@ -161,4 +161,4 @@ class MapsController < ApplicationController
   end
 
 
-endS
+end
