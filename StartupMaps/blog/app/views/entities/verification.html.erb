@@ -1,0 +1,19 @@
+<!--   
+  # Definition: View for the verification code input.
+  # Input: Entity.
+  # Output: Boolean.
+  # Author: Omar El-Menawy -->
+
+<%= form_for(@entity) do |f| %>
+<div class="field">
+    <%= f.label :verification_code %><br>
+    <%= f.text_field :verification_code %>
+  </div>
+
+  <br>
+  
+  <div class="actions">
+    <%= f.submit "Submit Verification Code"%>
+  </div>
+  
+<% end %>

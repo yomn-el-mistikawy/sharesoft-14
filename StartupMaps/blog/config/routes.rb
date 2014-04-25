@@ -4,6 +4,11 @@ Blog::Application.routes.draw do
     get "list_group_members"
   end  
 
+  resources :entities do
+    get "verification"
+    get "verification_code_comparison"
+  end 
+
   resources :startups
 
   # The priority is based upon order of creation: first created -> highest priority.

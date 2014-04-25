@@ -1,4 +1,32 @@
 Blog::Application.configure do
+
+  # Definition: All details of the configuration of the sent email.
+  # Input: Void.
+  # Output: Void.
+  # Author: Omar El-Menawy
+
+config.action_mailer.default_url_options = {:host => "localhost:3000"}
+
+config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i -t'
+# }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = true
+config.action_mailer.default_options = {from: 'no-replay@example.com'}
+
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            'o.elmenawy@gmail.com',
+  password:             'Oam12345',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
