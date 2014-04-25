@@ -1,11 +1,20 @@
+
 <html>
 <body>
 	<form action='create_portfolio' >
 		
-		enter your name<input type='text' name='name' id='name'></br>
-		enter the disc<textarea name = 'description'></textarea></br>
-		enter launch date<input type='text' name='launch' id='launch'></br>
-		enter your name<input type='text' name='entity_id' id='entity_id'></br>
-		<input name='commit' type='submit' value='create'>
-		
+		</h1>Add new Portfolio</h1>
+
+<p><label for="portfolio_name">Name</label>:
+<%= text_field 'portfolio', 'name' %></p>
+<p><label for="portfolio_description">Description</label>:
+<%= text_area 'portfolio', 'description' %></p>
+<p><label for="portfolio_launch">Launched</label><br/>
+<%= text_field 'portfolio', 'launch' %></p>
+<%= submit_tag "Create" , {:action => 'list'} %>
+
+
+
+
 	</form>
+	<%= link_to 'Back', {:action => 'list'} %>

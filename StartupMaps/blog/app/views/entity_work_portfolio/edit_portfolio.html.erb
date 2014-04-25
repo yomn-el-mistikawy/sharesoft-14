@@ -1,12 +1,24 @@
+
+
 <html>
 <body>
 	<form action='update_portfolio' >
 		
-		id<input type='text' name='id' id='id'></br>
-		enter your name<input type='text' name='name' id='name'></br>
-		enter the disc<textarea name = 'description'></textarea></br>
-		enter launch date<input type='text' name='launch' id='launch'></br>
-		enter your name<input type='text' name='entity_id' id='entity_id'></br>
-		<input name='commit' type='submit' value='create'>
+		</h1>Edit Portfolio</h1>
 		
+id<input type='text' name='id' id='id'></br>
+<p><label for="portfolio_name">Name</label>:
+<%= text_field 'portfolio', 'name' %></p>
+<p><label for="portfolio_description">Description</label>:
+<%= text_area 'portfolio', 'description' %></p>
+<p><label for="portfolio_launch">Launched</label><br/>
+<%= text_field 'portfolio', 'launch' %></p>
+<%= submit_tag "Save changes" , {:action => 'list'} %>
+
+
+
+
 	</form>
+	<%= link_to 'Back', {:action => 'list'} %>
+
+

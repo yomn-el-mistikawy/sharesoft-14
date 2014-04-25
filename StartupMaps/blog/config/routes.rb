@@ -6,6 +6,8 @@ Blog::Application.routes.draw do
   get "entity_work_portfolio/list"
   get "entity_work_portfolio/update_portfolio"
   get "entity_work_portfolio/new"
+  get "entity_work_portfolio/show"
+
 
   
   resources :group_members

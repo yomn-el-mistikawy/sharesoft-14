@@ -1,11 +1,18 @@
-<%@lis.each do |c|%>
 
+<% if @portfolio.blank? %>
+<p>There are not any portfolios.</p>
+<% else %>
+<p>These are the current portfolios</p>
+<ul id="portfolio">
+<% @portfolio.each do |c| %>
+<li><li>
+<%= link_to c.name, {:action => "show", :id => c.id} -%>
 <li><%=c.id%>
-<%= c.name%></li>
-
-
-<%end%>
-
-<a href= 'delete_portfolio'> delete </a></br>
-<a href= 'new'> new  </a></br>
-<a href= 'edit_portfolio'> edit_portfolio </a></br>
+<b> <%= link_to 'Edit', {:action => 'edit_portfolio', :id => c.id} %></b>
+<b> <%= link_to "Delete", {:action => 'delete_portfolio', :id => c.id},
+:confirm => "Are you sure you want to delete this item?" %></b>
+</li></li>
+<% end %>
+</ul>
+<% end %>
+<p><%= link_to "Add new Portfolio", {:action => 'new' }%></p>
