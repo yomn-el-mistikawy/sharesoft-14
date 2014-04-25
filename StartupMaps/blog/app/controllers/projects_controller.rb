@@ -32,14 +32,24 @@ def create
 	redirect_to @project
 end
 
-	# Definition: This method sends merge request to other startups in order to merge their projects,the method takes parameters from the suggested projects and sends the request to the chosen project.
+	# Definition: This method sends merge request to other startups in order to merge their projects,
+	#the method takes parameters from the suggested projects and sends the request to the chosen project
+	#the merge_request handles if the user is logged in.
 	# Input: suggested_project, project_id.
 	# Output: void.
 	# Author: Mozdan Ahmed.
 	
   def merge_request
+  	if session[:entity_id] == 0
+
+  	else	
 		@suggested_project = Project.find(params[:suggested_project])
 		@project = Project.find(params[:project_id])
     @send_request = SendMergeRequest.create(:sender_id => @project.startup_id, :receiver_id => @suggested_project.startup_id, :project_id => @suggested_project.id)
 	end
+end
+
+
+def show_suggested
+end
 end
