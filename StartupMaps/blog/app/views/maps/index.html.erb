@@ -6,13 +6,10 @@
 #Input:sector.
 #Output: name.
 #Author:mohamed sharawy.
-
-
- -->
+-->
   <%=form_for :entities  do |f| %>
     <p>
-  
-    <%= f.select :sectors, [['Agriculture','agriculture'],['Manufacturing','manufacturing'],['Trading','trading'],['Clothes','clothes'],['Telecommunications','telecommunications']] %>
+      <%= f.select :sectors, [['Agriculture','agriculture'],['Manufacturing','manufacturing'],['Trading','trading'],['Clothes','clothes'],['Telecommunications','telecommunications']] %>
     </p>
     <%= f.submit %>
 

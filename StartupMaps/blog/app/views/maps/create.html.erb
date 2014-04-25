@@ -1,13 +1,13 @@
 <h1> mohamed</h1>
 <!--
-#Definition: it takes the variable @entities ,loop on it and then print all the names. 
-#Input:variable @entities.
-#Output: name.
-#Author:mohamed sharawy.
+#Definition: It takes the variable @entities_startups ,loop on it and then print all the names. 
+#Input:Variable @entities.
+#Output: Name.
+#Author:Mohamed sharawy.
  -->
 
 <table>
-  <% @entities.each do |t| %>
+  <% @entities_startups.each do |t| %>
     <tr>
       <td><%= t.name%></td>
     </tr>
@@ -16,15 +16,14 @@
 
 
 <!--
-#Definition: it takes the variable @entities_I ,loop on it and then print all the names.
-#Input:variable @entities.
-#Output: name.
-#Author:mohamed sharawy.
+#Definition: It takes the variable @entities_investors ,loop on it and then print all the names.
+#Input:Variable @entities.
+#Output: Name.
+#Author:Mohamed sharawy.
  -->	
 
-
 <table>
-	 <% @entities_I.each do |t| %>
+	 <% @entities_investors.each do |t| %>
 	   <tr>
       <td><%= t.name%></td>
 	   </tr>
@@ -33,15 +32,14 @@
 	
 
 	<!--
-#Definition: it takes the variable @entities_V ,loop on it and then print all the names. 
-#Input:variable @entities.
-#Output: name.
-#Author:mohamed sharawy.
+#Definition: It takes the variable @entities_services ,loop on it and then print all the names. 
+#Input:Variable @entities.
+#Output: Name.
+#Author:Mohamed sharawy.
  -->
-
 	
-	<table>
-	 <% @entities_V.each do |t| %>
+<table>
+	 <% @entities_services.each do |t| %>
 	   <tr>
       <td><%= t.name%></td>
 	   </tr>
