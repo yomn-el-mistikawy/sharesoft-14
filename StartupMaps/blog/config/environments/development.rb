@@ -5,7 +5,7 @@ Blog::Application.configure do
   # Output: Void.
   # Author: Omar El-Menawy
 
-config.action_mailer.default_url_options = { :host => "localhost:3000" }
+config.action_mailer.default_url_options = {:host => "localhost:3000"}
 
 config.action_mailer.delivery_method = :sendmail
 # Defaults to:

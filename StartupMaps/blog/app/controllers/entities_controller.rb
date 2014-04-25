@@ -50,10 +50,10 @@ class EntitiesController < ApplicationController
       @entity.verification_code = rand(999)
       if @entity.save
         UserMailer.welcome_email(@entity).deliver
-        format.html { render action: 'verification', notice: 'Sign up was successfully created.' }
+        format.html {render action: 'verification', notice: 'Sign up was successfully created.'}
       else
-        format.html { render action: 'new' }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
+        format.html {render action: 'new'}
+        format.json {render json: @entity.errors, status: :unprocessable_entity}
       end
     end
   end
