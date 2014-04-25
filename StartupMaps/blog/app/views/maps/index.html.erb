@@ -14,31 +14,29 @@
 <img src = "http://rideforclimate.com/nukes/all/images/green.png">  
 <input type = "checkbox" id = "Investors" onclick = "Markers('Investors')" checked = "checked" />Investors<br>
 </div>
+<!--
+  # Definition : TheMarkers2 array is created inorder to use it in the dissapear method.
+  # inofwindow is created to make the marker show a pop up bar with the name or information.
+  # A loop inorder to create the markers to enter the createrMarker function.
+  # A createMarker function is created in order to create and show markers in the map.
+  # Choose different colors for different marker types.
+  # Markers is added with categories which must be in the same format of google maps.
+  # Makes the markers clickable.
+  # Puts the markers into theMarkers2 array.
+  # Generate the html infowindow in order to make its shape better.
+  # This is the function that makes the markers disappear linked with theMarkers2 which I 
+  # alreadycreated.
+  # Author: Youssef Attaby.
+-->
 <script type = "text/javascript"> 
-  // theMarkers2 array is created inorder to use it in the dissapear method.
-  // Youssef Attaby
-
   var theMarkers2 = [];
   var theMarkers = [(<%=raw @start.to_json %>)];
   var theMarkers = [(<%=raw @serv.to_json %>)];
   var theMarkers = [(<%=raw @inv.to_json %>)];
-  // inofwindow is created to make the marker show a pop up bar with the name or information.
-  // Youssef Attaby
-
   var infowindow = new google.maps.InfoWindow();
-  // a loop inorder to create the markers to enter the createrMarker function.
-  // Youssef Attaby
-
   for (var i = 0; i < theMarkers.length; i++) {     
     createMarker(theMarkers[i]);
   }
-  // A createMarker function is created in order to create and show markers in the map.
-  // Choose different colors for different marker types.
-  // Markers is added with categories which must be in the same format of google maps.
-  // Makes the markers clickable.
-  // Puts the markers into theMarkers2 array.
-  // Youssef Attaby.
-  
   function createMarker(themarker) {  
     var marker_image = "";
     if(themarker.type == "Investors"){
@@ -69,17 +67,10 @@
     theMarkers2.push(marker);
     return marker;
   }
-  // Generate the html infowindow in order to make its shape better.
-  // Youssef Attaby.
-
   function infoWindowHtml(themarker){
     var html = "<center><strong>"+themarker.name+"</strong></center><br>"+themarker.popuptext;
     return html;   
   }
-  // This is the function that makes the markers disappear linked with theMarkers2 which I 
-  // alreadycreated.
-  // Youssef Attaby.
-
   function Markers(type){
     var newValue = document.getElementById(type).checked;
     for (var i = 0; i < theMarkers2.length;i++) {
