@@ -1,0 +1,97 @@
+<!--
+  # Definition : Creating a checkbox of type startup, service and investor to be linked with the 
+  # Database and to be controlled via this checkbox to appear or dissapear.
+  # Input: void.
+  # Output: void.
+  # Author: Youssef Attaby.
+-->
+<!--
+  # Definition : TheMarkers2 array is created inorder to use it in the dissapear method.
+  # Inofwindow is created to make the marker show a pop up bar with the name or information.
+  # A loop inorder to create the markers to enter the createrMarker function.
+  # A createMarker function is created in order to create and show markers in the map.
+  # Choose different colors for different marker types.
+  # Markers is added with categories which must be in the same format of google maps.
+  # Makes the markers clickable.
+  # Puts the markers into theMarkers2 array.
+  # Generate the html infowindow in order to make its shape better.
+  # This is the function that makes the markers disappear linked with theMarkers2 which I 
+  # Already created.
+  # Input: void.
+  # Output: void.
+  # Author: Youssef Attaby.
+-->
+<html>
+<head>
+<title>Welcome To StartupMaps</title>
+</head>
+<body>
+<div style = "width:550px;">
+<center><h3>StartupMaps</h3></center>
+<br>StartupMaps:<br>
+<img src = "http://rideforclimate.com/nukes/all/images/blue.png">  
+<input type = "checkbox" id = "Services" onclick = "Markers('Services')" checked = "checked" />Services<br>
+<img src = "http://rideforclimate.com/nukes/all/images/yellow.png">  
+<input type = "checkbox" id = "Startups" onclick = "Markers('Startups')" checked = "checked" />Startups<br>
+<img src = "http://rideforclimate.com/nukes/all/images/green.png">  
+<input type = "checkbox" id = "Investors" onclick = "Markers('Investors')" checked = "checked" />Investors<br>
+</div>
+<script type = "text/javascript"> 
+  var theMarkers2 = [];
+  var theMarkers = [(<%=raw @startup_marker.to_json %>)];
+  var theMarkers = [(<%=raw @service_marker.to_json %>)];
+  var theMarkers = [(<%=raw @investor_marker.to_json %>)];
+  var infowindow = new google.maps.InfoWindow();
+  for (var i = 0; i < theMarkers.length; i++) {     
+    createMarker(theMarkers[i]);
+  }
+  function createMarker(themarker) {  
+    var marker_image = "";
+    if(themarker.type == "Investors"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/green.png";
+    }
+    if(themarker.type == "Entities"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/orange.png";
+    }
+    if(themarker.type == "Startups"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/yellow.png";
+    }  
+    if(themarker.type == "Services"){
+      marker_image = "http://rideforclimate.com/nukes/all/images/blue.png";
+    }  
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(themarker.lat, themarker.lng),
+      map: map,
+      popuptext: themarker.popuptext,
+      type: themarker.type,
+      icon: new google.maps.MarkerImage(marker_image),
+      name: themarker.name
+     });
+    google.maps.event.addListener(marker, 'click', function() { 
+      infowindow.close();
+      infowindow.setContent(infoWindowHtml(themarker));
+      infowindow.open(map, marker); 
+    });   
+    theMarkers2.push(marker);
+    return marker;
+  }
+  function infoWindowHtml(themarker){
+    var html = "<center><strong>"+themarker.name+"</strong></center><br>"+themarker.popuptext;
+    return html;   
+  }
+  function Markers(type){
+    var newValue = document.getElementById(type).checked;
+    for (var i = 0; i < theMarkers2.length;i++) {
+      if (theMarkers2[i].type == type)  {
+        if (newValue == 0) {
+          theMarkers2[i].setVisible(false);
+        }
+          else {
+            theMarkers2[i].setVisible(true);
+          }
+      }
+    }
+  }
+</script> 
+</body>
+</html>
