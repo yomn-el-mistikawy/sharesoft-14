@@ -57,6 +57,4 @@ class Entity < ActiveRecord::Base
   validates :type, format: {with: /[^0]/, message: " is not selected."}
   validates :location, presence: true
   
-  end
-  
-  
+end
