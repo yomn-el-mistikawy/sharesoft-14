@@ -1,0 +1,39 @@
+<%= form_for(@entity) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+      <% @entity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <!-- adds the labels and the textboxes -->
+
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :e_mail %><br>
+    <%= f.text_field :e_mail %>
+  </div>
+  <select name = "entitytype">
+    <option>Startup</option>
+    <option>Investor</option>
+    <option>Service</option>
+  </select>
+  <!-- drop-down-list for the type of the entity -->
+  <br><br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>

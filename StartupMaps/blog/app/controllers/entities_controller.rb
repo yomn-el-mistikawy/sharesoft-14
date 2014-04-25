@@ -15,20 +15,42 @@ class EntitiesController < ApplicationController
   #Gives access to new accounts
   # Adel Zee Badawy
   def new
-    @account = Entity.new
+    @entity = Entity.new
   end
 
+  def verification
+  end
+
+  # Definition: Compares inputted code with the code in the Database.
+  # Input: String inputted by user and code from DB.
+  # Output: Boolean.
+  # Author: Omar El-Menawy
+
+  def verification_code_comparison
+    if Entity.where(@current_user.verification_code => params.require[:entity].permit(:verification_code))
+      render action: 'show'
+    else
+      render action: 'new'
+    end
+  end
 
 
  #Creates accounts
  # Adel Zee Badawy
+
+  # Definition: Added random code for verification for code before save and sent welcome_email after save.
+  # Input: Entity.
+  # Output: Email.
+  # Author: Omar El-Menawy
+
   def create
     @entity = Entity.new(entity_params)
 
     respond_to do |format|
+      @entity.verification_code = rand(999)
       if @entity.save
-        format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @entity }
+        UserMailer.welcome_email(@entity).deliver
+        format.html { render action: 'verification', notice: 'Sign up was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @entity.errors, status: :unprocessable_entity }
@@ -70,7 +92,7 @@ class EntitiesController < ApplicationController
     # Allows the method to read the inputs
     # Adel Zee Badawy
     def entity_params
-      params.require(:entity).permit(:name, :email, :password, :availability)
+      params.require(:entity).permit(:name, :username, :email, :password, :availability, :verification_code)
     end
 
   def friends

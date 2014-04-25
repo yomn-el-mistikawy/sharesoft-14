@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Definition: Message written in email
+ Input: Username, Verification code.
+ Output: Void.
+ Author: Omar El-Menawy. -->
+<html>
+  <head>
+    <meta content='html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to example.com, <%= @entity.username %></h1>
+    <p>
+      You have successfully signed up to our website,
+      your username is: <%= @entity.username %>.<br/>
+    </p>
+    <p>
+      Here is your verification code: <%= @entity.verification_code %>
+      <br>
+      Please enter it on the website.
+    <p><br/>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
