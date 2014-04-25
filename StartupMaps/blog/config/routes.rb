@@ -10,10 +10,13 @@ Blog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   
   resources :projects do
-     get "suggest"
-     get "show_suggested"
-     get "merge_request"
-  end
+
+    get "change_launch_status", on: :member, as: :launch
+    get "suggest"
+    get "show_suggested"
+    get "merge_request"
+  end  
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 

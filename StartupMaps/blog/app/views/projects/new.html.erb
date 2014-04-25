@@ -1,26 +1,41 @@
+
+  <!-- Just added the colors :)
+  Author: Hana Magdy  -->
+
+<style type="text/css">
+
+  h1 {
+    color: #FF3399;
+  }
+
+  p {
+    color: #0099FF;
+  }
+  </style>
+
 <h1> Create New Project </h1>
-<%= form_for :project, url: projects_path do |f| %>
+<%= form_for @project do |f| %>
   <p>
     <%= f.label :name %><br>
-    <%= f.text_field :Name %>
+    <%= f.text_field :name %>
   </p>
  
   <p>
     <%= f.label :category %><br>
-    <%= f.text_field :Category %>
+    <%= f.text_field :category %>
   </p>
 
   <p>
     <%= f.label :location %><br>
-    <%= f.text_field :Location %>
+    <%= f.text_field :location %>
   </p>
 
   <p>
-    <%= f.label :discription %><br>
-    <%= f.text_area :Discription %>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </p>
  
   <p>
-    <%= submit_tag("Create project") %>
+    <%= f.submit("Create project") %>
   </p>
 <% end %>
