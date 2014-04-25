@@ -1,0 +1,14 @@
+<!-- 
+# Definition: In this view, the user enters his email that they expect the password to be sent on.
+# Input: E-Mail.
+# Output: Password in email.
+# Author: Omar El-Menawy.
+-->
+
+<%= form_tag password_resets_path, :method => :post do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :e_mail, params[:e_mail] %>
+  </div>
+  <div class="actions"><%= submit_tag "Reset Password" %></div>
+<% end %>
