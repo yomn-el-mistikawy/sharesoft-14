@@ -2,20 +2,20 @@
 
 
 <!--
-#definition: a drop down list with the sectors. 
-#Input:sector
-#Output: name
-#Author:mohamed sharawy
+#Definition: a drop down list with the sectors. 
+#Input:sector.
+#Output: name.
+#Author:mohamed sharawy.
 
 
  -->
-<%=form_for :entities  do |f| %>
-<p>
+  <%=form_for :entities  do |f| %>
+    <p>
   
-  <%= f.select :sectors, [['Agriculture','agriculture'],['Manufacturing','manufacturing'],['Trading','trading'],['Clothes','clothes'],['Telecommunications','telecommunications']] %>
-  </p>
-  <%= f.submit %>
+    <%= f.select :sectors, [['Agriculture','agriculture'],['Manufacturing','manufacturing'],['Trading','trading'],['Clothes','clothes'],['Telecommunications','telecommunications']] %>
+    </p>
+    <%= f.submit %>
 
-<% end %>
+  <% end %>
 
 
