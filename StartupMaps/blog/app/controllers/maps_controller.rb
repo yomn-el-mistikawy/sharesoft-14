@@ -13,7 +13,6 @@ class MapsController < ApplicationController
     @entities_investors = Investor.where( sector: params[:entities][:sectors] )
     @entities_services = Service.where( sector: params[:entities][:sectors] )
 
-
     @startups_markers = Gmaps4rails.build_markers( @entities_startups ) do |t, marker|
       marker.lat t.latitude
       marker.lng t.longitude
@@ -31,7 +30,6 @@ class MapsController < ApplicationController
       marker.lng t.longitude
       marker.infowindow t.sector
     end
-
   end
 end
 
