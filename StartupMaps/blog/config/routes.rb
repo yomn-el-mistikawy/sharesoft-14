@@ -9,9 +9,15 @@ Blog::Application.routes.draw do
   end
 
 
-  resources :posts do
-    resources :comments
-end
+  concern :likable do
+    resources :likes
+  end
+
+  resources :groups do
+     resources :posts, concerns: :likable do
+     resources :comments, concerns: :likable
+    end
+  end
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
