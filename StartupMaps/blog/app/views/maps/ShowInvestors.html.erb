@@ -1,0 +1,11 @@
+
+
+ 
+<% @investors.each do |startup| %>
+  <tr>
+    <td><%= investor.title %></td>
+    <td><%= investor.text %></td>
+    <td><%= link_to 'Show', start %></td>
+    <td><%= link_to 'Edit', edit_investor_path(investor) %></td>
+  </tr>
+<% end %>
