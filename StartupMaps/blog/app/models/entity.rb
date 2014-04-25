@@ -1,7 +1,5 @@
 class Entity < ActiveRecord::Base
-<<<<<<< HEAD
-  has_many :projects
-=======
+
 	has_many :services 
 	has_many :startups
 	has_many :investors
@@ -20,6 +18,5 @@ class Entity < ActiveRecord::Base
 	has_many :subscriber, :through => :subscrtipion
 	has_many :subscribee, :through => :subscrtipion
 
->>>>>>> 6728fe915c8f6a5988591d68e78f16afacedf7ea
 end
 
