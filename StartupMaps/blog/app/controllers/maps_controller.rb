@@ -1,13 +1,12 @@
 class MapsController < ApplicationController
 
   # Defintion: gets all startups and services and investors in the db and shows them on the map and
-  # then linking the markers with the startups with an image to be easily identified in the map and
-  # then putting the name or information on a box when clicking on the marker it pops up with the name,
-  # the @start and @serv and @inv is the link between map_controller and the map index to be easily accessed.
+  # Then linking the markers with the startups with an image to be easily identified in the map and
+  # Then putting the name or information on a box when clicking on the marker it pops up with the name,
+  # The @start and @serv and @inv is the link between map_controller and the map index to be easily accessed.
   # Input: Startup, Service and Investor Table and the @start, @serv and @inv.
   # Output: the Startup, Service and Investor database and the markers linked to the startup, service and investor.
   # Author: Youssef Attaby.
-
   def Index
 	  @startups = Startup.all
 	  @start = Gmaps4rails.build_markers(@startups) do |startup, marker|
