@@ -41,12 +41,31 @@ class EntitiesController < ApplicationController
   
   def update_email_and_password
   @entity = Entity.find(params[:entity_id])
- 
-  if @entity.update_attributes(params[:entities].permit(:email, :password)).save
+    @new = Entity.new
+    @new.id = @Entity.id
+    @new.name = @Entity.name
+    @new.username = @Entity.username
+    @new.e_mail = params[:email]
+    @new.password = params[:password]
+    @new.verification_code = @Entity.verification_code
+    @new.location = @Entity.location
+    @new.headquarter = @Entity.headquarter
+    @new.description = @Entity.description
+    @new.password_reset = @Entity.password_reset
+    @new.sent_at = @Entity.sent_at
+    @new.auth_token = @Entity.auth_token
+    @new.created_at = @Entity.created_at
+
+    @entity.delete
+   if @new.save
+
     redirect_to entity_update_email_and_password_path , notice: "Successfully edited"
   else
     render 'edit'
   end
+
+
+
   end
 
   def update

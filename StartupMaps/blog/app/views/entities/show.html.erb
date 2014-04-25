@@ -1,1 +1,15 @@
-<%= button_to "Edit e-mail and password", entity_edit_email_and_password_path(entity_id: params[:id]) %>
+<h1>Edit your email and password</h1>
+ 
+<form action='update_email_and_password'  method=get >
+ 
+    email:<br>
+    
+    <input type=text name=email >
+    <input type=hidden name=id value=1>
+  <br>
+    password:<br>
+    <br>
+    <input type=text name=password ><br>
+    
+    <input type=submit value='change' %>
+ </form>

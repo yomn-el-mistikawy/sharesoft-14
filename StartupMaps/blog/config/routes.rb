@@ -1,8 +1,18 @@
 Blog::Application.routes.draw do
+ 
+  resources :groups do
+    get "list_group_members"
+  end  
+
+  resources :startups
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 32ccb1d1646b3a4165e3aa22825fe1afead5048a
   resources :projects do
      get "suggest"
      get "show_suggested"
@@ -17,7 +27,7 @@ resources :entities do
     get "entity_params"
   end
 
-
+get 'entities/edit_email_and_password'
 
 
 
