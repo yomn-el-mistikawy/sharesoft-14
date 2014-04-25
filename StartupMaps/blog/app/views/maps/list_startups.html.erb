@@ -1,0 +1,15 @@
+<!--
+# Definition: list stratups.
+# Inputs: year.
+# Output: all startups that has the same number of year.
+# Author: Sandra Youssef.
+-->
+
+<h1>startups with same number of years</h>
+<p>	
+<% @result.each do |start| %>
+<tr>
+	<td><%= start.name %></td>
+</tr>
+</p>
+<% end %>

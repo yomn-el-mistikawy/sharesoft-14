@@ -1,0 +1,53 @@
+<!--
+# Definition: this method compare if the input of the user is a number, if not, a 
+# message will appear to the user.
+# Input: year.
+# Output: all startups that has the same number of year.
+# Author: Sandra Youssef.
+-->
+
+<html>
+<head>
+	<script>
+	function valiNum(which)
+	{
+    if(isNaN(which.year.value ))
+		{
+			alert("please enter a number");
+		  return false;
+		}
+	}
+	</script>
+<h1> search for your company</h1>
+<%#= form_for :user do |f| %>
+  <p>
+    <%#= f.label :NumberOfYears%><br>
+    <%#= f.text_field :year %>
+
+  </p>
+  <p>
+    <%#= f.submit ("search"), action: "list_startups" %>
+  </p>
+<%# end %>
+
+
+<!--
+# Definition: this method has a label with a text field that the user will 
+# enter in it the number of working year that he wants.
+# Inputs: year.
+# Output: all startups that has the same number of year.
+# Author: Sandra Youssef.
+-->
+
+<body>
+<form accept-charset="UTF-8" action="list_startups" method="get" onsubmit="return valiNum(this)">
+	<p>
+    <label for="user_NumberOfYears">Number ofyears</label><br>
+    <input id="user_year" name="year" type="text" />
+
+  </p>
+  <p>
+    <input action="list_startups" name="commit" type="submit" value="search" />
+  </p>
+</form>
+</body>
