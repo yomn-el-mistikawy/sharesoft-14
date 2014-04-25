@@ -1,0 +1,14 @@
+<h1> Merge Requests </h1>
+
+
+
+<% @requests.each do |r| %>
+    <tr>
+      
+      <td><%= r.requester%></td>
+     
+     <td><%= link_to 'Accept',startup_accept_path(request: r, startup_id: '2')%></td>
+     <td><%= link_to 'Reject',startup_reject_path(request: r, startup_id: '2')%></td>
+     <br>
+    </tr>
+<% end %>
