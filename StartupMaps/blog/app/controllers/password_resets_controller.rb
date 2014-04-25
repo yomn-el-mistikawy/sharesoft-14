@@ -2,7 +2,8 @@ class PasswordResetsController < ApplicationController
   def new
   end
 
-	# Definition: Finds the user by their email, sends password if the user is an existing entity then redirects to the home page.
+	# Definition: Finds the user by their email, 
+  # sends password if the user is an existing entity then redirects to the home page.
   # Input: E-mail.
   # Output: Void.
   # Author: Omar El-Menawy.
