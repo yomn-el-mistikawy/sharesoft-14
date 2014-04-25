@@ -2,7 +2,7 @@
 
 
 <!-- 
-# This form submits the inputs that are to be put into the databases.
+# Definition: This form submits the inputs that are to be put into the databases.
 # Input: Takes the attribute @entity.
 # Output: Void.
 # Author: Adel Zee Badawy.
@@ -10,13 +10,15 @@
 
 <%= form_for(@entity) do |f| %>
 
+
   <!-- 
-  # This part posts the errors that are met in the model. These are errors are made by conditions 
-  # not being met.
+  # Definition: This part posts the errors that are met in the model. These are errors are made by 
+  # conditions not being met.
   # Input: The array consisting of the errors.
   # Output: The error messages.
   # Author: Adel Zee Badawy.
   -->
+
   <% if @entity.errors.any? %>
     <div id = "error_explanation">
       <h2>Please fix the following errors:</h2>
