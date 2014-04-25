@@ -12,6 +12,8 @@ development:
   adapter: mysql2
   encoding: utf8
   database: blog_development
+  username: root
+  password: 12345
   pool: 5
   
 

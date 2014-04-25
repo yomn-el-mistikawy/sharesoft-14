@@ -6,14 +6,14 @@ Blog::Application.routes.draw do
 
   resources :startups
 
-  resources :entities
-  
-  match '/entities/:id', :to => 'entities#show', :as => :user, :via => :get
-  match '/entities', :to => 'entities#index', :as => :entities
-  match '/entities/:id', :to => 'entities#destroy', :via => :delete
-  match '/entities/:id/friends', :to => 'entities#friends', :as => :friends_user
-  match '/entities/:id/pending_friends', :to => 'entities#pending_friends', :as => :pending_friends_user
-  match '/entities/:id/requested_friends', :to => 'entities#requested_friends', :as => :requested_friends_user
+  resources :entities do 
+    get "acceptfriend"
+    get "addfriend"
+    get "destroyfriend"
+    get "friendship_form"
+    get "waitingfriend"
+    get "show_friend"
+  end
 
   resources :friendships, :only => [:create, :update, :destroy]
 
