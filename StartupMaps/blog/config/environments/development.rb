@@ -16,9 +16,9 @@ config.action_mailer.default_url_options = { :host => "localhost:3000" }
 config.action_mailer.delivery_method = :sendmail
 
 
-# Enables the action mailer.
-# Enables error description.
-# Sets default options.
+# Enables the action mailer, Enables error description, Sets default options.
+# Input: Void.
+# Output: Void.
 # Author: Omar El-Menawy.
 
 config.action_mailer.perform_deliveries = true
@@ -26,9 +26,9 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.default_options = {from: 'no-replay@example.com'}
 
 
-# Definition: Delivery method.
-# Give gmail smtp number in order to send from gmail account.
-# Input my personal information (Email and Password).
+# Definition: Delivery method, give gmail smtp number in order to send from gmail account.
+# Input: My personal information (Email and Password).
+# Output: Void.
 # Author: Omar El-Menawy.
 
 config.action_mailer.delivery_method = :smtp
