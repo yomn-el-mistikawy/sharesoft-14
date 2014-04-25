@@ -1,6 +1,8 @@
-  <!-- Form for adding a friend request-->
-  <!-- Sarah Fathallah-->
-
+  <!-- # Definition: Form for adding a friend request.-->
+  <!-- # Input: friend id.-->
+  <!-- # Input: void.-->
+  <!-- # Author: Sarah Fathallah.-->
+  
   <%= form_for current_user.friendships.build(:friend_id => @user.id),
                :remote => true do |f| %>
     <div><%= f.hidden_field :friend_id %></div>

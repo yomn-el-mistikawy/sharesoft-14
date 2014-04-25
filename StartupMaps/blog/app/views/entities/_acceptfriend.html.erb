@@ -1,5 +1,7 @@
-  <!-- Form for accepting a friend request-->
-  <!-- Sarah Fathallah-->
+  <!-- # Definition: Form for accepting a friend request.-->
+  <!-- # Input: user.-->
+  <!-- # Input: void.-->
+  <!-- # Author: Sarah Fathallah.-->
 
   <%= form_for current_user.friendships.find_by_friend_id(@user), :html => {:method => :put},
           	:remote => true do |f| %>

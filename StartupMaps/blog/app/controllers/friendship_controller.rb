@@ -8,7 +8,7 @@ class FriendshipController < ApplicationController
   # Author: Sarah Fathallah.
 
   def create
-    @user = User.find(params[:friendship][:friend_id])
+    @user = Entity.find(params[:friendship][:friend_id])
     Friendship.request(current_user, @user)
     respond_to do |format|
       format.html { redirect_to @user }

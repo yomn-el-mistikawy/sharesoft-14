@@ -1,5 +1,8 @@
-  <!-- Displaying your fiends-->
-  <!-- Sarah Fathallah-->
+
+  <!-- # Definition: Displaying the user friends.-->
+  <!-- # Input: user.-->
+  <!-- # Input: void.-->
+  <!-- # Author: Sarah Fathallah.-->
   
   <table summary="Information about friends">
     <tr>
@@ -7,7 +10,7 @@
         <h1><%= @title %></h1>
   
         <% unless @users.empty? %>
-          <ul class="users">
+          <ul class="entities">
             <%= render @users %>
           </ul>
           <%= will_paginate @users %>
