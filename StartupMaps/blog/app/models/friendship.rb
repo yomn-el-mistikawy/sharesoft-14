@@ -7,9 +7,9 @@ validates_presence_of :entity_id, :friend_id
   # "def self." means this is a class method
 
   # Defintion: Return true if the entitys are (possibly pending) friends.
-  # Input: entity, friend
-  # Output: boolean 
-  # Author: Sarah Fathallah 
+  # Input: entity, friend.
+  # Output: boolean.
+  # Author: Sarah Fathallah.
 
   def self.exists?(entity, friend)
     not find_by_entity_id_and_friend_id(entity, friend).nil?
@@ -17,9 +17,9 @@ validates_presence_of :entity_id, :friend_id
 
 
   # Defintion: Records the two side request, a pending friend request and a requested friend request.
-  # Input: entity, friend
-  # Output: void
-  # Author: Sarah Fathallah 
+  # Input: entity, friend.
+  # Output: void.
+  # Author: Sarah Fathallah .
 
   def self.request(entity, friend)
     unless entity == friend or Friendship.exists?(entity, friend)
@@ -30,10 +30,10 @@ validates_presence_of :entity_id, :friend_id
     end
   end
 
- 	# Defintion: 
-  # Input:
-  # Output: 
-  # Author: Sarah Fathallah 
+ 	# Defintion: The method updates the table if the entity accepts.
+  # Input: entity, friend.
+  # Output: void.
+  # Author: Sarah Fathallah.
   
   def self.accept(entity, friend)
     transaction do
@@ -44,9 +44,9 @@ validates_presence_of :entity_id, :friend_id
 
 
 	# Defintion: Delete a friendship or cancel a pending request.
-  # Input: entity, friend
-  # Output: void
-  # Author: Sarah Fathallah 
+  # Input: entity, friend.
+  # Output: void.
+  # Author: Sarah Fathallah. 
 
   def self.breakup(entity, friend)
     transaction do
@@ -57,9 +57,9 @@ validates_presence_of :entity_id, :friend_id
 
 
  	# Defintion: Update the db with one side of an accepted friendship request.
-  # Input: entity, friend
-  # Output: void
-  # Author: Sarah Fathallah 
+  # Input: entity, friend.
+  # Output: void.
+  # Author: Sarah Fathallah.
 
   private
 
