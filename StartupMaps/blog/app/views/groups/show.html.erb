@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
-
+<%= button_to "Join",  group_join_request_path(group_id: params[:id]) %>
 <p>
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
+  
 
 <p>
   <strong>Group name:</strong>
-  <%= @group.group_name %>
+  <%= @group.name %>
 </p>
 
 <p>
@@ -17,3 +18,4 @@
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
+

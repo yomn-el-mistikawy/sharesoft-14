@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
+
   # GET /groups
   # GET /groups.json
   def index
@@ -10,6 +11,13 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find(params[:id])
+  end
+
+  def join_request
+    if JoinRequest.create(:group_id => params[:group_id], :sender_id => session[:entity_id])
+      render text: "Request sent"
+    end   
   end
 
   # GET /groups/new
