@@ -20,7 +20,7 @@ class Entity < ActiveRecord::Base
 	# Generates authentication token that is unique to every user.
 	# Author: Omar El-Menawy.
 
-	before_create { generate_token(:auth_token) }
+	before_create {generate_token(:auth_token)}
 	
 
 	# Definition: Saves password reset token, and calls on the user mailer to send the email.

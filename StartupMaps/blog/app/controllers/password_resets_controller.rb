@@ -2,7 +2,8 @@ class PasswordResetsController < ApplicationController
   def new
   end
 
-	# Definition: Finds the user by their email, sends password if the user is an existing entity then redirects to the home page.
+	# Definition: Finds the user by their email, 
+  # sends password if the user is an existing entity then redirects to the home page.
   # Input: E-mail.
   # Output: Void.
   # Author: Omar El-Menawy.
@@ -19,12 +20,12 @@ class PasswordResetsController < ApplicationController
 
 	def update
   	@entity = Entity.find_by_password_reset!(params[:id])
-  if @entity.sent_at < 2.hours.ago
-    redirect_to new_password_reset_path, :alert => "Password reset has expired."
-  elsif @entity.update_attributes(params[:user])
-    redirect_to root_url, :notice => "Password has been reset!"
-  else
-    render :edit
-  end
+    if @entity.sent_at < 2.hours.ago
+      redirect_to new_password_reset_path, :alert => "Password reset has expired."
+    elsif @entity.update_attributes(params[:user])
+      redirect_to root_url, :notice => "Password has been reset!"
+    else
+      render :edit
+    end
 	end
 end
