@@ -26,13 +26,14 @@ class PostAttachment < ApplicationController
     # Author: Essam Azzam
   
     def create
-      @resume = Resume.new(resume_params)
-        if @resume.save
-         redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
-        else
-         render "new"
-        end
+       @resume = Resume.new(resume_params)
+         if @resume.save
+          redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
+         else
+          render "new"
+         end
     end
+  
   
     # Definition: Deletes a record from the database
     # Input: resume
@@ -53,6 +54,6 @@ class PostAttachment < ApplicationController
   
     private
      def resume_params
-      params.require(:resume).permit(:name, :attachment)
+       params.require(:resume).permit(:name, :attachment)
      end
     end
