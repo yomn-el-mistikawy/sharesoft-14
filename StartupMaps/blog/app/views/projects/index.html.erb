@@ -1,0 +1,42 @@
+
+  <!-- == Begin  == 
+  # Definition: "A startup can see a list of his projects" 
+  # This method allows you to get a list of projects. 
+  # that belong to a specific startup with all its categories
+  # link_to, it gives it the privileges to link it to the project.
+  # Input: entity_id, startup_id.
+  # Output: project_id "all project description in a list".
+  # Author: Hana Magdy. -->
+  
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Milestones</th>
+      <th>Location</th>
+      <th>Goals</th>
+      <th>Requirements</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+
+      <tr>
+        <td> <%= link_to project.id, project %> </td>
+        <td> <%= link_to project.name, project %> </td>
+        <td> <%= project.description %> </td>
+        <td> <%= project.milestones %> </td>
+        <td> <%= project.location %> </td>
+        <td> <%= project.goals %> </td>
+        <td> <%= project.requirements %> </td>
+      </tr>
+    
+    <% end %>
+  </tbody>
+</table>
+
+
+  <!-- == End  ==   -->
+

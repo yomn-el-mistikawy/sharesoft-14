@@ -1,4 +1,5 @@
 class Entity < ActiveRecord::Base
+
 	has_many :services 
 	has_many :startups
 	has_many :investors
