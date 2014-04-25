@@ -53,7 +53,6 @@ class ProjectsController < ApplicationController
         format.html { render :edit }
       end
     end
-
   end
 
 
