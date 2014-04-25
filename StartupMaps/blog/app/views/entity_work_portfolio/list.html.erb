@@ -1,4 +1,11 @@
 
+<!--#  Defintion: The method  shows the created portfolios. And includes edit button and delete button
+	# edit redirects to the update page and delete gets out a message to confirm the deletion. And a new portfolio button to create a new portfolio it is redirected to a new page
+ #  Input:  Portfolio id and portfolio name.
+ #  Output: Portfolio_name, portfolio_description, portfolio_launch.
+ #  Author: Mozdan Ahmed.-->
+
+
 <% if @portfolio.blank? %>
 <p>There are not any portfolios.</p>
 <% else %>
