@@ -1,0 +1,26 @@
+  <!--
+  # Definition: to update username and password and check first if empty shows a message.
+	# Input: string enterd from the user.
+	# Output: username and password labels and text fields.
+	# Author: Tharey. 
+  -->
+	
+  <script>
+  function checkrequired(which)
+  {
+     for(i = 0;i < which.length;i++ )
+     {
+		   if(which.elements[i].value.length == 0)
+		   {
+			  	alert("One or more of the required elements are not completed. Please complete them, then sign in again!")
+			    return false
+		    }
+    	}
+  }
+  </script>  
+  <form onSubmit = "return checkrequired(this)"action = 'in'>
+    Username: <input type = "text" name = "username"><br>
+    Password: <input type = "text" name = "password"><br>
+    <input type = 'submit' value = 'sign in'>
+  </form>
+  s<br><br><br><br>
