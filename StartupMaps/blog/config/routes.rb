@@ -8,6 +8,11 @@ Blog::Application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
+  get 'likes/like'
+  get 'groups/show'
+  get 'likes/showposts'
+
   
   resources :projects do
      get "suggest"
@@ -17,9 +22,7 @@ Blog::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
-  get 'likes/like'
-  get 'groups/show'
-  get 'likes/showposts'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
