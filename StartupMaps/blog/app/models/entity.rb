@@ -21,6 +21,7 @@ class Entity < ActiveRecord::Base
 	# Author: Omar El-Menawy.
 
 	before_create { generate_token(:auth_token) }
+	
 
 	# Definition: Saves password reset token, and calls on the user mailer to send the email.
 	# Input: authentication token.
@@ -34,13 +35,16 @@ class Entity < ActiveRecord::Base
   	UserMailer.password_reset(self).deliver
   end
 
+
   # Definition: Generates token.
+  # Input: Void.
+  # Output: Void.
   # Author: Omar El-Menawy.
 
 	def generate_token(column)
-  	begin
-    self[column] = SecureRandom.urlsafe_base64
-  	end while Entity.exists?(column => self[column])
+		begin
+			self[column] = SecureRandom.urlsafe_base64
+		end while Entity.exists?(column => self[column])
 	end
 end
 
