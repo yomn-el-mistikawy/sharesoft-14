@@ -1,6 +1,11 @@
 class EntitiesController < ApplicationController
 
 
+  # Definition: Gives access to the index page of entities.
+  # Input: Void.
+  # Output: Void.
+  # Author: Adel Zee Badawy.
+
   def  index
   end
 
@@ -40,6 +45,12 @@ class EntitiesController < ApplicationController
       end
   end
 
+
+  # Definition: Creates a new Entity which allows for inputs into the Entity which was created upon
+  # loading the page 'new'.
+  # Input: Void.
+  # Output: Void.
+  # Author: Adel Zee Badawy.
 
   def new
     @entity = Entity.new
