@@ -56,11 +56,11 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition: "As a startup, I can set a project goal, milestone,
-  # requirements (roles, resources) "
+  # Definition: "As an startup, I can create a project with a name, category,
+  # description and geographical location (not necessary) and I can view the project profile"
   # This method shows all details of a project
   # that belong to a specific startup and is linked to the show HTML file
-  # which also includes the launch and editing part
+  # which also includes the launch and editing part.
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
   # it's reachable and knows what's happening in the file.
   # Input: Project_id.
@@ -74,23 +74,36 @@ class ProjectsController < ApplicationController
       format.html
     end
   end
+  
 
-
+  # Definition: "As an startup, I can create a project with a name, category,
+  # description and geographical location (not necessary) and I can view the project profile"
+  # Project.new = creates new project and gets linked to create -->new.html
+  # Input: Name, Category, Location and description 
+  # Output: project_id. "on the show page".
+  # Author: Hana Magdy.
    def new
     @project = Project.new
   end
+  
 
-
+  # Definition: "As an startup, I can create a project with a name, category,
+  # description and geographical location (not necessary) and I can view the project profile"
+  # Project.new = creates new project and gets linked to create-->new.html with the project's id
+  # .save, saves all the entries 
+  # Input: Name, Category, Location and description 
+  # Output: project_id. "on the show page".
+  # Author: Hana Magdy.
   def create
     @project = Project.new(project_params)
     @project.save
     redirect_to @project
   end
+  # == End  == 
 
 
   private
   def project_params
     params[:project].permit(:name, :category, :location, :description)
   end
-  
 end
