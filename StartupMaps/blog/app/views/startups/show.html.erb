@@ -1,0 +1,12 @@
+  <% if @achieved_badges.size != 21 %>
+  <%= button_to 'View unachieved badges', startup_show_unachieved_badges_path(startup_id: params[:id])%>
+  <% end %>
+  <table>
+    <tbody>
+      <% @achieved_badges.each do |p| %>
+        <tr>
+          <td><%= p.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
