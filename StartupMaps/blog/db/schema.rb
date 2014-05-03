@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425121046) do
+ActiveRecord::Schema.define(version: 20140502223525) do
+
+  create_table "badges", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "category"
+    t.integer  "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.string   "comment"
-    t.integer  "entity_id"
+    t.string   "commenter"
+    t.integer  "startup_id"
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -105,6 +115,8 @@ ActiveRecord::Schema.define(version: 20140425121046) do
   end
 
   create_table "friendships", force: true do |t|
+    t.integer  "sender_id_id"
+    t.integer  "receiver_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -157,14 +169,9 @@ ActiveRecord::Schema.define(version: 20140425121046) do
   create_table "likes", force: true do |t|
     t.integer  "post_id"
     t.integer  "comment_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "post_attachments", force: true do |t|
-    t.datetime "date"
-    t.string   "description"
-    t.integer  "groups_id"
+    t.integer  "liker_id"
+    t.integer  "likable_id"
+    t.string   "likable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -173,20 +180,33 @@ ActiveRecord::Schema.define(version: 20140425121046) do
     t.string   "title"
     t.string   "text"
     t.integer  "group_id"
-    t.integer  "entity_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_requirements", force: true do |t|
+    t.string   "description"
+    t.boolean  "reached"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_targets", force: true do |t|
+    t.string   "description"
+    t.boolean  "reached"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|
     t.string   "location"
-    t.string   "goals"
     t.string   "name"
-    t.integer  "milestones"
     t.string   "category"
     t.boolean  "launch"
     t.string   "description"
-    t.string   "requirements"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -252,6 +272,20 @@ ActiveRecord::Schema.define(version: 20140425121046) do
     t.string   "joint_ventures"
     t.string   "sector"
     t.integer  "number_of_working_years"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startups_badges", force: true do |t|
+    t.integer  "badge_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startups_projects", force: true do |t|
+    t.integer  "startup_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
