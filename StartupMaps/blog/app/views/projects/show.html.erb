@@ -1,7 +1,3 @@
-
-  <!-- Just added the colors :)
-  Author: Hana Magdy  -->
-
 <style type="text/css">
 
   h1 {
@@ -35,17 +31,15 @@
   <%= @project.description %>
 </p>
 
-<p>
-  <strong>Goals:</strong>
-  <%= @project.goals %>
-</p>
 
-<p>
-  <strong>Milestones:</strong>
-  <%= @project.milestones %>
-</p>
-
-<p>
-  <strong>Requirements:</strong>
-  <%= @project.requirements %>
-</p>
+  <!--Definition: "As a startup, I can edit and add all projects 
+  attributes and specifically targets and requirements "
+  Allows editing the project's details, specifically targets and requirements
+  This method allows you to click on an underlined 
+  link "button" that redirects to the edit page.
+  Input: project_id "the button".
+  Output: edit.html.erb, because it does not return anything, it just redirects.
+  Author: Hana Magdy. -->
+ 
+<%= link_to "Edit this project", edit_project_path(@project) %>
+  <!-- == End  ==   -->

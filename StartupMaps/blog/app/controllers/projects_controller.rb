@@ -75,6 +75,42 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # Definition: "As a startup, I can set a project goal, milestone,
+  # requirements (roles, resources)"
+  # This method allows you to edit a project given its project's id.
+  # Input: Project_id.
+  # Output: Project_id "specifically goals, milestones and requirements".
+  # Author: Hana Magdy.
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+
+  # Definition: "As a startup, I can edit and add targets and requirements"
+  # Allows editing the project's details, specifically targets and requirements
+  # Redirects user to project's page (show project) on success
+  # Re-renders the edit project page on error and is linked to the edit HTML file
+  # update_attribute --> updates the rows
+  # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
+  # it's reachable and knows what's happening in the file.
+  # Input: project_id. "on the show page".
+  # Output: project_id "all project description along successfully 
+  # edited targets and requirements".
+  # Author: Hana Magdy.
+
+  def update
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      if @project.update_attributes(params[:project].permit(:name, :category, :location, :description))
+        format.html { redirect_to @project, notice: "Successfully updated project" }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+  # == End  ==  
 
    def new
     @project = Project.new

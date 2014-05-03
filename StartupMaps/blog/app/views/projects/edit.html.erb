@@ -1,0 +1,51 @@
+  <!--    == Begin  == 
+  Definition: "As a startup, I can edit and add all projects 
+  attributes and specifically targets and requirements "
+  Allows editing the project's details, specifically targets and requirements
+  Redirects user to project's page (show project) on success
+  Re-renders the edit project page on error.
+  Input: project_id. "on the show page". then user enters input.
+  Output: project_id, on click it redirects to the whole project
+  "all project description along successfully edited all projects attributes".
+  Author: Hana Magdy. -->
+   
+<style type="text/css">
+
+  h1 {
+    color: #FF3399;
+  }
+
+  p {
+    color: #0099FF;
+  }
+  </style>
+
+<h1>Editing '<%= @project.name %>' Project</h1>
+ 
+<%= form_for @project do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_area :name %>
+  </p>
+
+ 
+  <p>
+    <%= f.label :category %><br>
+    <%= f.text_area :category %>
+  </p>
+
+  <p>
+    <%= f.label :location %><br>
+    <%= f.text_area :location %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+ 
+  <p>
+    <%= f.submit ("Edit Project") %>
+  </p>
+<% end %>
+  <!-- == End  ==   -->
