@@ -56,6 +56,31 @@ class ProjectsController < ApplicationController
   end
 
 
+  # Definition: "A startup can launch its project"
+  # Changes the status of a project and redirects to the project's 
+  # page (show project) on success or error
+  # with the exception of displaying a success/error message
+  # update_attribute --> updates the rows
+  # update the status of launch project from unlaunch to launched and vice versa.
+  # Input: project_id. "on the show page".
+  # Output: project_idVoid "it's an action" returns the success of the
+  # changeable button of launch upon of it's previous status. 
+  # Author: Hana Magdy.
+
+  def change_launch_status
+    project = Project.find(params[:id])
+    respond_to do |format|
+
+      if project.update_attribute(:launch, !project.launch)
+        flash.notice = "Successfully launched project"
+      else
+        flash.alert = "Oops, couldn't launch project"
+      end
+
+      format.html { redirect_to project }
+    end
+  end
+
   # Definition: "As an startup, I can create a project with a name, category,
   # description and geographical location (not necessary) and I can view the project profile"
   # This method shows all details of a project
