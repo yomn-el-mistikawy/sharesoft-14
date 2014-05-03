@@ -4,7 +4,9 @@ Blog::Application.routes.draw do
     get "list_group_members"
   end  
 
-  resources :startups
+  resources :startups do
+    post "show_unachieved_badges"
+  end  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
