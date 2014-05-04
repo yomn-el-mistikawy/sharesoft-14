@@ -1,0 +1,16 @@
+
+<%= form_for :GeographicalLocationGroups, url: geographical_location_groups_path do |f| %>
+  <p>
+    <%= f.label :startup_name %><br>
+    <%= f.text_field :startup_name %>
+  </p>
+ 
+  <p>
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
