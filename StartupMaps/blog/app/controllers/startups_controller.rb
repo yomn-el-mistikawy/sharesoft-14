@@ -14,7 +14,8 @@ class StartupsController < ApplicationController
       if session[:entity_id] == startup.entity_id
         @badges_just_achieved_description = StartupsBadges.set_badges(params[:id])
       end	
-    @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1)
+    @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 0)
+    @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1)
   end
 
 
@@ -25,6 +26,6 @@ class StartupsController < ApplicationController
   # Author: Yomn El-Mistikawy	
 
   def show_unachieved_badges
-    @unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:startup_id], 0)
+    @unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:startup_id], 0. 0)
   end  
 end
