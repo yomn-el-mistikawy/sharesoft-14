@@ -6,8 +6,8 @@ class RemovesDetailsFromProjects < ActiveRecord::Migration
   end
 
   def self.down
-  	add_column :projects, :requirements
-  	add_column :projects, :goals
-  	add_column :projects, :milestones
+  	add_column :projects, :requirements, :string
+  	add_column :projects, :goals, :string
+  	add_column :projects, :milestones, :string
   end	
 end
