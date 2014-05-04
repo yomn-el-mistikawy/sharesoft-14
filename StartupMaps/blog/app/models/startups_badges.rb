@@ -1,6 +1,6 @@
 class StartupsBadges < ActiveRecord::Base
-	has_and_belongs_to_many :badges
-    has_and_belongs_to_many :startups
+  has_and_belongs_to_many :badges
+  has_and_belongs_to_many :startups
 
   # Definition: This method takes the startup_id and calls different helper methods to set achieved badges.
   # It then returns an array of recently achieved badges' description.
@@ -13,7 +13,7 @@ class StartupsBadges < ActiveRecord::Base
     recently_achieved_badges = recently_achieved_badges + StartupsBadges.set_year_badges(startup_id)
     recently_achieved_badges = recently_achieved_badges + StartupsBadges.set_badge_collection_badges(startup_id)
     return recently_achieved_badges
-	end
+  end
 
   
   # Definition: This method takes the startup_id and gets the unachieved badges. If the startup is
@@ -122,5 +122,5 @@ class StartupsBadges < ActiveRecord::Base
     else
       return Badge.where.not(:id => achieved_badges_id).order(id: :asc)
     end    
-  end			
+  end
 end

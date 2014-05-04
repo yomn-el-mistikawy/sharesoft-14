@@ -9,7 +9,7 @@ class StartupsController < ApplicationController
   # Author: Yomn El-Mistikawy
 
   def show
-  	session[:entity_id] = 3
+    session[:entity_id] = 6
     startup = Startup.find(params[:id])
       if session[:entity_id] == startup.entity_id
         @badges_just_achieved_description = StartupsBadges.set_badges(params[:id])
