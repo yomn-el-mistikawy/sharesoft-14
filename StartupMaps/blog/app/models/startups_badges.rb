@@ -55,6 +55,9 @@ class StartupsBadges < ActiveRecord::Base
   def self.set_launch_badges(startup_id)
   end 
 
+  def self.set_subscription_badges(startup_id)
+  end
+
 
   # Definition: This method takes the startup_id and gets the unachieved badges. If the startup has
   # achieved all of the badges in a certain category, then a platinum badge is given. Moreover,
@@ -67,41 +70,47 @@ class StartupsBadges < ActiveRecord::Base
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0)
     achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1)
     recently_achieved_badges = []
-    if (unachieved_badges.where(:id => "16").size == 1)
-      if (achieved_badges.where(:category => "year").size == 3)
-        StartupsBadges.create(:startup_id => startup_id, :badge_id => 16)
-        recently_achieved_badges = recently_achieved_badges + [Badge.find(16).description]
-      end
-    end 
-    if (unachieved_badges.where(:id => "17").size == 1)
-      if (achieved_badges.where(:category => "view").size == 3)
-        StartupsBadges.create(:startup_id => startup_id, :badge_id => 17)
-        recently_achieved_badges = recently_achieved_badges + [Badge.find(17).description]
-      end
-    end 
-    if (unachieved_badges.where(:id => "18").size == 1)
-      if (achieved_badges.where(:category => "requirements").size == 3)
-        StartupsBadges.create(:startup_id => startup_id, :badge_id => 18)
-        recently_achieved_badges = recently_achieved_badges + [Badge.find(18).description]
-      end
-    end 
     if (unachieved_badges.where(:id => "19").size == 1)
-      if (achieved_badges.where(:category => "targets").size == 3)
+      if (achieved_badges.where(:category => "year").size == 3)
         StartupsBadges.create(:startup_id => startup_id, :badge_id => 19)
         recently_achieved_badges = recently_achieved_badges + [Badge.find(19).description]
       end
-    end  
+    end 
     if (unachieved_badges.where(:id => "20").size == 1)
-      if (achieved_badges.where(:category => "launched").size == 3)
+      if (achieved_badges.where(:category => "view").size == 3)
         StartupsBadges.create(:startup_id => startup_id, :badge_id => 20)
         recently_achieved_badges = recently_achieved_badges + [Badge.find(20).description]
       end
-    end  
+    end 
     if (unachieved_badges.where(:id => "21").size == 1)
-      achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1)
-      if (achieved_badges.where(:category => "collector").size == 5)
+      if (achieved_badges.where(:category => "requirements").size == 3)
         StartupsBadges.create(:startup_id => startup_id, :badge_id => 21)
         recently_achieved_badges = recently_achieved_badges + [Badge.find(21).description]
+      end
+    end 
+    if (unachieved_badges.where(:id => "22").size == 1)
+      if (achieved_badges.where(:category => "targets").size == 3)
+        StartupsBadges.create(:startup_id => startup_id, :badge_id => 22)
+        recently_achieved_badges = recently_achieved_badges + [Badge.find(22).description]
+      end
+    end  
+    if (unachieved_badges.where(:id => "23").size == 1)
+      if (achieved_badges.where(:category => "launched").size == 3)
+        StartupsBadges.create(:startup_id => startup_id, :badge_id => 23)
+        recently_achieved_badges = recently_achieved_badges + [Badge.find(23).description]
+      end
+    end  
+    if (unachieved_badges.where(:id => "24").size == 1)
+      if (achieved_badges.where(:category => "subscribe").size == 3)
+        StartupsBadges.create(:startup_id => startup_id, :badge_id => 24)
+        recently_achieved_badges = recently_achieved_badges + [Badge.find(24).description]
+      end
+    end
+    if (unachieved_badges.where(:id => "25").size == 1)
+      achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1)
+      if (achieved_badges.where(:category => "collector").size == 6)
+        StartupsBadges.create(:startup_id => startup_id, :badge_id => 25)
+        recently_achieved_badges = recently_achieved_badges + [Badge.find(25).description]
       end
     end
     return recently_achieved_badges
