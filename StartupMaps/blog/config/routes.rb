@@ -9,11 +9,16 @@ Blog::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+
+>>>>>>> c56240130d127459987d33fd09c5844f2485a589
   
 >>>>>>> 32ccb1d1646b3a4165e3aa22825fe1afead5048a
   resources :projects do
+<<<<<<< HEAD
      get "suggest"
      get "show_suggested"
      get "merge_request"
@@ -30,6 +35,14 @@ resources :entities do
 get 'entities/edit_email_and_password'
 
 
+=======
+
+    get "change_launch_status", on: :member, as: :launch
+    get "suggest"
+    get "show_suggested"
+    get "merge_request"
+  end  
+>>>>>>> c56240130d127459987d33fd09c5844f2485a589
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'

@@ -10,12 +10,14 @@ class Entity < ActiveRecord::Base
 	has_many :entity_jobs
 	has_many :entity_goals
 	has_many :entity_available_internships
-	has_many :senders, :through => :group_invitations
-	has_many :receivers, :through => :group_invitations
-	has_many :senders, :through => :send_merge_requests
-	has_many :receivers, :through => :send_merge_requests
+	has_many :senders, :through => :group_invitation
+	has_many :receivers, :through => :group_invitation
+	has_many :senders, :through => :send_merge_request
+	has_many :receivers, :through => :send_merge_request
 	has_many :subscriber, :through => :subscrtipion
 	has_many :subscribee, :through => :subscrtipion
+	has_many :receivers, :through => :message
+	has_many :messages
 
 end
 
