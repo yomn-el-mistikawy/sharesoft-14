@@ -24,11 +24,16 @@
     Badge.create(:id => 13, :name => "Innovational", :description => "5 launched projects", :level => 1, :category => "launched")
     Badge.create(:id => 14, :name => "Live wire", :description => "10 launched projects", :level => 2, :category => "launched")
     Badge.create(:id => 15, :name => "Leading edge", :description => "50 launched projects", :level => 3, :category => "launched")
+    # subscription projects
+    Badge.create(:id => 16, :name => "Sociable", :description => "100 subscribers", :level => 1, :category => "subscribe")
+    Badge.create(:id => 17, :name => "Celebraty", :description => "500 subscribers", :level => 2, :category => "subscribe")
+    Badge.create(:id => 18, :name => "Worshipped", :description => "5000 subscribers", :level => 3, :category => "subscribe")
     # badge collector
-    Badge.create(:id => 16, :name => "Surviver", :description => "Collected all Years of work badges", :level => 4, :category => "collector")
-    Badge.create(:id => 17, :name => "VIP", :description => "Collected all popularity badges", :level => 4, :category => "collector")
-    Badge.create(:id => 18, :name => "Go getter", :description => "Collected all requirements badges", :level => 4, :category => "collector")
-    Badge.create(:id => 19, :name => "Visionary", :description => "Collected all target badges", :level => 4, :category => "collector")
-    Badge.create(:id => 20, :name => "Fire ball", :description => "Collected all project launch badges", :level => 4, :category => "collector")
-    Badge.create(:id => 21, :name => "Badge collector", :description => "Collected all badges", :level => 4, :category => "collector")  
+    Badge.create(:id => 19, :name => "Surviver", :description => "Collected all Years of work badges", :level => 4, :category => "collector")
+    Badge.create(:id => 20, :name => "VIP", :description => "Collected all popularity badges", :level => 4, :category => "collector")
+    Badge.create(:id => 21, :name => "Go getter", :description => "Collected all requirements badges", :level => 4, :category => "collector")
+    Badge.create(:id => 22, :name => "Visionary", :description => "Collected all target badges", :level => 4, :category => "collector")
+    Badge.create(:id => 23, :name => "Fire ball", :description => "Collected all project launch badges", :level => 4, :category => "collector")
+    Badge.create(:id => 24, :name => "Hall of fame members", :description => "Collected all subscription badges", :level => 4, :category => "collector")
+    Badge.create(:id => 25, :name => "Badge collector", :description => "Collected all badges", :level => 4, :category => "collector")  
   end
