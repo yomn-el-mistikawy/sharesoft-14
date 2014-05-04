@@ -3,7 +3,7 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.belongs_to :entity
       t.belongs_to :receiver
-      t.string :tittle
+      t.string :title
       t.string :message
       t.timestamps
     end
