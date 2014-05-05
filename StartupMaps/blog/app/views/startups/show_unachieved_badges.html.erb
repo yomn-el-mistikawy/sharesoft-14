@@ -1,9 +1,9 @@
-  <table>
-    <tbody>
-      <% @unachieved_badges.each do |p| %>
-        <tr>
-          <td><%= p.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+ <table>
+  <tbody>
+   <% @unachieved_badges.each do |badge| %>
+    <tr>
+     <td><%= badge.name %></td>
+    </tr>
+   <% end %>
+  </tbody>
+ </table>
