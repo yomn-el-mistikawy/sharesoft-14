@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
  
+  devise_for :entities
+  resources :entities
   resources :groups do
     get "list_group_members"
   end  
