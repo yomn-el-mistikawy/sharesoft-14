@@ -1,26 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<!-- The following list is for listing the details in the tuples in the table -->
-<!-- Adel Zee Badawy -->
-
-<p>
-  <strong>Name:</strong>
-  <%= @entity.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @entity.email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @entity.password %>
-</p>
-
-<!-- The following two lines link to "Edit" and "Back" urls -->
-<!-- Adel Zee Badawy -->
-<%= link_to 'Edit', edit_entity_path(@entity) %> |
-<%= link_to 'Back', entities_path %>
-
-</table>
+ <% if @all_achieved_badges.size != 25 %>
+  <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id])%>
+ <% end %>
+ <table>
+  <tbody>
+   <% @achieved_badges.each do |p| %>
+    <tr>
+     <td><%= p.name %></td>
+    </tr>
+   <% end %>
+  </tbody>
+ </table>
