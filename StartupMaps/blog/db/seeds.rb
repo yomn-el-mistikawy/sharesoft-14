@@ -1,4 +1,4 @@
- # Definition: This initializer creates the achievements badges that are fixed in the system.
+ # Definition: This if condition should add the achievements badges that are fixed in the system.
  # Input: void
  # Output: void
  # Author: Yomn El-Mistikawy

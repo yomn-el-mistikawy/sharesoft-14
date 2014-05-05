@@ -17,13 +17,13 @@ class StartupsBadges < ActiveRecord::Base
  end
 
   
-  # Definition: This method takes the startup_id and gets the unachieved badges. If the startup is
-  # 1 years old and the badge hasn't been achieved, then the badge is added to achieved. The same condition
-  # is done for 2.5 years and 5 years and also the lower level badges are set as bypassed. It then returns 
-  # an array of recently achieved year badges' description.
-  # Input: startup_id
-  # Output: recently_achieved_badges
-  # Author: Yomn El-Mistikawy
+ # Definition: This method takes the startup_id and gets the unachieved badges. If the startup is
+ # 1 years old and the badge hasn't been achieved, then the badge is added to achieved. The same condition
+ # is done for 2.5 years and 5 years and also the lower level badges are set as bypassed. It then returns 
+ # an array of recently achieved year badges' description.
+ # Input: startup_id
+ # Output: recently_achieved_badges
+ # Author: Yomn El-Mistikawy
 
  def self.set_year_badges(startup_id)
   startup = Startup.find(startup_id)
@@ -90,13 +90,13 @@ class StartupsBadges < ActiveRecord::Base
  end
 
 
-  # Definition: This method takes the startup_id and gets the unachieved badges. If the startup has
-  # achieved all of the badges in a certain category, then a platinum badge is given and the lower level badges
-  # are set as bypassed. Moreover, if all badges are collected, a platinum badge is given and lower level badges
-  # are bypassed.
-  # Input: startup_id
-  # Output: recently_achieved_badges
-  # Author: Yomn El-Mistikawy
+ # Definition: This method takes the startup_id and gets the unachieved badges. If the startup has
+ # achieved all of the badges in a certain category, then a platinum badge is given and the lower level badges
+ # are set as bypassed. Moreover, if all badges are collected, a platinum badge is given and lower level badges
+ # are bypassed.
+ # Input: startup_id
+ # Output: recently_achieved_badges
+ # Author: Yomn El-Mistikawy
 
  def self.set_badge_collection_badges(startup_id)
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0)
