@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
+    @groups = Group.all
   
   end
 
@@ -34,7 +35,6 @@ class GroupsController < ApplicationController
     group.creator_id = params[:id]
     group.name = params[:name] 
     group.description = params[:description] 
-    group.location = params[:location]
     group.private = params[:private]
     group.interest = params[:interests]
     group.save
@@ -51,7 +51,10 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
 
+    redirect_to groups_path
   end
 
   
