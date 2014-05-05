@@ -14,6 +14,7 @@ class StartupsBadges < ActiveRecord::Base
   recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_subscription_badges(startup_id)
   recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_launch_badges(startup_id)
   recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_targets_badges(startup_id)
+  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_requirements_badges(startup_id)
   recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_badge_collection_badges(startup_id)
   return recently_achieved_badges_description
  end
@@ -31,16 +32,16 @@ class StartupsBadges < ActiveRecord::Base
   startup = Startup.find(startup_id)
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
   recently_achieved_badges_description = []
-  if (startup.number_of_working_years >= 1 && (unachieved_badges.where(:id => "1")).size == 1)
+  if (startup.number_of_working_years >= 1 && (unachieved_badges.where(:id => 1)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 1, :bypassed => 0)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(1).description]
   end
-  if (startup.number_of_working_years >= 2.5 && (unachieved_badges.where(:id => "2")).size == 1)
+  if (startup.number_of_working_years >= 2.5 && (unachieved_badges.where(:id => 2)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 2, :bypassed => 0)
    StartupsBadges.where(:startup_id => startup_id, :badge_id => 1).update_all(:bypassed => 1)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(2).description]
   end
-  if (startup.number_of_working_years >= 5 && (unachieved_badges.where(:id => "3")).size == 1)
+  if (startup.number_of_working_years >= 5 && (unachieved_badges.where(:id => 3)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 3, :bypassed => 0)
    StartupsBadges.where(:startup_id => startup_id, :badge_id => 2).update_all(:bypassed => 1)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(3).description]
@@ -54,7 +55,37 @@ class StartupsBadges < ActiveRecord::Base
 
 
  # Definition: This method takes the startup_id and gets the unachieved badges. It then counts the number
- # of targets met in all of the startups projects and gives badges when the number of targets meth reaches
+ # of requirements met in all of the startups projects and gives badges when the number of requirements met reaches
+ # 50, 100 or 1000. It also sets the lower level badges to bypassed.
+ # Input: startup_id
+ # Output: recently_achieved_badges_description
+ # Author: Yomn El-Mistikawy 
+
+ def self.set_requirements_badges(startup_id)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
+  startup_projects_id = StartupsProjects.select(:project_id).where(:startup_id => startup_id)
+  targets_met = ProjectRequirement.where(:project_id => startup_projects_id, :reached => 1)
+  recently_achieved_badges_description = []
+  if (targets_met.count >= 50 && (unachieved_badges.where(:id => 7)).size == 1)
+   StartupsBadges.create(:startup_id  => startup_id, :badge_id => 7, :bypassed => 0)
+   recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(7).description]
+  end
+  if (targets_met.count >= 100 && (unachieved_badges.where(:id => 8)).size == 1)
+   StartupsBadges.create(:startup_id  => startup_id, :badge_id => 8, :bypassed => 0)
+   StartupsBadges.where(:startup_id => startup_id, :badge_id => 7).update_all(:bypassed => 1)
+   recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(8).description]
+  end
+  if (targets_met.count >= 1000 && (unachieved_badges.where(:id => 9)).size == 1)
+   StartupsBadges.create(:startup_id  => startup_id, :badge_id => 9, :bypassed => 0)
+   StartupsBadges.where(:startup_id => startup_id, :badge_id => 8).update_all(:bypassed => 1)
+   recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(9).description]
+  end
+  return recently_achieved_badges_description
+ end 
+
+
+ # Definition: This method takes the startup_id and gets the unachieved badges. It then counts the number
+ # of targets met in all of the startups projects and gives badges when the number of targets met reaches
  # 50, 100 or 1000. It also sets the lower level badges to bypassed.
  # Input: startup_id
  # Output: recently_achieved_badges_description
@@ -65,25 +96,22 @@ class StartupsBadges < ActiveRecord::Base
   startup_projects_id = StartupsProjects.select(:project_id).where(:startup_id => startup_id)
   targets_met = ProjectTarget.where(:project_id => startup_projects_id, :reached => 1)
   recently_achieved_badges_description = []
-  if (targets_met.count >= 50 && (unachieved_badges.where(:id => "10")).size == 1)
+  if (targets_met.count >= 50 && (unachieved_badges.where(:id => 10)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 10, :bypassed => 0)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(10).description]
   end
-  if (targets_met.count >= 100 && (unachieved_badges.where(:id => "11")).size == 1)
+  if (targets_met.count >= 100 && (unachieved_badges.where(:id => 11)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 11, :bypassed => 0)
    StartupsBadges.where(:startup_id => startup_id, :badge_id => 10).update_all(:bypassed => 1)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(11).description]
   end
-  if (targets_met.count >= 1000 && (unachieved_badges.where(:id => "12")).size == 1)
+  if (targets_met.count >= 1000 && (unachieved_badges.where(:id => 12)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 12, :bypassed => 0)
    StartupsBadges.where(:startup_id => startup_id, :badge_id => 11).update_all(:bypassed => 1)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(12).description]
   end
   return recently_achieved_badges_description
- end 
-
- def self.set_requirements_badges(startup_id)
- end 
+ end
 
 
  # Definition: This method takes the startup_id and gets the unachieved badges. It then counts the number
@@ -98,16 +126,16 @@ class StartupsBadges < ActiveRecord::Base
   launched_projects = Project.where(:id => startup_projects_id, :launch => 1)
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
   recently_achieved_badges_description = []
-  if (launched_projects.count >= 5 && (unachieved_badges.where(:id => "13")).size == 1)
+  if (launched_projects.count >= 5 && (unachieved_badges.where(:id => 13)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 13, :bypassed => 0)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(13).description]
   end
-  if (launched_projects.count >= 10 && (unachieved_badges.where(:id => "14")).size == 1)
+  if (launched_projects.count >= 10 && (unachieved_badges.where(:id => 14)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 14, :bypassed => 0)
    StartupsBadges.where(:startup_id => startup_id, :badge_id => 13).update_all(:bypassed => 1)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(14).description]
   end
-  if (launched_projects.count >= 50 && (unachieved_badges.where(:id => "15")).size == 1)
+  if (launched_projects.count >= 50 && (unachieved_badges.where(:id => 15)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 15, :bypassed => 0)
    StartupsBadges.where(:startup_id => startup_id, :badge_id => 14).update_all(:bypassed => 1)
    recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(15).description]
@@ -158,49 +186,49 @@ class StartupsBadges < ActiveRecord::Base
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
   achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1, 1, 0)
   recently_achieved_badges_description = []
-  if (unachieved_badges.where(:id => "19").size == 1)
+  if (unachieved_badges.where(:id => 19).size == 1)
    if (achieved_badges.where(:category => "year").size == 3)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 19, :bypassed => 0)
     StartupsBadges.where(:startup_id => startup_id, :badge_id => 3).update_all(:bypassed => 1)
     recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(19).description]
    end
   end 
-  if (unachieved_badges.where(:id => "20").size == 1)
+  if (unachieved_badges.where(:id => 20).size == 1)
    if (achieved_badges.where(:category => "view").size == 3)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 20, :bypassed => 0)
     StartupsBadges.where(:startup_id => startup_id, :badge_id => 6).update_all(:bypassed => 1)
     recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(20).description]
    end
   end 
-  if (unachieved_badges.where(:id => "21").size == 1)
+  if (unachieved_badges.where(:id => 21).size == 1)
    if (achieved_badges.where(:category => "requirements").size == 3)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 21,:bypassed => 0)
     StartupsBadges.where(:startup_id => startup_id, :badge_id => 9).update_all(:bypassed => 1)
     recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(21).description]
    end
   end 
-  if (unachieved_badges.where(:id => "22").size == 1)
+  if (unachieved_badges.where(:id => 22).size == 1)
    if (achieved_badges.where(:category => "targets").size == 3)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 22, :bypassed => 0)
     StartupsBadges.where(:startup_id => startup_id, :badge_id => 12).update_all(:bypassed => 1)
     recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(22).description]
    end
   end  
-  if (unachieved_badges.where(:id => "23").size == 1)
+  if (unachieved_badges.where(:id => 23).size == 1)
    if (achieved_badges.where(:category => "launched").size == 3)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 23, :bypassed => 0)
     StartupsBadges.where(:startup_id => startup_id, :badge_id => 15).update_all(:bypassed => 1)
     recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(23).description]
    end
   end  
-  if (unachieved_badges.where(:id => "24").size == 1)
+  if (unachieved_badges.where(:id => 24).size == 1)
    if (achieved_badges.where(:category => "subscribe").size == 3)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 24, :bypassed => 0)
     StartupsBadges.where(:startup_id => startup_id, :badge_id => 18).update_all(:bypassed => 1)
     recently_achieved_badges_description = recently_achieved_badges_description + [Badge.find(24).description]
    end
   end
-  if (unachieved_badges.where(:id => "25").size == 1)
+  if (unachieved_badges.where(:id => 25).size == 1)
    achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1, 1,0)
    if (achieved_badges.where(:category => "collector").size == 6)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 25, :bypassed => 0)
