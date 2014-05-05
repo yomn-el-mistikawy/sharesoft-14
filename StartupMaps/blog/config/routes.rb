@@ -4,7 +4,7 @@ Blog::Application.routes.draw do
     get "list_group_members"
   end  
 
-  resources :startups do
+  resources :entities do
     post "show_unachieved_badges"
   end  
 
