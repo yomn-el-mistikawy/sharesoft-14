@@ -17,6 +17,15 @@ Blog::Application.routes.draw do
     get "show_suggested"
     get "merge_request"
   end  
+  
+  
+  get "welcome/index"
+  get "signups/new"
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+  resources :maps do
+
+  end
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
