@@ -41,6 +41,15 @@ Blog::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+   
+  get 'posts/index'
+  get 'posts/input_create'
+  get 'posts/create'
+  get 'posts/input_update'
+  get 'posts/update'
+  get 'posts/delete'
+  get 'posts/red'
+
 
   # Example resource route with sub-resources:
   #   resources :products do

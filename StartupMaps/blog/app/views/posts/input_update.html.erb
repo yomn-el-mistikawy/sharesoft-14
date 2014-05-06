@@ -1,0 +1,18 @@
+<!--
+# Definition: this form is for updating the post in the group, by getting the title and the body's 
+# text area of the post.
+# Input: title , id of the post.
+# Output: void.
+# Author: Nardeen Milad.
+-->
+
+<form action='update' >
+title: <br>
+<input type=text name=title value=<%= @new.title%>><br>
+body:<br>
+<textarea name=text ><%=@new.text%></textarea><br>
+<br>
+<input type=hidden value=<%=params[:id]%> name=id>
+<input type=submit value='post'>
+
+</form>
