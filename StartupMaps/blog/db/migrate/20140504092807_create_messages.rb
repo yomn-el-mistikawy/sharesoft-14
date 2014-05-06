@@ -1,15 +1,17 @@
 class CreateMessages < ActiveRecord::Migration
-  def self.up
+  def up
     create_table :messages do |t|
-      t.belongs_to :entity
-      t.belongs_to :receiver
-      t.string :title
-      t.string :message
+      t.string :sender
+      t.string :recepient
+      t.string :subject
+      t.text :body
+      t.integer :read
+
       t.timestamps
     end
   end
 
-  def self.down
-  	drop_table :messages
+  def down
+    drop_table :messages
   end
 end
