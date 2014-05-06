@@ -7,7 +7,7 @@ class StartupsController < ApplicationController
 
   def list_requests
   	#session[:entity_id ] = 2
-    @requests = Send_merge_requests.where(:reciever=>  session[:entity_id] , :response => nil
+    @requests = Send_merge_requests.where(:reciever=>  session[:entity_id] , :response => nil)
   end
 
   def show
