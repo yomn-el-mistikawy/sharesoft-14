@@ -13,12 +13,8 @@ class GroupsController < ApplicationController
   # Author: Yomn El-Mistikawy
 
   def list_group_members 
-    @startup = Startup.find(session[:entity_id])
-    if (GroupsStartup.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
-      @group_members = Group.get_group_members(Group.find(params[:group_id]))
-    else
-      render text: "You are not a group member" 
-    end
+    session[:entity_id] = 1
+      @group_members = Group.get_group_members(params[:group_id], session[:entity_id])
   end
 
 
@@ -86,6 +82,7 @@ class GroupsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

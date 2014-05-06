@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504133830) do
+ActiveRecord::Schema.define(version: 20140505150824) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -110,6 +110,18 @@ ActiveRecord::Schema.define(version: 20140504133830) do
   create_table "entity_work_statuses", force: true do |t|
     t.string   "workstatus"
     t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_members", force: true do |t|
+    t.string   "Name"
+    t.integer  "MemberID"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -283,6 +295,7 @@ ActiveRecord::Schema.define(version: 20140504133830) do
     t.integer  "number_of_working_years"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "company_status"
   end
 
   create_table "startups_badges", force: true do |t|
