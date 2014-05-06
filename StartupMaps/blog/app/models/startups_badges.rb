@@ -8,14 +8,15 @@ class StartupsBadges < ActiveRecord::Base
  # Output: recently_achieved_badges_description
  # Author: Yomn El-Mistikawy
 
- def self.set_badges(startup_id)
+ def self.set_badges(entity_id)
+  startup = Startup.find_by_entity_id(entity_id)
   recently_achieved_badges_description = []
-  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_year_badges(startup_id)
-  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_subscription_badges(startup_id)
-  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_launch_badges(startup_id)
-  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_targets_badges(startup_id)
-  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_requirements_badges(startup_id)
-  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_badge_collection_badges(startup_id)
+  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_year_badges(startup.id)
+  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_subscription_badges(startup.id)
+  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_launch_badges(startup.id)
+  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_targets_badges(startup.id)
+  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_requirements_badges(startup.id)
+  recently_achieved_badges_description = recently_achieved_badges_description + StartupsBadges.set_badge_collection_badges(startup.id)
   return recently_achieved_badges_description
  end
 
@@ -63,8 +64,7 @@ class StartupsBadges < ActiveRecord::Base
 
  def self.set_requirements_badges(startup_id)
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
-  startup_projects_id = StartupsProjects.select(:project_id).where(:startup_id => startup_id)
-  targets_met = ProjectRequirement.where(:project_id => startup_projects_id, :reached => 1)
+  targets_met = ProjectRequirement.where(:project_id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :reached => 1)
   recently_achieved_badges_description = []
   if (targets_met.count >= 50 && (unachieved_badges.where(:id => 7)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 7, :bypassed => 0)
@@ -93,8 +93,7 @@ class StartupsBadges < ActiveRecord::Base
 
  def self.set_targets_badges(startup_id)
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
-  startup_projects_id = StartupsProjects.select(:project_id).where(:startup_id => startup_id)
-  targets_met = ProjectTarget.where(:project_id => startup_projects_id, :reached => 1)
+  targets_met = ProjectTarget.where(:project_id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :reached => 1)
   recently_achieved_badges_description = []
   if (targets_met.count >= 50 && (unachieved_badges.where(:id => 10)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 10, :bypassed => 0)
@@ -122,8 +121,7 @@ class StartupsBadges < ActiveRecord::Base
  # Author: Yomn El-Mistikawy
 
  def self.set_launch_badges(startup_id)
-  startup_projects_id = StartupsProjects.select(:project_id).where(:startup_id => startup_id)
-  launched_projects = Project.where(:id => startup_projects_id, :launch => 1)
+  launched_projects = Project.where(:id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :launch => 1)
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
   recently_achieved_badges_description = []
   if (launched_projects.count >= 5 && (unachieved_badges.where(:id => 13)).size == 1)
