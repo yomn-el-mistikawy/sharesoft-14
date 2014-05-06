@@ -8,7 +8,9 @@ Blog::Application.routes.draw do
      get "showSuggested"
   end
 
-  resources :entities
+  resources :entities do
+    get "choose_preferences"
+  end
   
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'

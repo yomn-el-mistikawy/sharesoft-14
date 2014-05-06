@@ -18,8 +18,7 @@ class EntitiesController < ApplicationController
   end
 
   def choose_preferences
-    @entity = Entity.all?
-    p params(:pref1)
+    @entity = Entity.all
   end
 
  #Creates accounts

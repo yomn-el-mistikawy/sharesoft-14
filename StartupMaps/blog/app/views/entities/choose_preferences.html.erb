@@ -1,0 +1,33 @@
+<%= form_for @entity do |pref| %>
+  <%= pref.label :tourism %>
+  <%= pref.check_box :tourism %><br />
+
+  <%= pref.label :food %>
+  <%= pref.check_box :food %><br />
+
+  <%= pref.label :music %>
+  <%= pref.check_box :music %><br />
+
+  <%= pref.label :arts %>
+  <%= pref.check_box :arts %><br />
+
+  <%= pref.label :culture %>
+  <%= pref.check_box :culture %><br />
+
+  <%= pref.label :engineering %>
+  <%= pref.check_box :engineering %><br />
+
+  <%= pref.label :medicine %>
+  <%= pref.check_box :medicine %><br />
+
+  <%= pref.label :biology %>
+  <%= pref.check_box :biology %><br />
+
+  <%= pref.label :politics %>
+  <%= pref.check_box :politics %><br />
+
+  <%= pref.label :other %>
+  <%= pref.text_box :other %> <br />
+
+  <%= pref.submit %>
+<% end %>
