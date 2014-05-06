@@ -20,6 +20,16 @@ class SignupsController < ApplicationController
         format.json { render json: @signup.errors, status: :unprocessable_entity }
       end
     end
+ @gmapsoptions = {
+     "map_options" => {"center_latitude" => 27, 
+                       "center_longitude" => 30,
+                       "detect_location" => false,
+                       "center_on_user" => false,
+                       "auto_adjust" => false,
+                       "auto_zoom" => true,
+                       "zoom" => 8 }
+                 }
+        @signup.update_attribute(:lat,);         
   end
 
   def signup_params

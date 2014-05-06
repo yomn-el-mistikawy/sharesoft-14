@@ -19,12 +19,28 @@ handler.buildMap({ provider: { }, internal: {id: 'multi_markers'}}, function(){
   ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  var x;
+  var y;
+    var url = window.location.href; 
+    var urlsplit = url.split("?");
+    if(urlsplit[1] != null){
+      urlsplit2 = urlsplit[1].split("&");
+      urlsplit3 = urlsplit2[0].split("=");
+      x = urlsplit3[1];
+      urlsplit4 = urlsplit2[1].split("=");
+      y = urlsplit4[1];}
 
+    else{
+      x = 27;
+      y = 30;
+    }
+  
+  console.log(x);
   var json_data = [
     {
       id:  1,
-      lat: 27,
-      lng: 30,
+      lat: x,
+      lng: y,
       infowindow: "<div style='color:red;'>Your Startup</div>" //this html is properly disaplayed
     }
   ];
@@ -42,9 +58,19 @@ handler.buildMap({ provider: { }, internal: {id: 'multi_markers'}}, function(){
     google.maps.event.addListener(json.marker.getServiceObject(), "dragend", function(event) {
       var lat = event.latLng.lat();
       var lng = event.latLng.lng();
+     if( lat != 27 || lng != 30){
+      var url = window.location.href;
+      var urlsplit = url.split("?");
+      url = urlsplit[0]+"?lat="+lat+"&lng="+lng;
+     var urlsplit = url.split("?");
+      url = urlsplit[0]+"?lat="+lat+"&lng="+lng;
+     window.location.href = url;
+}
+
       console.log('Marker with id: ' + json.id + ' dropped hat lat: ' + lat + ' and lng: ' + lng)
     });
   });
 });
 
 </script>
+<!--<% @signup.update_attribute(:lat , params[:lat]) %>
