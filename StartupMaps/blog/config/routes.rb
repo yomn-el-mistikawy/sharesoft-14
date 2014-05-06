@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
  
+  get "search_engine/list"
+  get "search_engine/index"
   resources :groups do
     get "list_group_members"
   end  

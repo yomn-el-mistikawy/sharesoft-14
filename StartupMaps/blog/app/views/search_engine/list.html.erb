@@ -1,0 +1,54 @@
+<h1> your search results</h1>
+<br>
+<br>
+<h2>groups</h2>
+
+	<% @groups.each do |g|%>
+	
+		<a href = " "> <%= g.name%> </a>
+		<br>
+		<br>
+		<br>
+	<%end%>
+<br>
+<%= @rehab= params[:text] %>
+<h2>inverstors</h2>
+
+	<% @investors.each do |i|%>
+	
+		<a href = " "> <%= i.name%> </a>
+		<br>
+		<br>
+		<br>
+	<%end%>
+<br>
+<h2>entities</h2>
+
+	<% @entities.each do |e|%>
+	
+		<a href = " "> <%= e.name%> </a>
+		<br>
+		<br>
+		<br>
+	<%end%>
+<br>
+<h2>services</h2>
+
+	<% @services.each do |s|%>
+	
+		<a href = " "> <%= s.name%> </a>
+		<br>
+		<br>
+		<br>
+	<%end%>
+	<br>
+
+<h2>startups</h2>
+
+	<% @startups.each do |u|%>
+	
+		<a href = " "> <%= u.name%> </a>
+		<br>
+		<br>
+		<br>
+	<%end%>

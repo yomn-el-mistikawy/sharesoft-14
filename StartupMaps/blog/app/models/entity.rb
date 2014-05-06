@@ -19,5 +19,10 @@ class Entity < ActiveRecord::Base
 	has_many :receivers, :through => :message
 	has_many :messages
 
+	def self.search_entity(search)
+    @entity= Entity.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+ 
+    end 
+
 end
 

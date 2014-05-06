@@ -14,4 +14,9 @@ class Group < ActiveRecord::Base
   def self.get_group_members(group)
     Startup.where(:id => (GroupsStartup.where(:group_id => group.id)))
   end
+
+  def self.search_group(search)
+    @group= Group.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+ 
+   end  
 end
