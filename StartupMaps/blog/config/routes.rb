@@ -20,6 +20,9 @@ resources :entities do
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
+  get 'entities/show'
+  get 'entities/update_status'
+  get 'entities/edit_status'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
