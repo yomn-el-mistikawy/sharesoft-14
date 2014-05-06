@@ -1,19 +1,91 @@
+
+<script>
+var locationsMap = {};
+
+function toggleLocations(cb, url){
+  var id= cb.id;
+  if(!cb.checked){
+    locationsMap[id] = [];
+    buildMap();
+  }
+  else{
+
+ url = url + "?checked=" + getChecked() + "&type=" + getSector() + "&status=" + getOnlineOffline() + "&Lstatus=" + getLanchedNotLaunched();
+      alert(url);
+
+    $.ajax(url)
+      .done(function(data) {
+        locationsMap[id] = data;
+        buildMap();
+      })
+      .fail(function(data) {
+        alert.log( "error" );
+      });
+    }
+  };
+
+  function getSector(){
+    var skillsSelect = document.getElementById("entities_sectors");
+    var selectedText = skillsSelect.options[skillsSelect.selectedIndex].text;
+    return selectedText;
+  }
+
+   function getOnlineOffline(){
+    var query = isChecked('online') 
+      + isChecked('offline');
+
+      return query;
+  }
+
+ function getLanchedNotLaunched(){
+    var query = isChecked('launched') 
+      + isChecked('notLaunched');
+
+      return query;
+  }
+
+   function isChecked(id){
+    if (document.getElementById(id).checked){
+      return id + ',';
+    }
+
+    return '';
+  }
+
+    function getChecked(){
+    var query = isChecked('startups') 
+      + isChecked('investors');
+
+      return query;
+      //ne7ot el ba2i
+  }
+
+
+
+</script>
+
 <h1>Startup Map</h1>
-<!-- Those are the links that will call the actions in the maps controller and show the markers on the map --> 
-<%= link_to 'Show Startups' , href = "/maps/1/show_startups" %>
+
+
+
+<form action="">
+
+<input type="radio" id="online" name="status" value="online">Online<br>
+<input type="radio" id="offline" name="status" value="offline">Offline<br>
+
+</form>
+<form action="">
+<input type="radio" id="launched" name="Lstatus" value="launched">launched<br>
+<input type="radio" id="notLaunched" name="Lstatus" value="notlLaunched">not launched
+ 
+
 <br>
-<%= link_to 'Show Investors', href = "/maps/1/show_investors" %>
-<br>
-<%= link_to 'Show Services', href = "/maps/1/show_services" %>
-<br>
-<%= link_to 'Show online Startups', href = "/maps/1/show_online" %>
-<br>
-<%= link_to 'Show offline Startups', href = "/maps/1/show_offline" %>
-<br>
- <%= link_to 'Show launched Startups', href = "/maps/1/show_launched" %>
-<br>
-<%= link_to 'Show not yet launched Startups', href = "/maps/1/show_not_launched" %>
-<br>
-<%= link_to 'Show joint Ventures', href = "/maps/1/show_merged" %>
-<!-- this gets the hash variable from the maps controller in which the markers are saved and adds them on the map. It should be placed in the javascript code of the map -->
-markers = handler.addMarkers(<%=raw @markers.to_json %>);
+ <%=form_for :entities  do |f| %>
+    <p>
+      <%= f.select :sectors, [['Agriculture','agriculture'],['Manufacturing','manufacturing'],['Trading','trading'],['Clothes','clothes'],['Telecommunications','telecommunications']] %>
+    </p>
+
+  <% end %>
+
+
+ 
