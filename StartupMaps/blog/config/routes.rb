@@ -34,6 +34,9 @@ resources :entities do
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
+   get 'entities/show'
+   get 'entities/edit_work_status'
+   get 'entities/update_work_status'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
