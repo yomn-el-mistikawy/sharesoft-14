@@ -1,5 +1,13 @@
 class CommentsController < ApplicationController
 
+
+
+  def new
+      @post = Post.find(params[:post_id])
+      @comment = @post.comments.new
+  end
+
+
   # Definition: This method creates a new comment on a specific post using the association between 
   #posts model and comments model. It sets the startup id to the id of the startup currently using the system,
   # as well as the commenter name. It then redirects to the group page where this comment was added.
@@ -18,6 +26,29 @@ class CommentsController < ApplicationController
       redirect_to group_path(@group)
     end
   end
+
+  def show
+      @comment = Comment.find(params[:id])
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+      @comment = Comment.find(params[:id])
+      if @comment.update(comment_params)
+        redirect_to @comment
+      else
+        render 'edit'
+      end
+  end
+
+  def destroy
+      @comment = Comment.find(params[:id])
+      @comment.destroy
+      redirect_to comment_path
+  end
  
   private
 
@@ -30,4 +61,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:comment)
   end
 end
-
