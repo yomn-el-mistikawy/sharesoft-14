@@ -1,7 +1,15 @@
 Blog::Application.routes.draw do
  
-  devise_for :entities
-  resources :entities
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations"}
+  
+
+  devise_scope :entities do
+       get "/signup" => "entities/registrations#create", :as => "signup" 
+  end
+
+  
+
   resources :groups do
     get "list_group_members"
   end  
