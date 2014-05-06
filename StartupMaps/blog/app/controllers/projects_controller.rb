@@ -24,6 +24,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # Definition: Listing projects of a startup.
+  # Input: Startup id.
+  # Output: Projects of the startup.
+  # Author: Amr Gamal.
+
+  def view_project
+    @projects = Project.select(:name).where(:name => 'x')
+  end
+
 
   # Defintion: This method takes the project_id and session id
   # as input and calls get_suggested() to show a list of 
