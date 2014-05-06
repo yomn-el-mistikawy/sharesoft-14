@@ -9,11 +9,12 @@ class EntitiesController < ApplicationController
  # Author: Yomn El-Mistikawy
 
  def show
-  #session[:entity_id] = 2
-  # if session[:entity_id] == params[:id]
-  @recently_achieved_badges_description = StartupsBadges.set_badges(params[:id])
-  @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1, 1)
-  # end 
+  session[:entity_id] = 2
+  entity = Entity.find(params[:id])
+  if entity.type == "Startup" && session[:entity_id] == entity.id
+   @recently_achieved_badges_description = StartupsBadges.set_badges(params[:id])
+   @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1, 1)
+  end 
   @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 0, 1)
  end
 
@@ -26,6 +27,6 @@ class EntitiesController < ApplicationController
 
  def show_unachieved_badges
   @unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:entity_id], 0, 0, 1)
-  end  
+ end  
 end
 
