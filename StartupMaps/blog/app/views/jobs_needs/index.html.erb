@@ -1,0 +1,31 @@
+<h1>Listing jobs_needs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>Needs</th>
+      <th>Goals</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs_needs.each do |jobs_need| %>
+      <tr>
+        <td><%= jobs_need.job %></td>
+        <td><%= jobs_need.needs %></td>
+        <td><%= jobs_need.goals %></td>
+        <td><%= link_to 'Show', jobs_need %></td>
+        <td><%= link_to 'Edit', edit_jobs_need_path(jobs_need) %></td>
+        <td><%= link_to 'Destroy', jobs_need, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Jobs need', new_jobs_need_path %>
