@@ -1,0 +1,60 @@
+<script>
+var locationsMap = {};
+
+function toggleLocations(cb, url){
+  var id= cb.id;
+  if(!cb.checked){
+    locationsMap[id] = [];
+    buildMap();
+  }
+  else{
+
+    $.ajax(url)
+      .done(function(data) {
+        locationsMap[id] = data;
+        buildMap();
+      })
+      .fail(function(data) {
+        alert.log( "error" );
+      });
+    }
+  };
+
+</script>
+
+<h1>Startup Map</h1>
+
+
+<h1 align=right><label>  <img src="http://rideforclimate.com/nukes/all/images/blue.png">  <input type='checkbox' id='startups' onclick='toggleLocations(this, "/maps/1/show_startups");'>Startups</label>
+
+<label><img src="http://rideforclimate.com/nukes/all/images/orange.png">   <input type='checkbox'id='investors' onclick='toggleLocations(this, "/maps/1/show_investors");'>Investors</label>
+
+<label><img src="http://rideforclimate.com/nukes/all/images/green.png">  <input type='checkbox'id='services' onclick='toggleLocations(this, "/maps/1/show_services");'>Services</label></h1>
+
+
+<script type = "text/javascript">
+
+locationsMap["startups"] = [];
+locationsMap["investors"] = [];
+locationsMap["services"] = [];
+
+function buildMap (){
+
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+
+    var loc1 = locationsMap["startups"]
+      .concat(locationsMap["investors"]);
+
+        var loc2 = loc1.concat(locationsMap["services"]);
+
+    markers = handler.addMarkers(loc2);
+    
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(2);
+  }); 
+}
+
+buildMap();
+</script>

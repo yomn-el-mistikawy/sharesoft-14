@@ -18,6 +18,13 @@ Blog::Application.routes.draw do
     get "merge_request"
   end  
 
+  resources :maps do
+
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
+  end
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
