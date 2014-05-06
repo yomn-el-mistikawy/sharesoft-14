@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
-
-	 has_many :startups, :through => :startup_have_project
+   has_many :project_requirements
+   has_many :project_targets
+	 has_many :startups, through: :startups_projects
    
 
   # Definition: "A startup can see a list of his projects" 
