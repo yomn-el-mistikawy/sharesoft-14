@@ -1,5 +1,4 @@
 class EntitiesController < ApplicationController
-  before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
   #Homepage of entities, which lists all created accounts
   # Adel Zee Badawy
@@ -18,7 +17,10 @@ class EntitiesController < ApplicationController
     @account = Entity.new
   end
 
-
+  def choose_preferences
+    @entity = Entity.all?
+    p params(:pref1)
+  end
 
  #Creates accounts
  # Adel Zee Badawy
@@ -39,11 +41,6 @@ class EntitiesController < ApplicationController
 #Private disallows the view to use the methods inside, but lets methods in the same controller to use the methods.
 # Adel Zee Badawy
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # Adel Zee Badawy
-    def set_entity
-      @entity = Entity.find(params[:id])
-    end
 
     # Allows the method to read the inputs
     # Adel Zee Badawy
