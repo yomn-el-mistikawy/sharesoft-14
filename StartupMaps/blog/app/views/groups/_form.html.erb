@@ -23,6 +23,11 @@
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  <%= f.radio_button(:Notification, "True") %>
+  <%= f.label(:Notification_True, "True") %>
+  <br />
+  <%= f.radio_button(:Notification, "False") %>
+  <%= f.label(:Notification_False, "False") %>
   <div class="actions">
      <%= f.submit ("Add description") %>
   </div>
