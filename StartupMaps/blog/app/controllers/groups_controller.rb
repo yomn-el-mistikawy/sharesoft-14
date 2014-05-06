@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find(params[:id])
   end
 
   # GET /groups/new
@@ -22,6 +23,7 @@ class GroupsController < ApplicationController
   
   # GET /groups/1/edit
   def edit
+    @group = Group.find(params[:id])
   end
 
 
@@ -45,17 +47,37 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    @group = Group.find(params[:id])
+ 
+  if @group.update(group_params)
+    redirect_to @group
+  else
+    render 'edit'
   end
+end
 
-
-  # DELETE /groups/1
-  # DELETE /groups/1.json
+ 
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-
-    redirect_to groups_path
+    respond_to do |format|
+      format.html {redirect_to :back}
+      format.json {head :no_content}
+    end
+    # redirect_to groups_path
   end
+
+ 
+ private
+  def group_params
+    params.require(:group).permit(:name, :description)
+  end
+
+
+  
+
+  # DELETE /groups/1
+ 
 
   
     
@@ -64,4 +86,5 @@ class GroupsController < ApplicationController
 
     
     
-  end
+  
+end

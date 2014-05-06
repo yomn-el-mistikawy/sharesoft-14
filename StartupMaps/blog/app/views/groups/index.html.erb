@@ -3,8 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Group name</th>
+      <th>Group_Name &nbsp;</th> 
       <th>Description</th>
       <th></th>
       <th></th>
@@ -13,8 +12,10 @@
   </thead>
 
   <tbody>
-    <% @groups.each do |c| %>
+    <% @groups.each do |group| %>
+    
       <tr>
+      
         <td><%= group.name %></td>
         <td><%= group.description %></td>
         <td><%= link_to 'Show', group %></td>
@@ -23,10 +24,13 @@
           'Are you sure you want to delete group?'} %></td>
 
       </tr>
+     
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'Add Description', new_group_path %>
+
+
+
