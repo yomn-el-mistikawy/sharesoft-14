@@ -4,12 +4,15 @@ Blog::Application.routes.draw do
     get "list_group_members"
   end  
 
-  resources :startups
+  resources :startups 
+  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  
+
+
   resources :projects do
 
     get "change_launch_status", on: :member, as: :launch
@@ -20,6 +23,9 @@ Blog::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
+  get 'entities/change_company_status'
+  get 'entities/update_company_status'
+  get 'entities/show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
