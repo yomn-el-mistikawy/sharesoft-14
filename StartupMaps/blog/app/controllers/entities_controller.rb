@@ -9,7 +9,7 @@ class EntitiesController < ApplicationController
  # Author: Yomn El-Mistikawy
 
  def show
-  session[:entity_id] = 2
+  session[:entity_id] = 1
   @entity = Entity.find(params[:id])
   if @entity.type == "Startup"
    if session[:entity_id] == @entity.id

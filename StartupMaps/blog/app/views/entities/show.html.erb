@@ -1,8 +1,15 @@
  <% if @entity.type == "Startup" %>
-  <% if @entity.id == 2  %> 
+  <% if @entity.id == 1  %> 
    <% if @all_achieved_badges.size != 25 %>
-     <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id])%>
+    <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id])%>
    <% end %>
+   <% if @recently_achieved_badges.size != 0 %>
+    <% @recently_achieved_badges.each do |badge| %>
+     <script>
+      alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
+     </script>
+    <% end %>
+   <% end %> 
   <% end %>
   <table>
    <tbody>
