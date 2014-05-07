@@ -13,7 +13,7 @@ class EntitiesController < ApplicationController
   @entity = Entity.find(params[:id])
   if @entity.type == "Startup"
    if session[:entity_id] == @entity.id
-    @recently_achieved_badges_description = StartupsBadges.set_badges(params[:id])
+    @recently_achieved_badges = StartupsBadges.set_badges(params[:id])
     @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1, 1)
    end 
    @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 0, 1)
