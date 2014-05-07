@@ -5,6 +5,9 @@ Blog::Application.routes.draw do
   end  
 
   resources :startups
+    resources :uploads
+  root :to => 'uploads#index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
