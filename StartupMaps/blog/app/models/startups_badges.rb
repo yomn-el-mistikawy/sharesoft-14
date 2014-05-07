@@ -51,6 +51,12 @@ class StartupsBadges < ActiveRecord::Base
  end
 
 
+ # Definition: This method takes the startup_id and gets the unachieved badges. It then counts get the number of views
+ # the startup's profile and gives badges when the number of views reaches 1000, 5000 or 10000. It also sets the lower level badges to bypassed.
+ # Input: startup_id
+ # Output: recently_achieved_badge
+ # Author: Yomn El-Mistikawy
+
  def self.set_view_badges(startup_id)
  end 
 
