@@ -1,15 +1,16 @@
- <% session[:entity_id] = 2 %>
- <% if params[:id] = session[:entity_id] %> 
-  <% if @all_achieved_badges.size != 25 %>
-   <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id])%>
-  <% end %>
- <% end %>
- <table>
-  <tbody>
-   <% @achieved_badges.each do |p| %>
-    <tr>
-     <td><%= p.name %></td>
-    </tr>
+ <% if @entity.type == "Startup" %>
+  <% if @entity.id == 2  %> 
+   <% if @all_achieved_badges.size != 25 %>
+     <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id])%>
    <% end %>
-  </tbody>
- </table>
+  <% end %>
+  <table>
+   <tbody>
+    <% @achieved_badges.each do |p| %>
+     <tr>
+      <td><%= p.name %></td>
+     </tr>
+    <% end %>
+   </tbody>
+  </table>
+ <% end %>
