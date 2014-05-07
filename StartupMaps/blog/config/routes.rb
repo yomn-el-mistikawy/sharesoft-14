@@ -21,6 +21,10 @@ Blog::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
+   get 'inv_groups/inv'
+  get 'inv_groups/search'
+  get 'inv_groups/validate'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
