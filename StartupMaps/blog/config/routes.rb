@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
  
+  get "homepage/index"
+  get "homepage/show"
   resources :groups do
     get "list_group_members"
   end  
