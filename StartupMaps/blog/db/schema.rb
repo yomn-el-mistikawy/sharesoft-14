@@ -11,11 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419163446) do
+ActiveRecord::Schema.define(version: 20140504133830) do
+
+  create_table "badges", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "category"
+    t.integer  "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.string   "comment"
-    t.integer  "entity_id"
+    t.string   "commenter"
+    t.integer  "startup_id"
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -32,6 +42,9 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
+    t.string   "password_reset"
+    t.datetime "sent_at"
   end
 
   create_table "entity_available_internships", force: true do |t|
@@ -71,6 +84,13 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.datetime "updated_at"
   end
 
+  create_table "entity_statuses", force: true do |t|
+    t.string   "status"
+    t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "entity_video_links", force: true do |t|
     t.string   "url"
     t.integer  "entity_id"
@@ -95,6 +115,8 @@ ActiveRecord::Schema.define(version: 20140419163446) do
   end
 
   create_table "friendships", force: true do |t|
+    t.integer  "sender_id_id"
+    t.integer  "receiver_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -118,6 +140,13 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.datetime "updated_at"
   end
 
+  create_table "groups_startups", force: true do |t|
+    t.integer  "group_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "investors", force: true do |t|
     t.float    "longitude"
     t.float    "latitude"
@@ -130,9 +159,28 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.datetime "updated_at"
   end
 
+  create_table "join_requests", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "likes", force: true do |t|
     t.integer  "post_id"
     t.integer  "comment_id"
+    t.integer  "liker_id"
+    t.integer  "likable_id"
+    t.string   "likable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "entity_id"
+    t.integer  "receiver_id"
+    t.string   "title"
+    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -149,20 +197,40 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.string   "title"
     t.string   "text"
     t.integer  "group_id"
-    t.integer  "entity_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_requirements", force: true do |t|
+    t.string   "description"
+    t.boolean  "reached"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "project_targets", force: true do |t|
+    t.string   "description"
+    t.boolean  "reached"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "projects", force: true do |t|
     t.string   "location"
-    t.string   "goals"
     t.string   "name"
-    t.integer  "milestones"
     t.string   "category"
     t.boolean  "launch"
     t.string   "description"
-    t.string   "requirements"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resumes", force: true do |t|
+    t.string   "name"
+    t.string   "attachement"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -221,6 +289,21 @@ ActiveRecord::Schema.define(version: 20140419163446) do
     t.string   "joint_ventures"
     t.string   "sector"
     t.integer  "number_of_working_years"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "startups_badges", force: true do |t|
+    t.integer  "badge_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "bypassed"
+  end
+
+  create_table "startups_projects", force: true do |t|
+    t.integer  "startup_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
