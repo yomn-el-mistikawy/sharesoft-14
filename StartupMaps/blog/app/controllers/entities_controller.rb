@@ -12,7 +12,7 @@ class EntitiesController < ApplicationController
   def change_company_status
       @startup = Startup.find(params[:startup_id])
       @new = Startup.new
-      @new.id =  startup.id
+      @new.id =  @startup.id
       @new.longitude =  @startup.longitude
       @new.latitude = @startup.latitude
       @new.initiatior_name = @startup.initiatior_name
