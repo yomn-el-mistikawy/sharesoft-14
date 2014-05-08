@@ -15,21 +15,21 @@
     <% @recently_achieved_badges.each do |badge| %>
      <% if badge.level == 1 %>
       <script>
-       alert('<%= image_tag "Bronze_1.png" %>' + "\n Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
+       alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
       </script>
      <% else %>
       <% if badge.level == 2 %>
        <script>
-        alert('<%= image_tag "Silver_1.png" %>' + "\n Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
+        alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
        </script>
       <% else %>
        <% if badge.level == 3 %>
         <script>
-         alert('<%= image_tag "Gold_1.png" %>' + "\n Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
+         alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
         </script>
        <% else %>
         <script>
-         alert('<%= image_tag "Platinum_1.png" %>' + "\n Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
+         alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
         </script>
        <% end %>
       <% end %>

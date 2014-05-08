@@ -1,5 +1,6 @@
 class EntitiesController < ApplicationController
-
+ impressionist :actions=>[:show]
+ 
  # Definition: When a startup opens its profile, if new badges is completed,
  # then a message appears showing the new badges achieved. A button will be available
  # to give the owner the option to view the unachieved badges. Moreover, all the

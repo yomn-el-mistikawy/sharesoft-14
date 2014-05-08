@@ -18,6 +18,6 @@ class Entity < ActiveRecord::Base
 	has_many :subscribee, :through => :subscrtipion
 	has_many :receivers, :through => :message
 	has_many :messages
-
+	is_impressionable
 end
 
