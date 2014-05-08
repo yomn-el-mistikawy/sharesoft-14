@@ -1,6 +1,6 @@
 class MapsController < ApplicationController
-	def  create
-  
+class MapsController < ApplicationController
+  def  create
     render :template => 'maps/index'
   end
 end
