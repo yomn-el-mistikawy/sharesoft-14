@@ -10,6 +10,7 @@ Blog::Application.routes.draw do
 
   resources :entities do
     get "choose_preferences"
+    post "choose_preferences"
   end
   
   # You can have the root of your site routed with "root"

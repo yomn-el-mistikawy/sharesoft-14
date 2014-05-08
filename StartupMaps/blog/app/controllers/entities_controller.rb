@@ -18,7 +18,7 @@ class EntitiesController < ApplicationController
   end
 
   def choose_preferences
-    @entity = Entity.all
+    Tag.update_pref(params[:other], params[:prefs])
   end
 
  #Creates accounts

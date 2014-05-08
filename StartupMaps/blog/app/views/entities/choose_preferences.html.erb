@@ -1,33 +1,34 @@
-<%= form_for @entity do |pref| %>
-  <%= pref.label :tourism %>
-  <%= pref.check_box :tourism %><br />
+<%= form_tag @tags do |pref| %>
+  <%= label_tag :tourism %>
+  <%= check_box_tag "prefs[]", value = "tourism", id = "tourism" %><br />
 
-  <%= pref.label :food %>
-  <%= pref.check_box :food %><br />
+  <%= label_tag :food %>
+  <%= check_box_tag "prefs[]", value = 'food', id = 'food' %><br />
 
-  <%= pref.label :music %>
-  <%= pref.check_box :music %><br />
+  <%= label_tag :music %>
+  <%= check_box_tag "prefs[]", value = 'music', id = 'music' %><br />
 
-  <%= pref.label :arts %>
-  <%= pref.check_box :arts %><br />
+  <%= label_tag :arts %>
+  <%= check_box_tag "prefs[]", value = 'art', id = 'art' %><br />
 
-  <%= pref.label :culture %>
-  <%= pref.check_box :culture %><br />
+  <%= label_tag :culture %>
+  <%= check_box_tag "prefs[]", value = 'culture', id = 'culture' %><br />
 
-  <%= pref.label :engineering %>
-  <%= pref.check_box :engineering %><br />
+  <%= label_tag :engineering %>
+  <%= check_box_tag "prefs[]", value = 'sports', id = 'sports' %><br />
 
-  <%= pref.label :medicine %>
-  <%= pref.check_box :medicine %><br />
+  <%= label_tag :medicine %>
+  <%= check_box_tag "prefs[]", value = 'medicine', id = 'medicine' %><br />
 
-  <%= pref.label :biology %>
-  <%= pref.check_box :biology %><br />
+  <%= label_tag :biology %>
+  <%= check_box_tag "prefs[]", value = 'biology', id = 'biology' %><br />
 
-  <%= pref.label :politics %>
-  <%= pref.check_box :politics %><br />
+  <%= label_tag :politics %>
+  <%= check_box_tag "prefs[]", value = 'politics', id = 'politics' %><br />
 
-  <%= pref.label :other %>
-  <%= pref.text_box :other %> <br />
+  <%= label_tag :other %>
+  <%= text_field_tag :other %> <br />
 
-  <%= pref.submit %>
+  <%= submit_tag %>
+
 <% end %>
