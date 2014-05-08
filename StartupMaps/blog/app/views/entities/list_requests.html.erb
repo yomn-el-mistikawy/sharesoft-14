@@ -1,0 +1,19 @@
+
+<!-- Here to show the links for the accept and reject hyperlinks 
+output is hyperlink to accept, hyperlink to reject
+
+Authored by: Ziad Abdelkader-->
+
+<h1> Merge Requests </h1>
+
+
+<% @senders.each do |sender| %>
+    <tr>
+      <td><%= sender.name%></td>
+     <td><%= button_to 'Accept', entity_accept_merge_request_path(requester: sender.id)%></td>
+     <td><%= button_to 'Reject', entity_reject_merge_request_path(requester: sender.id)%></td>
+     <td><%= button_to 'View Profile',  entity_path (id: sender.id) %></td>
+     <br>
+    </tr >
+ <% end %>
+

@@ -8,11 +8,11 @@ Blog::Application.routes.draw do
      get "showSuggested"
   end
 
-  resources :startups do
+  resources :entities do
     #get "index"
     get "list_requests"
-    get "accept"
-    get "reject"
+    get "accept_merge_request"
+    get "reject_merge_request"
   end
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
