@@ -8,6 +8,21 @@
 </head>
 <body>
 
+<% if flash.notice %>
+	
+	<div class="notification success">
+		<%= flash.notice %>
+	</div>
+
+<% else %>
+	
+	<div class="notification error">
+		<%= flash.alert %>
+	</div>
+
+<% end %>
+
+
 <%= yield %>
 
 </body>
