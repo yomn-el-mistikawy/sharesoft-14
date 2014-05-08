@@ -20,37 +20,37 @@ class Entity < ActiveRecord::Base
 	has_many :messages
 
 
-  # Definition: Knows the user ID from the params and finds its last work status.
-  # Input: Entry from database.
-  # Output: Changed to online or offline.
-  # Author: Ola Enaba.
+ #  # Definition: Knows the user ID from the params and finds its last work status.
+ #  # Input: Entry from database.
+ #  # Output: Changed to online or offline.
+ #  # Author: Ola Enaba.
 
-	def self.change(startup)
-	  @new = Startup.new
-      @new.id =  startup.id
-      @new.longitude =  startup.longitude
-      @new.latitude = startup.latitude
-      @new.initiatior_name = startup.initiatior_name
-      @new.milestones = startup.milestones
-      @new.entity_id = startup.entity_id
-      @new.location = startup.location
-      @new.name = startup.name
-      @new.online_status = startup.online_status
-      @new.launch_status = startup.launch_status
-      @new.joint_ventures = startup.joint_ventures
-      @new.sector = startup.sector
-      @new.number_of_working_years = startup.number_of_working_years
-      @new.created_at = startup.created_at
-      @new.updated_at = startup.updated_at
+	# def self.change(startup)
+	#   @new = Startup.new
+ #      @new.id =  startup.id
+ #      @new.longitude =  startup.longitude
+ #      @new.latitude = startup.latitude
+ #      @new.initiatior_name = startup.initiatior_name
+ #      @new.milestones = startup.milestones
+ #      @new.entity_id = startup.entity_id
+ #      @new.location = startup.location
+ #      @new.name = startup.name
+ #      @new.online_status = startup.online_status
+ #      @new.launch_status = startup.launch_status
+ #      @new.joint_ventures = startup.joint_ventures
+ #      @new.sector = startup.sector
+ #      @new.number_of_working_years = startup.number_of_working_years
+ #      @new.created_at = startup.created_at
+ #      @new.updated_at = startup.updated_at
 
-      @new.company_status = ! startup.company_status
-      startup.delete
-      if @new.save
-        notice = 'successful edit'
-      else
-        render 'edit'
-      end
-	end
+ #      @new.company_status = ! startup.company_status
+ #      startup.delete
+ #      if @new.save
+ #        notice = 'successful edit'
+ #      else
+ #        render 'edit'
+ #      end
+	# end
 
 end
 
