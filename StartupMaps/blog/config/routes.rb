@@ -1,5 +1,12 @@
+
 Blog::Application.routes.draw do
  
+  # devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  
+  
+  get"/omniauth_callbacks" 
+  
   resources :groups do
     get "list_group_members"
   end  
@@ -11,15 +18,20 @@ Blog::Application.routes.draw do
 
   
   resources :projects do
+    
+
+    
+
 
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
     get "show_suggested"
     get "merge_request"
   end  
+ 
 
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  root :to => 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
