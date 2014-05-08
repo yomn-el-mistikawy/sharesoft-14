@@ -31,7 +31,7 @@ class StartupsBadges < ActiveRecord::Base
 
  def self.set_year_badges(startup_id)
   startup = Startup.find(startup_id)
-  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
   recently_achieved_badge = []
   if (startup.number_of_working_years >= 1 && (unachieved_badges.where(:id => 1)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 1, :bypassed => 0)
@@ -69,7 +69,7 @@ class StartupsBadges < ActiveRecord::Base
  # Author: Yomn El-Mistikawy 
 
  def self.set_requirements_badges(startup_id)
-  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
   targets_met = ProjectRequirement.where(:project_id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :reached => 1)
   recently_achieved_badge = []
   if (targets_met.count >= 50 && (unachieved_badges.where(:id => 7)).size == 1)
@@ -98,7 +98,7 @@ class StartupsBadges < ActiveRecord::Base
  # Author: Yomn El-Mistikawy
 
  def self.set_targets_badges(startup_id)
-  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
   targets_met = ProjectTarget.where(:project_id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :reached => 1)
   recently_achieved_badge = []
   if (targets_met.count >= 50 && (unachieved_badges.where(:id => 10)).size == 1)
@@ -128,7 +128,7 @@ class StartupsBadges < ActiveRecord::Base
 
  def self.set_launch_badges(startup_id)
   launched_projects = Project.where(:id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :launch => 1)
-  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
   recently_achieved_badge = []
   if (launched_projects.count >= 5 && (unachieved_badges.where(:id => 13)).size == 1)
    StartupsBadges.create(:startup_id  => startup_id, :badge_id => 13, :bypassed => 0)
@@ -156,7 +156,7 @@ class StartupsBadges < ActiveRecord::Base
  # Author: Yomn El-Mistikawy
 
  def self.set_subscription_badges(startup_id)
-  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
   entity_id = Startup.select(:entity_id).where(:id => startup_id)
   number_of_subscribers = Subscription.where(:subscribee_id => entity_id).count
   recently_achieved_badge = []
@@ -187,8 +187,8 @@ class StartupsBadges < ActiveRecord::Base
  # Author: Yomn El-Mistikawy
 
  def self.set_badge_collection_badges(startup_id)
-  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0)
-  achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1, 1, 0)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
+  achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1, 1, 0, 0)
   recently_achieved_badge = []
   if (unachieved_badges.where(:id => 19).size == 1)
    if (achieved_badges.where(:category => "year").size == 3)
@@ -233,7 +233,7 @@ class StartupsBadges < ActiveRecord::Base
    end
   end
   if (unachieved_badges.where(:id => 25).size == 1)
-   achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1, 1,0)
+   achieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 1, 1, 0, 0)
    if (achieved_badges.where(:category => "collector").size == 6)
     StartupsBadges.create(:startup_id => startup_id, :badge_id => 25, :bypassed => 0)
     StartupsBadges.where(:startup_id => startup_id, :badge_id => [19,20,21,22,23,24]).update_all(:bypassed => 1)
@@ -252,7 +252,7 @@ class StartupsBadges < ActiveRecord::Base
  # Output: unachieved/achieved/bypassed/not bypassed badges
  # Author: Yomn El-Mistikawy
 
- def self.get_achieved_unachieved_badges(startup_id, achieved, bypassed, entity)
+ def self.get_achieved_unachieved_badges(startup_id, achieved, bypassed, entity, category)
   if(entity == 1)
    startup_id = Startup.select(:id).where(:entity_id => startup_id)
   end
@@ -260,12 +260,16 @@ class StartupsBadges < ActiveRecord::Base
   if (achieved == 1 && bypassed == 1)
    return Badge.where(:id => achieved_badges_id).order(id: :asc)
   else
-   if (achieved == 0)
-    return Badge.where.not(:id => achieved_badges_id).order(id: :asc)
-   else
-    if (achieved == 1 && bypassed == 0)
-     achieved_badges_id = StartupsBadges.select(:badge_id).where(:startup_id => startup_id, :bypassed => 0)
-     return Badge.where(:id => achieved_badges_id).order(id: :asc)
+   if (achieved == 0 && category != 0)
+    return Badge.where(:category => category).where.not(:id => achieved_badges_id).order(id: :asc)
+   else 
+    if (achieved == 0) 
+      return Badge.where.not(:id => achieved_badges_id).order(id: :asc)
+    else
+     if (achieved == 1 && bypassed == 0)
+      achieved_badges_id = StartupsBadges.select(:badge_id).where(:startup_id => startup_id, :bypassed => 0)
+      return Badge.where(:id => achieved_badges_id).order(id: :asc)
+     end 
     end 
    end     
   end    
