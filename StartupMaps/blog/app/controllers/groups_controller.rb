@@ -72,6 +72,12 @@ class GroupsController < ApplicationController
     end
   end
 
+   def join_group
+  @user_id=1
+  GroupStartup.create(group_id: params[:group_id], user_id: @user_id)
+  end
+
+
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
@@ -81,6 +87,9 @@ class GroupsController < ApplicationController
       format.json { head :no_content }
     end
   end 
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

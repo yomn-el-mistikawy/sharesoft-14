@@ -1,0 +1,29 @@
+<h1>Listing groups</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Group name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.group_name %></td>
+        <td><%= link_to 'Show Group' %></td>
+       <!-- <td><%= link_to 'Join Group' %></td>-->
+        <td> <%= button_to "Join Group", :action => "join_group" %></td>
+
+       
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
