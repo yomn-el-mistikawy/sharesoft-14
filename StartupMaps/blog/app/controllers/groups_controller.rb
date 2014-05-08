@@ -33,8 +33,9 @@ class GroupsController < ApplicationController
   # Author: Sherouk A. Said.
 
   def create
+    current_entity = 1
     group = Group.new
-    group.creator_id = params[:id]
+    group.creator_id = current_entity
     group.name = params[:name] 
     group.description = params[:description] 
     group.private = params[:private]

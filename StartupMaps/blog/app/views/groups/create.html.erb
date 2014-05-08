@@ -2,22 +2,35 @@
       # Input: group name, group id, group descrition, gruop interest location, praivacy  type. 
       # Author: Sherouk A.Said.--> 
 
- <html> <body> <form action='create' >
- Group Name <input type='text' name='name' id='group_name'>
- </br>
- Creator Id <input type='text' name='id' id='group_id'>
- <br>
-  Group description <textarea name = 'description'></textarea>
-  </br> 
- Group Interests <input type='text' name='interests' id='group_interests'>
-  <br>
-  </br> private or not ( if private insert 1, if not insert 0 )<input type='text' name='private' id='private'>
-  </br> 
-  
-  <button onclick="myFunction()">create</button>
-  <script>
+ <html> 
+ 
+ <script>
   function myFunction()
   {
   alert("Group Successfully Created");
   }
-  </script> </form>
+
+  
+</script>
+
+ <body> 
+ <form action='create'>
+
+
+ Group Name <br> <input type='text' name='name' id='group_name'>
+ </br>
+ <br>
+  Group description <br> <textarea name = 'description'></textarea>
+  </br> 
+  <br>
+ Group Interests <br> <input type='text' name='interests' id='group_interests'>
+  </br>
+  <br>
+  Privacy: 
+  <br>
+  <input type="radio" name="private" value="private">Private<br> 
+  <input type="radio" name="private" value="public">Public<br>
+  <br>
+  
+  <button onclick="myFunction()" >Create</button>
+   </form>
