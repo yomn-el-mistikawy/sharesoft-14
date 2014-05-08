@@ -103,7 +103,14 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     respond_to do |format|
-      if @project.update_attributes(params[:project].permit(:name, :category, :location, :description))
+      if @project.update_attributes(
+          params.require(:project).permit(:name, 
+              :category, 
+              :location, 
+              :description,
+              :project_targets_attributes => [:id, :description, :_stroy],
+              :project_requirements_attributes => [:id, :description, :_destroy])
+        )
         format.html { redirect_to @project, notice: "Successfully updated project" }
       else
         format.html { render :edit }
@@ -123,10 +130,24 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
+  def destroy
+    project = Project.find(params[:id])
+    respond_to do |format|
+      if project.destroy
+        flash.notice = "Delete project successfully."
+      else
+        flash.alert = "Couldn't delete project, please try again."
+      end
+      format.html { redirect_to projects_path } # this will break, since projects#index doesn't work
+    end
+  end
+
 
   private
   def project_params
-    params[:project].permit(:name, :category, :location, :description)
+    params.require(:project).permit(:name, :category, :location, :description,
+      :project_targets_attributes => [:id, :description, :_destroy],
+      :project_requirements_attributes => [:id, :description, :_destroy])
   end
   
 end

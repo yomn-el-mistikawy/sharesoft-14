@@ -1,8 +1,12 @@
 class Project < ActiveRecord::Base
-   has_many :project_requirements
-   has_many :project_targets
-	 has_many :startups, through: :startups_projects
-   
+  # Cascade deletion to all associations
+  has_many :project_requirements, :dependent => :destroy
+  has_many :project_targets, :dependent => :destroy
+  
+  has_many :startups, through: :startups_projects
+
+  accepts_nested_attributes_for :project_targets, :allow_destroy => true
+  accepts_nested_attributes_for :project_requirements, :allow_destroy => true
 
   # Definition: "A startup can see a list of his projects" 
   # This method allows you to get a list of projects and 
@@ -16,7 +20,7 @@ class Project < ActiveRecord::Base
     @startups_listing_projects = StartupHaveProject.select(:project_id).where(:startup_id => startup.id)
     Project.where(:id => @startups_listing_projects)
 
-	end
+  end
 
 
   # Defintion: This method takes a project as input
@@ -30,8 +34,8 @@ class Project < ActiveRecord::Base
 
   def  self.get_suggest(project, startup)
     @projects_owned_by_startup_ids = StartupHaveProject.select(:project_id).where(:startup_id => startup.id)
-    @suggested_projects = Project.where(:location => project.location, :category => project.category).where.not(:id => project.id, :id => @projects_owned_by_startup_ids)
+    @suggested_projects = Project.where(:location => project.location, :category => project.category)
+                                 .where.not(:id => project.id, :id => @projects_owned_by_startup_ids)
   end	
 
 end
-

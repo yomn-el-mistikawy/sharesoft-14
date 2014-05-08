@@ -15,11 +15,12 @@
 <h1> Create New Project </h1>
 
 
-<%= form_for @project do |f| %>
+<%= nested_form_for @project do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
+
  
   <p>
     <%= f.label :category %><br>
@@ -34,6 +35,26 @@
   <p>
     <%= f.label :description %><br>
     <%= f.text_area :description %>
+  </p>
+
+  <%= f.fields_for :project_targets do |targets_f| %>
+    <%= targets_f.label :description %>
+    <%= targets_f.text_field :description %>
+    <%= targets_f.link_to_remove "Remove Target" %>
+  <% end  %>
+
+  <p>
+    <%= f.link_to_add "Add a Target", :project_targets %>
+  </p>
+
+  <%= f.fields_for :project_requirements do |targets_f| %>
+    <%= targets_f.label :description %>
+    <%= targets_f.text_field :description %>
+    <%= targets_f.link_to_remove "Remove Requirement" %>
+  <% end  %>
+
+  <p>
+    <%= f.link_to_add "Add a Requirement", :project_requirements %>
   </p>
  
   <p>
