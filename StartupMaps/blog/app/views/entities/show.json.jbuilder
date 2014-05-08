@@ -1,0 +1,1 @@
+json.extract! @entity, :name, :location, :industry, :description, :work_status, :available_internships, :interests, :social_media_links, :headquarters, :embeded_videos, :work_portolio, :privacy, :created_at, :updated_at

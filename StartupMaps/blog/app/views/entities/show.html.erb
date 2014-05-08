@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @entity.name %>
+</p>
+
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Location:</strong>
+<%= @entity.location %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Industry:</strong>
+  <%if @entity.privacy==false%><%= @entity.industry %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Description:</strong>
+  <%if @entity.privacy==false%><%= @entity.description %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Work status:</strong>
+  <%if @entity.privacy==false%><%= @entity.work_status %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Available internships:</strong>
+  <%if @entity.privacy==false%><%= @entity.available_internships %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Interests:</strong>
+  <%if @entity.privacy==false%><%= @entity.interests %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Social media links:</strong>
+  <%if @entity.privacy==false%><%= @entity.social_media_links %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Headquarters:</strong>
+  <%if @entity.privacy==false%><%= @entity.headquarters %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Embeded videos:</strong>
+ <%if @entity.privacy==false%> <%= @entity.embeded_videos %><%end %>
+</p>
+<%end %>
+
+<%if @entity.privacy==false%>
+<p>
+  <strong>Work portolio:</strong>
+ <%if @entity.privacy==false%> <%= @entity.work_portolio %><%end %>
+</p>
+<%end %>
+
+
+<p>
+  <strong>Privacy:</strong>
+  <%= @entity.privacy %>
+</p>
+
+<%= link_to 'Edit', edit_entity_path(@entity) %> |
+<%= link_to 'Back', entities_path %>

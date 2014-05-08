@@ -1,0 +1,65 @@
+<%= form_for(@entity) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+      <% @entity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :industry %><br>
+    <%= f.text_field :industry %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :work_status %><br>
+    <%= f.text_field :work_status %>
+  </div>
+  <div class="field">
+    <%= f.label :available_internships %><br>
+    <%= f.text_field :available_internships %>
+  </div>
+  <div class="field">
+    <%= f.label :interests %><br>
+    <%= f.text_field :interests %>
+  </div>
+  <div class="field">
+    <%= f.label :social_media_links %><br>
+    <%= f.text_field :social_media_links %>
+  </div>
+  <div class="field">
+    <%= f.label :headquarters %><br>
+    <%= f.text_field :headquarters %>
+  </div>
+  <div class="field">
+    <%= f.label :embeded_videos %><br>
+    <%= f.text_field :embeded_videos %>
+  </div>
+  <div class="field">
+    <%= f.label :work_portolio %><br>
+    <%= f.text_field :work_portolio %>
+  </div>
+  <div class="field">
+    <%= f.label :privacy %><br>
+    <%= f.check_box :privacy %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
