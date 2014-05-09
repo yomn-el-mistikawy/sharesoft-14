@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502223525) do
+ActiveRecord::Schema.define(version: 20140509105957) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 20140502223525) do
   create_table "entities", force: true do |t|
     t.string   "name"
     t.string   "username"
-    t.string   "password"
-    t.string   "e_mail"
     t.string   "verification_code"
     t.string   "location"
     t.string   "headquarter"
@@ -43,9 +41,21 @@ ActiveRecord::Schema.define(version: 20140502223525) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "auth_token"
-    t.string   "password_reset"
-    t.datetime "sent_at"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "type"
+    t.boolean  "completed"
   end
+
+  add_index "entities", ["reset_password_token"], name: "index_entities_on_reset_password_token", unique: true, using: :btree
 
   create_table "entity_available_internships", force: true do |t|
     t.string   "name"
@@ -176,6 +186,15 @@ ActiveRecord::Schema.define(version: 20140502223525) do
     t.datetime "updated_at"
   end
 
+  create_table "messages", force: true do |t|
+    t.integer  "entity_id"
+    t.integer  "receiver_id"
+    t.string   "title"
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "text"
@@ -274,6 +293,7 @@ ActiveRecord::Schema.define(version: 20140502223525) do
     t.integer  "number_of_working_years"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "company_status"
   end
 
   create_table "startups_badges", force: true do |t|
@@ -281,6 +301,7 @@ ActiveRecord::Schema.define(version: 20140502223525) do
     t.integer  "startup_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "bypassed"
   end
 
   create_table "startups_projects", force: true do |t|
@@ -309,8 +330,20 @@ ActiveRecord::Schema.define(version: 20140502223525) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
