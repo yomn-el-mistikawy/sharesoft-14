@@ -16,7 +16,7 @@ class StartupsBadges < ActiveRecord::Base
   recently_achieved_badge = recently_achieved_badge + StartupsBadges.set_launch_badges(startup.id)
   recently_achieved_badge = recently_achieved_badge + StartupsBadges.set_targets_badges(startup.id)
   recently_achieved_badge = recently_achieved_badge + StartupsBadges.set_requirements_badges(startup.id)
-  recently_achieved_badge = recently_achieved_badge + StartupsBadges.set_view_badges(startup.id)
+  recently_achieved_badge = recently_achieved_badge + StartupsBadges.set_view_badges(entity_id)
   recently_achieved_badge = recently_achieved_badge + StartupsBadges.set_badge_collection_badges(startup.id)
   return recently_achieved_badge
  end
@@ -58,10 +58,10 @@ class StartupsBadges < ActiveRecord::Base
  # Output: recently_achieved_badge
  # Author: Yomn El-Mistikawy
 
- def self.set_view_badges(startup_id)
-  startup = Startup.find(startup_id)
-  entity = Entity.find(startup.entity_id)
+ def self.set_view_badges(entity_id)
+  entity = Entity.find(entity_id)
   number_of_views = entity.impressionist_count(:filter=>:session_hash)
+  startup_id = Startup.select(:id).where(:entity_id => entity_id)
   unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
   recently_achieved_badge = []
   if (number_of_views >= 1 && (unachieved_badges.where(:id => 4)).size == 1)
