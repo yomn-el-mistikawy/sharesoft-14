@@ -1,0 +1,16 @@
+<!--
+ #Definition: View the activities the startup made.
+ #Input: Activities attributes.	
+ #Output: Activities.
+ #Author: Amr Gamal. 
+-->
+
+<h1>Friends’ Activities</h1>  
+<% @activities.each do |activity| %>  
+   <div class="activity">  
+  <%= link_to activity.owner.name, activity.owner if activity.owner %>  
+  added comment to <%= link_to activity.trackable.project.name, activity.trackable.project %>  
+  </div> 
+ 
+    
+<% end %>  

@@ -1,4 +1,16 @@
 class StartupHaveProject < ActiveRecord::Base
+
+  #Definition: to include actions happen in the model to the public activity.
+  #Input: Void.
+  #output: Voud.
+  #Author: Amr Gamal.
+
+  include PublicActivity::Model  
+  tracked 
+   
+
+  attr_accessible :project_id, :startup_id 
+
   has_and_belongs_to_many :projects
   has_and_belongs_to_many :startups
 
