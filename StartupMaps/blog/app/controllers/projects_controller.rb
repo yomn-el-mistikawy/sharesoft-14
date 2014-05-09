@@ -142,6 +142,20 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def change_reached_status
+    project = Project.find(params[:id])
+    respond_to do |format|
+
+      if project_targets.update_attribute(:reached, !project_targets.reached)
+        flash.notice = "Successfully met target"
+      else
+        flash.alert = "Oops, couldn't respond to action"
+      end
+
+      format.html { redirect_to project }
+
+    end
+  end
 
   private
   def project_params

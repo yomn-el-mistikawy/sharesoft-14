@@ -8,6 +8,11 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :project_targets, :allow_destroy => true
   accepts_nested_attributes_for :project_requirements, :allow_destroy => true
 
+
+  def reached?
+    reached ? "Yes" : "No"
+  end 
+
   # Definition: "A startup can see a list of his projects" 
   # This method allows you to get a list of projects and 
   # compares the project's id with the startup's id 
