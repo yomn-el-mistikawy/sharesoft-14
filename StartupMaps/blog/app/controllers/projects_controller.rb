@@ -88,6 +88,16 @@ class ProjectsController < ApplicationController
   end
 
 
+  # Defintion: View project of the logged-in startup.
+  # Input: Startup id.
+  # Output: Projects of the startup.
+  # Author: Amr Gamal
+
+  def view_project
+    @projects = Project.select(:name).where(:id => (Startup_has_project.select(:project_id).where(:startup_id => session[:startup_id])))
+  end
+
+
   private
   def project_params
     params[:project].permit(:name, :category, :location, :description)
