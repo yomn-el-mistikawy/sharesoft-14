@@ -1,26 +1,29 @@
-<p id="notice"><%= notice %></p>
+<% if @entity == current_entity %>
+ <% if current_entity.type == 'Startup' && @entity.completed == nil %>
+  Startup
+  <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |f| %>
+   <div><%= f.label :number_of_working_years %><br />
+   <%= f.text_field :number_of_working_years %></div><br>
 
-<!-- The following list is for listing the details in the tuples in the table -->
-<!-- Adel Zee Badawy -->
+   <div><%= f.label :sector %><br />
+   <%= f.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div>
+   <%= f.submit "Insert" %>
+   <% end %>
+ <% elsif current_entity.type == 'Investor' && @entity.completed == nil %>
+  Investor
+  <%= form_for :investor, url: entity_create_investor_path(:investor, entity_id: params[:id]) do |f| %>
+   <div><%= f.label :contact_information %><br />
+   <%= f.text_field :contact_information %></div><br>
 
-<p>
-  <strong>Name:</strong>
-  <%= @entity.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @entity.email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @entity.password %>
-</p>
-
-<!-- The following two lines link to "Edit" and "Back" urls -->
-<!-- Adel Zee Badawy -->
-<%= link_to 'Edit', edit_entity_path(@entity) %> |
-<%= link_to 'Back', entities_path %>
-
-</table>
+   <div><%= f.label :sector %><br />
+   <%= f.collection_select :sector, Investor::SECTORS, :to_s, :titleize %></div>
+   <%= f.submit "Insert" %>
+  <% end %>
+ <% elsif current_entity.type == 'Service' && @entity.completed == nil %>
+  <%= form_for :service, url: entity_create_service_path(:service, entity_id: params[:id]) do |f| %>
+   <div><%= f.label :sector %><br />
+   <%= f.collection_select :sector, Service::SECTORS, :to_s, :titleize %></div>
+   <%= f.submit "Insert" %>
+  <% end %>
+ <% end %>
+<% end %>

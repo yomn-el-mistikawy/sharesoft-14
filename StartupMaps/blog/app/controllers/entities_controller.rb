@@ -1,97 +1,53 @@
 class EntitiesController < ApplicationController
-  before_action :set_entity, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_entity!
 
-  #Homepage of entities, which lists all created accounts
-  # Adel Zee Badawy
-  def index
-    @entities = Entity.all
-  end
+	def show
+		@entity = Entity.find(params[:id])
+	end
 
- #Leads to the show webpages which views created accounts
- # Adel Zee Badawy
-  def show
-  end
-
-  #Gives access to new accounts
-  # Adel Zee Badawy
-  def new
-    @account = Entity.new
-  end
-
-
-
- #Creates accounts
- # Adel Zee Badawy
-  def create
-    @entity = Entity.new(entity_params)
-
-    respond_to do |format|
-      if @entity.save
-        format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @entity }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
-      end
+	def create_startup
+		@startup = Startup.create(startup_params)
+		@startup.update(:entity_id => params[:entity_id])
+		if @startup.save
+			current_entity.update(:completed => 1)
+			redirect_to root_url
+		else 
+			redirect_to root_url
+		end
     end
-  end
 
+       def create_investor
+		@investor = Investor.create(investor_params)
+		@investor.update(:entity_id => params[:entity_id])
+		if @investor.save
+			current_entity.update(:completed => 1)
+			redirect_to root_url
+		else 
+			redirect_to root_url
+		end
+    end	
+
+    def create_service
+		@service = Service.create(service_params)
+		@service.update(:entity_id => params[:entity_id])
+		if @service.save
+			current_entity.update(:completed => 1)
+			redirect_to root_url
+		else 
+			redirect_to root_url
+		end
+    end
+   
   
-  def update
-    respond_to do |format|
-      if @entity.update(entity_params)
-        format.html { redirect_to @entity, notice: 'Entity was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+   def startup_params
+     params.require(:startup).permit(:number_of_working_years, :sector)
+   end
 
- #Deletes created accounts
- # Adel Zee Badawy
-  def destroy
-    @entity.destroy
-    respond_to do |format|
-      format.html { redirect_to entities_url }
-      format.json { head :no_content }
-    end
-  end
-#Private disallows the view to use the methods inside, but lets methods in the same controller to use the methods.
-# Adel Zee Badawy
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    # Adel Zee Badawy
-    def set_entity
-      @entity = Entity.find(params[:id])
-    end
+   def investor_params
+     params.require(:investor).permit(:contact_information, :sector)
+   end
 
-    # Allows the method to read the inputs
-    # Adel Zee Badawy
-    def entity_params
-      params.require(:entity).permit(:name, :email, :password, :availability)
-    end
-
-  def friends
-    @title = "Friends"
-    @user = User.find(params[:id])
-    @users = @user.friends.paginate(:page => params[:page])
-    render 'show_friends'
-  end
-
-  def pending_friends
-    @title = "Pending friends"
-    @user = User.find(params[:id])
-    @users = @user.pending_friends.paginate(:page => params[:page])
-    render 'show_friends'
-  end
-
-  def requested_friends
-    @title = "Requested friends"
-    @user = User.find(params[:id])
-    @users = @user.requested_friends.paginate(:page => params[:page])
-    render 'show_friends'
-  end
+   def service_params
+     params.require(:service).permit(:sector)
+   end
 end
-

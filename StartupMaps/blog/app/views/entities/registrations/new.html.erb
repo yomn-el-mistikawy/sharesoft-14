@@ -18,6 +18,19 @@
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
+    <div><%= f.label :location %><br />
+  <%= f.email_field :location %></div>
+
+   <div><%= f.label :headquarter %><br />
+  <%= f.email_field :headquarter %></div>
+
+   <div><%= f.label :description %><br />
+  <%= f.email_field :description %></div>
+
+  <div><%= f.label :type %><br />
+  <%= f.collection_select :type, Entity::TYPES, :to_s, :titleize %><br>
+
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

@@ -1,4 +1,5 @@
 class Entity < ActiveRecord::Base
+	self.inheritance_column = nil
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -22,6 +23,14 @@ class Entity < ActiveRecord::Base
 	has_many :subscribee, :through => :subscrtipion
 	has_many :receivers, :through => :message
 	has_many :messages
+
+	accepts_nested_attributes_for :startups
+	accepts_nested_attributes_for :investors
+	accepts_nested_attributes_for :services
+
+	TYPES = %w[Startup Investor Service]
+
+	SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 
 end
 
