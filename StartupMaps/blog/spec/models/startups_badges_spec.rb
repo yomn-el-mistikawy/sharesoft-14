@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe StartupsBadges do	
-  it "Sets achieved year, requirements, launch, targets badges" do
+  it "Sets badges" do
   	entity = Entity.create!(id: 1, name: "Yomn", username: "Yomn", email: "yomngmail.com")
    entity.type = "Startup"
    startup = Startup.create!(id: 1, entity_id: entity.id, number_of_working_years: 6)
@@ -24,6 +24,11 @@ describe StartupsBadges do
     ProjectTarget.create(project_id: project2.id, description: "Yomn's project", reached: 1)
     counter = counter + 1 
    end	
-   expect(StartupsBadges.set_badges(entity.id)).to eq([Badge.find(1), Badge.find(2), Badge.find(3), Badge.find(7),Badge.find(8), Badge.find(9), Badge.find(10), Badge.find(11), Badge.find(12), Badge.find(13), Badge.find(14), Badge.find(15), Badge.find(19),Badge.find(21), Badge.find(22), Badge.find(23)])
+   counter = 0
+   while counter <= 5000 do
+    Subscription.create(subscribee_id: entity.id, subscriber_id: counter + 1 )
+    counter = counter + 1
+   end	
+   expect(StartupsBadges.set_badges(entity.id)).to eq([Badge.find(1), Badge.find(2), Badge.find(3), Badge.find(7), Badge.find(8), Badge.find(9), Badge.find(10), Badge.find(11), Badge.find(12), Badge.find(13), Badge.find(14), Badge.find(15), Badge.find(16), Badge.find(17), Badge.find(18), Badge.find(19), Badge.find(21), Badge.find(22), Badge.find(23), Badge.find(24)])
   end	
 end
