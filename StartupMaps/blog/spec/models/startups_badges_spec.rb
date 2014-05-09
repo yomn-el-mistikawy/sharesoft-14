@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe StartupsBadges do	
   it "Sets badges" do
-  	entity = Entity.create!(id: 1, name: "Yomn", username: "Yomn", email: "yomngmail.com")
+  	entity = Entity.create!(id: 1, name: "Yomn", username: "Yomn", email: "yomn@gmail.com")
    entity.type = "Startup"
    startup = Startup.create!(id: 1, entity_id: entity.id, number_of_working_years: 6)
    project1, project2 = Project.create!(id: 1, launch: 1), Project.create!(id: 2, launch: 1)
