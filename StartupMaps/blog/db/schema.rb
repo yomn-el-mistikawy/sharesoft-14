@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504133830) do
+ActiveRecord::Schema.define(version: 20140505125833) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -24,8 +24,7 @@ ActiveRecord::Schema.define(version: 20140504133830) do
 
   create_table "comments", force: true do |t|
     t.string   "comment"
-    t.string   "commenter"
-    t.integer  "startup_id"
+    t.integer  "entity_id"
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,8 +33,6 @@ ActiveRecord::Schema.define(version: 20140504133830) do
   create_table "entities", force: true do |t|
     t.string   "name"
     t.string   "username"
-    t.string   "password"
-    t.string   "e_mail"
     t.string   "verification_code"
     t.string   "location"
     t.string   "headquarter"
@@ -43,9 +40,20 @@ ActiveRecord::Schema.define(version: 20140504133830) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "auth_token"
-    t.string   "password_reset"
-    t.datetime "sent_at"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "type"
   end
+
+  add_index "entities", ["reset_password_token"], name: "index_entities_on_reset_password_token", unique: true, using: :btree
 
   create_table "entity_available_internships", force: true do |t|
     t.string   "name"
@@ -115,8 +123,6 @@ ActiveRecord::Schema.define(version: 20140504133830) do
   end
 
   create_table "friendships", force: true do |t|
-    t.integer  "sender_id_id"
-    t.integer  "receiver_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -169,18 +175,16 @@ ActiveRecord::Schema.define(version: 20140504133830) do
   create_table "likes", force: true do |t|
     t.integer  "post_id"
     t.integer  "comment_id"
-    t.integer  "liker_id"
-    t.integer  "likable_id"
-    t.string   "likable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "messages", force: true do |t|
-    t.integer  "entity_id"
-    t.integer  "receiver_id"
-    t.string   "title"
-    t.string   "message"
+    t.string   "sender"
+    t.string   "recepient"
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -197,7 +201,7 @@ ActiveRecord::Schema.define(version: 20140504133830) do
     t.string   "title"
     t.string   "text"
     t.integer  "group_id"
-    t.integer  "startup_id"
+    t.integer  "entity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -291,6 +295,7 @@ ActiveRecord::Schema.define(version: 20140504133830) do
     t.integer  "number_of_working_years"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "company_status"
   end
 
   create_table "startups_badges", force: true do |t|
