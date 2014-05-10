@@ -61,21 +61,21 @@ class StartupsBadges < ActiveRecord::Base
  def self.set_view_badges(entity_id)
   entity = Entity.find(entity_id)
   number_of_views = entity.impressionist_count(:filter=>:session_hash)
-  startup_id = Startup.select(:id).where(:entity_id => entity_id)
-  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
+  startup = Startup.find_by_entity_id(entity_id)
+  unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup.id, 0, 0, 0, 0)
   recently_achieved_badge = []
   if (number_of_views >= 1 && (unachieved_badges.where(:id => 4)).size == 1)
-   StartupsBadges.create(:startup_id  => startup_id, :badge_id => 4, :bypassed => 0)
+   StartupsBadges.create(:startup_id  => startup.id, :badge_id => 4, :bypassed => 0)
    recently_achieved_badge = recently_achieved_badge + [Badge.find(4)]
   end
   if (number_of_views >= 5000 && (unachieved_badges.where(:id => 5)).size == 1)
-   StartupsBadges.create(:startup_id  => startup_id, :badge_id => 5, :bypassed => 0)
-   StartupsBadges.where(:startup_id => startup_id, :badge_id => 4).update_all(:bypassed => 1)
+   StartupsBadges.create(:startup_id  => startup.id, :badge_id => 5, :bypassed => 0)
+   StartupsBadges.where(:startup_id => startup.id, :badge_id => 4).update_all(:bypassed => 1)
    recently_achieved_badge = recently_achieved_badge + [Badge.find(5)]
   end
   if (number_of_views >= 10000 && (unachieved_badges.where(:id => 6)).size == 1)
-   StartupsBadges.create(:startup_id  => startup_id, :badge_id => 6, :bypassed => 0)
-   StartupsBadges.where(:startup_id => startup_id, :badge_id => 5).update_all(:bypassed => 1)
+   StartupsBadges.create(:startup_id  => startup.id, :badge_id => 6, :bypassed => 0)
+   StartupsBadges.where(:startup_id => startup.id, :badge_id => 5).update_all(:bypassed => 1)
    recently_achieved_badge = recently_achieved_badge + [Badge.find(6)]
   end
   return recently_achieved_badge
