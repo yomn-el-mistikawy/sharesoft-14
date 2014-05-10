@@ -16,15 +16,32 @@
 
 <h2>Posts</h2>
 <% @group.posts.each do |post| %>
-  <% @post = post %>
-  <% if @post != nil %>
-    <%= render 'posts/post',  :collection => @group.posts%>
-  <% end %> 
-<% end %>
+<%= @post = post %>
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+  <p>
+  </p>
+  <p>
+    <strong>Text:</strong>
+    <%= post.text %>
+  </p>
 
-<h2>Add a Post</h2>
-<%= render 'posts/new' %>
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+   
+  <p>
+    <strong><%= comment.commenter %></strong> 
+    <%= ":" %>
+    <%= comment.comment %>
+  </p>
+  <% end %>
+
+<%= render :partial => 'form_comment' %>
+<% end %> 
+
+<%= render :partial => 'form_post' %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
-<%= link_to 'Destroy', edit_group_path, method: :delete, data: { confirm: 'Are you sure?' } %>
