@@ -37,3 +37,35 @@
     Badge.create(:id => 24, :name => "Hall of fame member", :description => "Collected all subscription badges", :level => 4, :category => "collector")
     Badge.create(:id => 25, :name => "Badge collector", :description => "Collected all badges", :level => 4, :category => "collector")  
   end
+
+puts("Seeds database for badges testing")
+    entity = Entity.create!(name: "Yomn", username: "Yomn", email: "yomn@gmail.com")
+    entity.update(:type => "Startup")
+    startup = Startup.create!(entity_id: entity.id, number_of_working_years: 6)
+    entity2 = Entity.create!(name: "Yomn2", username: "Yomn2", email: "yomn2@gmail.com")
+    entity2.update(:type => "Startup")
+    startup2 = Startup.create!(entity_id: entity2.id, number_of_working_years: 6)
+    project1, project2 = Project.create!(launch: 1), Project.create!(launch: 1)
+    StartupsProjects.create(startup_id: startup.id, project_id: project1.id)
+    StartupsProjects.create(startup_id: startup.id, project_id: project2.id)
+    counter = 0
+    projects_id_counter = 3
+    while counter <= 48 do
+      project = Project.create(launch: 1)
+      StartupsProjects.create(startup_id: startup.id, project_id: project.id)
+      counter = counter + 1
+      projects_id_counter = projects_id_counter + 1
+    end 
+    counter = 0
+    while counter <= 500 do
+      ProjectRequirement.create(project_id: project1.id, description: "Yomn's project", reached: 1)
+      ProjectRequirement.create(project_id: project2.id, description: "Yomn's project", reached: 1)
+      ProjectTarget.create(project_id: project1.id, description: "Yomn's project", reached: 1)
+      ProjectTarget.create(project_id: project2.id, description: "Yomn's project", reached: 1)
+      counter = counter + 1 
+    end 
+    counter = 0
+    while counter <= 5000 do
+      Subscription.create(subscribee_id: entity.id, subscriber_id: counter + 1 )
+      counter = counter + 1
+    end 
