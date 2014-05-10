@@ -1,22 +1,24 @@
-<!-- # Definition: This view is used by the user to sign in into the system.
-	 # Input: void
-	 # Output: email, password
-	 # Author: Omar El Menawy -->
+<!-- 
+     # Definition: This view is used by the user to sign in into the system.
+     # Input: void
+     # Output: email, password
+     # Author: Omar El Menawy 
+-->
 	 
 <h2>Sign in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |entity| %>
+  <div><%= entity.label :email %><br />
+  <%= entity.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+  <div><%= entity.label :password %><br />
+    <%= entity.password_field :password, autocomplete: "off" %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <div><%= entity.check_box :remember_me %> <%= entity.label :remember_me %></div>
   <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
+  <div><%= entity.submit "Sign in" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
