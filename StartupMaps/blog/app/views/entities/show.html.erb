@@ -7,7 +7,7 @@
        # Author: Yomn El-Mitikawy -->
       
    <% if @entity.type == "Startup" %>
-    <% if @entity.id == 1  %> 
+    <% if @entity.id == current_entity %> 
       <% if @all_achieved_badges.size != 25 %>
         <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id])%>
       <% end %>

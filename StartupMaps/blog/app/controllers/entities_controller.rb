@@ -9,11 +9,10 @@ class EntitiesController < ApplicationController
   # Author: Yomn El-Mistikawy
 
   def show
-    session[:entity_id] = 1
     @entity = Entity.find(params[:id])
     if @entity.type == "Startup"
       impressionist(@entity)
-      if session[:entity_id] == @entity.id
+      if session[:current_entity] == @entity.id
         @recently_achieved_badges = StartupsBadges.set_badges(params[:id])
         @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1, 1, 0)
       end 
