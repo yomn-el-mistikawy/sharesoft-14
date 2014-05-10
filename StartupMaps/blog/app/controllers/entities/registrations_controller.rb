@@ -1,5 +1,5 @@
 class Entities::RegistrationsController < Devise::RegistrationsController
-before_action :authenticate_entity!
+  before_action :authenticate_entity!
 
   # Definition: This method takes the entity information in a text field and saves it in a parameter.
   # Input: void
