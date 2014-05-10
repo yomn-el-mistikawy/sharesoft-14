@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
 
-
   def new
       @post = Post.find(params[:post_id])
       @comment = @post.comments.new
@@ -22,9 +21,14 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.commenter = @startup.name
     @comment.startup_id = session[:entity_ID]
+
     if @comment.save
-      redirect_to group_path(@group)
-    end
+      redirect_to @group
+    else
+      flash[:error] = 'Your comment could not be posted, please try again.'
+      redirect_to @group
+     
+     end
   end
 
   def show
@@ -32,22 +36,29 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+   
+  @comment = Comment.find(params[:id])
+  @post = Post.find(params[:post_id])
   end
 
   def update
-      @comment = Comment.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @group = Group.find(@post.group_id)
+    @comment = @post.comments.find(params[:id])
       if @comment.update(comment_params)
-        redirect_to @comment
+        redirect_to @group
       else
+        flash[:error] = 'Your comment could not be updated, please try again.'
         render 'edit'
       end
   end
 
   def destroy
+      @post = Post.find(params[:post_id])
+      @group = Group.find(@post.group_id)
       @comment = Comment.find(params[:id])
       @comment.destroy
-      redirect_to comment_path
+      redirect_to @group
   end
  
   private
