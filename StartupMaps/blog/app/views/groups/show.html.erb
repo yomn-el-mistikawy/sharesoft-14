@@ -1,4 +1,5 @@
-<p>
+
+  <p>
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
@@ -28,17 +29,22 @@
     <%= post.text %>
   </p>
 
+<div style="background: #FFDAB9">
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
-   
   <p>
-    <strong><%= comment.commenter %></strong> 
+    <strong style="color: #000; font-size: 10pt"><%= comment.commenter %></strong> 
     <%= ":" %>
-    <%= comment.comment %>
+    <%= comment.comment %>  
+    
+    <%=  link_to 'Delete', group_post_comment_path(@group,@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
+
   <% end %>
+ 
 
 <%= render :partial => 'form_comment' %>
+ </div>
 <% end %> 
 
 <%= render :partial => 'form_post' %>
