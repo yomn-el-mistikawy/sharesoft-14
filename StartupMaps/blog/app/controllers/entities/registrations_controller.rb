@@ -20,7 +20,6 @@ before_action :authenticate_entity!
   def create
     @entity = Entity.create(entity_params)
     if @entity.save
-      #UserMailer.confirmation_instructions(@entity)
       redirect_to @entity
     else
       render action: 'new' 	

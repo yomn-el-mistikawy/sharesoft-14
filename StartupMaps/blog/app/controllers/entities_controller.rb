@@ -10,6 +10,7 @@ class EntitiesController < ApplicationController
     @entity = Entity.find(params[:id])
   end
 
+
   # Definition: This method takes is the startup_params and creates a startup that has the current user entity id. It then sets completed to 1
   # which shows that the entity has completed its profile and a record has been created according to its type.
   # Input: startup_params
