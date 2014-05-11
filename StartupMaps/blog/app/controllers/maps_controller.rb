@@ -2,17 +2,15 @@ class MapsController < ApplicationController
 
 def  show_startups
 
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+   # response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    #response.headers["Pragma"] = "no-cache"
+    #response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
 
-
-    # if params[:checked]== startups && params[:year].present?
     @startups = Startup.all
     @markers = Gmaps4rails.build_markers(@startups) do |t, marker| 
-      marker.lat t.latitude + 20
+      marker.lat t.latitude 
       marker.lng t.longitude 
-      marker.infowindow t.joint_ventures 
+      marker.infowindow t.name 
       marker.picture({  
         "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
         "width" => 32, 
@@ -31,7 +29,7 @@ def  show_startups
   def  show_investors
     @investors = Investor.all
     @markers = Gmaps4rails.build_markers(@investors) do |t, marker| 
-      marker.lat t.latitude + 10
+      marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({ 
@@ -62,6 +60,10 @@ def  show_startups
     end
  
     render :json => @markers
+  end
+
+  def  create
+    render :template => 'maps/index'
   end
 
 end
