@@ -38,7 +38,7 @@
     Badge.create(:id => 25, :name => "Badge collector", :description => "Collected all badges", :level => 4, :category => "collector")  
   end
 
-puts("Seeds database for badges testing")
+  puts("Seeds database for badges testing")
     entity = Entity.create!(name: "Yomn", username: "Yomn", email: "yomn@gmail.com")
     entity.update(:type => "Startup")
     startup = Startup.create!(entity_id: entity.id, number_of_working_years: 6)

@@ -1,10 +1,12 @@
-  <!-- # Definition: This part shows a button that redirects the startup that owns this profile 
+  <!-- 
+       # Definition: This part shows a button that redirects the startup that owns this profile 
        # to its unachieved badges. If it has achieved new badges a pop up alert appears showing the badge image,
        # name, description and level. Moreover, a list of the highest level achieved badges in each category 
        # appear on the startup profile.
        # Input: @all_achieved_badges, @recently_achieved_badges, @achieved_badges, entity id
        # Output: entity id
-       # Author: Yomn El-Mitikawy -->
+       # Author: Yomn El-Mistikawy 
+  -->
       
    <% if @entity.type == "Startup" %>
     <% if @entity.id == current_entity %> 

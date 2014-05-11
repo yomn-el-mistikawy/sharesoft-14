@@ -2,11 +2,11 @@ class StartupsBadges < ActiveRecord::Base
  has_and_belongs_to_many :badges
  has_and_belongs_to_many :startups
 
- # Definition: This method takes the startup_id and calls different helper methods to set achieved badges.
- # It then returns an array of recently achieved badges' description.
- # Input: startup_id
- # Output: recently_achieved_badge
- # Author: Yomn El-Mistikawy
+  # Definition: This method takes the startup_id and calls different helper methods to set achieved badges.
+  # It then returns an array of recently achieved badges' description.
+  # Input: startup_id
+  # Output: recently_achieved_badge
+  # Author: Yomn El-Mistikawy
 
   def self.set_badges(entity_id)
     startup = Startup.find_by_entity_id(entity_id)
