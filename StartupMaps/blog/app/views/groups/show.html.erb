@@ -3,8 +3,20 @@
      # output: group_id.
      # Author: Sherouk A.Said. -->
 
+<html> 
+<script>
+function myFunction()
+  {
+  alert("Request Sent");
+  }
+
+  </script>
+
 <p id="notice"><%= notice %></p>
-<%= button_to "Join",  group_join_request_path(group_id: params[:id]) %>
+
+<button onclick="myFunction()", group_join_request_path(group_id: params[:id]) >Join</button>
+
+
 <p>
   <strong>Name:</strong>
   <%= @group.name %>

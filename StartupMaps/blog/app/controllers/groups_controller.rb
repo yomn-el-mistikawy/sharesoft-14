@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  #before_action :set_group, only: [:show, :edit, :update, :destroy]
   
   # Defintion: This method takes the session id 
   # and group id, then checks if the logged in
@@ -41,9 +41,7 @@ class GroupsController < ApplicationController
   # Author: Sherouk A.Said.
 
   def join_request
-    if JoinRequest.create(:group_id => params[:group_id], :sender_id => session[:entity_id])
-      render text: "Request sent"
-    end   
+    JoinRequest.create(:group_id => params[:group_id], :sender_id => session[:entity_id])  
   end
 
   
@@ -143,14 +141,4 @@ class GroupsController < ApplicationController
     end
   end 
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name, :group_name, :description)
-    end 
-end
+  end
