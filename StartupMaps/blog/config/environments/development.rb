@@ -8,7 +8,7 @@ Blog::Application.configure do
   #   location: '/usr/sbin/sendmail',
   #   arguments: '-i -t'}
 
-  # Defintion: added mailer configuration.
+  # Defintion: Added mailer configuration.
   # Input: Void.
   # Output: Void.
   # Author: Omar El Menawy.
