@@ -9,6 +9,8 @@ function toggleLocations(cb, url){
   if(!cb.checked){
     locationsMap[id] = [];
     buildMap();
+    if (locationsMap[id] == "")
+         {alert("No result found")}
   }
   else{
 
