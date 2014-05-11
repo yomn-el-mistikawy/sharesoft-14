@@ -1,28 +1,32 @@
 class GalleriesController < ApplicationController
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]
 
-  # GET /galleries
-  # GET /galleries.json
+
+  # Definition: This method loop on table gallery to get all data from it and put it
+  # into the variable @galleries.
+  # Input: Void.
+  # Output: All data from table gallery.
+  # Author: Sandra Youssef.
+
   def index
     @galleries = Gallery.all
   end
 
-  # GET /galleries/1
-  # GET /galleries/1.json
   def show
   end
 
-  # GET /galleries/new
   def new
     @gallery = Gallery.new
   end
 
-  # GET /galleries/1/edit
   def edit
   end
 
-  # POST /galleries
-  # POST /galleries.json
+  # Definition: This method has the aim to create a new gallery.
+  # Input: Gallery id.
+  # Output: A new painting.
+  # Author: Sandra Youssef.
+
   def create
     @gallery = Gallery.new(gallery_params)
 
@@ -37,8 +41,12 @@ class GalleriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /galleries/1
-  # PATCH/PUT /galleries/1.json
+  # Definition: This method edit the painting and create a message that the gallery was
+  # successfully updated.
+  # Input: Name.
+  # Output: A new painting.
+  # Author: Sandra Youssef.
+
   def update
     respond_to do |format|
       if @gallery.update(gallery_params)
@@ -51,8 +59,11 @@ class GalleriesController < ApplicationController
     end
   end
 
-  # DELETE /galleries/1
-  # DELETE /galleries/1.json
+  # Definition: This method delete the painting.
+  # Input: Void.
+  # Output: Void.
+  # Author: Sandra Youssef.
+
   def destroy
     @gallery.destroy
     respond_to do |format|
@@ -62,12 +73,22 @@ class GalleriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  
+  # Definition: This method find in table gallery all data that has id similar to the
+  # input.
+  # Input: Id.
+  # Output: All data from table gallery with similar input.
+  # Author: Sandra Youssef.
+
     def set_gallery
       @gallery = Gallery.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Definition: This method is called by method create to pass the name.
+  # Input: Name.
+  # Output: Void.
+  # Author: Sandra Youssef.
+
     def gallery_params
       params.require(:gallery).permit(:name)
     end

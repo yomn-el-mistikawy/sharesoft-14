@@ -1,3 +1,12 @@
+<!--
+  # Definition: This method enable to upload an image in paintings.
+  # Input: Name, image.
+  # Output: C reate a new painting.
+  # Author: Sandra Youssef.
+-->
+
+
+
 <%= form_for @painting, :html => { :multipart => true} do |f| %>
 <div class="field"> 
   <%= f.hidden_field :gallery_id %>

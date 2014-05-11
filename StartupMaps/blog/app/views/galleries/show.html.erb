@@ -1,14 +1,22 @@
+<!--
+  # Definition: This method show the uploaded image, it will link to each painting's 
+  # image url, also will convert it to string to be sure that it works with image tag.
+  # Input: Image.
+  # Output: Show the painting.
+  # Author: Sandra Youssef.
+-->
+
 <p id="notice"><%= notice %></p> 
 <h1> <%= @gallery.name %> </h1> 
 <h2>Paintings</h2>
 
 
 <div id="paintings"> 
+
 <% for painting in @gallery.paintings %>
 <div class="painting"> 
 
-<%= image_tag painting.image_url(:thumb) if painting.image? %>
-<!--<%= image_tag painting.image_url.to_s %>--> 
+<%= image_tag painting.image_url.to_s %>
 
 <div class="name"><%= painting.name %></div> 
 <div class="actions"> 

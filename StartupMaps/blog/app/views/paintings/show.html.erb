@@ -1,9 +1,19 @@
+<!--
+  # Definition: This method show the uploaded image, it will link to each painting's 
+  # image url, also will convert it to string to be sure that it works with image tag.
+  # Input: Image.
+  # Output: Show the image.
+  # Author: Sandra Youssef.
+-->
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Gallery:</strong>
   <%= @painting.gallery %>
 </p>
+
+<%=image_tag @painting.image_url.to_s %>
 
 <p>
   <strong>Name:</strong>

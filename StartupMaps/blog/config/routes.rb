@@ -1,5 +1,11 @@
 Blog::Application.routes.draw do
  
+  resources :paintings
+
+  resources :galleries
+
+  root :to => 'galleries#index'
+
   resources :groups do
     get "list_group_members"
   end  
@@ -19,7 +25,7 @@ Blog::Application.routes.draw do
   end  
 
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  #root to: 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

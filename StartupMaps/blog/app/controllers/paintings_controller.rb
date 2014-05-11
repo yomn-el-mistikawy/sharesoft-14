@@ -1,40 +1,61 @@
 class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
-  # GET /paintings
-  # GET /paintings.json
+  # Definition: This method loops on table painting and put all data in the variable
+  # @paintings.
+  # Input: Void.
+  # Output: All data from painting.
+  # Author: Sandra Youssef.
+
   def index
     @paintings = Painting.all
   end
 
-  # GET /paintings/1
-  # GET /paintings/1.json
+  
   def show
   end
 
-  # GET /paintings/new
+  # Definition: This method has the aim to make a new painting.
+  # Input: Gallery id.
+  # Output: A new painting.
+  # Author: Sandra Youssef.
+
   def new
     @painting = Painting.new( :gallery_id => params[:gallery_id])
   end
 
-  # GET /paintings/1/edit
   def edit
   end
 
-  # POST /paintings
-  # POST /paintings.json
-  def create
-@painting = Painting.new(painting_params) 
-if @painting.save
-redirect_to @painting.gallery
-else
- render :action => 'new'
-end 
-end
+
+ # Definition: This method has the aim to create a new painting and after to click 
+ # on the button create painting, it generate a message that the Painting was 
+ # successfully created
+ # Input: Gallery id, name,
+ # Output: A new painting.
+ # Author: Sandra Youssef.
+
+def create
+    @painting = Painting.new(painting_params)
+
+    respond_to do |format|
+      if @painting.save
+        format.html { redirect_to @painting, notice: 'Painting was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @painting }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @painting.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
 
-  # PATCH/PUT /paintings/1
-   #PATCH/PUT /paintings/1.json
+  # Definition: This method has the aim to edit the painting and after to click on the
+  # button update painting, it generate a message that the painting was successfully updated.
+  # Input: Gallery id, name, image.
+  # Output: Void.
+  # Author: Sandra Youssef.
+
   def update
     respond_to do |format|
       if @painting.update(painting_params)
@@ -49,8 +70,11 @@ end
 
 
 
-  # DELETE /paintings/1
-  # DELETE /paintings/1.json
+  # Definition: This method delete the painting.
+  # Input: Void.
+  # Output: Void.
+  # Author: Sandra Youssef.
+
   def destroy
     @painting.destroy
     respond_to do |format|
@@ -59,13 +83,24 @@ end
     end
   end
 
+
+  # Definition: This method loop on table painting and find retreive all data that is
+  # similar to the input id 
+  # Input: Id.
+  # Output: All data from table painting.
+  # Author: Sandra Youssef.
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_painting
       @painting = Painting.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Definition: This method is called by method create that has the aim to create a
+  # new painting. 
+  # Input: Gallery id, name, image.
+  # Output: Void.
+  # Author: Sandra Youssef.
+
     def painting_params
       params.require(:painting).permit(:gallery_id, :name, :image)
     end
