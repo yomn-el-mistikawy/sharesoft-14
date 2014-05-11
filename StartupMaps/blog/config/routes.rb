@@ -1,12 +1,27 @@
 Blog::Application.routes.draw do
  
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
   resources :groups do
     get "list_group_members"
   end  
 
   resources :entities do
-    post "show_unachieved_badges"
+    post "show_unachieved_badges"  
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
   end  
+
+
+
+  resources :startups
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

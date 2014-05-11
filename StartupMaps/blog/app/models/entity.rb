@@ -1,4 +1,6 @@
 class Entity < ActiveRecord::Base
+  self.inheritance_column=nil
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   has_many :services 
   has_many :startups
   has_many :investors
@@ -19,4 +21,6 @@ class Entity < ActiveRecord::Base
   has_many :receivers, :through => :message
   has_many :messages
   is_impressionable
+  TYPES = %w[Startup Investor Service]
+  SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 end
