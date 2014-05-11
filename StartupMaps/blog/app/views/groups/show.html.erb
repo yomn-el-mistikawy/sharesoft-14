@@ -1,13 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @group.name %>
-</p>
-
-<p>
-  <strong>Group name:</strong>
-  <%= @group.group_name %>
 </p>
 
 <p>
@@ -15,5 +8,29 @@
   <%= @group.description %>
 </p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<p>
+  <strong>Interest:</strong>
+  <%= @group.interest %>
+</p>
+
+
+<h2>Posts</h2>
+<% @group.posts.each do |post| %>
+<%= @post = post %>
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+  <p>
+  </p>
+  <p>
+    <strong>Text:</strong>
+    <%= post.text %>
+  </p>
+
+
+  <% end %>
+
+<%= render :partial => 'form_post' %>
+
+<%= link_to 'Edit', edit_group_path(@group) %> | <%= link_to 'Back', groups_path %>
