@@ -11,7 +11,7 @@ Blog::Application.configure do
   # Defintion: added mailer configuration.
   # Input: Void.
   # Output: Void.
-  # Author: Omar El Menawy
+  # Author: Omar El Menawy.
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
