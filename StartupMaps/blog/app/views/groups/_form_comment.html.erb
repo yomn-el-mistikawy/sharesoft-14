@@ -2,7 +2,7 @@
   <p class="notice"><%= flash[:error] %></p>
 <% end %>
   <h2>Add a comment:</h2>
-   <%= form_for([@group,@post, @post.comments.build]) do |f| %>
+   <%= form_for([@group,@post, @post.comments.build], :remote => true) do |f| %>
 
     <p>
       <%= f.text_area :comment %>
