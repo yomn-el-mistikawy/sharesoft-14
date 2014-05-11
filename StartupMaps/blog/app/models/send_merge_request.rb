@@ -7,9 +7,9 @@ class SendMergeRequest < ActiveRecord::Base
 
 	 def merge_request
      	
- 		@suggested_project = Project.find(params[:suggested_project])
+ 		
  		@project = Project.find(params[:project_id])
-        @send_request = SendMergeRequest.create(:sender_id => session_id, :receiver_id => @suggested_project.startup_id)
+        @send_request = SendMergeRequest.create(:sender_id => session_id, :receiver_id => @project)
  	 end
   
 
