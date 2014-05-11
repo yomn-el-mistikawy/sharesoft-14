@@ -64,7 +64,7 @@ class StartupsBadges < ActiveRecord::Base
     startup = Startup.find_by_entity_id(entity_id)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup.id, 0, 0, 0, 0)
     recently_achieved_badge = []
-    if (number_of_views >= 1 && (unachieved_badges.where(:id => 4)).size == 1)
+    if (number_of_views >= 1000 && (unachieved_badges.where(:id => 4)).size == 1)
       StartupsBadges.create(:startup_id  => startup.id, :badge_id => 4, :bypassed => 0)
       recently_achieved_badge = recently_achieved_badge + [Badge.find(4)]
     end
