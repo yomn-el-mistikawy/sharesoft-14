@@ -1,0 +1,37 @@
+<!-- 
+  # Defintion: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
+  # the entity is asked to fill the extra needed information.
+  # Input: Void.
+  # Output: Startup, investor, service params.
+  # Author: Omar El Menawy.
+-->
+
+<% if @entity == current_entity %>
+ <% if current_entity.type == 'Startup' && @entity.completed == nil %>
+  Startup
+  <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :number_of_working_years %><br />
+   <%= entity.text_field :number_of_working_years %></div><br>
+
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+   <% end %>
+ <% elsif current_entity.type == 'Investor' && @entity.completed == nil %>
+  Investor
+  <%= form_for :investor, url: entity_create_investor_path(:investor, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :contact_information %><br />
+   <%= entity.text_field :contact_information %></div><br>
+
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Investor::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+  <% end %>
+ <% elsif current_entity.type == 'Service' && @entity.completed == nil %>
+  <%= form_for :service, url: entity_create_service_path(:service, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Service::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+  <% end %>
+ <% end %>
+<% end %>
