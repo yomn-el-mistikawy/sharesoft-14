@@ -39,10 +39,10 @@
   end
 
   puts("Seeds database for badges testing")
-    entity = Entity.create!(name: "Yomn", username: "Yomn", email: "yomn@gmail.com")
+    entity = Entity.create!(name: "Yomn", username: "Yomn", email: "yomn@gmail.com", password: "12345678")
     entity.update(:type => "Startup")
     startup = Startup.create!(entity_id: entity.id, number_of_working_years: 6)
-    entity2 = Entity.create!(name: "Yomn2", username: "Yomn2", email: "yomn2@gmail.com")
+    entity2 = Entity.create!(name: "Yomn2", username: "Yomn2", email: "yomn2@gmail.com", password: "12345678")
     entity2.update(:type => "Startup")
     startup2 = Startup.create!(entity_id: entity2.id, number_of_working_years: 6)
     project1, project2 = Project.create!(launch: 1), Project.create!(launch: 1)

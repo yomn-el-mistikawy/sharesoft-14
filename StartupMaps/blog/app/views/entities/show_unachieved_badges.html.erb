@@ -1,208 +1,208 @@
-  <!-- 
-       # Definition: This shows a list of all of the startup's unachieved badges.
-       # It shows their image, name, description and level.
-       # Input: entity_id
-       # Output: void
-       # Author: Yomn El-Mistikawy 
-  -->
+<!-- 
+  # Definition: This shows a list of all of the startup's unachieved badges.
+  # It shows their image, name, description and level.
+  # Input: entity_id.
+  # Output: void.
+  # Author: Yomn El-Mistikawy.
+-->
 
-  <h1> Unachieved badges <h1>     
-  <table>
-    <tbody>
-  	  <% if @unachieved_badges_years.size != 0 %>
-        <tr>
-          <td><h2> Year </h2></td>
-        </tr>
-        <tr>
-          <% @unachieved_badges_years.each do |badge| %>
-            <td>
-              <% if badge.level == 1 %>
-                <%= image_tag "Bronze_1.png" %>
+<h1> Unachieved badges <h1>     
+<table>
+  <tbody>
+  	<% if @unachieved_badges_years.size != 0 %>
+      <tr>
+        <td><h2> Year </h2></td>
+      </tr>
+      <tr>
+        <% @unachieved_badges_years.each do |badge| %>
+          <td>
+            <% if badge.level == 1 %>
+              <%= image_tag "Bronze_1.png" %>
+            <% else %>
+              <% if badge.level == 2 %>
+                <%= image_tag "Silver_1.png" %>
               <% else %>
-                <% if badge.level == 2 %>
-                  <%= image_tag "Silver_1.png" %>
-                <% else %>
-                  <%= image_tag "Gold_1.png" %>
-                <% end %>
-              <% end %>
-              <br>
-              <label> Name: </label>
-              <%= badge.name %>
-              <br>
-              <label> Description: </label>
-              <%= badge.description %>
-              <br>
-              <label> Level: </label>
-              <%= badge.level %>
-            </td>
-          <% end %>
-        </tr>  
-      <% end %> 
-      <% if @unachieved_badges_views.size != 0 %>
-        <tr>
-          <td><h2> Views </h2></td>
-        </tr>
-        <tr>
-          <% @unachieved_badges_views.each do |badge| %>
-            <td>
-              <% if badge.level == 1 %>
-                <%= image_tag "Bronze_1.png" %>
+                <%= image_tag "Gold_1.png" %>
+               <% end %>
+            <% end %>
+            <br>
+            <label> Name: </label>
+            <%= badge.name %>
+            <br>
+            <label> Description: </label>
+            <%= badge.description %>
+            <br>
+            <label> Level: </label>
+            <%= badge.level %>
+          </td>
+        <% end %>
+      </tr>  
+    <% end %> 
+    <% if @unachieved_badges_views.size != 0 %>
+      <tr>
+        <td><h2> Views </h2></td>
+      </tr>
+      <tr>
+        <% @unachieved_badges_views.each do |badge| %>
+          <td>
+            <% if badge.level == 1 %>
+              <%= image_tag "Bronze_1.png" %>
+            <% else %>
+              <% if badge.level == 2 %>
+                <%= image_tag "Silver_1.png" %>
               <% else %>
-                <% if badge.level == 2 %>
-                  <%= image_tag "Silver_1.png" %>
-                <% else %>
-                  <%= image_tag "Gold_1.png" %>
-                <% end %>
+                <%= image_tag "Gold_1.png" %>
               <% end %>
-              <br>
-              <label> Name: </label>
-              <%= badge.name %>
-              <br>
-              <label> Description: </label>
-              <%= badge.description %>
-              <br>
-              <label> Level: </label>
-              <%= badge.level %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %> 
-      <% if @unachieved_badges_targets.size != 0 %>
-        <tr>
-          <td><h2> Projects' targets met </h2></td>
-        </tr>
-        <tr>
-          <% @unachieved_badges_targets.each do |badge| %>
-            <td>
-              <% if badge.level == 1 %>
-                <%= image_tag "Bronze_1.png" %>
+            <% end %>
+            <br>
+            <label> Name: </label>
+            <%= badge.name %>
+            <br>
+            <label> Description: </label>
+            <%= badge.description %>
+            <br>
+            <label> Level: </label>
+            <%= badge.level %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %> 
+    <% if @unachieved_badges_targets.size != 0 %>
+      <tr>
+        <td><h2> Projects' targets met </h2></td>
+      </tr>
+      <tr>
+        <% @unachieved_badges_targets.each do |badge| %>
+          <td>
+            <% if badge.level == 1 %>
+              <%= image_tag "Bronze_1.png" %>
+            <% else %>
+              <% if badge.level == 2 %>
+                <%= image_tag "Silver_1.png" %>
               <% else %>
-                <% if badge.level == 2 %>
-                  <%= image_tag "Silver_1.png" %>
-                <% else %>
-                  <%= image_tag "Gold_1.png" %>
-                <% end %>
+                <%= image_tag "Gold_1.png" %>
               <% end %>
-              <br>
-              <label> Name: </label>
-              <%= badge.name %>
-              <br>
-              <label> Description: </label>
-              <%= badge.description %>
-              <br>
-              <label> Level: </label>
-              <%= badge.level %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %> 
-      <% if @unachieved_badges_requirements.size != 0 %>
-        <tr>
-          <td><h2> Projects' requirements met </h2></td>
-        </tr>
-        <tr>
-          <% @unachieved_badges_requirements.each do |badge| %>
-            <td>
-              <% if badge.level == 1 %>
-                <%= image_tag "Bronze_1.png" %>
+            <% end %>
+            <br>
+            <label> Name: </label>
+            <%= badge.name %>
+            <br>
+            <label> Description: </label>
+            <%= badge.description %>
+            <br>
+            <label> Level: </label>
+            <%= badge.level %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %> 
+    <% if @unachieved_badges_requirements.size != 0 %>
+      <tr>
+        <td><h2> Projects' requirements met </h2></td>
+      </tr>
+      <tr>
+        <% @unachieved_badges_requirements.each do |badge| %>
+          <td>
+            <% if badge.level == 1 %>
+              <%= image_tag "Bronze_1.png" %>
+            <% else %>
+              <% if badge.level == 2 %>
+                <%= image_tag "Silver_1.png" %>
               <% else %>
-                <% if badge.level == 2 %>
-                  <%= image_tag "Silver_1.png" %>
-                <% else %>
-                  <%= image_tag "Gold_1.png" %>
-                <% end %>
+                <%= image_tag "Gold_1.png" %>
               <% end %>
-              <br>
-              <label> Name: </label>
-              <%= badge.name %>
-              <br>
-              <label> Description: </label>
-              <%= badge.description %>
-              <br>
-              <label> Level: </label>
-              <%= badge.level %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %> 
-      <% if @unachieved_badges_launched.size != 0 %>
-        <tr>
-          <td><h2> Projects launched </h2></td>
-        </tr>
-        <tr>
-          <% @unachieved_badges_launched.each do |badge| %>
-            <td>
-              <% if badge.level == 1 %>
-                <%= image_tag "Bronze_1.png" %>
+            <% end %>
+            <br>
+            <label> Name: </label>
+            <%= badge.name %>
+            <br>
+            <label> Description: </label>
+            <%= badge.description %>
+            <br>
+            <label> Level: </label>
+            <%= badge.level %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %> 
+    <% if @unachieved_badges_launched.size != 0 %>
+      <tr>
+        <td><h2> Projects launched </h2></td>
+      </tr>
+      <tr>
+        <% @unachieved_badges_launched.each do |badge| %>
+          <td>
+            <% if badge.level == 1 %>
+              <%= image_tag "Bronze_1.png" %>
+            <% else %>
+              <% if badge.level == 2 %>
+                <%= image_tag "Silver_1.png" %>
               <% else %>
-                <% if badge.level == 2 %>
-                  <%= image_tag "Silver_1.png" %>
-                <% else %>
-                  <%= image_tag "Gold_1.png" %>
-                <% end %>
+                <%= image_tag "Gold_1.png" %>
               <% end %>
-              <br>
-              <label> Name: </label>
-              <%= badge.name %>
-              <br>
-              <label> Description: </label>
-              <%= badge.description %>
-              <br>
-              <label> Level: </label>
-              <%= badge.level %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %> 
-      <% if @unachieved_badges_subscriptions.size != 0 %>
-        <tr>
-          <td><h2> Subscription </h2></td>
-        </tr>
-        <tr>
-          <% @unachieved_badges_subscriptions.each do |badge| %>
-            <td>
-              <% if badge.level == 1 %>
-                <%= image_tag "Bronze_1.png" %>
+            <% end %>
+            <br>
+            <label> Name: </label>
+            <%= badge.name %>
+            <br>
+            <label> Description: </label>
+            <%= badge.description %>
+            <br>
+            <label> Level: </label>
+            <%= badge.level %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %> 
+    <% if @unachieved_badges_subscriptions.size != 0 %>
+      <tr>
+        <td><h2> Subscription </h2></td>
+      </tr>
+      <tr>
+        <% @unachieved_badges_subscriptions.each do |badge| %>
+          <td>
+            <% if badge.level == 1 %>
+              <%= image_tag "Bronze_1.png" %>
+            <% else %>
+              <% if badge.level == 2 %>
+                <%= image_tag "Silver_1.png" %>
               <% else %>
-                <% if badge.level == 2 %>
-                  <%= image_tag "Silver_1.png" %>
-                <% else %>
-                  <%= image_tag "Gold_1.png" %>
-                <% end %>
+                <%= image_tag "Gold_1.png" %>
               <% end %>
-              <br>
-              <label> Name: </label>
-              <%= badge.name %>
-              <br>
-              <label> Description: </label>
-              <%= badge.description %>
-              <br>
-              <label> Level: </label>
-              <%= badge.level %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %> 
-      <% if @unachieved_badges_collector.size != 0 %>
-        <tr>
-          <td><h2> Badge collector </h2></td>
-        </tr>
-        <tr>
-          <% @unachieved_badges_collector.each do |badge| %>
-            <td>
-              <%= image_tag "Platinum_1.png" %>
-              <br>
-              <label> Name: </label>
-              <%= badge.name %>
-              <br>
-              <label> Description: </label>
-              <%= badge.description %>
-              <br>
-              <label> Level: </label>
-              <%= badge.level %>
-            </td>
-          <% end %>
-        </tr>  
-      <% end %> 
-    </tbody>
-  </table>
+            <% end %>
+            <br>
+            <label> Name: </label>
+            <%= badge.name %>
+            <br>
+            <label> Description: </label>
+            <%= badge.description %>
+            <br>
+            <label> Level: </label>
+            <%= badge.level %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %> 
+    <% if @unachieved_badges_collector.size != 0 %>
+      <tr>
+        <td><h2> Badge collector </h2></td>
+      </tr>
+      <tr>
+        <% @unachieved_badges_collector.each do |badge| %>
+          <td>
+            <%= image_tag "Platinum_1.png" %>
+            <br>
+            <label> Name: </label>
+            <%= badge.name %>
+            <br>
+            <label> Description: </label>
+            <%= badge.description %>
+            <br>
+            <label> Level: </label>
+            <%= badge.level %>
+          </td>
+        <% end %>
+      </tr>  
+    <% end %> 
+  </tbody>
+</table>

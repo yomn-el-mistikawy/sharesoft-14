@@ -1,12 +1,12 @@
 class StartupsBadges < ActiveRecord::Base
- has_and_belongs_to_many :badges
- has_and_belongs_to_many :startups
+  has_and_belongs_to_many :badges
+  has_and_belongs_to_many :startups
 
   # Definition: This method takes the startup_id and calls different helper methods to set achieved badges.
   # It then returns an array of recently achieved badges' description.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_badges(entity_id)
     startup = Startup.find_by_entity_id(entity_id)
@@ -26,9 +26,9 @@ class StartupsBadges < ActiveRecord::Base
   # 1 years old and the badge hasn't been achieved, then the badge is added to achieved. The same condition
   # is done for 2.5 years and 5 years and also the lower level badges are set as bypassed. It then returns 
   # an array of recently achieved year badges' description.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_year_badges(startup_id)
     startup = Startup.find(startup_id)
@@ -54,9 +54,9 @@ class StartupsBadges < ActiveRecord::Base
 
   # Definition: This method takes the startup_id and gets the unachieved badges. It then counts get the number of views
   # the startup's profile and gives badges when the number of views reaches 1000, 5000 or 10000. It also sets the lower level badges to bypassed.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_view_badges(entity_id)
     entity = Entity.find(entity_id)
@@ -85,9 +85,9 @@ class StartupsBadges < ActiveRecord::Base
   # Definition: This method takes the startup_id and gets the unachieved badges. It then counts the number
   # of requirements met in all of the startups projects and gives badges when the number of requirements met reaches
   # 50, 100 or 1000. It also sets the lower level badges to bypassed.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy 
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_requirements_badges(startup_id)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
@@ -114,9 +114,9 @@ class StartupsBadges < ActiveRecord::Base
   # Definition: This method takes the startup_id and gets the unachieved badges. It then counts the number
   # of targets met in all of the startups projects and gives badges when the number of targets met reaches
   # 50, 100 or 1000. It also sets the lower level badges to bypassed.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_targets_badges(startup_id)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
@@ -143,9 +143,9 @@ class StartupsBadges < ActiveRecord::Base
   # Definition: This method takes the startup_id and gets the unachieved badges. It then counts the number
   # of projects that have been launched by the startup and gives badges when the startup launches 5, 10 or 50
   # projects. It also sets the lower level badges to bypassed.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_launch_badges(startup_id)
     launched_projects = Project.where(:id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :launch => 1)
@@ -172,9 +172,9 @@ class StartupsBadges < ActiveRecord::Base
   # Definition: This method takes the startup_id and gets the unachieved badges. A badge is given when the
   # startup gets 100, 500 and 5000 subscriptions. When a new badge is given lower level badges are set as 
   # bypassed. It then returns an array of recently achieved year badges' description.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_subscription_badges(startup_id)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
@@ -203,9 +203,9 @@ class StartupsBadges < ActiveRecord::Base
   # achieved all of the badges in a certain category, then a platinum badge is given and the lower level badges
   # are set as bypassed. Moreover, if all badges are collected, a platinum badge is given and lower level badges
   # are bypassed.
-  # Input: startup_id
-  # Output: recently_achieved_badge
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id.
+  # Output: recently_achieved_badge.
+  # Author: Yomn El-Mistikawy.
 
   def self.set_badge_collection_badges(startup_id)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
@@ -269,9 +269,9 @@ class StartupsBadges < ActiveRecord::Base
   # If the achieved and bypassed are equal to 1 then it returns all achieved badges. If the achieved is equal to 0,
   # then the unachieved badges are returned. If the achieved value is 1 and the bypassed is 0 then it returns only the 
   # not bypassed badges.
-  # Input: startup_id, achieved_or_not, bypassed
-  # Output: unachieved/achieved/bypassed/not bypassed badges
-  # Author: Yomn El-Mistikawy
+  # Input: startup_id, achieved_or_not, bypassed.
+  # Output: unachieved/achieved/bypassed/not bypassed badges.
+  # Author: Yomn El-Mistikawy.
 
   def self.get_achieved_unachieved_badges(startup_id, achieved, bypassed, entity, category)
     if(entity == 1)
