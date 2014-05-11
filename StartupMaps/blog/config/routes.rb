@@ -7,7 +7,10 @@ Blog::Application.routes.draw do
    get "/fb_share/auth" => "fb_share#auth"  , :method => :get , :as => :fb_auth
  
    get "/fb_share/callback" => "fb_share#callback"  , :method => :get , :as => :fb_callback
-
+   
+   get "/twitter_share/auth" => "twitter_share#auth"  , :method => :get , :as => :twitter_auth
+ 
+   get "/twitter_share/callback" => "twitter_share#callback"  , :method => :post , :as => :twitter_callback
 
 
   #get"/omniauth_callbacks/facebook" 
