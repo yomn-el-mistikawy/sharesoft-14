@@ -1,23 +1,22 @@
 class MapsController < ApplicationController
 
-def  show_startups
+#  Defintion: Gets all Startups in the db and shows them on the map.
+#  Input: Startups Table.
+#  Output: All Investors.
+#  Author: Alia Tarek.
 
-   # response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    #response.headers["Pragma"] = "no-cache"
-    #response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-
+  def show_startups
     @startups = Startup.all
-    @markers = Gmaps4rails.build_markers(@startups) do |t, marker| 
-      marker.lat t.latitude 
-      marker.lng t.longitude 
-      marker.infowindow t.name 
+    @markers = Gmaps4rails.build_markers(@startups) do |startups, marker| 
+      marker.lat startups.latitude 
+      marker.lng startups.longitude 
+      marker.infowindow startups.name 
       marker.picture({  
         "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
         "width" => 32, 
         "height" => 32})
     end
-
-    render :json => @markers
+      render :json => @markers
   end
 
 
@@ -26,18 +25,17 @@ def  show_startups
 #  Output: All Investors.
 #  Author: Alia Tarek.
 
-  def  show_investors
+  def show_investors
     @investors = Investor.all
-    @markers = Gmaps4rails.build_markers(@investors) do |t, marker| 
-      marker.lat t.latitude
-      marker.lng t.longitude 
-      marker.infowindow t.name 
+    @markers = Gmaps4rails.build_markers(@investors) do |investors, marker| 
+      marker.lat investors.latitude
+      marker.lng investors.longitude 
+      marker.infowindow investors.name 
       marker.picture({ 
         "url" => "http://rideforclimate.com/nukes/all/images/orange.png",
         "width" => 32, 
         "height" => 32})
     end
-
     render :json => @markers
   end
 
@@ -47,23 +45,21 @@ def  show_startups
 #  Output: All Services.
 #  Author: Alia Tarek.
 
-  def  show_services
+  def show_services
     @services = Service.all
-    @markers = Gmaps4rails.build_markers(@services) do |t, marker| 
-      marker.lat t.latitude
-      marker.lng t.longitude 
-      marker.infowindow t.name 
+    @markers = Gmaps4rails.build_markers(@services) do |services, marker| 
+      marker.lat services.latitude
+      marker.lng services.longitude 
+      marker.infowindow services.name 
       marker.picture({ 
         "url" => "http://rideforclimate.com/nukes/all/images/green.png",
         "width" => 32, 
         "height" => 32})
     end
- 
     render :json => @markers
   end
 
   def  create
     render :template => 'maps/index'
   end
-
 end
