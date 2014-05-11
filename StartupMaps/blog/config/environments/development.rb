@@ -9,6 +9,8 @@ Blog::Application.configure do
   #   arguments: '-i -t'}
 
   # Defintion: added mailer configuration.
+  # Input: Void.
+  # Output: Void.
   # Author: Omar El Menawy
 
   config.action_mailer.perform_deliveries = true
