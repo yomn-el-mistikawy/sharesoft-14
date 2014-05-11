@@ -1,0 +1,26 @@
+<div><h1>Friends</h1></div>
+
+<% User.all do |friend| %>
+  <%= link_to friend.incomplete_name, '#' %><br />
+<% end %>
+
+
+<div><h1>Request</h1></div>
+
+<% User.where(:response => "requested") do |rf| %>
+  <%= link_to rf.incomplete_name, '#' %><br />
+<% end %>
+
+<div><h1>Pendings</h1></div>
+
+<% User.where(:response => "pending") do |pf| %>
+  <%= link_to pf.incomplete_name, '#' %><br />
+<% end %>
+
+
+<label for="name">Name</label>
+  <input id="name" name="name" type="text" />
+
+<form method="create" action="friendship_addfriend" class="button_to">
+   <div><input value="Add Friend" type="submit" /></div>
+</form>
