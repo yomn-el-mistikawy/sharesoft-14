@@ -7,6 +7,6 @@ class CreateEntityNeeds < ActiveRecord::Migration
     end
   end
   def self.down
-		drop_table :startup_needs
+		drop_table :entity_needs
 	end
 end
