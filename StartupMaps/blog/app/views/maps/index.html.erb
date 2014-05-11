@@ -22,14 +22,15 @@
     if(!cb.checked){
       locationsMap[id] = [];
       buildMap();
-      if (locationsMap[id] == "")
-        {alert("No result found")}
+     
     }
     else{
       $.ajax(url)
       .done(function(data) {
         locationsMap[id] = data;
         buildMap();
+         if (locationsMap[id] == "")
+        {alert("No result found")}
        })
       .fail(function(data) {
         alert.log( "error" );
