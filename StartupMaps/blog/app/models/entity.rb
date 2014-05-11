@@ -21,7 +21,8 @@ class Entity < ActiveRecord::Base
 
 	def self.search_entity(search)
     @entity= Entity.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
- 
+    return @entity
+    
     end 
 
 end

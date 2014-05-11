@@ -16,7 +16,7 @@ class Group < ActiveRecord::Base
   end
 
   def self.search_group(search)
-    @group= Group.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    @group= Group.find(:all, :conditions => ["name = ?", "rehab"])
  
    end  
 end

@@ -3,6 +3,7 @@ class Service < ActiveRecord::Base
 
 	 def self.search_service(search)
     @service= Service.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    return @service
  
    end 
 end

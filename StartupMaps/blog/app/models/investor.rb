@@ -3,5 +3,6 @@ class Investor < ActiveRecord::Base
 
  def self.search_investor(search)
     @investor= Investor.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    return @investor
    end 
 end

@@ -12,6 +12,7 @@ class Startup < ActiveRecord::Base
 
 	 def self.search_startup(search)
     @startup= Startup.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    return @startup
  
    end 
 end
