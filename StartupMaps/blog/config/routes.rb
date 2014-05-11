@@ -1,28 +1,42 @@
-
 Blog::Application.routes.draw do
  
-  # devise_for :users
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  #devise_for :users
   
-  
-  get"/omniauth_callbacks" 
+ devise_for :users , :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
+
+   get "/fb_share/auth" => "fb_share#auth"  , :method => :get , :as => :fb_auth
+ 
+   get "/fb_share/callback" => "fb_share#callback"  , :method => :get , :as => :fb_callback
+
+
+
+  #get"/omniauth_callbacks/facebook" 
   
   resources :groups do
-    get "list_group_members"
+  get "list_group_members"
   end  
+ 
+
+ resources :omniauth_callbacks do
+ 
+ get"facebook"
+ get"twitter"
+ get "linkedin"
+
+
+
+ end
+
 
   resources :startups
-
+  #get"/omniauth_callbacks/facebook"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   
   resources :projects do
     
-
-    
-
-
+    #get"/omniauth_callbacks/facebook"
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
     get "show_suggested"

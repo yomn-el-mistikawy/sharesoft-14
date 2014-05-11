@@ -21,6 +21,7 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
   require "omniauth-facebook"
+  config.omniauth :facebook, "473125749484475", "48f631c2a8bb61ac1d22f68dbee972e0"
   require 'omniauth-twitter'
   config.omniauth :twitter, "IMYwzpLuxGevpf5G0AKW6U7pN", "MjvbW9panUeCtJIbScG9efhDBhDb8v4KzCU0O0AROyP94zSxDK"
    require 'omniauth-linkedin'
@@ -29,7 +30,7 @@ Devise.setup do |config|
    require 'omniauth-google-oauth2'
 config.omniauth :google_oauth2, "711795760639", "xQXUpEs2yD3pUEjSvEvVNOSd", { access_type: "offline", approval_prompt: "" }
 
-config.omniauth :facebook, "473125749484475", "48f631c2a8bb61ac1d22f68dbee972e0"
+
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
