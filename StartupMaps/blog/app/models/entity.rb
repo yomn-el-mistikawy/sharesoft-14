@@ -1,7 +1,6 @@
 class Entity < ActiveRecord::Base
-  self.inheritance_column = nil
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  self.inheritance_column=nil
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   has_many :services 
   has_many :startups
@@ -22,7 +21,6 @@ class Entity < ActiveRecord::Base
   has_many :subscribee, :through => :subscrtipion
   has_many :receivers, :through => :message
   has_many :messages
-
   TYPES = %w[Startup Investor Service]
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 end
