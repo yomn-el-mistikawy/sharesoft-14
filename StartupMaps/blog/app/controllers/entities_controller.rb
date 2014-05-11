@@ -37,4 +37,3 @@ class EntitiesController < ApplicationController
     @unachieved_badges_collector = StartupsBadges.get_achieved_unachieved_badges(params[:entity_id], 0, 0, 1, "collector")
   end  
 end
-
