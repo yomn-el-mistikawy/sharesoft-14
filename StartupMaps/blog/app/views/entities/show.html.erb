@@ -12,7 +12,6 @@
   <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |entity| %>
    <div><%= entity.label :number_of_working_years %><br />
    <%= entity.text_field :number_of_working_years %></div><br>
-
    <div><%= entity.label :sector %><br />
    <%= entity.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div>
    <%= entity.submit "Insert" %>
@@ -46,7 +45,7 @@
   # Output: entity id.
   # Author: Yomn El-Mistikawy. 
 -->
-      
+  <link href="/assets/entities.js.coffee" rel="javascript">    
 <% if @entity.type == "Startup" %>
   <% if @entity == current_entity %> 
   <% if @recently_achieved_badges.size != 0 %>
