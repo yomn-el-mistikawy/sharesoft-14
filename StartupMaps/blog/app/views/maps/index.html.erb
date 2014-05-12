@@ -12,7 +12,7 @@
     # Defintion: The method that calls the markers.
     # Input: Name of the action and the id of the checkbox.
     # Output: The markers on the map.
-    # Author: Alia Tarek.
+    68# Author: Alia Tarek.
 -->
 
 <script>
@@ -69,19 +69,13 @@
   locationsMap["startups"] = [];
   locationsMap["investors"] = [];
   locationsMap["services"] = [];
-
   function buildMap (){
-
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-
     var loc1 = locationsMap["startups"]
       .concat(locationsMap["investors"]);
-
     var loc2 = loc1.concat(locationsMap["services"]);
-
     markers = handler.addMarkers(loc2);
-    
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(2);
@@ -89,5 +83,3 @@
 }
   buildMap();
 </script>
-
-
