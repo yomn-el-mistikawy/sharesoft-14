@@ -86,6 +86,12 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
+     
+     #Defination: Linking the method of the controller with the mode with the parameters of table SendMergeReques.
+     #Input: Void.
+     #Output: Void.
+     #Author: Ziad
+
   def merge_request
     SendMergeRequest.merge_request(params[:project_id])
   end
