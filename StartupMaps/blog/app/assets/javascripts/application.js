@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require gmaps/google
+//= require underscore
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery_nested_form
