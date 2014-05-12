@@ -1,15 +1,33 @@
 Blog::Application.routes.draw do
  
+
   get "group_invitation/invite"
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
   resources :groups do
     get "list_group_members"
   end  
+
+  resources :entities do
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+
 
   resources :startups
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  resources :maps do
+  end
   
   resources :projects do
 
@@ -20,6 +38,7 @@ Blog::Application.routes.draw do
   end  
 
   get 'posts/index'
+  get 'posts/showPosts'
   get 'posts/input_create'
   get 'posts/create'
   get 'posts/input_update'

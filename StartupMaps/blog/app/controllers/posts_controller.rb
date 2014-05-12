@@ -6,10 +6,31 @@ class PostsController < ApplicationController
 # Output: all posts
 # Author: Nardeen Milad 
 
-	def index
-		@all = Post.find(:all)
+	def showPosts
+		if(Group.find(params[:id]).private == true)
+
+			@res = GroupsStartup.where(:group_id => params[:id] , :startup_id => current_entity.id)
+
+			if(@res.count > 0)
+				
+				@all = Post.where(:group_id => params[:id])
+				
+			else
+				@all = []
+			end
+		
+		else
+			@res = [1];
+			@all = Post.where(:group_id => params[:id])	
+		end	
 	end
 
+
+		
+
+	def index
+		@all = Group.find(:all)
+	end
 
 # Definition: this method creates post in a group, it takes title and body as an input
 # and returns the post created. it redirects to the method index and then to the page
@@ -22,6 +43,7 @@ class PostsController < ApplicationController
 		@new = Post.new
 		@new.title = params[:title]
 		@new.text = params[:text]
+		@new.group_id = params[:id]
 		@new.save
 		redirect_to :action => 'index', :controller=>"posts"
 	end

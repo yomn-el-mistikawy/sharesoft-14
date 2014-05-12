@@ -33,7 +33,7 @@
 
 <td><font size='4' color='black'> => </font></td> <td> <font size='4' color='black'>
 title </font></td> <td></td> <td><font size='4' color='black'>
-body </font> </td> <td></td>
+description </font> </td> <td></td>
  <td></td>
 </font>
 </tr>
@@ -42,9 +42,9 @@ body </font> </td> <td></td>
 <tr>
 
 <td><font size='4' color='red'> => </font></td> <td> <font size='4' color='red'>
-<%= c.title %> </font></td> <td></td> <td><font size='4' color='red'>
- <%=c.text %> </font> </td> <td></td>
- <td><a href='input_update?id=<%= c.id %>' > update post</a>  ------   <a href='delete?id=<%= c.id %>' > delete</a></td>
+<%= c.name %> </font></td> <td></td> <td><font size='4' color='red'>
+ <%=c.description %> </font> </td> <td></td>
+ <td><a href='showPosts?id=<%= c.id %>' > show posts</a> 
 </font>
 </tr>
 <br>
@@ -53,13 +53,13 @@ body </font> </td> <td></td>
 
 <br><br>
 
-<form action='create' onsubmit="return check(this)">
+<!--form action='create' onsubmit="return check(this)">
 title: <br>
 <input type=text name=title><br>
 body:<br>
 <textarea name=text></textarea><br>
 <br>
 <input type=submit value='post'>
-</form>
+</form-->
 
 </html>
