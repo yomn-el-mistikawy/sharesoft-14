@@ -123,25 +123,6 @@ class ProjectsController < ApplicationController
   end
 
 
-   def new
-    @project = Project.new
-  end
-
-
-  def create
-    @project = params[:startup_id].nil? ? 
-                 Project.new(project_params) : 
-                 Startup.find(params[:startup_id]).projects.build(project_params)
-    respond_to do |format|
-      if @project.save
-        format.html  { redirect_to @project }
-      else
-        format.html { render :new }
-      end
-    end
-  end
-
-
   # Definition: "As a startup, I can edit and add all projects
   # attributes and specifically targets and requirements"
   # Allows deleting a certain project.
