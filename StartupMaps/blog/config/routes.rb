@@ -16,6 +16,7 @@ Blog::Application.routes.draw do
     post "create_startup"
     post "create_service"
     post "create_investor"
+    post "view_projects"
   end  
 
 
@@ -28,7 +29,6 @@ Blog::Application.routes.draw do
   end
   
   resources :projects do
-
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
     get "show_suggested"

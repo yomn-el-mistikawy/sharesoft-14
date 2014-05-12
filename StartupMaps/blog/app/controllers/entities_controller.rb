@@ -63,7 +63,16 @@ class EntitiesController < ApplicationController
       redirect_to root_url
     end
   end
-   
+
+  # Defintion: View project of the logged-in startup.
+  # Input: Startup id.
+  # Output: Projects of the startup.
+  # Author: Amr Gamal
+
+  def view_projects
+    @startup = Startup.find_by_entity_id(params[:entity_id])
+    @projects = Project.where(:id => (StartupsProjects.select(:project_id).where(:startup_id => @startup)))
+  end   
 
   # Definition: This method takes is used to permit the usage of the parameters entered by the users.
   # Input: Startup.

@@ -1,3 +1,6 @@
+<% if @entity.type == "Startup" %>
+  <%= button_to 'View projects',  entity_view_projects_path(entity_id: params[:id]) %>
+<% end %>
 <!-- 
   # Defintion: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
   # the entity is asked to fill the extra needed information.

@@ -10,8 +10,9 @@
     <tr>
       <td><%= project.name %></td>
       <td><%= link_to 'Show', 'projects/show' %></td>
+      <% if current_entity.id ==  @startup.entity_id %>
     <td><%= link_to 'Edit', 'project/edit' %></td>
-      
+    <% end %>
     </tr>
   <% end %>
 </table>
