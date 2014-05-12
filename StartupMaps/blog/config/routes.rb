@@ -33,7 +33,6 @@ Blog::Application.routes.draw do
   end  
 
   resources :maps do
-
     get "show_startups" 
     get "show_investors"
     get "show_services"
