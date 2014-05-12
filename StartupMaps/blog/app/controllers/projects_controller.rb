@@ -56,15 +56,15 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition: "As a startup, I can set a project goal, milestone,
-  # requirements (roles, resources) "
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
   # This method shows all details of a project
   # that belong to a specific startup and is linked to the show HTML file
-  # which also includes the launch and editing part
+  # which also includes the editing part
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
   # it's reachable and knows what's happening in the file.
   # Input: Project_id.
-  # Output: Project_id "all project description".
+  # Output: Project_id "all project description (before and after editing".
   # Author: Hana Magdy.
 
   def show
@@ -75,7 +75,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # Definition: "As a startup, I can edit and add targets and requirements"
+
+  # Definition: ""As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
   # Allows editing the project's details, specifically targets and requirements
   # This method allows you to edit a project given its project's id.
   # Input: Project_id.
@@ -87,13 +89,15 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition: "As a startup, I can edit and add targets and requirements"
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
   # Allows editing the project's details, specifically targets and requirements
   # Redirects user to project's page (show project) on success
   # Re-renders the edit project page on error and is linked to the edit HTML file
   # update_attribute --> updates the rows
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
-  # it's reachable and knows what's happening in the file.
+  # it's reachable and knows what's happening in the file
+  # Also nested form helps editing, removing and specifing whether it is met or not. 
   # Input: project_id. "on the show page".
   # Output: project_id "all project description along successfully 
   # edited targets and requirements".
@@ -125,7 +129,7 @@ class ProjectsController < ApplicationController
 
 
   def create
-    @project  = params[:startup_id].nil? ? 
+    @project = params[:startup_id].nil? ? 
                  Project.new(project_params) : 
                  Startup.find(params[:startup_id]).projects.build(project_params)
     respond_to do |format|
@@ -137,6 +141,15 @@ class ProjectsController < ApplicationController
     end
   end
 
+
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
+  # Allows deleting a certain project.
+  # recirects to 'index' listing the rest of the projects of the user.
+  # Input: project_id. "on the show page".
+  # Output: project_id "all project description along successfully 
+  # edited targets and requirements".
+  # Author: Hana Magdy.
 
   def destroy
     project = Project.find(params[:id])
@@ -150,19 +163,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # def change_reached_status
-  #   @project_requirements = ProjectRequirements.find(params(:req))
-  #   respond_to do |format|
-
-  #     if ProjectRequirement.update_attribute(:reached, ! project_requirements.reached)
-  #       flash.notice = "Successfully met target"
-  #     else
-  #       flash.alert = "Oops, couldn't respond to action"
-  #     end
-  #     format.html { redirect_to project }
-  #   end
-  # end
-
 
   private
   def project_params
@@ -171,20 +171,3 @@ class ProjectsController < ApplicationController
       :project_requirements_attributes => [:id, :description, :_destroy])
   end 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
