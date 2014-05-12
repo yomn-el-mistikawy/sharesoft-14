@@ -14,9 +14,17 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.group_name %></td>
-        <td><%= link_to 'Show', group %></td>
-         <td><%= button_to "Join Group", :method=> "create" %> <td>
+        <td><%= link_to 'Show Group', group %></td>
+
+         <td><%= button_to "Join Group", :method=> "join_group" %><td>
+          
+
+  
+  
               </tr>
+
+
+
     <% end %>
   </tbody>
 </table>
