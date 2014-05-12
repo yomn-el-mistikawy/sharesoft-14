@@ -49,6 +49,9 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        if @group.notification then
+        UserMailer.group_mail(@group).deliver
+      end
         format.html { redirect_to @group, notice: 'Description Added.' }
         format.json { render action: 'show', status: :created, location: @group }
       else

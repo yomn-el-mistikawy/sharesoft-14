@@ -1,16 +1,15 @@
 class UserMailer < ActionMailer::Base
-  default :from => "smtp@gmail.com"
+  default :from => "youssefattaby@gmail.com"
 
   def post_email(post, entity)
-  	@text = post.text
-  	@title = post.title
+  	@post=post
   	mail(:to => entity.e_mail, :subject => "Post email")
-  	//the only problem here is queries (entity.e_mail) linked with GroupStartup.
  end
  def comment_email(comment, entity)
- 	@comment = comment.comment
- 	@commenter = comment.commenter
+ 	@comment =comment
  	mail(:to => entity.e_mail, :subject => "Comment email")
- 	//the only problem here is queries (entity.e_mail) linked with GroupStartup.
  end
-
+  def group_email(group, entity)
+ 	@group =group
+ 	mail(:to => entity.e_mail, :subject => "Group email")
+ end

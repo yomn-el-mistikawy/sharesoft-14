@@ -1,11 +1,12 @@
-<h1>Listing groups and their descriptions <</h1>
+<h1>Listing groups and their descriptions </h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
       <th>Group name</th>
       <th>Description</th>
+      <th>Interst</th>
+      <th>Notification</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,8 +17,9 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.group_name %></td>
         <td><%= group.description %></td>
+        <td><%= group.interest %></td>
+        <td><%= group.Notification %></td>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>
 

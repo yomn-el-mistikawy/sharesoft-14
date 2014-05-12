@@ -16,18 +16,21 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :group_name %><br>
-    <%= f.text_field :group_name %>
-  </div>
-  <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-  <%= f.radio_button(:Notification, "True") %>
-  <%= f.label(:Notification_True, "True") %>
+  <div class="field">
+    <%= f.label :interest %><br>
+    <%= f.text_area :interest %>
+  </div>
+  <div class="field">
+  <%= f.label :notification %><br>
+  <%= f.radio_button(:notification, "True") %>
+  <%= f.label(:notification_True, "True") %>
   <br />
-  <%= f.radio_button(:Notification, "False") %>
-  <%= f.label(:Notification_False, "False") %>
+  <%= f.radio_button(:notification, "False") %>
+  <%= f.label(:notification_False, "False") %>
+</div>
   <div class="actions">
      <%= f.submit ("Add description") %>
   </div>
