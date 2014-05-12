@@ -17,10 +17,10 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @group = Group.find(@post.group_id)
-    @startup = Startup.find(session[:entity_ID])
+    @startup = Startup.find(current_entity.id)
     @comment = @post.comments.new(comment_params)
     @comment.commenter = @startup.name
-    @comment.startup_id = session[:entity_ID]
+    @comment.startup_id = current_entity.id
 
     if @comment.save
       redirect_to @group
