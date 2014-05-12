@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+  before_action :authenticate_entity!, :only => [:new, :create, :edit, :update, :destroy]
   # == Begin  == 
   # Definition: "A startup can see a list of his projects" 
   # This method allows you to get a list of projects and 
@@ -108,8 +108,8 @@ class ProjectsController < ApplicationController
               :category, 
               :location, 
               :description,
-              :project_targets_attributes => [:id, :description, :_stroy],
-              :project_requirements_attributes => [:id, :description, :_destroy])
+              :project_targets_attributes => [:id, :description, :reached, :_destroy],
+              :project_requirements_attributes => [:id, :description, :reached, :_destroy])
         )
         format.html { redirect_to @project, notice: "Successfully updated project" }
       else
@@ -125,10 +125,16 @@ class ProjectsController < ApplicationController
 
 
   def create
-    @project = Project.new(project_params)
-    @project.save
-    # StartupsProjects.create(:startup_id => Startup.find_by_entity_id(current_entity.id), :project_id => @project.id)
-    redirect_to @project
+    @project  = params[:startup_id].nil? ? 
+                 Project.new(project_params) : 
+                 Startup.find(params[:startup_id]).projects.build(project_params)
+    respond_to do |format|
+      if @project.save
+        format.html  { redirect_to @project }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
 
@@ -165,3 +171,20 @@ class ProjectsController < ApplicationController
       :project_requirements_attributes => [:id, :description, :_destroy])
   end 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

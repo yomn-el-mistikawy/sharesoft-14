@@ -1,19 +1,19 @@
 class Project < ActiveRecord::Base
   
-  # Cascade deletion to all associations
-  # validates :name, :presence => true
+  
   has_many :project_requirements, :dependent => :destroy
   has_many :project_targets, :dependent => :destroy
   
-  has_many :startups, through: :startups_projects
+  belongs_to :startup
 
+  validates_presence_of :name, :description, :category
+  validates_length_of :name, :within => 2 .. 150
+  validates_uniqueness_of :name, :message => "You have a project with the same name"
+
+  # Cascade deletion to all associations
   accepts_nested_attributes_for :project_targets, :allow_destroy => true
   accepts_nested_attributes_for :project_requirements, :allow_destroy => true
-  
 
-  # def reached?
-  #   reached ? "Yes" : "No"
-  # end 
 
   # Definition: "A startup can see a list of his projects" 
   # This method allows you to get a list of projects and 

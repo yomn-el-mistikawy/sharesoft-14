@@ -1,3 +1,13 @@
+<!--
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
+  # 1.Allows a pink color for the title and pink for the rest
+  # 2.if reach - true the cross it with a line.
+  # Input: title 'name' ,attribute values, reached value 'true/false'.
+  # Output: crossed value if reached and vice verca.
+  # Author: Hana Magdy.
+-->
+
 <style type="text/css">
 
   h1 {
@@ -7,6 +17,21 @@
   p {
     color: #0099FF;
   }
+
+  .reached-true {
+    text-decoration: line-through;
+  }
+
+
+/*
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
+  # Allows showing all values all categories for the whole project
+  # including specifying whether it is reached or not in req./targets.
+  # Input: before/after editing a project 'void'.
+  # Output: project_id "all the project's details".
+  # Author: Hana Magdy.
+*/
 
 </style>
 
@@ -35,7 +60,7 @@
   <strong>Targets:</strong>
   <ul>
     <% @project.project_targets.each do |target| %>
-      <li> <%= target.description %> </li>
+      <li class="reached-<%=target.reached%>"><%= target.description %></li>
     <% end %>
   </ul>
 </p>
@@ -44,21 +69,39 @@
   <strong>Requirements:</strong>
   <ul>
     <% @project.project_requirements.each do |req| %>
-      <li> <%= req.description %> </li>
+      <li class="reached-<%=req.reached%>"><%= req.description %></li>
     <% end %>
   </ul>
 </p>
 
-<%= link_to "Delete Project", @project, method: :delete, confirm: "Are you sure? This cannot be undone!" %>
 
-  <!--Definition: "As a startup, I can edit and add all projects 
-  attributes and specifically targets and requirements "
-  Allows editing the project's details, specifically targets and requirements
-  This method allows you to click on an underlined 
-  link "button" that redirects to the edit page.
-  Input: project_id "the button".
-  Output: edit.html.erb, because it does not return anything, it just redirects.
-  Author: Hana Magdy. -->
+<!--
+  # Definition: "As a startup, I can edit and add all projects 
+  # attributes and specifically targets and requirements "
+  # Allows deleting the project's details
+  # This method allows you to click on an underlined 
+  # link "button" that redirects to index 'listing projects'
+  # current_entity, handels the  where the user shoule be loged in to edit or delete.
+  # Input: project_id "the button".
+  # Output: index.html.erb, because it does not return anything, it just redirects.
+  # Author: Hana Magdy. 
+-->
+
+<% if current_entity %>
+  <%= link_to "Delete Project", @project, method: :delete, 
+  confirm: "Are you sure? This cannot be undone!" %>
+
+
+<!--
+  # Definition: "As a startup, I can edit and add all projects 
+  # attributes and specifically targets and requirements "
+  # Allows editing the project's details, specifically targets and requirements
+  # This method allows you to click on an underlined 
+  # link "button" that redirects to the edit page.
+  # Input: project_id "the button".
+  # Output: edit.html.erb, because it does not return anything, it just redirects.
+  # Author: Hana Magdy. 
+-->
  
-<%= link_to "Edit this project", edit_project_path(@project) %>
-  <!-- == End  ==   -->
+  <%= link_to "Edit this project", edit_project_path(@project) %>
+<% end %>

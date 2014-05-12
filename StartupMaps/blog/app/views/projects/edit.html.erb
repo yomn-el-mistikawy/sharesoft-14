@@ -1,13 +1,11 @@
-  <!--    == Begin  == 
-  Definition: "As a startup, I can edit and add all projects 
-  attributes and specifically targets and requirements "
-  Allows editing the project's details, specifically targets and requirements
-  Redirects user to project's page (show project) on success
-  Re-renders the edit project page on error.
-  Input: project_id. "on the show page". then user enters input.
-  Output: project_id, on click it redirects to the whole project
-  "all project description along successfully edited all projects attributes".
-  Author: Hana Magdy. -->
+<!--
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
+  # Allows a pink color for the title and pink for the rest,
+  # Input: title 'name' ,attribute values, reached value 'true/false'.
+  # Output: redirects to show with all the updates,
+  # Author: Hana Magdy.
+-->
    
 <style type="text/css">
 
@@ -20,6 +18,21 @@
   }
   </style>
 
+
+<!--
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
+  # Allows editing all the project's attributes along with 
+  # all the requirements that needs to be handled
+  # Category => drop down list
+  # Nested form helps editing/remove/add/reached
+  # inside specific atributes 'targets and requirements'
+  # submit => button that renders to show with all the updates.
+  # Input: project_id (with all its attributes).
+  # Output: redirects to show with all the updates
+  # Author: Hana Magdy.
+-->
+
 <h1>Editing '<%= @project.name %>' Project</h1>
  
 <%= nested_form_for @project do |f| %>
@@ -31,7 +44,7 @@
  
   <p>
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%=  f.select :category, [['Agriculture','Agriculture'],['Manufacturing','Manufacturing'],['Trading ','Trading'],['Clothes ','Clothes'], ['Telecommunication','Telecommunication']]%>
   </p>
 
   <p>
@@ -47,6 +60,7 @@
   <%= f.fields_for :project_targets do |targets_f| %>
     <%= targets_f.label :description %>
     <%= targets_f.text_field :description %>
+    <%= targets_f.check_box :reached %>
     <%= targets_f.link_to_remove "Remove Target" %>
   <% end  %>
 
@@ -57,6 +71,7 @@
   <%= f.fields_for :project_requirements do |targets_f| %>
     <%= targets_f.label :description %>
     <%= targets_f.text_field :description %>
+    <%= targets_f.check_box :reached %>
     <%= targets_f.link_to_remove "Remove Requirement" %>
   <% end  %>
 
@@ -68,5 +83,3 @@
     <%= f.submit ("Edit Project") %>
   </p>
 <% end %>
-
-<!-- == End  ==   -->
