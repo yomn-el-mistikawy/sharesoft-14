@@ -1,27 +1,55 @@
-<!--
-	# Definition: redirects to the edit email and password page.
-	# Input: Nothing.
-	# Output: Nothing.
-	# Author: ola Enaba
+<!-- 
+  # Defintion: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
+  # the entity is asked to fill the extra needed information.
+  # Input: Void.
+  # Output: Startup, investor, service params.
+  # Author: Omar El Menawy.
 -->
 
-<a href='edit_email_and_password?entity_id=1' > <button> edit email and password </button> </a>
+<% if @entity == current_entity %>
+ <% if current_entity.type == 'Startup' && @entity.completed == nil %>
+  Startup
+  <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :number_of_working_years %><br />
+   <%= entity.text_field :number_of_working_years %></div><br>
 
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+   <% end %>
+ <% elsif current_entity.type == 'Investor' && @entity.completed == nil %>
+  Investor
+  <%= form_for :investor, url: entity_create_investor_path(:investor, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :contact_information %><br />
+   <%= entity.text_field :contact_information %></div><br>
+
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Investor::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+  <% end %>
+ <% elsif current_entity.type == 'Service' && @entity.completed == nil %>
+  <%= form_for :service, url: entity_create_service_path(:service, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Service::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+  <% end %>
+ <% end %>
+<% end %>
 
 <!--
-	# Definition: redirects to the edit work status page.
-	# Input: Nothing.
-	# Output: Nothing
-	# Author: Ola Enaba.
+  # Definition: redirects to the edit work status page.
+  # Input: Nothing.
+  # Output: Nothing
+  # Author: Ola Enaba.
 -->
 
-<a href='edit_work_status?entity_id=1' > <button> edit work status </button> </a>
-
+<!-- <a href='edit_work_status?entity_id=1' > <button> edit work status </button> </a> -->
+<%= button_to "Edit work status",  entity_update_work_status_path(entity_id: params[:id]) %>
 
 <!--
-	# Definition: redirects to the edit status page.
-	# Input: Nothing.
-	# Output: Nothing
-	# Author: Ola Enaba.
+  # Definition: redirects to the edit status page.
+  # Input: Nothing.
+  # Output: Nothing
+  # Author: Ola Enaba.
 -->
 <a href='edit_status?entity_id=1' > <button> edit status </button> </a>

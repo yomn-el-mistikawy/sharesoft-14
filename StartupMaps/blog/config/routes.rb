@@ -1,13 +1,33 @@
 Blog::Application.routes.draw do
  
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
   resources :groups do
     get "list_group_members"
   end  
+
+  resources :entities do
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+
 
   resources :startups
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
+  resources :maps do
+  end
+  
 
   resources :projects do
      get "change_launch_status", on: :member, as: :launch
@@ -19,10 +39,9 @@ Blog::Application.routes.draw do
 resources :entities do
     get "edit_status"
     post "update_status"
-    post "edit_email_and_password"
-    post "update_email_and_password"
     get "entity_params"
-    get 'entities/edit_email_and_password'
+    get 'edit_work_status'
+    post 'update_work_status'
   end
 
 
@@ -34,9 +53,7 @@ resources :entities do
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
-   get 'entities/show'
-   get 'entities/edit_work_status'
-   get 'entities/update_work_status'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,10 @@
+<!-- 
+  # Definition: This is the format of the confirmation mail.
+  # Input: Email.
+  # Output: Void.
+  # Author: Omar El Menawy. 
+-->
+
+<p>Welcome <%= @email %>!</p>
+<p>You can confirm your account email through the link below:</p>
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

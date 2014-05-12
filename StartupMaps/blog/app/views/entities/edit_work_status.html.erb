@@ -7,17 +7,10 @@
 
 <html>
 <head>
-  <script>
-  function check(form)
-  {
-        if (form.elements.status.value == 'other' && form.elements.other.value.length == 0)
-        {
-            alert("you need to fill the text box");
-            return false;
-        }
-  }
+  <%= javascript_include_tag "entities"%>
+  
 
-  </script>
+  
 </head>
 
 
