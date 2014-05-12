@@ -75,8 +75,8 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # Definition: "As a startup, I can set a project goal, milestone,
-  # requirements (roles, resources)"
+  # Definition: "As a startup, I can edit and add targets and requirements"
+  # Allows editing the project's details, specifically targets and requirements
   # This method allows you to edit a project given its project's id.
   # Input: Project_id.
   # Output: Project_id "specifically goals, milestones and requirements".
@@ -117,7 +117,7 @@ class ProjectsController < ApplicationController
       end
     end
   end
-  # == End  ==  
+
 
    def new
     @project = Project.new
@@ -127,8 +127,10 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.save
+    # StartupsProjects.create(:startup_id => Startup.find_by_entity_id(current_entity.id), :project_id => @project.id)
     redirect_to @project
   end
+
 
   def destroy
     project = Project.find(params[:id])
@@ -142,20 +144,18 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def change_reached_status
-    project = Project.find(params[:id])
-    respond_to do |format|
+  # def change_reached_status
+  #   @project_requirements = ProjectRequirements.find(params(:req))
+  #   respond_to do |format|
 
-      if project_targets.update_attribute(:reached, !project_targets.reached)
-        flash.notice = "Successfully met target"
-      else
-        flash.alert = "Oops, couldn't respond to action"
-      end
-
-      format.html { redirect_to project }
-
-    end
-  end
+  #     if ProjectRequirement.update_attribute(:reached, ! project_requirements.reached)
+  #       flash.notice = "Successfully met target"
+  #     else
+  #       flash.alert = "Oops, couldn't respond to action"
+  #     end
+  #     format.html { redirect_to project }
+  #   end
+  # end
 
 
   private
@@ -163,6 +163,5 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(:name, :category, :location, :description,
       :project_targets_attributes => [:id, :description, :_destroy],
       :project_requirements_attributes => [:id, :description, :_destroy])
-  end
-  
+  end 
 end

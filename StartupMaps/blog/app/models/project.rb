@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
+  
   # Cascade deletion to all associations
+  # validates :name, :presence => true
   has_many :project_requirements, :dependent => :destroy
   has_many :project_targets, :dependent => :destroy
   
@@ -7,11 +9,11 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :project_targets, :allow_destroy => true
   accepts_nested_attributes_for :project_requirements, :allow_destroy => true
+  
 
-
-  def reached?
-    reached ? "Yes" : "No"
-  end 
+  # def reached?
+  #   reached ? "Yes" : "No"
+  # end 
 
   # Definition: "A startup can see a list of his projects" 
   # This method allows you to get a list of projects and 
@@ -41,6 +43,6 @@ class Project < ActiveRecord::Base
     @projects_owned_by_startup_ids = StartupHaveProject.select(:project_id).where(:startup_id => startup.id)
     @suggested_projects = Project.where(:location => project.location, :category => project.category)
                                  .where.not(:id => project.id, :id => @projects_owned_by_startup_ids)
-  end	
 
+end
 end

@@ -1,6 +1,7 @@
   <!-- Just added the colors :)
   Author: Hana Magdy  -->
 
+
 <style type="text/css">
 
   h1 {
@@ -19,13 +20,15 @@
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
-  </p>
 
- 
-  <p>
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
   </p>
+ 
+  <div >
+    <%= f.label :category %><br /><span  style="color:red">✼</span>
+
+    <%=  f.select :category, [['Agricultural','Agricultural'],['Industrial','Industrial'],[' Mobile Applications ',' Mobile Applications ']]%>
+  <div class="scrollbox">
+  </div>
 
   <p>
     <%= f.label :location %><br>
@@ -56,8 +59,10 @@
   <p>
     <%= f.link_to_add "Add a Requirement", :project_requirements %>
   </p>
- 
+
   <p>
     <%= f.submit("Create project") %>
+
   </p>
+  
 <% end %>

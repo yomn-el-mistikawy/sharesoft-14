@@ -59,12 +59,6 @@
   Input: project_id "the button".
   Output: edit.html.erb, because it does not return anything, it just redirects.
   Author: Hana Magdy. -->
-
-  <p>
-  <strong>reached?</strong>
-  <%= @project.reached? %>
-  <%= link_to( (@project.reached ? "unmet" : "met"), reached_project_path) %>
-</p>
  
 <%= link_to "Edit this project", edit_project_path(@project) %>
   <!-- == End  ==   -->

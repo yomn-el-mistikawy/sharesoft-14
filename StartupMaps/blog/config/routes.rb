@@ -11,7 +11,7 @@ Blog::Application.routes.draw do
 
   
   resources :projects do
-
+    # get "change_reached_status"
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
     get "show_suggested"
