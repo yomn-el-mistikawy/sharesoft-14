@@ -1,0 +1,31 @@
+
+
+  <div id="pending">
+    <h2>Pending</h2>
+    <table class="table">
+      <tr>
+        <td>Subject</td>
+        <td>From</td>
+        <td>Date</td>
+        <td></td>
+      </tr>
+    </table>
+    <div id="friends">
+      <%= render @friends %> 
+    </div>
+  </div>
+
+  <div id="requested">
+    <h2>Requested</h2>
+    <table class="table">
+      <tr>
+        <td>Subject</td>
+        <td>To</td>
+        <td>Date</td>
+        <td></td>
+      </tr>
+    </table>
+    <div id="friends">
+      <%= render 'friendships/requested' %> 
+    </div>
+  </div>

@@ -1,0 +1,5 @@
+<% if current_entity %>
+    <%= render 'friendships/index' %>
+<% else %>
+    <% flash[:error] = "Unauthorized - The page is not available." %>
+<%end%>
