@@ -7,6 +7,7 @@ class CreateGroups < ActiveRecord::Migration
       t.string :location
       t.integer :creator_id 
       t.string :interest
+      t.boolean :notification
       t.timestamps
     end
   end

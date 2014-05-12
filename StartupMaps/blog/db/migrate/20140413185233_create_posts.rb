@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :title
       t.string :text
+      t.boolean :notification
       t.belongs_to :group
       t.belongs_to :startup
       t.timestamps

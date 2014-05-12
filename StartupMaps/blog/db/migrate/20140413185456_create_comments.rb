@@ -3,6 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.string :comment
       t.string :commenter
+      t.boolean :notification
       t.belongs_to :startup
       t.belongs_to :post
       t.timestamps
