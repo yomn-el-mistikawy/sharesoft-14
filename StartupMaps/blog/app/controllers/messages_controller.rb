@@ -34,9 +34,9 @@ class MessagesController < ApplicationController
       if @message.save
         format.html { redirect_to :action => :index, notice: 'Message has been sent.' }
         format.json { render json: @messages }
-      else
+       else
         format.html { redirect_to :action => :new, notice: 'Error: Please try again.' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,4 +49,5 @@ class MessagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
