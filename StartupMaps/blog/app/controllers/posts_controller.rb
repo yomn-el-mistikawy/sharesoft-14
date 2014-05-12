@@ -7,21 +7,24 @@ class PostsController < ApplicationController
 # Author: Nardeen Milad 
 
 	def showPosts
-		if(Group.find(params[:id]).private == true)
+		@id = params[:id]
+		@current = current_entity.id
+		if(Group.find(@id).private == true)
 
-			@res = GroupsStartup.where(:group_id => params[:id] , :startup_id => current_entity.id)
+			@res = GroupsStartup.where(:group_id => @id , :startup_id => @current)
 
 			if(@res.count > 0)
 				
-				@all = Post.where(:group_id => params[:id])
+				@all = Post.where(:group_id => @id)
 				
 			else
 				@all = []
 			end
 		
 		else
-			@res = [1];
-			@all = Post.where(:group_id => params[:id])	
+			@res = [1]
+			@all = Post.where(:group_id => @id)	
+			
 		end	
 	end
 

@@ -63,5 +63,7 @@ body:<br>
 <br>
 <input type=submit value='post'>
 </form>
+<a href = "../group_invitation/search?groupId= <%=params[:id]%>"> <button> invite</button> </a>
+
 <%end%>
 </html>
