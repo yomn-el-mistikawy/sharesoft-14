@@ -30,5 +30,12 @@
   <%= text_field_tag :other %> <br />
 
   <%= submit_tag %>
+<% end %>
+<br />
 
+<%= form_tag @tags do |delete| %>
+  <%= label_tag :deleted, "Please select a preference you would like to delete:" %> <br />
+  <%= select_tag 'delete', options_for_select((Tag.all).collect{ |u| [u.tags, u.tags] }), prompt: 'Select a preference...' %>
+
+  <%= submit_tag 'Delete!' %>
 <% end %>
