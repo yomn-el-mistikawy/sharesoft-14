@@ -1,5 +1,5 @@
 <% @messages.each do |m| %>
-<% if m.sender == @user.email %>
+<% if m.sender == current_entity.email %>
 <table class="table">
   <tr>
     <td>

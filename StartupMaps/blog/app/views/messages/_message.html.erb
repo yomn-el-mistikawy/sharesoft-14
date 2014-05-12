@@ -1,7 +1,6 @@
 <link href="/assets/messages.css" rel="stylesheet">
 
-<link href="/assets/bootstrap.css" rel="stylesheet">
-<% if message.recepient == @user.email %>
+<% if message.recepient == current_entity.email %>
 <table class="table">
   <tr>
     <td>
