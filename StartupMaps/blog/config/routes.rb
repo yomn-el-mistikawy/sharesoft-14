@@ -38,6 +38,10 @@ Blog::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
+
+  get 'likes/like'
+  get 'groups/show'
+  get 'likes/showposts'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
