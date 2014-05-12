@@ -49,3 +49,10 @@
   <strong>Requirements:</strong>
   <%= @project.requirements %>
 </p>
+
+
+
+<h1> Project Profile </h1>
+
+
+<%= button_to "Send merge request", project_merge_request_path(project_id: params[:id]) %>

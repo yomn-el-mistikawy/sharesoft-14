@@ -69,7 +69,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html
     end
@@ -85,6 +84,10 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.save
     redirect_to @project
+  end
+
+  def merge_request
+    SendMergeRequest.merge_request(params[:project_id])
   end
 
 
