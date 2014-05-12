@@ -18,6 +18,10 @@ Blog::Application.routes.draw do
     get "merge_request"
   end  
 
+  get "group_invitation/search"
+  get "group_invitation/invite"
+  get "group_invitation/validate"
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 

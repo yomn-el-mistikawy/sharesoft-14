@@ -15,7 +15,7 @@ class GroupInvitationController < ApplicationController
 # Author: Nardeen Milad 
 
 	def search
-		@all = Startup.find(:all, :conditions => ["name like ?","%#{params[:id]}%"])
+		@all = Entity.find(:all, :conditions => ["name like ? AND type = ?","%#{params[:id]}%","Startup"])
 		# Users.find(:all,:condition => ('[name = ?]',params[id]))
 	end
 
@@ -41,30 +41,31 @@ class GroupInvitationController < ApplicationController
 
 	def validate
 		@invite = true
-		@hash = "dasda"
-		@one = GroupsStartup.find(:all)
-		@one.each do |o|
-			if o.startup_id = params[:id] 
-				if  o.group_id == 2
-					@invite = false
-				end
-			end
+		
+		@one = GroupsStartup.where(:startup_id => params[:id],:group_id => params[:groupid])
+		@desc  = params[:groupid]
+		
+		if @one.count > 0
+			@invite = false
+			@desc = "user is already in group "
+		end
+			
+
+		@two = GroupInvitation.where(:receiver_id => params[:id] , :group_id => params[:groupid])
+		
+		if  @two.count > 0 
+				@desc = "invitation was sent"
+				@invite = false
 		end
 
-		@two = GroupInvitation.find(:all)
-		@two.each do |o|
-			if  o.receiver_id = params[:id] 
-				if o.group_id == 3
-					@invite = false
-				end
-			end
-		end
+		
 
 		if( @invite == true)
+			
 			@inv = GroupInvitation.new
 			@inv.receiver_id = params[:id]
 			@inv.sender_id = params[:senderid]
-			@inv.group_id = 3
+			@inv.group_id = params[:groupid]
 			@inv.save
 
 		end
