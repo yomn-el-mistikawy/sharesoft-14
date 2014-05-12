@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        if @post.Notification then
+        if @post.notification then
         UserMailer.post_email(@post).deliver
         end
         format.html { redirect_to @post, :notice => 'Post was successfully created.' }
@@ -13,6 +13,20 @@ class PostsController < ApplicationController
       else
         format.html { render :action => "new" }
         format.json { render :json => @post.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+    def update
+    respond_to do |format|
+      if @post.update(post_params)
+        if @post.notification then
+        UserMailer.post_email(@post).deliver
+        end
+        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end

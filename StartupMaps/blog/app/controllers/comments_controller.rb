@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        if @comment.Notification then
+        if @comment.notification then
         UserMailer.comment_email(@comment).deliver
         end
         format.html { redirect_to @comment, :notice => 'Comment was successfully created.' }
@@ -12,6 +12,20 @@ class CommentsController < ApplicationController
       else
         format.html { render :action => "new" }
         format.json { render :json => @comment.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  def update
+    respond_to do |format|
+      if @comment.update(comment_params)
+        if @comment.notification then
+        UserMailer.comment_email(@comment).deliver
+        end
+        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end
