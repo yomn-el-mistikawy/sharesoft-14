@@ -14,9 +14,10 @@ class Tag < ActiveRecord::Base
 		end
 	end
 
-	def self.get_options (entity_id)
-		@options = Tag.find(:all)
-		p @options
+	def self.delete_pref (deleted)
+		if Tag.find_by(tags: deleted, entity_id: 1) != nil
+			Tag.find_by(tags: deleted, entity_id: 1).destroy
+		end
 	end
 	
 end
