@@ -1,5 +1,6 @@
 class SearchEngineController < ApplicationController
   def list 
+     $name=params[:text]
     @groups=Group.search_group($name)
   	@entities=Entity.search_entity($name)
   	@investors=Investor.search_investor($name)
@@ -9,8 +10,7 @@ class SearchEngineController < ApplicationController
   end
 
   def index
-    $name=params[:text]
-    
-  end
+   
+    end
 
 end

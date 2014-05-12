@@ -11,7 +11,7 @@ class Startup < ActiveRecord::Base
 	has_many :badges, through: :startups_badges
 
 	 def self.search_startup(search)
-    @startup= Startup.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    @startup= Startup.find(:all, :conditions => ['name LIKE ?', "#{search}%"])
     return @startup
  
    end 
