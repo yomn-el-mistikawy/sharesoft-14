@@ -7,9 +7,25 @@ Blog::Application.routes.draw do
   resources :groups
 
  
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
   resources :groups do
     get "list_group_members"
   end  
+
+  resources :entities do
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+
 
   resources :startups
 

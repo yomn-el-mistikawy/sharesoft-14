@@ -1,0 +1,49 @@
+<!-- 
+  # Definition: This view is used by the entity to edit its information including email, password, location, headquarters. It also has a delete  
+  # account button.
+  # Input: Void.
+  # Output: Entity_params.
+  # Author: Omar El Menawy.
+-->
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |entity| %>
+  <%= devise_error_messages! %>
+  <div>
+    <%= entity.label :email %><br/>
+    <%= entity.email_field :email, autofocus: true %>
+  </div>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+  <label>Retype password if you don't want to renew it</label>
+  <div>
+    <%= entity.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+    <%= entity.password_field :password, autocomplete: "off" %>
+  </div>
+  <div>
+    <%= entity.label :password_confirmation %><br/>
+    <%= entity.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <div><%= entity.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
+    <%= entity.password_field :current_password, autocomplete: "off" %>
+  </div>
+  <div>
+    <%= entity.label :location %><br />
+    <%= entity.email_field :location %>
+  </div>
+  <div>
+    <%= entity.label :headquarter %><br />
+    <%= entity.email_field :headquarter %>
+  </div>
+  <div>
+    <%= entity.label :description %><br />
+    <%= entity.email_field :description %>
+  </div>
+  <div>
+    <%= entity.submit "Update" %>
+  </div>
+<% end %>
+<h3>Cancel my account</h3>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= link_to "Back", root_path %>
