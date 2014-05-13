@@ -1,3 +1,5 @@
+// Auhor: Samar Fikri.
+
 /*!
  * Media helper for fancyBox
  * version: 1.0.5 (Tue, 23 Oct 2012)

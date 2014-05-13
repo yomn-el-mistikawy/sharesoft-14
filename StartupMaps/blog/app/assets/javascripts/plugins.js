@@ -1,3 +1,5 @@
+// Auhor: Samar Fikri.
+
 /*
  * jPreloader
 */

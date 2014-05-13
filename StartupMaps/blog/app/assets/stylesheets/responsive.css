@@ -1,3 +1,5 @@
+/*Auhor: Samar Fikri.*/
+
 @media (min-width: 768px) and (max-width: 979px) {
 	#menu {
 		display: none;	
@@ -396,7 +398,7 @@
   	only screen and (min-resolution: 2dppx) {
 		
 		header #logo a {
-			background-image: url(../img/logo_@2x.png);
+			background-image: url(../images/logo_@2x.png);
 			background-size: 96px 30px;
 		}
 		

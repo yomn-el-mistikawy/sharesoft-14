@@ -1,3 +1,5 @@
+// Auhor: Samar Fikri.
+
 // jquery.tweet.js - See http://tweet.seaofclouds.com/ or https://github.com/seaofclouds/tweet for more info
 // Copyright (c) 2008-2012 Todd Matthews & Steve Purcell
 // Modified by Stan Scates for https://github.com/StanScates/Tweet.js-Mod

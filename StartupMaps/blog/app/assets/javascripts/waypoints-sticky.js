@@ -1,3 +1,5 @@
+// Auhor: Samar Fikri.
+
 /*
 Sticky Elements Shortcut for jQuery Waypoints - v2.0.2
 Copyright (c) 2011-2013 Caleb Troughton

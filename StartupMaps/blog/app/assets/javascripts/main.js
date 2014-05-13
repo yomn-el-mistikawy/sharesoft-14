@@ -1,3 +1,5 @@
+// Auhor: Samar Fikri.
+
 jQuery(function($){
 
 var BRUSHED = window.BRUSHED || {};
