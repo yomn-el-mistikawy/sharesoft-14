@@ -23,5 +23,58 @@ class Entity < ActiveRecord::Base
   has_many :messages
   TYPES = %w[Startup Investor Service]
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
+
+  after_save :create_geo_group_and_add_startup
+  after_destroy :destroy_geo_group_and_remove_from_groups
+
+  # Definition: This method takes location as input and checks if there is a gepgraphical 
+  # location group for this location, if not it creates a new group for this lcation, 
+  # finally it adds this startup to the geo group,
+  # it is called when a startup is signing up or updating its location.
+  # Input: location, id of startup.
+  # Output: void.
+  # Author: Maha Salah Eldin.
+
+  def create_geo_group_and_add_startup
+    if self.type == "Startup"
+      @geo = Group.find_by_location(self.location) 
+      @newgeo_id
+      if @geo == nil
+        @geo = Group.create(name: location, 
+        description: "this group is to link startups in " + location, location: location, 
+        creator_id: 0, interest: "none")
+      end
+      @newgeo_id = @geo.id
+      if GroupsStartup.check_membership(self, @geo) == nil
+        GroupsStartup.create(startup_id: self.id, group_id: @newgeo_id)
+      end
+       alert:"You have successfully been added to " @geo.name "group."
+    end
+  end
+
+
+  # Definition: This method, when a startup is destroyed, it checks if there were no more startups in the 
+  # geograohic location group of the removed startup, if yes then this group is destroyed too, it also
+  # destroys all entries for this startup in groups.
+  # Input: location, and id of the startup.
+  # Output: void.
+  # Author: Maha Salah Eldin.
+
+  def destroy_geo_group_and_remove_from_groups
+    if self.type == "Startup"
+      @s = Entity.find_by_location(self.location)
+      if @s == nil
+       @geo = Group.find_by_location(self.location)
+        if @geo != nil
+          @geo.destroy
+        end
+      end
+      @sg = GroupsStartup.find_by_startup_id(self.id)
+      while @sg != nil do
+        @sg.destroy
+        @sg = GroupsStartup.find_by_startup_id(self.id)
+      end
+    end
+  end
 end
 
