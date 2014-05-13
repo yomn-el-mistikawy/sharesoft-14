@@ -1,6 +1,12 @@
+<!-- 
+  # Definition: This is the template to edit any portfolio in your database and will be 
+  # executed whenever you will try to edit portfolio, this calls the form view and the 
+  # entity can edit it.
+  # Input: Void.
+  # Output: Edited portfolio.
+  # Author: Mozdan Ahmed.
+-->
 <h1>Edit portfolio</h1>
-
 <%= render 'form' %>
-
 <%= link_to 'Show', @entity_portfolio %> |
 <%= link_to 'Back', entity_portfolios_path %>

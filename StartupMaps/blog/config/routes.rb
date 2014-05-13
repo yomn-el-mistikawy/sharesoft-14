@@ -1,12 +1,11 @@
 Blog::Application.routes.draw do
-<<<<<<< HEAD
+
   resources :entity_portfolios
 
 
   
   resources :group_members
-=======
- 
+
  
   devise_for :entities, :controllers => {:registrations => "entities/registrations", 
                                          :sessions => "entities/sessions", 
@@ -28,7 +27,7 @@ Blog::Application.routes.draw do
 
 
   resources :startups
->>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
