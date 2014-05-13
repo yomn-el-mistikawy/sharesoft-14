@@ -13,7 +13,8 @@ development:
   encoding: utf8
   database: blog_development
   pool: 5
-  
+  username: root
+  password: mozdan123
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,11 +24,13 @@ test:
   encoding: utf8
   database: blog_test
   pool: 5
- 
+  username: root
+  password: mozdan123
 
 production:
   adapter: mysql2
   encoding: utf8
   database: blog_production
   pool: 5
- 
+  username: root
+  password: mozdan123
