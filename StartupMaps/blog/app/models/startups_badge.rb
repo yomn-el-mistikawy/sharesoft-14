@@ -1,4 +1,4 @@
-class StartupsBadges < ActiveRecord::Base
+class StartupsBadge < ActiveRecord::Base
 	has_and_belongs_to_many :badges
     has_and_belongs_to_many :startups
 end
