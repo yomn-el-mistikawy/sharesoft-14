@@ -1,8 +1,8 @@
 class MapsController < ApplicationController
-# Definition: Gets all Startups in the db and shows them on the map.
-# Input: Startups Table.
-# Output: All Investors.
-# Author: Alia Tarek.
+#  Definition: Gets all Startups in the db and shows them on the map.
+#  Input: Startups Table.
+#  Output: All Investors.
+#  Author: Alia Tarek.
 
   def show_startups
     @startups = Startup.all
@@ -19,10 +19,10 @@ class MapsController < ApplicationController
   end
 
 
-# Definition: Gets all Investors in the db and shows them on the map.
-# Input: Investors Table.
-# Output: All Investors.
-# Author: Alia Tarek.
+#  Definition: Gets all Investors in the db and shows them on the map.
+#  Input: Investors Table.
+#  Output: All Investors.
+#  Author: Alia Tarek.
 
   def show_investors
     @investors = Investor.all
@@ -39,10 +39,10 @@ class MapsController < ApplicationController
   end
 
 
-# Definition: Gets all Services in the db and shows them on the map.
-# Input: Services Table.
-# Output: All Services.
-# Author: Alia Tarek.
+#  Definition: Gets all Services in the db and shows them on the map.
+#  Input: Services Table.
+#  Output: All Services.
+#  Author: Alia Tarek.
 
   def show_services
     @services = Service.all
