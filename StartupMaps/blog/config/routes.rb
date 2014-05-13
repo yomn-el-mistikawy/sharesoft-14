@@ -19,8 +19,8 @@ Blog::Application.routes.draw do
   end  
 
 
-
-  resources :startups
+  resources :startups do 
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -28,7 +28,6 @@ Blog::Application.routes.draw do
   end
   
   resources :projects do
-
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
     get "show_suggested"

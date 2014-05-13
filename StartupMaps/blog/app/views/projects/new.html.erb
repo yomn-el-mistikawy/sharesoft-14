@@ -1,6 +1,12 @@
-  <!-- Just added the colors :)
-  Author: Hana Magdy  -->
-
+<!--
+  # Definition:
+  # 1.Allows a pink color for the title and pink for the rest
+  # 2.doesn't submit unless name,category and description are entered. 
+  # Input: title 'name' ,project attribute values.
+  # Output: if there is no input redirects to the same page
+  # else redirects to show.
+  # Author: Hana Magdy.
+-->
 
 <style type="text/css">
 
@@ -18,11 +24,21 @@
     display: table;
   }
 
-
 </style>
 
-<h1> Create New Project </h1>
 
+<!--
+  # Definition: Allows entering all project attributes with the necessary 
+  # and unnecessary attributes
+  # can add/remove targets and requirements while creating the project
+  # submit button to check the entries to get redirected to the show page.
+  # Input:project attribute values.
+  # Output: if there is no input redirects to the same page
+  # else redirects to show.
+  # Author: Hana Magdy.
+-->
+
+<h1> Create New Project </h1>
 
 
 <%= nested_form_for @project do |f| %>
@@ -71,5 +87,4 @@
     <%= f.submit("Create project") %>
 
   </p>
-  
 <% end %>
