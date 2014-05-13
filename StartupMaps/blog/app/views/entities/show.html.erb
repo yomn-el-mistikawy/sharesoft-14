@@ -60,14 +60,14 @@
   <h1> Achievements </h1>
   <% if @entity == current_entity %>
     <% if @all_achieved_badges.size != 25 %>
-      <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id])%>
+      <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id]), :class => "button" %>
     <% end %>
   <% end %>
   <table>
     <tbody>
       <tr>
         <% @achieved_badges.each do |badge| %>
-          <td>
+          <td width="22%">
             <% if badge.level == 1 %>
               <%= image_tag "Bronze_1.gif" %>
             <% else %>
