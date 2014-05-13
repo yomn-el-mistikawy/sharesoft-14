@@ -1,30 +1,53 @@
 class EntityPortfoliosController < ApplicationController
-  before_action :set_entity_portfolio, only: [:show, :edit, :update, :destroy]
 
-  # GET /entity_portfolios
-  # GET /entity_portfolios.json
+
+  # Definition: This method lists all the porfolios.
+  # Input: Void.
+  # Output: All portfolio.
+  # Author: Mozdan Ahmed.
+
   def index
-    @entity_portfolios = EntityPortfolio.all
+    @entity_portfolio = EntityPortfolio.all
   end
 
-  # GET /entity_portfolios/1
-  # GET /entity_portfolios/1.json
+  # Definition: This method shows the portfolio that clicked from the listed portfolio.
+  # Input: EntityPortfolio_id.
+  # Output: Chosen portfolio.
+  # Author: Mozdan Ahmed.
+
   def show
+    @entity_portfolio = EntityPortfolio.find(params[:id])
   end
 
-  # GET /entity_portfolios/new
+  # Definition: Call portfolio object to be created in the create method.
+  # Input: Void.
+  # Output: Void.
+  # Author: Mozdan Ahmed.
+
   def new
     @entity_portfolio = EntityPortfolio.new
   end
 
-  # GET /entity_portfolios/1/edit
+
+ # Definition: This method retrieves a portfolio based on its id and displays it in the page.
+ # Input: Void.
+ # Output: Void.
+ # Author: Mozdan Ahmed.
+
   def edit
+    @entity_portfolio = EntityPortfolio.find(params[:id])
   end
 
-  # POST /entity_portfolios
-  # POST /entity_portfolios.json
+
+ # Definition: This methode creates a new portfolio with the parameters name, description and launch,
+ # the If statement redirects the user to the show method if the object is saved correctly
+ # in the database. If it doesn't save, the user is sent back to the new method.
+ # Input: portfolio.
+ # Output: A new portfolio.
+ # Author: Mozdan Ahmed.
+
   def create
-    @entity_portfolio = EntityPortfolio.new(entity_portfolio_params)
+        @entity_portfolio = EntityPortfolio.new(entity_portfolio_params)
      
      respond_to do |format|
       if @entity_portfolio.save
@@ -38,9 +61,9 @@ class EntityPortfoliosController < ApplicationController
     end
   end
 
-  # PATCH/PUT /entity_portfolios/1
-  # PATCH/PUT /entity_portfolios/1.json
+
   def update
+    @entity_portfolio = EntityPortfolio.find(params[:id])
     respond_to do |format|
       if @entity_portfolio.update(entity_portfolio_params)
         flash[:notice] = 'Portfolio was successfully updated.'
@@ -53,9 +76,9 @@ class EntityPortfoliosController < ApplicationController
     end
   end
 
-  # DELETE /entity_portfolios/1
-  # DELETE /entity_portfolios/1.json
+
   def destroy
+    @entity_portfolio = EntityPortfolio.find(params[:id])
     @entity_portfolio.destroy
     respond_to do |format|
       format.html { redirect_to entity_portfolios_url }
@@ -64,10 +87,6 @@ class EntityPortfoliosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entity_portfolio
-      @entity_portfolio = EntityPortfolio.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entity_portfolio_params

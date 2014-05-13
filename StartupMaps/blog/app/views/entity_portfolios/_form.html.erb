@@ -1,15 +1,5 @@
 <%= form_for(@entity_portfolio) do |f| %>
-  <% if @entity_portfolio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@entity_portfolio.errors.count, "error") %> prohibited this entity_portfolio from being saved:</h2>
-
-      <ul>
-      <% @entity_portfolio.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+ 
 
   <div class="field">
     <%= f.label :name %><br>
