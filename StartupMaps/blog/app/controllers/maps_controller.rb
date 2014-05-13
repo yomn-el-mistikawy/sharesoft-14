@@ -19,7 +19,7 @@ class MapsController < ApplicationController
   end
 
 
-# Defintion: Gets all Investors in the db and shows them on the map.
+# Definition: Gets all Investors in the db and shows them on the map.
 # Input: Investors Table.
 # Output: All Investors.
 # Author: Alia Tarek.
@@ -39,7 +39,7 @@ class MapsController < ApplicationController
   end
 
 
-# Defintion: Gets all Services in the db and shows them on the map.
+# Definition: Gets all Services in the db and shows them on the map.
 # Input: Services Table.
 # Output: All Services.
 # Author: Alia Tarek.
