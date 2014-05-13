@@ -1,20 +1,19 @@
-<!--# Definition: Layout.
-  	# Input: Nothing.
-  	# Output: Nothing.
-  	# Author: Ola Enaba.
-	-->
+<!--
+	# Definition: Layout.
+	# Input: Nothing.
+	# Output: Nothing.
+	# Author: Ola Enaba.
+-->
+
 <h1> Company Status:
-<% if @startup.company_status == false%>
-online
-<%else%>
-offline
-<%end%>
+ <%if @startup.company_status == false%> 
+  online
+ <%else%>
+  offline
+ <%end%>
 </h1>
-
-<% if @startup.company_status == true%>
-
-<a href="change_company_status?startup_id=1"><input type="button" value="online" /></a>
-<%else%>
-<a href="change_company_status?startup_id=1"><input type="button" value="offline" /></a>
-
-<%end%>
+ <%if @startup.company_status == true%>
+  <a href="change_company_status?startup_id=1"><input type="button" value="online" /></a>
+ <%else%>
+  <a href="change_company_status?startup_id=1"><input type="button" value="offline" /></a>
+ <%end%>
