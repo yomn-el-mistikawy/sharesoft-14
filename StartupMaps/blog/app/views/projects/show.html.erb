@@ -1,5 +1,12 @@
-<!-- Just added the colors :)
-Author: Hana Magdy  -->
+<!--
+  # Definition: "As a startup, I can edit and add all projects
+  # attributes and specifically targets and requirements"
+  # 1.Allows a pink color for the title and pink for the rest
+  # 2.if reach - true the cross it with a line.
+  # Input: title 'name' ,attribute values, reached value 'true/false'.
+  # Output: crossed value if reached and vice verca.
+  # Author: Hana Magdy.
+-->
 
 <style type="text/css">
 
@@ -10,6 +17,19 @@ Author: Hana Magdy  -->
   p {
     color: #0099FF;
   }
+
+  .reached-true {
+    text-decoration: line-through;
+  }
+
+
+/*
+  # Definition:Allows showing all values all categories for the whole project
+  # including specifying whether it is reached or not in req./targets.
+  # Input: before/after editing a project 'void'.
+  # Output: project_id "all the project's details".
+  # Author: Hana Magdy.
+*/
 
 </style>
 
@@ -34,13 +54,32 @@ Author: Hana Magdy  -->
   <%= @project.description %>
 </p>
 
+<p>
+  <strong>Targets:</strong>
+  <ul>
+    <% @project.project_targets.each do |target| %>
+      <li class="reached-<%=target.reached%>"><%= target.description %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Requirements:</strong>
+  <ul>
+    <% @project.project_requirements.each do |req| %>
+      <li class="reached-<%=req.reached%>"><%= req.description %></li>
+    <% end %>
+  </ul>
+</p>
+
+
   <!--   == Begin  == 
-  Definition: "A project is launched after all requirements are met"
+  Definition: "A startup can launch its project"
   Changes the status of a project and redirects to the project's 
   page (show project) on success or error
   update the status of launch project from unlaunch to launched and vice versa.
   Input: project_id. "on the show page".
-  Output: Void "it's an action" returns the success of the
+  Output: project_id"it's an action" returns the success of the
   changeable button of launch upon of it's previous status. 
   Author: Hana Magdy. -->
 
@@ -49,4 +88,3 @@ Author: Hana Magdy  -->
   <%= @project.launched? %>
   <%= link_to( (@project.launch ? "Unlaunch" : "Launch"), launch_project_path) %>
 </p>
-<!-- == End  ==   -->
