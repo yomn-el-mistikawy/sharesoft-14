@@ -70,15 +70,13 @@ class ProjectsController < ApplicationController
   end
 
   
-  # Definition: "As a startup, I can edit and add all projects
-  # attributes and specifically targets and requirements"
-  # This method shows all details of a project
+  # Definition:This method shows all details of a project
   # that belong to a specific startup and is linked to the show HTML file
   # which also includes the editing part
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
   # it's reachable and knows what's happening in the file.
   # Input: Project_id.
-  # Output: Project_id "all project description (before and after editing".
+  # Output: Project_id "all project description (before and after editing)".
   # Author: Hana Magdy.
 
   def show
