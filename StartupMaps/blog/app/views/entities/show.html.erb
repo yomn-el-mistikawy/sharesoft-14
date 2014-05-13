@@ -69,15 +69,15 @@
         <% @achieved_badges.each do |badge| %>
           <td>
             <% if badge.level == 1 %>
-              <%= image_tag "Bronze_1.png" %>
+              <%= image_tag "Bronze_1.gif" %>
             <% else %>
               <% if badge.level == 2 %>
-                <%= image_tag "Silver_1.png" %>
+                <%= image_tag "Silver_1.gif" %>
               <% else %>
                 <% if badge.level == 3 %>
-                  <%= image_tag "Gold_1.png" %>
+                  <%= image_tag "Gold_1.gif" %>
                 <% else %>
-                  <%= image_tag "Platinum_1.png" %>
+                  <%= image_tag "Platinum_1.gif" %>
                 <% end %>
               <% end %>
             <% end %>
@@ -87,9 +87,6 @@
             <br>
             <label> Description: </label>
             <%= badge.description %>
-            <br>
-            <label> Level: </label>
-            <%= badge.level %>
           </td>
         <% end %>
       </tr> 

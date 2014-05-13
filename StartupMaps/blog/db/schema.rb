@@ -231,9 +231,9 @@ ActiveRecord::Schema.define(version: 20140512174723) do
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"
     t.string   "name"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
   end
 
   add_index "paintings", ["gallery_id"], name: "index_paintings_on_gallery_id", using: :btree
