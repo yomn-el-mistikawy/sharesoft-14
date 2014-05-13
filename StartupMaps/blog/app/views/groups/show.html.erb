@@ -14,7 +14,7 @@
   <%= @group.interest %>
 </p>
 
-
+<% if @group.private == false %>
 <h2>Posts</h2>
 <% @group.posts.each do |post| %>
 <%= @post = post %>
@@ -22,32 +22,34 @@
     <strong>Title:</strong>
     <%= post.title %>
   </p>
-  <p>
-  </p>
+
   <p>
     <strong>Text:</strong>
     <%= post.text %>
   </p>
 
-<div style="background: #FFDAB9">
-<h2>Comments</h2>
-<% @post.comments.each do |comment| %>
-  <p>
+
+ <div style="background: #FFDAB9">
+ <h2>Comments</h2>
+ <% @post.comments.each do |comment| %>
+   <p>
     <strong style="color: #000; font-size: 10pt"><%= comment.commenter %></strong> 
     <%= ":" %>
     <%= comment.comment %>  
     
-    <%=  link_to 'Delete', group_post_comment_path(@group,@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-
+    <%= link_to 'Delete', group_post_comment_path(@group,@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+   </p>
   <% end %>
- 
 
-<%= render :partial => 'form_comment' %>
+  <% if check_group_member == true %>
+    <%= render :partial => 'form_comment' %>
+  <% end %>
  </div>
 <% end %> 
 
+<% if check_group_member == true %>
 <%= render :partial => 'form_post' %>
-
+<%end %>
+<% end %>
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

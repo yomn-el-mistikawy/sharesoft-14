@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-  
+  helper_method :check_group_member
+
   # Defintion: This method takes the session id 
   # and group id, then checks if the logged in
   # entity is a group member. If it is a group member
@@ -22,6 +23,14 @@ class GroupsController < ApplicationController
   end
 
 
+  # Defintion: calls method check_membership from groups_startup model to check if a startup is a member.  
+  # Input: current_entity, current group.
+  # Output: boolean.
+  # Author: Maha Salah Eldin.
+
+  def check_group_member
+    return GroupsStartup.check_membership(current_entity, @group).any?
+  end
     # GET /groups
   # GET /groups.json
   def index
