@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
   # it's reachable and knows what's happening in the file.
   # Input: Project_id.
-  # Output: Project_id "all project description (before and after editing".
+  # Output: Project_id "all project description (before and after editing)".
   # Author: Hana Magdy.
 
   def show
