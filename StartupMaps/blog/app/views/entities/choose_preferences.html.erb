@@ -1,41 +1,41 @@
 <%= form_tag @tags do |pref| %>
   <%= label_tag :tourism %>
-  <%= check_box_tag "prefs[]", value = "tourism", id = "tourism" %><br />
+  <%= check_box_tag "prefs[]", value = "tourism", id = "tourism" %>
 
   <%= label_tag :food %>
-  <%= check_box_tag "prefs[]", value = 'food', id = 'food' %><br />
+  <%= check_box_tag "prefs[]", value = 'food', id = 'food' %>
 
   <%= label_tag :music %>
-  <%= check_box_tag "prefs[]", value = 'music', id = 'music' %><br />
+  <%= check_box_tag "prefs[]", value = 'music', id = 'music' %>
 
   <%= label_tag :arts %>
-  <%= check_box_tag "prefs[]", value = 'art', id = 'art' %><br />
+  <%= check_box_tag "prefs[]", value = 'art', id = 'art' %>
 
   <%= label_tag :culture %>
-  <%= check_box_tag "prefs[]", value = 'culture', id = 'culture' %><br />
+  <%= check_box_tag "prefs[]", value = 'culture', id = 'culture' %>
 
   <%= label_tag :engineering %>
-  <%= check_box_tag "prefs[]", value = 'sports', id = 'sports' %><br />
+  <%= check_box_tag "prefs[]", value = 'sports', id = 'sports' %>
 
   <%= label_tag :medicine %>
-  <%= check_box_tag "prefs[]", value = 'medicine', id = 'medicine' %><br />
+  <%= check_box_tag "prefs[]", value = 'medicine', id = 'medicine' %>
 
   <%= label_tag :biology %>
-  <%= check_box_tag "prefs[]", value = 'biology', id = 'biology' %><br />
+  <%= check_box_tag "prefs[]", value = 'biology', id = 'biology' %>
 
   <%= label_tag :politics %>
-  <%= check_box_tag "prefs[]", value = 'politics', id = 'politics' %><br />
+  <%= check_box_tag "prefs[]", value = 'politics', id = 'politics' %>
 
   <%= label_tag :other %>
-  <%= text_field_tag :other %> <br />
+  <%= text_field_tag :other %> 
 
   <%= submit_tag %>
 <% end %>
 <br />
 
 <%= form_tag @tags do |delete| %>
-  <%= label_tag :deleted, "Please select a preference you would like to delete:" %> <br />
-  <%= select_tag 'delete', options_for_select((Tag.all).collect{ |u| [u.tags, u.tags] }), prompt: 'Select a preference...' %>
+  <%= label_tag :deleted, "Please select a preference you would like to delete:" %>
+  <%= select_tag 'delete', options_for_select(Tag.where(entity_id: current_entity).collect{ |u| [u.tags, u.tags] }), prompt: 'Select a preference...' %>
 
   <%= submit_tag 'Delete!' %>
 <% end %>

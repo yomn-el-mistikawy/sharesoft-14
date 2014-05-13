@@ -2,8 +2,8 @@ class EntitiesController < ApplicationController
 
 
 	def choose_preferences
-		Tag.update_pref(params[:other], params[:prefs])
-		Tag.delete_pref(params[:delete])
+		Tag.update_pref(params[:other], params[:prefs], current_entity)
+		Tag.delete_pref(params[:delete], current_entity)
 	end
 
   before_action :authenticate_entity!
