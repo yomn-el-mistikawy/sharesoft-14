@@ -41,7 +41,10 @@ class GroupsController < ApplicationController
   # Author: Sherouk A.Said.
 
   def join_request
-    JoinRequest.create(:group_id => params[:group_id], :sender_id => session[:entity_id])  
+    startup = Startup.find_by_entity_id(current_entity.id)
+    if JoinRequest.create(:group_id => params[:group_id], :sender_id => startup.id)
+      render text: "Request Sent"
+    end  
   end
 
   
