@@ -1,0 +1,41 @@
+<%= form_tag @tags do |pref| %>
+  <%= label_tag :tourism %>
+  <%= check_box_tag "prefs[]", value = "tourism", id = "tourism" %><br />
+
+  <%= label_tag :food %>
+  <%= check_box_tag "prefs[]", value = 'food', id = 'food' %><br />
+
+  <%= label_tag :music %>
+  <%= check_box_tag "prefs[]", value = 'music', id = 'music' %><br />
+
+  <%= label_tag :arts %>
+  <%= check_box_tag "prefs[]", value = 'art', id = 'art' %><br />
+
+  <%= label_tag :culture %>
+  <%= check_box_tag "prefs[]", value = 'culture', id = 'culture' %><br />
+
+  <%= label_tag :engineering %>
+  <%= check_box_tag "prefs[]", value = 'sports', id = 'sports' %><br />
+
+  <%= label_tag :medicine %>
+  <%= check_box_tag "prefs[]", value = 'medicine', id = 'medicine' %><br />
+
+  <%= label_tag :biology %>
+  <%= check_box_tag "prefs[]", value = 'biology', id = 'biology' %><br />
+
+  <%= label_tag :politics %>
+  <%= check_box_tag "prefs[]", value = 'politics', id = 'politics' %><br />
+
+  <%= label_tag :other %>
+  <%= text_field_tag :other %> <br />
+
+  <%= submit_tag %>
+<% end %>
+<br />
+
+<%= form_tag @tags do |delete| %>
+  <%= label_tag :deleted, "Please select a preference you would like to delete:" %> <br />
+  <%= select_tag 'delete', options_for_select((Tag.all).collect{ |u| [u.tags, u.tags] }), prompt: 'Select a preference...' %>
+
+  <%= submit_tag 'Delete!' %>
+<% end %>
