@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-# Defintion: Gets all Startups in the db and shows them on the map.
+# Definition: Gets all Startups in the db and shows them on the map.
 # Input: Startups Table.
 # Output: All Investors.
 # Author: Alia Tarek.
