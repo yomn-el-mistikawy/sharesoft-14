@@ -16,6 +16,11 @@ Blog::Application.routes.draw do
     post "create_startup"
     post "create_service"
     post "create_investor"
+     get "edit_status"
+      get 'edit_work_status'
+    post "update_status"
+    get "entity_params"
+    get 'update_work_status'
   end  
 
 
@@ -36,13 +41,7 @@ Blog::Application.routes.draw do
      get "merge_request"
   end
 
-resources :entities do
-    get "edit_status"
-    post "update_status"
-    get "entity_params"
-    get 'edit_work_status'
-    post 'update_work_status'
-  end
+
 
 
 
