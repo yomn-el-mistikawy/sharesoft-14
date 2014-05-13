@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20140513173245) do
 
+
   create_table "badges", force: true do |t|
     t.string   "name"
     t.string   "description"
@@ -270,6 +271,13 @@ ActiveRecord::Schema.define(version: 20140513173245) do
     t.string   "category"
     t.boolean  "launch"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects_startups", force: true do |t|
+    t.integer  "startup_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

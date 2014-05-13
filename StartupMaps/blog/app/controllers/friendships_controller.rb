@@ -1,49 +1,76 @@
 class FriendshipsController < ApplicationController
-  # Definition: searches for the desired user id, and saves it. The method also calls the method request 
-  #
-  # Input: void 
-  # Output: void
-  # Authour: Sarah Fathallah
+  before_filter :setup_friends
+
+  def new
+    @friendship = Friendship.new 
+  end 
+
+  def accept
+    if @entity.requested_friends.include?(@friend)
+      Friendship.accept(@entity, @friend)
+      flash[:notice] = "Friendship Accepted"
+    else
+      flash[:notice] = "No Friendship request"
+    end
+    redirect_to root_url
+  end
+
+  def reject
+    if @entity.requested_friends.include?(@friend)
+      Friendship.breakup(@entity, @friend)
+      flash[:notice] = "Friendship Declined"
+    else
+      flash[:notice] = "No Friendship request"
+    end
+    redirect_to root_url
+  end
+
+  def cancel
+    if @entity.pending_friends.include?(@friend)
+      Friendship.breakup(@entity, @friend)
+      flash[:notice] = "Friendship Canceled"
+    else 
+      flash[:notice] = "No Friendship request"
+    end
+    redirect_to root_url
+  end
+
+  def delete
+    if @entity.friends.include?(@friend)
+      Friendship.breakup(@entity, @friend)
+      flash[:notice] = "Friendship Deleted"
+    else
+      flash[:notice] = "No Friendship request"
+    end
+    redirect_to root_url
+  end
+
+  def index
+    @entities = Entity.all
+  end
+
+  #Send a friendship request
   def create
-    @user = User.find(params[:friendship][:friend_id])
-    Friendship.request(current_user, @user)
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
-    end
-  end
- # Definition:
- # Input:
- # Output:
- # Authour: Sarah Fathallah
-  def update
-    @user = Friendship.find_by_id(params[:id]).friend
-    if current_user.requested_friends.include?(@user)
-      Friendship.accept(current_user, @user)
-    end
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
-    end
+    @friendship = Friendship.new(setup_friends)
+    @friendship.sender = @entity
+    @friendship.receiver = @friend
+    @friendship.save
+    redirect_to @friendship
+   #  if @friendship.save
+   # redirect_to(:action => 'index')
+   #  else
+   # render'new'
+   #  end
   end
 
- # Definition:
-  # Input:
-  # Output:
-  # Authour: Sarah Fathallah
-  def destroy
-    @user = Friendship.find_by_id(params[:id]).friend
-    if current_user.requested_friends.include?(@user)
-      Friendship.breakup(current_user, @user)
-    elsif current_user.pending_friends.include?(@user)
-      Friendship.breakup(current_user, @user)
-    elsif current_user.friends.include?(@user)
-      Friendship.breakup(current_user, @user)
-    end
-    respond_to do |format|
-      format.html { redirect_to @user }
-      format.js
-    end
+  def friendship_params 
+    params.require(:friendship).permit(:response, :receiver)
   end
 
+  private
+    def setup_friends
+      @entity = current_entity
+      @friend = Entity.find_by_email(params[:email])
+    end
 end
+

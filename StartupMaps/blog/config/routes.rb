@@ -18,7 +18,7 @@ Blog::Application.routes.draw do
     post "create_investor"
   end  
 
-
+  resources :friendships
 
   resources :startups
 
