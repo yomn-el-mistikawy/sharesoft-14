@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509105957) do
+ActiveRecord::Schema.define(version: 20140512174723) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -132,6 +132,12 @@ ActiveRecord::Schema.define(version: 20140509105957) do
     t.datetime "updated_at"
   end
 
+  create_table "galleries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "group_invitations", force: true do |t|
     t.integer  "receiver_id"
     t.integer  "sender_id"
@@ -221,6 +227,16 @@ ActiveRecord::Schema.define(version: 20140509105957) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "paintings", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image"
+  end
+
+  add_index "paintings", ["gallery_id"], name: "index_paintings_on_gallery_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"

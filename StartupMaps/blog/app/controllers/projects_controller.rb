@@ -56,9 +56,40 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition: "As a startup, I can edit and add all projects
-  # attributes and specifically targets and requirements"
-  # This method shows all details of a project
+  # Definition: This method creates new project 
+  # Project.new = creates new project 
+  # and gets linked to create -->new.html.
+  # Input: Name, Category, Location and description. 
+  # Output: project_id. "on the show page".
+  # Author: Hana Magdy.
+  def new
+    @project = Project.new
+  end
+  
+
+  # Definition: This method creates a new project
+  # Project.new = creates new project and gets 
+  # linked to create-->new.html with the project's id
+  # .save, saves all the entries. 
+  # Input: Name, Category, Location and description. 
+  # Output: project_id. "on the show page".
+  # Author: Hana Magdy.
+
+  def create
+    @project  = params[:startup_id].nil? ? 
+                 Project.new(project_params) : 
+                 Startup.find(params[:startup_id]).projects.build(project_params)
+    respond_to do |format|
+      if @project.save
+        format.html  { redirect_to @project }
+      else
+        format.html { render :new }
+      end
+    end
+  end
+
+
+  # Definition:This method shows all details of a project
   # that belong to a specific startup and is linked to the show HTML file
   # which also includes the editing part
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
@@ -76,9 +107,8 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition: ""As a startup, I can edit and add all projects
-  # attributes and specifically targets and requirements"
-  # Allows editing the project's details, specifically targets and requirements
+  # Definition:Allows editing the project's details, 
+  # specifically targets and requirements
   # This method allows you to edit a project given its project's id.
   # Input: Project_id.
   # Output: Project_id "specifically goals, milestones and requirements".
@@ -89,9 +119,7 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition: "As a startup, I can edit and add all projects
-  # attributes and specifically targets and requirements"
-  # Allows editing the project's details, specifically targets and requirements
+  # Definition:Allows editing the project's details, specifically targets and requirements
   # Redirects user to project's page (show project) on success
   # Re-renders the edit project page on error and is linked to the edit HTML file
   # update_attribute --> updates the rows
@@ -123,9 +151,7 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition: "As a startup, I can edit and add all projects
-  # attributes and specifically targets and requirements"
-  # Allows deleting a certain project.
+  # Definition:Allows deleting a certain project.
   # recirects to 'index' listing the rest of the projects of the user.
   # Input: project_id. "on the show page".
   # Output: project_id "all project description along successfully 
@@ -141,25 +167,6 @@ class ProjectsController < ApplicationController
         flash.alert = "Couldn't delete project, please try again."
       end
       format.html { redirect_to projects_path } # this will break, since projects#index doesn't work
-    end
-  end
-  
-
-   def new
-    @project = Project.new
-  end
-
-
-  def create
-    @project  = params[:startup_id].nil? ? 
-                 Project.new(project_params) : 
-                 Startup.find(params[:startup_id]).projects.build(project_params)
-    respond_to do |format|
-      if @project.save
-        format.html  { redirect_to @project }
-      else
-        format.html { render :new }
-      end
     end
   end
 
