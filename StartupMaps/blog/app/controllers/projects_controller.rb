@@ -1,6 +1,12 @@
 class ProjectsController < ApplicationController
-  # before_action :authenticate_entity!, :only => [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_entity!, :only => [:new, :create, :edit, :update, :destroy]
 
+  def index
+    @projects = Project.listing_projects(Startup.find(session[:entity_id]))
+    respond_to do |format|
+      format.html
+    end
+  end
 
   # Definition: This method creates new project 
   # Project.new = creates new project 
@@ -8,6 +14,7 @@ class ProjectsController < ApplicationController
   # Input: Name, Category, Location and description. 
   # Output: project_id. "on the show page".
   # Author: Hana Magdy.
+
   def new
     @project = Project.new
   end
@@ -17,6 +24,8 @@ class ProjectsController < ApplicationController
   # Project.new = creates new project and gets 
   # linked to create-->new.html with the project's id
   # .save, saves all the entries. 
+  # if the startup id is there then create new project
+  # else try to find startup then create new project.
   # Input: Name, Category, Location and description. 
   # Output: project_id. "on the show page".
   # Author: Hana Magdy.
@@ -27,7 +36,7 @@ class ProjectsController < ApplicationController
                 Startup.find(params[:startup_id]).projects.build(project_params)
     respond_to do |format|
       if @project.save
-        StartupsProjects.create(:startup_id => Startup.find_by_entity_id(current_entity).id, :project_id => @project.id)
+        ProjectsStartup.create(:startup_id => Startup.find_by_entity_id(current_entity).id, :project_id => @project.id)
         format.html  { redirect_to @project }
       else
         format.html { render :new }
@@ -118,11 +127,10 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition:permit to use the parmeters
-  # recirects to 'index' listing the rest of the projects of the user.
+  # Definition: permits to use the parmeters
   # Input: project_id. "on the show page".
   # Output: project_id "all project description along successfully 
-  # edited targets and requirements".
+  # edited/deleted project".
   # Author: Hana Magdy.
 
   private

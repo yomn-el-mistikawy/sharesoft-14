@@ -1,9 +1,10 @@
 class Project < ActiveRecord::Base
   
-  
+  has_many :project_requirements
+  has_many :project_targets
+  has_many :startups
   has_many :project_requirements, :dependent => :destroy
   has_many :project_targets, :dependent => :destroy
-  
   belongs_to :startup
 
   validates_presence_of :name, :description, :category
@@ -43,6 +44,5 @@ class Project < ActiveRecord::Base
     @projects_owned_by_startup_ids = StartupHaveProject.select(:project_id).where(:startup_id => startup.id)
     @suggested_projects = Project.where(:location => project.location, :category => project.category)
                                  .where.not(:id => project.id, :id => @projects_owned_by_startup_ids)
-
-end
+  end
 end
