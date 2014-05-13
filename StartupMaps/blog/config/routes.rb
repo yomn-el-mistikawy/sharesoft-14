@@ -37,6 +37,8 @@ Blog::Application.routes.draw do
 
   resources :messages
 
+  # resources :friendships
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
