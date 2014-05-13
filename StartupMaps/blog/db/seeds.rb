@@ -46,13 +46,13 @@
     entity2.update(:type => "Startup")
     startup2 = Startup.create!(entity_id: entity2.id, number_of_working_years: 6, longitude: 50, latitude: 60)
     project1, project2 = Project.create!(launch: 1), Project.create!(launch: 1)
-    StartupsProjects.create(startup_id: startup.id, project_id: project1.id)
-    StartupsProjects.create(startup_id: startup.id, project_id: project2.id)
+    ProjectsStartup.create(startup_id: startup.id, project_id: project1.id)
+    ProjectsStartup.create(startup_id: startup.id, project_id: project2.id)
     counter = 0
     projects_id_counter = 3
     while counter <= 48 do
       project = Project.create(launch: 1)
-      StartupsProjects.create(startup_id: startup.id, project_id: project.id)
+      ProjectsStartup.create(startup_id: startup.id, project_id: project.id)
       counter = counter + 1
       projects_id_counter = projects_id_counter + 1
     end 

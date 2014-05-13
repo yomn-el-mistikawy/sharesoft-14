@@ -91,7 +91,7 @@ class StartupsBadges < ActiveRecord::Base
 
   def self.set_requirements_badges(startup_id)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
-    requirements_met = ProjectRequirement.where(:project_id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :reached => 1)
+    requirements_met = ProjectRequirement.where(:project_id => ProjectsStartup.select(:project_id).where(:startup_id => startup_id), :reached => 1)
     recently_achieved_badge = []
     if (requirements_met.count >= 50 && (unachieved_badges.where(:id => 7)).size == 1)
       StartupsBadges.create(:startup_id  => startup_id, :badge_id => 7, :bypassed => 0)
@@ -120,7 +120,7 @@ class StartupsBadges < ActiveRecord::Base
 
   def self.set_targets_badges(startup_id)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
-    targets_met = ProjectTarget.where(:project_id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :reached => 1)
+    targets_met = ProjectTarget.where(:project_id => ProjectsStartup.select(:project_id).where(:startup_id => startup_id), :reached => 1)
     recently_achieved_badge = []
     if (targets_met.count >= 50 && (unachieved_badges.where(:id => 10)).size == 1)
       StartupsBadges.create(:startup_id  => startup_id, :badge_id => 10, :bypassed => 0)
@@ -148,7 +148,7 @@ class StartupsBadges < ActiveRecord::Base
   # Author: Yomn El-Mistikawy.
 
   def self.set_launch_badges(startup_id)
-    launched_projects = Project.where(:id => StartupsProjects.select(:project_id).where(:startup_id => startup_id), :launch => 1)
+    launched_projects = Project.where(:id => ProjectsStartup.select(:project_id).where(:startup_id => startup_id), :launch => 1)
     unachieved_badges = StartupsBadges.get_achieved_unachieved_badges(startup_id, 0, 0, 0, 0)
     recently_achieved_badge = []
     if (launched_projects.count >= 5 && (unachieved_badges.where(:id => 13)).size == 1)
