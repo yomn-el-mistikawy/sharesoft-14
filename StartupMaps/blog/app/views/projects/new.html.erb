@@ -11,24 +11,31 @@
   p {
     color: #0099FF;
   }
-  </style>
+
+  .field_with_errors {
+    padding: 2px;
+    background-color: rgb(252, 22, 68);
+    display: table;
+  }
+
+
+</style>
 
 <h1> Create New Project </h1>
 
 
+
 <%= nested_form_for @project do |f| %>
   <p>
-    <%= f.label :name %><br>
+    <%= f.label :name %><span  style="color:red">✼</span> <br>
     <%= f.text_field :name %>
-
   </p>
  
-  <div >
-    <%= f.label :category %><br /><span  style="color:red">✼</span>
+  <p>
+    <%= f.label :category %><span  style="color:red">✼</span><br>
 
-    <%=  f.select :category, [['Agricultural','Agricultural'],['Industrial','Industrial'],[' Mobile Applications ',' Mobile Applications ']]%>
-  <div class="scrollbox">
-  </div>
+    <%=  f.select :category, [['Please Select Category', nil], ['Agriculture','Agriculture'],['Manufacturing','Manufacturing'],['Trading ','Trading'],['Clothes ','Clothes'], ['Telecommunication','Telecommunication']]%>
+  </p>
 
   <p>
     <%= f.label :location %><br>
@@ -36,7 +43,7 @@
   </p>
 
   <p>
-    <%= f.label :description %><br>
+    <%= f.label :description %><span  style="color:red">✼</span> <br>
     <%= f.text_area :description %>
   </p>
 

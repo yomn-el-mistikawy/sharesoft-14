@@ -143,6 +143,25 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_path } # this will break, since projects#index doesn't work
     end
   end
+  
+
+   def new
+    @project = Project.new
+  end
+
+
+  def create
+    @project  = params[:startup_id].nil? ? 
+                 Project.new(project_params) : 
+                 Startup.find(params[:startup_id]).projects.build(project_params)
+    respond_to do |format|
+      if @project.save
+        format.html  { redirect_to @project }
+      else
+        format.html { render :new }
+      end
+    end
+  end
 
 
   private
