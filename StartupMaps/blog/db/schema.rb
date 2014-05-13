@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(version: 20140512174723) do
 
   create_table "comments", force: true do |t|
     t.string   "comment"
-    t.integer  "entity_id"
+    t.string   "commenter"
+    t.integer  "startup_id"
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20140512174723) do
     t.boolean  "completed"
   end
 
+  add_index "entities", ["email"], name: "index_entities_on_email", unique: true, using: :btree
   add_index "entities", ["reset_password_token"], name: "index_entities_on_reset_password_token", unique: true, using: :btree
 
   create_table "entity_available_internships", force: true do |t|
@@ -124,6 +126,8 @@ ActiveRecord::Schema.define(version: 20140512174723) do
   end
 
   create_table "friendships", force: true do |t|
+    t.integer  "sender_id_id"
+    t.integer  "receiver_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -207,6 +211,9 @@ ActiveRecord::Schema.define(version: 20140512174723) do
   create_table "likes", force: true do |t|
     t.integer  "post_id"
     t.integer  "comment_id"
+    t.integer  "liker_id"
+    t.integer  "likable_id"
+    t.string   "likable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -231,19 +238,11 @@ ActiveRecord::Schema.define(version: 20140512174723) do
 
   add_index "paintings", ["gallery_id"], name: "index_paintings_on_gallery_id", using: :btree
 
-  create_table "post_attachments", force: true do |t|
-    t.datetime "date"
-    t.string   "description"
-    t.integer  "groups_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "posts", force: true do |t|
     t.string   "title"
     t.string   "text"
     t.integer  "group_id"
-    t.integer  "entity_id"
+    t.integer  "startup_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

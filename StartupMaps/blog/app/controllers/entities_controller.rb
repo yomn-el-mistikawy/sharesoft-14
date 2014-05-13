@@ -1,12 +1,22 @@
 class EntitiesController < ApplicationController
+  before_action :authenticate_entity!
 
+
+  # Definition: This method sends the parameters from the checkboxes, textbox, 
+  # dropdownlist, and the currently logged in user to the method.
+  # Input: :other, :prefs(the array containing the checkboxes), :delete, current_entity.
+  # Output: Void.
+  # Author: Adel Badawy.
 
 	def choose_preferences
-		Tag.update_pref(params[:other], params[:prefs], current_entity)
+    if params[:prefs] != nil
+      Tag.update_pref(params[:other], params[:prefs], current_entity)
+    end
 		Tag.delete_pref(params[:delete], current_entity)
+    p Tag.where(entity_id: current_entity, tags: nil)
+    p "Hahahaha"
 	end
 
-  before_action :authenticate_entity!
 
   # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
   # Input: Entity id.

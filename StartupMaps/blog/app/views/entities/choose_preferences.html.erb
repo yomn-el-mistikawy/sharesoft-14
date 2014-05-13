@@ -1,3 +1,10 @@
+<!-- 
+  # Definition: This form creates the checkboxes and textbox for selecting the preferences.
+  # Input: :food, :tourism, :music, :arts, :culture, :engineering, :medicine, :biology, :politics, :other.
+  # Output: Void.
+  # Author: Adel Badawy.
+-->
+
 <%= form_tag @tags do |pref| %>
   <%= label_tag :tourism %>
   <%= check_box_tag "prefs[]", value = "tourism", id = "tourism" %>
@@ -32,6 +39,14 @@
   <%= submit_tag %>
 <% end %>
 <br />
+
+
+<!-- 
+  # Definition: This creates a checkbox that the user can select to delete from the database.
+  # Input: Preferences from the table.
+  # Output: Void.
+  # Author: Adel Badawy.
+-->
 
 <%= form_tag @tags do |delete| %>
   <%= label_tag :deleted, "Please select a preference you would like to delete:" %>
