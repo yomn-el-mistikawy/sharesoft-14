@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20140513085937) do
+=======
+ActiveRecord::Schema.define(version: 20140512174723) do
+>>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -52,6 +56,10 @@ ActiveRecord::Schema.define(version: 20140513085937) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "type"
+<<<<<<< HEAD
+=======
+    t.boolean  "completed"
+>>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
   end
 
   add_index "entities", ["email"], name: "index_entities_on_email", unique: true, using: :btree
@@ -139,6 +147,15 @@ ActiveRecord::Schema.define(version: 20140513085937) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "galleries", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+>>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
   create_table "group_invitations", force: true do |t|
     t.integer  "receiver_id"
     t.integer  "sender_id"
@@ -165,6 +182,34 @@ ActiveRecord::Schema.define(version: 20140513085937) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "impressions", force: true do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: {"impressionable_type"=>nil, "message"=>255, "impressionable_id"=>nil}, using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
+>>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
   create_table "investors", force: true do |t|
     t.float    "longitude"
     t.float    "latitude"
@@ -204,13 +249,22 @@ ActiveRecord::Schema.define(version: 20140513085937) do
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "post_attachments", force: true do |t|
     t.datetime "date"
     t.string   "description"
     t.integer  "groups_id"
+=======
+  create_table "paintings", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "name"
+>>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
+
+  add_index "paintings", ["gallery_id"], name: "index_paintings_on_gallery_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "title"

@@ -1,15 +1,49 @@
 Blog::Application.routes.draw do
+<<<<<<< HEAD
   resources :entity_portfolios
 
 
   
   resources :group_members
+=======
+ 
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
+  resources :groups do
+    get "list_group_members"
+  end  
+
+  resources :entities do
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+
+
+  resources :startups
+>>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :projects do
-     get "suggest"
-     get "showSuggested"
+
+    get "change_launch_status", on: :member, as: :launch
+    get "suggest"
+    get "show_suggested"
+    get "merge_request"
+  end  
+
+  resources :maps do
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
   end
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'

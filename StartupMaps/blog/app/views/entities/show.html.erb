@@ -1,24 +1,37 @@
-<p id="notice"><%= notice %></p>
+<!-- 
+  # Defintion: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
+  # the entity is asked to fill the extra needed information.
+  # Input: Void.
+  # Output: Startup, investor, service params.
+  # Author: Omar El Menawy.
+-->
 
-<!-- The following list is for listing the details in the tuples in the table -->
-<!-- Adel Zee Badawy -->
+<% if @entity == current_entity %>
+ <% if current_entity.type == 'Startup' && @entity.completed == nil %>
+  Startup
+  <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :number_of_working_years %><br />
+   <%= entity.text_field :number_of_working_years %></div><br>
 
-<p>
-  <strong>Name:</strong>
-  <%= @entity.name %>
-</p>
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+   <% end %>
+ <% elsif current_entity.type == 'Investor' && @entity.completed == nil %>
+  Investor
+  <%= form_for :investor, url: entity_create_investor_path(:investor, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :contact_information %><br />
+   <%= entity.text_field :contact_information %></div><br>
 
-<p>
-  <strong>Email:</strong>
-  <%= @entity.email %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @entity.password %>
-</p>
-
-<!-- The following two lines link to "Edit" and "Back" urls -->
-<!-- Adel Zee Badawy -->
-<%= link_to 'Edit', edit_entity_path(@entity) %> |
-<%= link_to 'Back', entities_path %>
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Investor::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+  <% end %>
+ <% elsif current_entity.type == 'Service' && @entity.completed == nil %>
+  <%= form_for :service, url: entity_create_service_path(:service, entity_id: params[:id]) do |entity| %>
+   <div><%= entity.label :sector %><br />
+   <%= entity.collection_select :sector, Service::SECTORS, :to_s, :titleize %></div>
+   <%= entity.submit "Insert" %>
+  <% end %>
+ <% end %>
+<% end %>
