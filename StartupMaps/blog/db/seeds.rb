@@ -41,10 +41,10 @@
   puts("Seeds database for badges testing")
     entity = Entity.create!(name: "Yomn", username: "Yomn", email: "yomn@gmail.com", password: "12345678")
     entity.update(:type => "Startup")
-    startup = Startup.create!(entity_id: entity.id, number_of_working_years: 6)
+    startup = Startup.create!(entity_id: entity.id, number_of_working_years: 6, longitude: 20, latitude: 30)
     entity2 = Entity.create!(name: "Yomn2", username: "Yomn2", email: "yomn2@gmail.com", password: "12345678")
     entity2.update(:type => "Startup")
-    startup2 = Startup.create!(entity_id: entity2.id, number_of_working_years: 6)
+    startup2 = Startup.create!(entity_id: entity2.id, number_of_working_years: 6, longitude: 50, latitude: 60)
     project1, project2 = Project.create!(launch: 1), Project.create!(launch: 1)
     StartupsProjects.create(startup_id: startup.id, project_id: project1.id)
     StartupsProjects.create(startup_id: startup.id, project_id: project2.id)
@@ -68,4 +68,4 @@
     while counter <= 5000 do
       Subscription.create(subscribee_id: entity.id, subscriber_id: counter + 1 )
       counter = counter + 1
-    end 
+    end
