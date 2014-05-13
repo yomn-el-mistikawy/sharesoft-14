@@ -1,27 +1,38 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
-  # GET /groups
-  # GET /groups.json
+  
+  # Defintion: This method lists all groups.
+  # Input: void.
+  # Output: 
+  # Author: Sherouk A.Said.
+
   def index
     @groups = Group.all
   
   end
 
   
-  # GET /groups/1
-  # GET /groups/1.json
+  # Definition: This method shows the group.
+  # Input: void.
+  # Output: Group.
+  # Author: Sherouk A.Said.
+
   def show
     @group = Group.find(params[:id])
   end
 
-  # GET /groups/new
+ 
   def new
  
   end
 
   
-  # GET /groups/1/edit
+  # Definition: This method edits a group.
+  # Input: void.
+  # Output: Group.
+  # Author: Sherouk A.Said.
+
   def edit
     @group = Group.find(params[:id])
   end
@@ -30,7 +41,7 @@ class GroupsController < ApplicationController
   # Definition: This method creates a group.
   # Input: creator_id, name, description, location, private, interest.
   # Output: void.
-  # Author: Sherouk A. Said.
+  # Author: Sherouk A.Said.
 
   def create
     current_entity = 1
@@ -45,19 +56,27 @@ class GroupsController < ApplicationController
   end
   
 
-  # PATCH/PUT /groups/1
-  # PATCH/PUT /groups/1.json
+  # Definition: This method edits a group.
+  # Input: name, description.
+  # Output: void.
+  # Author: Sherouk A.Said.
+
   def update
     @group = Group.find(params[:id])
  
-  if @group.update(group_params)
+    if @group.update(group_params)
     redirect_to @group
-  else
+    else
     render 'edit'
+    end
   end
-end
 
  
+ # Definition: This method deletes a group.
+ # Input: void.
+ # Output: void.
+ # Author: Sherouk A.Said.
+
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
@@ -69,19 +88,12 @@ end
   end
 
  
- private
+  private
   def group_params
     params.require(:group).permit(:name, :description)
   end
 
-
-  
-
-  # DELETE /groups/1
  
-
-  
-    
   def set_group
   end
 

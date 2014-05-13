@@ -1,3 +1,9 @@
+<!-- # Definition: This view is intended to list the groups, show, 
+     # edit and delete them through three links 'show','edit'
+     # and 'destroy'.
+     # Input: group name, group descrition. 
+     # Author: Sherouk A.Said.-->
+
 <h1>Listing groups and their descriptions <</h1>
 
 <table>
@@ -13,22 +19,17 @@
 
   <tbody>
     <% @groups.each do |group| %>
-    
       <tr>
-      
         <td><%= group.name %></td>
-        <td><%= group.description %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td><%= group.description %>&nbsp;</td>
+        <td><%= link_to 'Show', group %> &nbsp;</td>
+        <td><%= link_to 'Edit', edit_group_path(group) %>&nbsp;</td>
         <td><%= link_to 'Destroy', group_path(group), method: :delete, data: { confirm:
           'Are you sure you want to delete group?'} %></td>
-
       </tr>
-     
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 
