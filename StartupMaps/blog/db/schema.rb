@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20140512174723) do
     t.boolean  "completed"
   end
 
-  add_index "entities", ["email"], name: "index_entities_on_email", unique: true, using: :btree
   add_index "entities", ["reset_password_token"], name: "index_entities_on_reset_password_token", unique: true, using: :btree
 
   create_table "entity_available_internships", force: true do |t|
@@ -125,8 +124,6 @@ ActiveRecord::Schema.define(version: 20140512174723) do
   end
 
   create_table "friendships", force: true do |t|
-    t.integer  "sender_id_id"
-    t.integer  "receiver_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -227,12 +224,20 @@ ActiveRecord::Schema.define(version: 20140512174723) do
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"
     t.string   "name"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
   end
 
   add_index "paintings", ["gallery_id"], name: "index_paintings_on_gallery_id", using: :btree
+
+  create_table "post_attachments", force: true do |t|
+    t.datetime "date"
+    t.string   "description"
+    t.integer  "groups_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "title"
