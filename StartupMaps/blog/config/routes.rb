@@ -1,7 +1,23 @@
 Blog::Application.routes.draw do
  
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
   resources :groups do
     get "list_group_members"
+  end  
+
+  resources :entities do
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+    get "choose_preferences"
+    post "choose_preferences"
   end  
 
   resources :startups
@@ -10,12 +26,6 @@ Blog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :maps do
   end
-
-  resources :entities do
-    get "choose_preferences"
-    post "choose_preferences"
-  end
-  
   
   resources :projects do
 
@@ -23,7 +33,8 @@ Blog::Application.routes.draw do
     get "suggest"
     get "show_suggested"
     get "merge_request"
-  end  
+  end
+
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
