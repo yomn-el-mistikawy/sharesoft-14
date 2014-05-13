@@ -1,0 +1,49 @@
+<!-- 
+  # Defintion: This view is used by the entity to sign up.
+  # Input: Void.
+  # Output: Entity_params.
+  # Author: Omar El Menawy.
+-->
+
+<h2>Sign up</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |entity| %>
+  <%= devise_error_messages! %>
+  <div>
+    <%= entity.label :name %><br/>
+    <%= entity.text_field :name, autofocus: true %>
+  </div>
+  <div>
+    <%= entity.label :username %><br/>
+    <%= entity.text_field :username %>
+  </div>
+  <div>
+    <%= entity.label :email %><br/>
+    <%= entity.email_field :email %>
+  </div>
+  <div>
+    <%= entity.label :password %><br/>
+    <%= entity.password_field :password, autocomplete: "off" %>
+  </div>
+  <div>
+    <%= entity.label :password_confirmation %><br/>
+    <%= entity.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <div>
+    <%= entity.label :location %><br/>
+    <%= entity.text_field :location %>
+  </div>
+  <div>
+    <%= entity.label :headquarter %><br />
+    <%= entity.text_field :headquarter %>
+  </div>
+  <div>
+    <%= entity.label :description %><br />
+    <%= entity.text_field :description %>
+  </div>
+  <div>
+    <%= entity.label :type %><br />
+    <%= entity.collection_select :type, Entity::TYPES, :to_s, :titleize %><br>
+  </div>  
+  <div><%= entity.submit "Sign up" %></div>
+<% end %>
+<%= render "devise/shared/links" %>

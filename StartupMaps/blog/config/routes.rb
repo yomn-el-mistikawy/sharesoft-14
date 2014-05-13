@@ -1,5 +1,13 @@
 Blog::Application.routes.draw do
  
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
   resources :groups do
     get "list_group_members"
     post "join_request"
@@ -7,6 +15,14 @@ Blog::Application.routes.draw do
     get "accept_join_request"
     get "reject_join_request"
   end  
+
+  resources :entities do
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+
 
   resources :startups
 
