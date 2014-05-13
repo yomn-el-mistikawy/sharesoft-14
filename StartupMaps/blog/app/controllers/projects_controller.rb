@@ -48,9 +48,10 @@ class ProjectsController < ApplicationController
   # page (show project) on success or error
   # with the exception of displaying a success/error message
   # update_attribute --> updates the rows
-  # update the status of launch project from unlaunch to launched and vice versa.
+  # update the status of launch project from unlaunch to launched and vice versa
+  # redirects to the show page.
   # Input: project_id. "on the show page".
-  # Output: project_idVoid "it's an action" returns the success of the
+  # Output: project_id/Void "it's an action" returns the success of the
   # changeable button of launch upon of it's previous status. 
   # Author: Hana Magdy.
 
