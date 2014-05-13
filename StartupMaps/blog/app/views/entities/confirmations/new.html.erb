@@ -1,0 +1,20 @@
+<!-- 
+  # Defintion: This view is used to send account confirmation creation to the entity.
+  # Input: Void.
+  # Output: Email.
+  # Author: Omar El Menawy. 
+-->
+	 
+<h2>Resend confirmation instructions</h2>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |entity| %>
+  <%= devise_error_messages! %>
+  <div>
+    <%= entity.label :email %>
+    <br/>
+    <%= entity.email_field :email, autofocus: true %>
+  </div>
+  <div>
+    <%= entity.submit "Resend confirmation instructions" %>
+  </div>
+<% end %>
+<%= render "devise/shared/links" %>
