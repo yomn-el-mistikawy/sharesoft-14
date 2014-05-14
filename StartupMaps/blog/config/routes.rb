@@ -16,6 +16,8 @@ Blog::Application.routes.draw do
     post "create_startup"
     post "create_service"
     post "create_investor"
+    get "internship_status"
+    post "internship_status"
   end  
 
 
