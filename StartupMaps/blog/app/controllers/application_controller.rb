@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  include PublicActivity::StoreController 
   protect_from_forgery with: :exception
 
 
+
    
-  include PublicActivity::StoreController  
+   
   protect_from_forgery 
 
 
@@ -30,4 +30,7 @@ private
   def require_login  
     redirect_to login_url, alert: "You must first log in or sign up." if current_user.nil?  
   end 
+
+  before_action :authenticate_entity!
+
 end
