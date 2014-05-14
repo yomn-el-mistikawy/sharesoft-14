@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
-  
   end
 
   
@@ -22,9 +21,13 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
- 
+
+  # Definition: This method creates a group.
+  # Input: void.
+  # Output: name, description, location, private, interest.
+  # Author: Sherouk A.Said.
+
   def new
- 
   end
 
   
@@ -39,20 +42,18 @@ class GroupsController < ApplicationController
 
 
   # Definition: This method creates a group.
-  # Input: creator_id, name, description, location, private, interest.
+  # Input: name, description, location, private, interest.
   # Output: void.
   # Author: Sherouk A.Said.
 
   def create
-    current_entity = 1
     group = Group.new
-    group.creator_id = current_entity
+    group.creator_id = current_entity.id
     group.name = params[:name] 
     group.description = params[:description] 
     group.private = params[:private]
     group.interest = params[:interests]
     group.save
-
   end
   
 
@@ -63,11 +64,10 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
- 
     if @group.update(group_params)
-    redirect_to @group
+      redirect_to @group
     else
-    render 'edit'
+      render 'edit'
     end
   end
 
@@ -84,7 +84,6 @@ class GroupsController < ApplicationController
       format.html {redirect_to :back}
       format.json {head :no_content}
     end
-    # redirect_to groups_path
   end
 
  
@@ -95,9 +94,5 @@ class GroupsController < ApplicationController
 
  
   def set_group
-  end
-
-    
-    
-  
+  end 
 end

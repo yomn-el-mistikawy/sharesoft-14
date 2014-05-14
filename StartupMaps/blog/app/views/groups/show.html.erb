@@ -1,15 +1,18 @@
+<!-- 
+ # Definition: This view is intended to show the group.
+ # Input: void.
+ # Output: group. 
+ # Author: Sherouk A.Said.
+--> 
+
 <p id="notice"><%= notice %></p>
-<p>
-  
+<p> 
 <p>
   <strong>Group name:</strong>
   <%= @group.name %>
 </p>
-
 <p>
   <strong>Description:</strong>
   <%= @group.description %>
 </p>
-
-
 <%= link_to 'Back', groups_path %>

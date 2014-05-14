@@ -1,11 +1,12 @@
-<!-- # Definition: This view is intended to list the groups, show, 
-     # edit and delete them through three links 'show','edit'
-     # and 'destroy'.
-     # Input: group name, group descrition. 
-     # Author: Sherouk A.Said.-->
+<!-- 
+ # Definition: This view is intended to list the groups, show, 
+ # edit and delete them through three links 'show','edit'
+ # and 'destroy'.
+ # Input: group name, group descrition. 
+ # Author: Sherouk A.Said.
+ -->
 
-<h1>Listing groups and their descriptions <</h1>
-
+<h1>Listing groups and their descriptions </h1>
 <table>
   <thead>
     <tr>
@@ -16,7 +17,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @groups.each do |group| %>
       <tr>
