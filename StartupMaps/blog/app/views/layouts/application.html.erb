@@ -66,9 +66,11 @@
             <li><a href="Map.html" class="external">Map</a></li>
             <li><a href="entities/current_entity.id" class="external">Profile</a></li>
             <li><%= link_to 'Edit profile', edit_entity_registration_path, method: :update, :class => 'navbar-link' %></li>
+            <!-- 
+            # Author: Omar El-Menawy
+             -->
             <li><%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'navbar-link'  %></li>
-			
-            </ul>
+			</ul>
         </nav>
         
     </div>
