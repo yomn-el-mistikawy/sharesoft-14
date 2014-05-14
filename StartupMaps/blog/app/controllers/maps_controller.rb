@@ -1,34 +1,31 @@
 class MapsController < ApplicationController
+
+
 #  Defintion: Gets all startups in the db and shows them on the map.
 #  Input: Startup Table.
 #  Output: Online Startups.
 #  Author: Alia Tarek.
 
   def  show_startups
-    @startups = Startup.all
-    @markers = Gmaps4rails.build_markers(@startups) do |t, marker| 
-      marker.lat t.latitude
+
+if params[:sector] == "please select a sector..."
+    @startups = Table.all
+  end
+ if  params[:sector ]!= "please select a sector..." 
+   @startups = Table.where( sector: params[:sector] )
+ end
+     @markers = Gmaps4rails.build_markers(@startups) do |t, marker| 
+      marker.lat t.latitude 
       marker.lng t.longitude 
-      marker.infowindow t.name 
-
-  # Definition: Gets all Startups in the db and shows them on the map.
-  # Input: Startups Table.
-  # Output: All Investors.
-  # Author: Alia Tarek.
-
-  def show_startups
-    @startups = Startup.all
-    @markers = Gmaps4rails.build_markers(@startups) do |startups, marker| 
-      marker.lat startups.latitude 
-      marker.lng startups.longitude 
-      marker.infowindow startups.name 
+      marker.infowindow t.joint_ventures 
       marker.picture({  
         "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
         "width" => 32, 
         "height" => 32})
-    end
-    render :template => 'maps/index'
+       end
+   render :json => @markers
   end
+
 
 
 #  Defintion: Gets all Investors in the db and shows them on the map.
@@ -37,32 +34,23 @@ class MapsController < ApplicationController
 #  Author: Alia Tarek.
 
   def  show_investors
-    @investors = Startup.all
+if params[:sector] == "please select a sector..."
+    @investors = Table.all
+  end
+ if  params[:sector ]!= "please select a sector..." 
+   @investors = Table.where( sector: params[:sector] )
+ end
     @markers = Gmaps4rails.build_markers(@investors) do |t, marker| 
-      marker.lat t.latitude
+      marker.lat t.latitude + 10
       marker.lng t.longitude 
       marker.infowindow t.name 
-      render :json => @markers
-  end
-
-
-  # Definition: Gets all Investors in the db and shows them on the map.
-  # Input: Investors Table.
-  # Output: All Investors.
-  # Author: Alia Tarek.
-
-  def show_investors
-    @investors = Investor.all
-    @markers = Gmaps4rails.build_markers(@investors) do |investors, marker| 
-      marker.lat investors.latitude 
-      marker.lng investors.longitude 
-      marker.infowindow investors.name 
       marker.picture({ 
         "url" => "http://rideforclimate.com/nukes/all/images/orange.png",
         "width" => 32, 
         "height" => 32})
     end
-    render :template => 'maps/index'
+
+    render :json => @markers
   end
 
 
@@ -72,32 +60,24 @@ class MapsController < ApplicationController
 #  Author: Alia Tarek.
 
   def  show_services
-    @services = Service.all
+  
+if params[:sector] == "please select a sector..."
+    @services = Table.all
+  end
+ if  params[:sector ]!= "please select a sector..." 
+   @services = Table.where( sector: params[:sector] )
+ end
     @markers = Gmaps4rails.build_markers(@services) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
-    render :json => @markers
-  end
-
-
-  # Definition: Gets all Services in the db and shows them on the map.
-  # Input: Services Table.
-  # Output: All Services.
-  # Author: Alia Tarek.
-
-  def show_services
-    @services = Service.all
-    @markers = Gmaps4rails.build_markers(@services) do |services, marker| 
-      marker.lat services.latitude
-      marker.lng services.longitude 
-      marker.infowindow services.name 
       marker.picture({ 
         "url" => "http://rideforclimate.com/nukes/all/images/green.png",
         "width" => 32, 
         "height" => 32})
     end
-    render :template => 'maps/index'
+ 
+    render :json => @markers
   end
 
 
@@ -107,7 +87,13 @@ class MapsController < ApplicationController
   # Author: Alia Tarek.
 
   def  show_merged
-    @merged = Startup.where(:joint_ventures != "")
+
+if params[:sector] == "please select a sector..."
+    @merged = Table.where(:joint_ventures != "")
+  end
+ if  params[:sector ]!= "please select a sector..." 
+   @merged = Table.where( sector: params[:sector]).where(:joint_ventures != "")
+ end
     @markers = Gmaps4rails.build_markers(@merged) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
@@ -117,7 +103,7 @@ class MapsController < ApplicationController
         "width" => 32, 
         "height" => 32})
     end
-    render :template => 'maps/index'
+    render :json => @markers
   end
 
 
@@ -127,17 +113,23 @@ class MapsController < ApplicationController
 #  Author: Alia Tarek.
 
   def  show_launched
-    @launched = Startup.where(:launch_status => true)  
+    if params[:sector] == "please select a sector..."
+      @launched = Table.where(:launch_status => true) 
+  end
+ if  params[:sector ]!= "please select a sector..." 
+   @launched = Table.where( sector: params[:sector]).where(:launch_status == true)
+ end
+  
     @markers = Gmaps4rails.build_markers(@launched) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-        "url" => "http://rideforclimate.com/nukes/all/images/blue.png", 
+        "url" => "http://rideforclimate.com/nukes/all/images/pink.png", 
         "width" => 32, 
         "height" => 32})      
     end
-    render :template => 'maps/index'
+    render :json => @markers
   end
 
 
@@ -147,17 +139,23 @@ class MapsController < ApplicationController
 #  Author: Alia Tarek.
 
   def  show_not_launched
-    @not_launched = Startup.where(:launch_status => false)
+       if params[:sector] == "please select a sector..."
+     @not_launched = Table.where(:launch_status => false)
+  end
+ if  params[:sector ]!= "please select a sector..." 
+   @not_launched = Table.where( sector: params[:sector]).where(:launch_status == false)
+ end
+
     @markers = Gmaps4rails.build_markers(@not_launched) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({ 
-        "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
+        "url" => "http://rideforclimate.com/nukes/all/images/white.png",
         "width" => 32, 
         "height" => 32})
     end
-    render :template => 'maps/index'
+    render :json => @markers
   end
 
 
@@ -167,17 +165,25 @@ class MapsController < ApplicationController
 #  Author: Alia Tarek.
 
   def  show_online
-    @online = Startup.where(:online_status => true)
+    if params[:sector] == "please select a sector..."
+    @online = Table.where(:online_status => true)
+  end
+ if  params[:sector ]!= "please select a sector..." 
+
+   @online = Table.where(sector: params[:sector]).where(:online_status == true)
+ end
+
     @markers = Gmaps4rails.build_markers(@online) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-        "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
+        "url" => "http://rideforclimate.com/nukes/all/images/yellow.png",
         "width" => 32, 
         "height" => 32})
     end
-    render :template => 'maps/index'
+   
+    render :json => @markers
   end
 
 
@@ -187,25 +193,26 @@ class MapsController < ApplicationController
 #  Author: Alia Tarek.
 
   def  show_offline
-    @offline = Startup.where(:online_status => false)
-    @markers = Gmaps4rails.build_markers(@offline) do |t, marker| 
+  if params[:sector] == "please select a sector..."
+   @offline = Table.where(:online_status => false)
+  end
+ if  params[:sector ]!= "please select a sector..." 
+   @offline = Table.where(sector: params[:sector]).where(:online_status == false)
+ end
+   @markers = Gmaps4rails.build_markers(@offline) do |t, marker| 
       marker.lat t.latitude
       marker.lng t.longitude 
       marker.infowindow t.name 
       marker.picture({  
-        "url" => "http://rideforclimate.com/nukes/all/images/blue.png", 
+        "url" => "http://rideforclimate.com/nukes/all/images/red.png", 
         "width" => 32, 
         "height" => 32})      
     end
-    render :template => 'maps/index'
-  end
 
-
-end
     render :json => @markers
   end
 
-  def  create
-    render :template => 'maps/index'
-  end
+def create
+      render :template => 'maps/index'
+end
 end
