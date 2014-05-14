@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513173245) do
-
+ActiveRecord::Schema.define(version: 20140513223003) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -127,11 +126,11 @@ ActiveRecord::Schema.define(version: 20140513173245) do
   end
 
   create_table "friendships", force: true do |t|
-    t.boolean  "response"
+    t.string   "sender"
+    t.string   "receiver"
+    t.string   "response"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "sender"
-    t.integer  "receiver"
   end
 
   create_table "galleries", force: true do |t|

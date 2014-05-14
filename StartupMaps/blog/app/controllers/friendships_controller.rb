@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
 
   def accept
     if @entity.requested_friends.include?(@friend)
-      Friendship.accept(@entity, @friend)
+      Friendship.accept(@sender, @receiver)
       flash[:notice] = "Friendship Accepted"
     else
       flash[:notice] = "No Friendship request"
@@ -16,8 +16,8 @@ class FriendshipsController < ApplicationController
   end
 
   def reject
-    if @entity.requested_friends.include?(@friend)
-      Friendship.breakup(@entity, @friend)
+    if @entity.requested_friends.include?(@receiver)
+      Friendship.breakup(@sender, @receiver)
       flash[:notice] = "Friendship Declined"
     else
       flash[:notice] = "No Friendship request"
@@ -26,8 +26,8 @@ class FriendshipsController < ApplicationController
   end
 
   def cancel
-    if @entity.pending_friends.include?(@friend)
-      Friendship.breakup(@entity, @friend)
+    if @entity.pending_friends.include?(@receiver)
+      Friendship.breakup(@sender, @receiver)
       flash[:notice] = "Friendship Canceled"
     else 
       flash[:notice] = "No Friendship request"
@@ -36,8 +36,8 @@ class FriendshipsController < ApplicationController
   end
 
   def delete
-    if @entity.friends.include?(@friend)
-      Friendship.breakup(@entity, @friend)
+    if @entity.friends.include?(@receiver)
+      Friendship.breakup(@sender, @receiver)
       flash[:notice] = "Friendship Deleted"
     else
       flash[:notice] = "No Friendship request"
@@ -51,9 +51,8 @@ class FriendshipsController < ApplicationController
 
   #Send a friendship request
   def create
-    @friendship = Friendship.new(setup_friends)
-    @friendship.sender = @entity
-    @friendship.receiver = @friend
+    @friendship = Friendship.new(params[:friendship])
+    @friendship.sender = @current_entity.email
     @friendship.save
     redirect_to @friendship
    #  if @friendship.save
@@ -69,8 +68,8 @@ class FriendshipsController < ApplicationController
 
   private
     def setup_friends
-      @entity = current_entity
-      @friend = Entity.find_by_email(params[:email])
+      @sender = current_entity
+      @receiver = Entity.find_by_email(params[:email])
     end
 end
 

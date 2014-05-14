@@ -7,16 +7,17 @@ attr_accessible :response, :sender, :receiver
 
 #Method
   # Return true if the senders are (possibly pending) receivers.
-  def self.exists?(sender, receiver)
+  def self.exists?(sender, receiver )
     not find_by_sender_and_receiver(sender, receiver).nil?
   end
 
   # Record a pending receiver request.
-  def self.request(sender, receiver)
-    unless sender == receiver or Friendship.exists?(@sender, @receiver) do
+  def self.request(sender, receiver, response)
+    # unless sender == receiver or Friendship.exists?(@sender, @receiver) do
     create(:sender => sender, :receiver => receiver)
     create(:sender => receiver, :receiver => sender) 
-    end
+    save!
+    # end
   end
 
   # Accept a receiver request.
@@ -41,5 +42,5 @@ attr_accessible :response, :sender, :receiver
     request.accepted_at = accepted_at
     request.save!
   end
-end
+
 end
