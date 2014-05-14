@@ -1,7 +1,33 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_entity!
 
-  # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
+
+  # Definition: The show method initializes the variables @entity and @avail, which are both used in the 
+  # view. Displays the internship availability in the view. Green square denotes available == true, 
+  # and red light denotes available == false. Also updates the database based on the value that is 
+  # currently in the table. If it is true, then the column value is changed to false, and vice versa.
+  # Input: Entity and EntityAvailableInternship tuples.
+  # Output: Variables @entity and @available which are based on the session.
+  # Author: Adel Zee Badawy.
+
+  def internship_status
+    @entity = Entity.find(current_entity)
+    @avail = EntityAvailableInternship.find_by_entity_id(@entity.id)
+    if @avail.update_attribute(:available, !@avail.available)
+        redirect_to entity_path
+        flash.alert = "Successfully changed!"
+      else
+        flash.alert = "Sorry, couldn't change the status."
+      end
+  end
+
+
+  # Definition: The show method initializes the variables @entity and @avail, which are both used in the 
+  # view. The parameter (current_entity.id) is being used since the session has not been implemented. Updates the 
+  # database based on the value that is currently in the table. If it is true, then the column value
+  # is changed to false, and vice versa.
+
+# Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
   # Input: Entity id.
   # Output: Startup, investor, service params.
   # Author: Omar El Menawy.
