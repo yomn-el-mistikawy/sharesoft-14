@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <title>Blog</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <p class="navbar-text pull-right">
+<% if entity_signed_in? %>
+  Logged in as <strong><%= current_entity.email %></strong>.
+  <%= link_to 'Edit profile', edit_entity_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_entity_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_entity_session_path, :class => 'navbar-link'  %>
+<% end %>
+
   <title>Startup Maps</title>
   
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
@@ -38,6 +54,7 @@
 <%= javascript_include_tag "supersized.3.2.7.min.js" %> 
 <%= javascript_include_tag "waypoints-sticky.js" %> 
 <%= javascript_include_tag "waypoints.js" %> 
+
 </head>
 <body>
 
@@ -111,6 +128,15 @@
 	</div>
 
 <% end %>
+
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
 
 <%= yield %>
 <!-- Footer -->

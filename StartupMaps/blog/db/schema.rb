@@ -224,6 +224,8 @@ ActiveRecord::Schema.define(version: 20140513172015) do
     t.string   "subject"
     t.text     "body"
     t.integer  "read"
+<<<<<<< HEAD
+=======
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -232,6 +234,7 @@ ActiveRecord::Schema.define(version: 20140513172015) do
     t.integer  "gallery_id"
     t.string   "name"
     t.string   "image"
+>>>>>>> master
     t.datetime "created_at"
     t.datetime "updated_at"
   end

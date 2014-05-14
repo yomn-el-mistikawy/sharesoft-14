@@ -1,0 +1,18 @@
+<h1>Listing projects</h1>
+<table>
+  <tr>
+    <th>name</th>
+  </tr>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.name %></td>
+      <td><%= link_to 'Show', project %></td>
+      <% if current_entity.id ==  @startup.entity_id %>
+        <td><%= link_to 'Edit', edit_project_path(id: project.id) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  <% if current_entity.id ==  @startup.entity_id %>
+    <td><%= link_to 'new project', new_project_path %></td>
+  <% end %>
+</table>
