@@ -1,52 +1,74 @@
 require 'spec_helper'
 
 describe Project do
-  it "Creates project" do
-    project = Project.new(
-      name: "Hana",
-      description: "Hana's project",
-      category: "Clothes")
+  before(:each) do
+    @valid_project = {
+      name: "Save Unicorns",
+      description: "Because Unicorns are awesome sauce (duh) we must save them",
+      category: "Obvious stuff"
+    }
+  end
+
+  it "should create a project given valid information" do
+    project = Project.new(@valid_project)
     expect(project).to be_valid
   end
 
-  it "inserts into ProjectsStartup" do
-    project = Project.new(
-      name: "Hana",
-      description: "Hana's project",
-      category: "Clothes")
-    startup = Startup.create(name: "Hana")
-    project_startup = ProjectsStartup.create(startup_id: startup.id, project_id: project.id)
-    expect(ProjectsStartup.where(startup_id: startup.id)).to eq([project_startup])
+  it "should not create a project if name is missing" do
+    project = Project.new(@valid_project.merge!(:name => ""))
+    expect(project).to_not be_valid
   end
 
-  it "is invalid without a name" do
-    expect(Project.new(name: nil, description: "Hana", category: "Clothes")).to have(2).errors_on(:name)
-  end	
-
-  it "is invalid without a category" do
-    expect(Project.new(name: "Hana", description: nil, category: "Clothes")).to have(1).errors_on(:description)
+  it "should not create a project if name is too short (less than 3 characters)" do
+    project = Project.new(@valid_project.merge!(:name => "HA"))
+    expect(project).to_not be_valid
   end
 
-  it "is invalid without a category" do
-    expect(Project.new(name: "Hana", description: "Hana", category: nil)).to have(1).errors_on(:category)
+  it "should not create a project if name is too long (more than 150 characters)" do
+    project = Project.new(@valid_project.merge!(:name => "HA" * 150))
+    expect(project).to_not be_valid
   end
 
-  it "is invalid with one character in project" do
-    expect(Project.new(name: "H" , description: "Hana", category: "Clothes")).to have(1).errors_on(:name)
-  end	
+  it "should have two errors on name (short and missing)" do
+    expect(Project.new(@valid_project.merge!(:name => ""))).to have(2).errors_on(:name)
+  end 
 
-  it "is invalid because of name duplication" do
-  	expect(Project.new(name: "yomn" , description: "Hana", category: "Clothes")).to have(1).errors_on(:name)
+  it "should have an error on description (missing)" do
+    expect(Project.new(@valid_project.merge!(:description => ""))).to have(1).errors_on(:description)
   end
 
-  it "deletes the project" do
-  	  project = Project.new(
-        name: "Hana",
-        description: "Hana's project",
-        category: "Clothes")
-  	  project_id = project.id
-  	  expect(project).to be_valid
-  	  project.destroy
-      expect(Project.where(:id => project_id).size).to eq(0)
-  end	
+  it "should have an error on category (missing)" do
+    expect(Project.new(@valid_project.merge!(:category => ""))).to have(1).errors_on(:category)
+  en
+
+
+  it "should not be valid if the name is not unique" do
+    Project.create!(@valid_project)
+    invalid_project = Project.new(@valid_project)
+    expect(invalid_project).to_not be_valid
+  end
+
+  it "should not create a project if description is missing" do
+    project = Project.new(@valid_project.merge!(:description => ""))
+    expect(project).to_not be_valid
+  end
+
+  it "should not create a project if category is missing" do
+    project = Project.new(@valid_project.merge!(:category => ""))
+    expect(project).to_not be_valid
+  end
+
+  it "should increase the count of project requirements when we create one associated with project" do
+    project = Project.create!(@valid_project)
+    req1 = project.project_requirements.build(:description => "Req1")
+    expect(req1.save).to be_true
+    expect(project.project_requirements.count).should be > 0
+  end
+
+  it "should increase the count of project targets when we create one associated with project" do
+    project = Project.create!(@valid_project)
+    target1 = project.project_targets.build(:description => "Target1")
+    expect(target1.save).to be_true
+    expect(project.project_targets.count).should be > 0
+  end
 end

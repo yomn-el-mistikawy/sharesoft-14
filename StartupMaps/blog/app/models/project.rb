@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   belongs_to :startup
 
   validates_presence_of :name, :description, :category
-  validates_length_of :name, :within => 2 .. 150
+  validates_length_of :name, :within => 3 .. 150
   validates_uniqueness_of :name, :message => "You have a project with the same name"
 
   # Cascade deletion to all associations

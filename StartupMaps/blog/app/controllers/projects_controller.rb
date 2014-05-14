@@ -74,7 +74,8 @@ class ProjectsController < ApplicationController
   # update_attribute --> updates the rows
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
   # it's reachable and knows what's happening in the file
-  # Also nested form helps editing, removing and specifing whether it is met or not. 
+  # Also nested form helps editing, removing and specifing whether it is met or not
+  # if any of the attributes fail, it renders to edit.
   # Input: project_id. "on the show page".
   # Output: project_id "all project description along successfully 
   # edited targets and requirements".
