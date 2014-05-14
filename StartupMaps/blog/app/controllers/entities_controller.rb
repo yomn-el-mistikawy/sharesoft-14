@@ -16,6 +16,7 @@ class EntitiesController < ApplicationController
 
   def show
     @entity = Entity.find(params[:id])
+    @searching_table_startup = Startup.where(:entity_id => params[:id])
     if @entity.type == "Startup"
       impressionist(@entity)
       if @entity == current_entity

@@ -1,13 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_entity!, :only => [:new, :create, :edit, :update, :destroy]
 
-  def index
-    @projects = Project.listing_projects(Startup.find(session[:entity_id]))
-    respond_to do |format|
-      format.html
-    end
-  end
-
   # Definition: This method creates new project 
   # Project.new = creates new project 
   # and gets linked to create -->new.html.
@@ -115,6 +108,7 @@ class ProjectsController < ApplicationController
   # Author: Hana Magdy.
 
   def destroy
+    project_startup = ProjectsStartup.where(:project_id => params[:id]).delete_all
     project = Project.find(params[:id])
     respond_to do |format|
       if project.destroy
@@ -122,7 +116,7 @@ class ProjectsController < ApplicationController
       else
         flash.alert = "Couldn't delete project, please try again."
       end
-      format.html { redirect_to projects_path }
+      format.html { redirect_to current_entity }
     end
   end
 
