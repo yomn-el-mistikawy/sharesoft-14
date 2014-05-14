@@ -17,8 +17,8 @@ class Entity < ActiveRecord::Base
   has_many :receivers, :through => :group_invitation
   has_many :senders, :through => :send_merge_request
   has_many :receivers, :through => :send_merge_request
-
-  has_many :subscriber, :through => :subscrtipion
+  has_many :subscribee, :through => :subscription
+  has_many :subscriber, :through => :subscription
 
   has_many :receivers, :through => :message
   has_many :messages

@@ -1,6 +1,6 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_entity!
-<<<<<<< HEAD
+
 
   # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
   # Input: Entity id.
@@ -47,7 +47,7 @@ class EntitiesController < ApplicationController
     end
   end	
 
-=======
+
 
   # Definition: When a startup opens its profile, if new badges is completed,
   # then a message appears showing the new badges achieved. A button will be available
@@ -127,7 +127,7 @@ class EntitiesController < ApplicationController
     end
   end	
 
->>>>>>> master
+
 
   # Definition: This method takes is the service_params and creates a service that has the current user entity id. It then sets completed to 1
   # which shows that the entity has completed its profile and a record has been created according to its type.
@@ -145,7 +145,7 @@ class EntitiesController < ApplicationController
       redirect_to root_url
     end
   end
-<<<<<<< HEAD
+
 
   # Defintion: View project of the logged-in startup.
   # Input: Startup id.
@@ -154,11 +154,9 @@ class EntitiesController < ApplicationController
 
   def view_projects
     @startup = Startup.find_by_entity_id(params[:entity_id])
-    @projects = Project.where(:id => (StartupsProjects.select(:project_id).where(:startup_id => @startup)))
+    @projects = Project.where(:id => (ProjectsStartup.select(:project_id).where(:startup_id => @startup)))
   end   
-=======
-   
->>>>>>> master
+
 
   # Definition: This method takes is used to permit the usage of the parameters entered by the users.
   # Input: Startup.
@@ -188,8 +186,8 @@ class EntitiesController < ApplicationController
   def service_params
     params.require(:service).permit(:sector)
   end
-<<<<<<< HEAD
+
 end
-=======
-end
->>>>>>> master
+
+
+
