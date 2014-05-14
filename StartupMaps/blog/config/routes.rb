@@ -1,14 +1,32 @@
 Blog::Application.routes.draw do
  
+ 
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
   resources :groups do
     get "list_group_members"
   end  
+
+  resources :entities do
+    post "show_unachieved_badges"  
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+
 
   resources :startups
 
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
   
   # Maps routes by Alia Tarek
    resources :maps do
@@ -26,6 +44,7 @@ Blog::Application.routes.draw do
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes"
+
   resources :projects do
 
     get "change_launch_status", on: :member, as: :launch
@@ -34,7 +53,11 @@ Blog::Application.routes.draw do
     get "merge_request"
   end  
 
-
+  resources :maps do
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
+  end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
