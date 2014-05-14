@@ -1,22 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+  <title>Startup Maps</title>
+  
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
+<head>
 
-  <p class="navbar-text pull-right">
-<% if entity_signed_in? %>
-  Logged in as <strong><%= current_entity.email %></strong>.
-  <%= link_to 'Edit profile', edit_entity_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_entity_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_entity_session_path, :class => 'navbar-link'  %>
-<% end %>
+<!-- Meta Tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag 'shortcodes.css' %> 
+<%= stylesheet_link_tag 'supersized.css' %> 
+<%= stylesheet_link_tag 'supersized.shutter.css' %> 
+<%= stylesheet_link_tag 'responsive.css' %> 
+<%= stylesheet_link_tag 'fonts.css' %> 
+<%= stylesheet_link_tag 'bootstrap.min.css' %> 
+<%= stylesheet_link_tag 'bootstrap-responsive.min.css' %> 
+<%= stylesheet_link_tag 'main.css' %> 
+
+<%= javascript_include_tag "bootstrap.min.js" %> 
+<%= javascript_include_tag "jquery.fancybox-media.js" %> 
+<%= javascript_include_tag "jquery.fancybox.pack.js" %> 
+<%= javascript_include_tag "jquery.isotope.js" %> 
+<%= javascript_include_tag "jquery.tweet.js" %> 
+<%= javascript_include_tag "main.js" %> 
+<%= javascript_include_tag "modernizr.js" %> 
+<%= javascript_include_tag "placeholder.js" %> 
+<%= javascript_include_tag "plugins.js" %> 
+<%= javascript_include_tag "supersized.3.2.7.min.js" %> 
+<%= javascript_include_tag "waypoints-sticky.js" %> 
+<%= javascript_include_tag "waypoints.js" %> 
 </head>
 <body>
+
+<!-- This section is for Splash Screen -->
+<div class="ole">
+<section id="jSplash">
+  <div id="circle"></div>
+</section>
+</div>
+<!-- End of Splash Screen -->
+
+
+<!-- Header -->
+<header>
+    <div class="sticky-nav">
+    	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+        
+        <div id="logo">
+        	<a id="goUp" href="#home-slider" title="Startup Maps">Startup Maps</a>
+        </div>
+        
+        <nav id="menu">
+        	<ul id="menu-nav">
+            <li><a href="home.html" class="external">Home</a></li>
+            <li><a href="Map.html" class="external">Map</a></li>
+            <li><a href="Profile.html" class="external">Profile</a></li>
+            <li><a href="Logout.html" class="external">Logout</a></li>
+     
+				
+            </ul>
+        </nav>
+        
+    </div>
+</header>
+<!-- End Header -->
+
+
+<!-- Back To Top -->
+<a id="back-to-top" href="#">
+	<i class="font-icon-arrow-simple-up"></i>
+</a>
+<!-- End Back to Top -->
+
+
+<!-- Js -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
+<script src="/assets/bootstrap.min.js"></script> <!-- Bootstrap -->
+<script src="/assets/supersized.3.2.7.min.js"></script> <!-- Slider -->
+<script src="/assets/waypoints.js"></script> <!-- WayPoints -->
+<script src="/assets/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
+<script src="/assets/jquery.isotope.js"></script> <!-- Isotope Filter -->
+<script src="/assets/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
+<script src="/assets/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
+<script src="/assets/jquery.tweet.js"></script> <!-- Tweet -->
+<script src="/assets/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+<script src="/assets/main.js"></script> <!-- Default JS -->
+<!-- End Js -->
+
+
 
 <% if flash.notice %>
 	
@@ -32,14 +112,12 @@
 
 <% end %>
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-
 <%= yield %>
+<!-- Footer -->
+<footer>
+  <p class="credits">&copy;2014 Startup Maps.Developed By Sharesoft-14. Design By <a href="http://www.facebook.com/" title="Alessio Atzeni | Web Designer &amp; Front-end Developer">Samar Fikri</a></p>
+</footer>
+<!-- End Footer -->
 
 </body>
 </html>
