@@ -45,52 +45,53 @@
   # Output: entity id.
   # Author: Yomn El-Mistikawy. 
 -->
-
-<% if @entity.type == "Startup" %>
-  <% if @entity == current_entity %> 
-  <% if @recently_achieved_badges.size != 0 %>
-    <% @recently_achieved_badges.each do |badge| %>
-      <script>
-        alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
-      </script>
-    <% end %>
-  <% end %> 
-<% end %>
-<% if @achieved_badges.size != 0 %>
-  <h1> Achievements </h1>
-  <% if @entity == current_entity %>
-    <% if @all_achieved_badges.size != 25 %>
-      <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id]), :class => "button" %>
-    <% end %>
-  <% end %>
-  <table>
-    <tbody>
-      <tr>
-        <% @achieved_badges.each do |badge| %>
-          <td width="22%">
-            <% if badge.level == 1 %>
-              <%= image_tag "Bronze_1.gif" %>
-            <% else %>
-              <% if badge.level == 2 %>
-                <%= image_tag "Silver_1.gif" %>
-              <% else %>
-                <% if badge.level == 3 %>
-                  <%= image_tag "Gold_1.gif" %>
-                <% else %>
-                  <%= image_tag "Platinum_1.gif" %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <br>
-            <label><font color="white">Name: </label>
-            <%= badge.name %>
-            <br>
-            <label> Description: </label>
-            <%= badge.description %>
-          </td>
+<% if @searching_table_startup.size != 0 %>
+  <% if @entity.type == "Startup" %>
+    <% if @entity == current_entity %> 
+      <% if @recently_achieved_badges.size != 0 %>
+        <% @recently_achieved_badges.each do |badge| %>
+          <script>
+            alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
+          </script>
         <% end %>
-      </tr> 
-    </tbody>
-  </table>
-  <% end %> 
+      <% end %> 
+    <% end %>
+    <% if @achieved_badges.size != 0 %>
+      <h1> Achievements </h1>
+      <% if @entity == current_entity %>
+        <% if @all_achieved_badges.size != 25 %>
+          <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id]), :class => "button" %>
+        <% end %>
+      <% end %>
+      <table>
+        <tbody>
+          <tr>
+            <% @achieved_badges.each do |badge| %>
+              <td width="22%">
+                <% if badge.level == 1 %>
+                  <%= image_tag "Bronze_1.gif" %>
+                <% else %>
+                  <% if badge.level == 2 %>
+                    <%= image_tag "Silver_1.gif" %>
+                  <% else %>
+                    <% if badge.level == 3 %>
+                      <%= image_tag "Gold_1.gif" %>
+                    <% else %>
+                      <%= image_tag "Platinum_1.gif" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                <br>
+                <label><font color="white">Name: </label>
+                <%= badge.name %>
+                <br>
+                <label> Description: </label>
+                <%= badge.description %>
+              </td>
+            <% end %>
+          </tr> 
+        </tbody>
+      </table>
+    <% end %> 
+  <% end %>
 <% end %>
