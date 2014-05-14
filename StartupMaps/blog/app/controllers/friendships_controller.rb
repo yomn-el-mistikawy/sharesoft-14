@@ -1,9 +1,13 @@
 class FriendshipsController < ApplicationController
   before_filter :setup_friends
 
+  def new
+    @friendship = Friendship.new 
+  end 
+
   def accept
     if @entity.requested_friends.include?(@friend)
-      Friendship.accept(@entity, @friend)
+      Friendship.accept(@sender, @receiver)
       flash[:notice] = "Friendship Accepted"
     else
       flash[:notice] = "No Friendship request"
@@ -12,8 +16,8 @@ class FriendshipsController < ApplicationController
   end
 
   def reject
-    if @entity.requested_friends.include?(@friend)
-      Friendship.breakup(@entity, @friend)
+    if @entity.requested_friends.include?(@receiver)
+      Friendship.breakup(@sender, @receiver)
       flash[:notice] = "Friendship Declined"
     else
       flash[:notice] = "No Friendship request"
@@ -22,8 +26,8 @@ class FriendshipsController < ApplicationController
   end
 
   def cancel
-    if @entity.pending_friends.include?(@friend)
-      Friendship.breakup(@entity, @friend)
+    if @entity.pending_friends.include?(@receiver)
+      Friendship.breakup(@sender, @receiver)
       flash[:notice] = "Friendship Canceled"
     else 
       flash[:notice] = "No Friendship request"
@@ -32,8 +36,8 @@ class FriendshipsController < ApplicationController
   end
 
   def delete
-    if @entity.friends.include?(@friend)
-      Friendship.breakup(@entity, @friend)
+    if @entity.friends.include?(@receiver)
+      Friendship.breakup(@sender, @receiver)
       flash[:notice] = "Friendship Deleted"
     else
       flash[:notice] = "No Friendship request"
@@ -42,34 +46,42 @@ class FriendshipsController < ApplicationController
   end
 
   def index
-    @entitys = entity.all
+    @entities = Entity.all
   end
 
   #Send a friendship request
-  def create
-    @friendship = Friendship.new(friendship_params)
-    if @friendship.save
-   redirect_to(:action => 'index')
+  # def create
+  #   @entity = current_entity.email
+  #   @friendship = Friendship.create(:sender => @entity)
+  #   # @friendship.sender = current_entity.email
+  #   @friendship.save
+  #   redirect_to @friendship
+  #  #  if @friendship.save
+  #  # redirect_to(:action => 'index')
+  #  #  else
+  #  # render'new'
+  #  #  end
+  # end
+
+   def create
+    @user = Friendship.new(params[:friendship])
+    @user.sender = current_entity.email
+    @user.save
+    if @user.save
+        redirect_to @user, notice: "Successfully created."
     else
-   render'new'
+      render :action => 'edit'
     end
   end
 
-  def new
-    @friendship = Friendship.new 
-  end 
-
-
-
   def friendship_params 
-    params.require(:friendship).permit(:response, :receiver)
+    params.require(:friendship).permit(:response, :receiver, :sender)
   end
 
   private
     def setup_friends
-      @entity = current_entity
-      @friend = Entity.find_by_email(params[:email])
+      @sender = current_entity
+      @receiver = Entity.find_by_email(params[:email])
     end
-  end
-
 end
+
