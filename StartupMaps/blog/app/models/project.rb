@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :startups, through: :startups_projects
   belongs_to :startup
 
+
   # Definition: "A startup can launch its project"
   # Changes the status of a project and redirects to the project's 
   # page (show project) on success or error

@@ -11,7 +11,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html
     end
@@ -33,7 +32,6 @@ class ProjectsController < ApplicationController
   def change_launch_status
     project = Project.find(params[:id])
     respond_to do |format|
-
       if project.update_attribute(:launch, !project.launch)
         flash.notice = "Successfully launched project"
       else

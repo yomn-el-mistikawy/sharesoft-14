@@ -5,7 +5,7 @@
   # Author: Hana Magdy.
 -->
 
-<style type="text/css">
+ <style type="text/css">
   .reached-true {
     text-decoration: line-through;
   }
@@ -47,8 +47,8 @@
   changeable button of launch upon of it's previous status. 
   Author: Hana Magdy. -->
 
-<p>
+ <p>
   <strong>Launched?</strong>
   <%= @project.launched? %>
   <%= link_to( (@project.launch ? "Unlaunch" : "Launch"), launch_project_path) %>
-</p>
+ </p>
