@@ -9,10 +9,11 @@ class SendMergeRequest < ActiveRecord::Base
      #Output: Void.
      #Author: Ziad
 
-	 def merge_request(project_id)
-	   @owners_ids = StartupsProjects.where(:project_id => project_id)
-    @send_request = SendMergeRequest.create(:sender_id => current_entity.id, :receiver_id => @owners_ids  , project: project_id)
+	 def self.merge_request(project_id, entity)
+      @owners_ids = Startup.select(:entity_id).where(id: => (ProjectsStartup.select(:startup_id).where(:project_id => project_id)))
+      @send_request = SendMergeRequest.create(:sender_id => entity.id, :receiver_id => @owners_ids, :project => project_id)
  	end
+  
   
 
 end

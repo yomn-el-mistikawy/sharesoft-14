@@ -93,7 +93,7 @@ class ProjectsController < ApplicationController
      #Author: Ziad
 
   def merge_request
-    SendMergeRequest.merge_request(params[:project_id])
+    SendMergeRequest.merge_request(params[:project_id], current_entity)
   end
 
 
