@@ -7,7 +7,7 @@ class EntitiesController < ApplicationController
   # Author: Omar El Menawy.
 
   def show
-    @entity = current_entity
+    @entity = Entity.find(params[:id])
   end
 
 
