@@ -53,15 +53,15 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @message.sender = current_entity.email
     respond_to do |format| 
-    if (@entity != nil and @message.recepient == @entity.email)
-      @message.save
-      format.html { redirect_to :action => :index, notice: 'Message has been sent.' }
-      format.json { render json: @messages }
-    else
-      format.html { redirect_to :action => :new, notice: 'Error: Entity not found.' }
-      format.json { render json: @message.errors, status: :unprocessable_entity }
+      if (@entity != nil and @message.recepient == @entity.email)
+       @message.save
+       format.html { redirect_to :action => :index, notice: 'Message has been sent.' }
+       format.json { render json: @messages }
+      else
+        format.html { redirect_to :action => :new, notice: 'Error: Entity not found.' }
+        format.json { render json: @message.errors, status: :unprocessable_entity }
+      end
     end
-  end
   end
   
 
