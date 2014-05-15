@@ -13,14 +13,12 @@ class GroupsController < ApplicationController
   # Author: Yomn El-Mistikawy
   # Modified By: Mina Ashraf
 
-  def list_group_members 
-    @startup = Startup.find(session[:entity_id])
+  def list_group_members
+    @startup = Startup.find_by_entity_id(current_entity.id)
     if (GroupsStartup.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
       @group_members = Group.get_group_members(Group.find(params[:group_id]))
-     
     end
   end
-
 
     # GET /groups
   # GET /groups.json
