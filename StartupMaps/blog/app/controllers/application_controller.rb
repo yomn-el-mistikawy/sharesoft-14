@@ -1,11 +1,6 @@
 class ApplicationController < ActionController::Base
   include PublicActivity::StoreController 
   protect_from_forgery with: :exception
-
-
-
-   
-   
   protect_from_forgery 
 
 
@@ -17,6 +12,8 @@ class ApplicationController < ActionController::Base
   def current_user  
     @current_user ||= current_entity
   end  
+
+
   helper_method :current_user  
   hide_action :current_user  
 
@@ -31,6 +28,6 @@ private
     redirect_to login_url, alert: "You must first log in or sign up." if current_user.nil?  
   end 
 
-  before_action :authenticate_entity!
 
+  before_action :authenticate_entity!
 end

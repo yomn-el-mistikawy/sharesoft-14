@@ -1,5 +1,4 @@
 class GroupsStartup < ActiveRecord::Base
-  
   #Definition: to include actions happen in the model to the public activity.
   #Input: Void.
   #output: Voud.
@@ -7,11 +6,10 @@ class GroupsStartup < ActiveRecord::Base
 
   include PublicActivity::Model  
   tracked  
-    
   attr_accessible :group_id, :startup_id 
-
   belongs_to :group
   belongs_to :startup
+
   
   # Defintion: This checks if the startup is a member
   # of the opened group and returns the record containing 

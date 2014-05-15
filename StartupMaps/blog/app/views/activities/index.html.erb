@@ -13,7 +13,6 @@
   <%= link_to activity.owner.name, activity.owner if activity.owner %>  
   created project <%= link_to activity.trackable.name, activity.trackable %> 
   <% end %> 
-
   <%if activity.trackable_type == 'Group' %> 
   <%= link_to activity.owner.name, activity.owner if activity.owner %>  
   created group <%= link_to activity.trackable.name, activity.trackable %> 
