@@ -8,27 +8,24 @@
 
 <h1>Listing groups and their descriptions </h1>
 <table>
-<thead>
-<tr>
-<th>Group_Name &nbsp;</th> 
-<th>Description</th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<% @groups.each do |group| %>
-<tr>
-<td><%= group.name %></td>
-<td><%= group.description %>&nbsp;</td>
-<td><%= link_to 'Show', group %> &nbsp;</td>
-<td><%= link_to 'Edit', edit_group_path(group) %>&nbsp;</td>
-<td><%= link_to 'Destroy', group_path(group), method: :delete, data: { confirm:
+ <thead>
+  <tr>
+   <th>Group_Name &nbsp;</th> 
+   <th>Description</th>
+  </tr>
+ </thead>
+ <tbody>
+  <% @groups.each do |group| %>
+   <tr>
+    <td><%= group.name %></td>
+    <td><%= group.description %>&nbsp;</td>
+    <td><%= link_to 'Show', group %> &nbsp;</td>
+    <td><%= link_to 'Edit', edit_group_path(group) %>&nbsp;</td>
+    <td><%= link_to 'Destroy', group_path(group), method: :delete, data: { confirm:
           'Are you sure you want to delete group?'} %></td>
-</tr>
-<% end %>
-</tbody>
+   </tr>
+  <% end %>
+ </tbody>
 </table>
 <br>
 
