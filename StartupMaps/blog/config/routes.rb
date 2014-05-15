@@ -21,6 +21,7 @@ Blog::Application.routes.draw do
     post "internship_status"
   end  
 
+post "entities/edit"
 
 
   resources :startups
