@@ -1,7 +1,7 @@
 class ResumesController < ApplicationController
 
   # Definition: Lists all resumes.
-  # Input: none.
+  # Input: void.
   # Output: @resumes.
   # Author: Essam Azzam.
 
