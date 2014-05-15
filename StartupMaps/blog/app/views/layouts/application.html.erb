@@ -67,9 +67,13 @@
         	<ul id="menu-nav">
             <li><a href="/" class="external">Home</a></li> 
             <li><a href = "/maps" class="external">Map</a></li>
-            <li><a href = "/entities/<%= current_entity.id %>" class="external">Profile</a></li>
-            <li><a href = "/entities/edit" class="external">Edit Profile</a></li>
-            <li><%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'menu_nav'  %></li>
+            <% if current_entity != nil %>
+             <li><a href = "/entities/<%= current_entity.id %>" class="external">Profile</a></li>
+             <li><a href = "/entities/edit" class="external">Edit Profile</a></li>
+             <li><%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'menu_nav'  %></li>
+            <% else %>
+             <li><a href = "/entities/sign_in" class="external">Sign In</a></li>
+            <% end %>
 			     </ul>
         </nav>
     </div>
