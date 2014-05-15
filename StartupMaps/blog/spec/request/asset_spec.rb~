@@ -1,0 +1,26 @@
+describe “GET /assets” do
+it “Show Asset from database” do
+asset = FactoryGirl.create(:asset)
+visit assets_path
+
+page.should have_content(asset.name)
+page.should have_content(asset.description)
+page.should have_content(asset.reference)
+page.should have_content(asset.price)
+current_path.should eq(assets_path)
+#save_and_open_page
+end
+describe “Testing javascript” do
+it “calls a basic javascript function”, :js => true do
+visit assets_path
+#save_and_open_page
+click_link “test js”
+page.should have_content(“js works”)
+#save_and_open_page
+end
+
+
+
+
+
+
