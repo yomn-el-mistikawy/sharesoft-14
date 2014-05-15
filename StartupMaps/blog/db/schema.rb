@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513172015) do
+ActiveRecord::Schema.define(version: 20140515190618) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140513172015) do
     t.string   "last_sign_in_ip"
     t.string   "type"
     t.boolean  "completed"
+    t.float    "lng"
+    t.float    "lat"
   end
 
   add_index "entities", ["email"], name: "index_entities_on_email", unique: true, using: :btree
@@ -292,6 +294,17 @@ ActiveRecord::Schema.define(version: 20140513172015) do
     t.integer  "receiver_id"
     t.integer  "project_id"
     t.integer  "response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", force: true do |t|
+    t.float    "longitude"
+    t.float    "latitude"
+    t.integer  "entity_id"
+    t.string   "name"
+    t.string   "sector"
+    t.string   "location"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -57,6 +57,7 @@ class EntitiesController < ApplicationController
     @startup = Startup.create(startup_params)
     @startup.update(:entity_id => params[:entity_id])
     if @startup.save
+      @startup.update(:longitude => current_entity.lng, :latitude => current_entity.lat)
       current_entity.update(:completed => 1)
       redirect_to root_url
     else 
@@ -75,6 +76,7 @@ class EntitiesController < ApplicationController
     @investor = Investor.create(investor_params)
     @investor.update(:entity_id => params[:entity_id])
     if @investor.save
+      @investor.update(:longitude => current_entity.lng, :latitude => current_entity.lat)
       current_entity.update(:completed => 1)
       redirect_to root_url
     else 
@@ -93,6 +95,7 @@ class EntitiesController < ApplicationController
     @service = Service.create(service_params)
     @service.update(:entity_id => params[:entity_id])
     if @service.save
+      @service.update(:longitude => current_entity.lng, :latitude => current_entity.lat)
       current_entity.update(:completed => 1)
       redirect_to root_url
     else 
