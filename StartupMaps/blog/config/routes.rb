@@ -1,6 +1,8 @@
 Blog::Application.routes.draw do
  
  
+  get "homepage/index"
+  get "homepage/show"
   devise_for :entities, :controllers => {:registrations => "entities/registrations", 
                                          :sessions => "entities/sessions", 
                                          :confirmations => "entities/confirmations",
@@ -39,7 +41,7 @@ Blog::Application.routes.draw do
     get "show_services"
   end
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  root 'homepage#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
