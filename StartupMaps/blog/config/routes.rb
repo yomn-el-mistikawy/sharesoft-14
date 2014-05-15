@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
  
+
+  get "group_invitation/invite"
  
   devise_for :entities, :controllers => {:registrations => "entities/registrations", 
                                          :sessions => "entities/sessions", 
@@ -34,13 +36,40 @@ post "entities/edit"
     get "merge_request"
   end  
 
+<<<<<<< HEAD
+  get 'posts/index'
+  get 'posts/showPosts'
+  get 'posts/input_create'
+  get 'posts/create'
+  get 'posts/input_update'
+  get 'posts/update'
+  get 'posts/delete'
+  get 'posts/red'
+
+  get 'group_invitation/invite'
+  get 'group_invitation/search'
+  get 'group_invitation/validate'
+
+  get 'group_invitation/accept'
+  get 'group_invitation/decline'
+  get 'group_invitation/confirm'
+
+  get 'groups/index'
+  get 'groups/show'
+
+  get 'groups/create2'
+
+  get 'groups/new'
+
+=======
   resources :maps do
     get "show_startups" 
     get "show_investors"
     get "show_services"
   end
+>>>>>>> master
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  root to: 'posts#red'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

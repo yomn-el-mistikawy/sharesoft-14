@@ -1,5 +1,33 @@
-<h1>Description</h1>
+<html>
 
-<%= render 'form' %>
+<!--
+# Definition: this form organize the font, size of the title and body of the post in the group.
+#also of the update , delete , create methods in teh controller.
+# Input: id of the post
+# Output: void
+# Author: Nardeen Milad
+-->
 
-<%= link_to 'Back', groups_path %>
+<table >
+	<tr>
+
+<td><font size='4' color='black'> => </font></td> <td> <font size='4' color='black'>
+title </font></td> <td></td> <td><font size='4' color='black'>
+body </font> </td> <td></td>
+ <td></td>
+</font>
+</tr>
+</table>
+
+<br><br>
+
+<form action='create2' >
+title: <br>
+<input type=text name=name><br>
+body:<br>
+<textarea name=desc></textarea><br>
+<br>
+<input type=submit value='post'>
+</form>
+
+</html>

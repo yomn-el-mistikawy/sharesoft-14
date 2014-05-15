@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
+
   # GET /groups/1
   # GET /groups/1.json
   def show
@@ -45,6 +46,13 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
+    @group = Group.new
+
+    @group.name = params[:name]
+    @group.description = params[:description]
+  end
+
+def create2
     @group = Group.new(group_params)
 
     respond_to do |format|
@@ -57,6 +65,7 @@ class GroupsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json

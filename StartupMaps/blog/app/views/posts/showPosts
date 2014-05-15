@@ -1,0 +1,78 @@
+<html>
+
+<head>
+
+<!--
+# Definition: This method checks if a startup puts only spaces or doesnot write anything in the post
+# or not. 
+# Input: void
+# Output: massege will appear 
+# Author: Nardeen Milad
+-->
+
+	<script>
+	function check(which)
+	{
+		if(which.elements[0].value.length == 0 || which.elements[1].value.length == 0)
+		{
+
+			alert("This post appears to be blank. Please write something !! ");
+			return false;
+		}
+		if(which.elements[0].value.indexOf(" ") == 0 || which.elements[1].value.indexOf(" ") == 0)
+		{
+
+			alert("This post appears to be blank. Please write something !! ");
+			return false;
+		}
+	}
+	</script>
+
+</head>
+<!--
+# Definition: this form organize the font, size of the title and body of the post in the group.
+#also of the update , delete , create methods in teh controller.
+# Input: id of the post
+# Output: void
+# Author: Nardeen Milad
+-->
+
+<table >
+	<tr>
+
+<td><font size='4' color='black'> => </font></td> <td> <font size='4' color='black'>
+title </font></td> <td></td> <td><font size='4' color='black'>
+body </font> </td> <td></td>
+ <td></td>
+</font>
+</tr>
+
+<% @all.each do |c|%>
+<tr>
+
+<td><font size='4' color='red'> => </font></td> <td> <font size='4' color='red'>
+<%= c.title %> </font></td> <td></td> <td><font size='4' color='red'>
+ <%=c.text %> </font> </td> <td></td>
+ <td><a href='input_update?id=<%= c.id %>' > update post</a>  ------   <a href='delete?id=<%= c.id %>' > delete</a></td>
+</font>
+</tr>
+<br>
+<%end%>
+</table>
+
+<br><br>
+<% if(@res.count) > 0 %>
+<form action='create' onsubmit="return check(this)">
+title: <br>
+<input type=text name=title><br>
+body:<br>
+<input type=hidden name=id value=<%=params[:id]%>>
+
+<textarea name=text></textarea><br>
+<br>
+<input type=submit value='post'>
+</form>
+<a href = "../group_invitation/search?groupId= <%=params[:id]%>"> <button> invite</button> </a>
+
+<%end%>
+</html>
