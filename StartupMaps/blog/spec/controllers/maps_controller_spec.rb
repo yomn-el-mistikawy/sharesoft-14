@@ -18,4 +18,19 @@ describe MapsController do
       services3 = Service.create(:name => 'heba')
       expect(Service.all.size).to eq(3)
     end
+    it"online startups with a sector" do
+      online1 = Startup.create(:name => 'alia', :online_status => 1, :sector => 'Trading')
+      online2 = Startup.create(:name => 'tarek', :online_status => 0, :sector => 'Agriculture')
+      expect(Startup.where(:online_status => true).where(:sector => 'Trading').size).to eq(1)
+    end
+    it"offline startups with a sector" do
+      offline1 = Startup.create(:name => 'alia', :online_status => 0, :sector => 'Trading')
+      offline2 = Startup.create(:name => 'tarek', :online_status => 1, :sector => 'Agriculture')
+      expect(Startup.where(:online_status => false).where(:sector => 'Trading').size).to eq(1)
+    end
+    it"merged startups with a sector" do
+      merged1 = Startup.create(:name => 'alia', :joint_ventures => 'tarek', :sector => 'Trading')
+      merged2 = Startup.create(:name => 'tarek', :joint_ventures => 'alia', :sector => 'Agriculture')
+      expect(Startup.where(:joint_ventures != "").where(:sector => 'Trading').size).to eq(1)
+    end
 end

@@ -24,8 +24,28 @@ post "entities/edit"
 
   resources :startups
 
+  get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
+  
+  # Maps routes by Alia Tarek
+   resources :maps do
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
+    get "show_launched"
+    get "show_not_launched"
+    get "show_offline"
+    get "show_online"
+    get "show_merged"
+    end
+
+ # You can have the root of your site routed with "root"
+  root 'welcome#index'
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes"
+
   resources :projects do
 
     get "change_launch_status", on: :member, as: :launch
@@ -33,14 +53,8 @@ post "entities/edit"
     get "show_suggested"
     get "merge_request"
   end  
-
-  resources :maps do
-    get "show_startups" 
-    get "show_investors"
-    get "show_services"
-  end
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
