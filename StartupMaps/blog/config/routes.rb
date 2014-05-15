@@ -34,11 +34,18 @@ post "entities/edit"
     get "merge_request"
   end  
 
+
+  get "group_invitation/search"
+  get "group_invitation/invite"
+  get "group_invitation/validate"
+
+
   resources :maps do
     get "show_startups" 
     get "show_investors"
     get "show_services"
   end
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 

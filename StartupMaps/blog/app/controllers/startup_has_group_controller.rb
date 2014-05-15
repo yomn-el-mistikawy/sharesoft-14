@@ -1,0 +1,2 @@
+class StartupHasGroupController < ApplicationController
+end

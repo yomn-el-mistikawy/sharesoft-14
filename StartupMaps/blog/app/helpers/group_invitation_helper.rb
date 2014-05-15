@@ -1,0 +1,2 @@
+module GroupInvitationHelper
+end

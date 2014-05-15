@@ -1,0 +1,23 @@
+<!-- 
+  # Definition: this is when approximate names appear after searching for a name and redirect to the
+  # validated names.
+  # Input: a sturtup name
+  # Output: approximate names to that startup name.
+  # Author: Nardeen Milad
+-->	
+
+ <html>
+ <h2> members search found: </h2>
+ <table >
+ <%  @all.each do |c|  %>
+ <tr>
+ <td><font size='4' color='red'> => </font></td> <td> <font size='4' color='red'>
+ <%= c.id %> </font></td> <td></td> <td><font size='4' color='red'>
+ <%=c.name %> </font> </td> <td></td>
+ <td><a href='validate?id=<%= c.id %> & senderid = <%= params['userId'] %>&groupid=<%= params['groupId'] %>' > invite</a></td>
+ </font>
+ </tr>
+ <br>
+ <%end%>
+ </table>
+ </html>
