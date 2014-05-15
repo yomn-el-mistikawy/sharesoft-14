@@ -126,8 +126,9 @@ ActiveRecord::Schema.define(version: 20140513172015) do
   end
 
   create_table "friendships", force: true do |t|
-    t.integer  "sender_id_id"
-    t.integer  "receiver_id_id"
+    t.string   "sender"
+    t.string   "receiver"
+    t.boolean  "response"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
