@@ -4,7 +4,7 @@
   # Output: Void.
   # Author: Sarah Fathallah. 
 -->
-
+<link href="/assets/messages.css" rel="stylesheet"> 
 <%= form_for @message do |form| %>
  <%= form.label :recepient %>
  <%= form.email_field :recepient %>
@@ -14,3 +14,6 @@
  <%= form.text_area :body %><br>
  <%= form.submit 'Send message' %>
 <% end %>
+
+ 
+ 
