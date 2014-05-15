@@ -39,7 +39,6 @@ class ProjectsController < ApplicationController
       else
         flash.alert = "Oops, couldn't launch project"
       end
-
       format.html { redirect_to project }
     end
   end

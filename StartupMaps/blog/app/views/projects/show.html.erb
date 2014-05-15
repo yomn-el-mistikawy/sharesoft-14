@@ -1,66 +1,41 @@
 <!--
-  # Definition:if reached -> true the cross it with a line.
+  # Definition: If reached -> true the cross it with a line.
   # Input: title 'name' ,attribute values, reached value 'true/false'.
   # Output: crossed value if reached and vice verca.
   # Author: Hana Magdy.
 -->
 
 <style type="text/css">
-
   .reached-true {
     text-decoration: line-through;
   }
-
   </style>
 
-
 <!-- 
-  # Definition:Allows showing all values all categories for the whole project
+  # Definition: Allows showing all values all categories for the whole project
   # including showing whether it is reached or not in req./targets.
   # Input: before/after editing a project 'void'.
   # Output: project_id "all the project's details".
   # Author: Hana Magdy.
 -->
 
-<h1> Your project details </h1>
-<p>
+ <h1> Your project details </h1>
+ <p>
   <strong>Name:</strong>
   <%= @project.name %>
-</p>
- 
-<p>
+ </p>
+ <p>
   <strong>Category:</strong>
   <%= @project.category %>
-</p>
-
-<p>
+ </p>
+ <p>
   <strong>Location:</strong>
   <%= @project.location %>
-</p>
-
-<p>
+ </p>
+ <p>
   <strong>Description:</strong>
   <%= @project.description %>
-</p>
-
-<p>
-  <strong>Targets:</strong>
-  <ul>
-    <% @project.project_targets.each do |target| %>
-      <li class="reached-<%=target.reached%>"><%= target.description %></li>
-    <% end %>
-  </ul>
-</p>
-
-<p>
-  <strong>Requirements:</strong>
-  <ul>
-    <% @project.project_requirements.each do |req| %>
-      <li class="reached-<%=req.reached%>"><%= req.description %></li>
-    <% end %>
-  </ul>
-</p>
-
+ </p>
 
   <!--   
   Definition: "A startup can launch its project"
