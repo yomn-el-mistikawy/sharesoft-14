@@ -17,28 +17,18 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @group = Group.find(@post.group_id)
-    @startup = Startup.find(current_entity.id)
+    @startup = Entity.find(current_entity.id)
     @comment = @post.comments.new(comment_params)
     @comment.commenter = @startup.name
     @comment.startup_id = current_entity.id
 
- respond_to do |format|
     if @comment.save
-      format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-      format.js   {}
-      format.json { render json: @comment, status: :created, location: @comment }
+      redirect_to @group
     else
-      format.html { render action: "new" }
-      format.json { render json: @comment.errors, status: :unprocessable_entity }
-    end
-  end
-    # if @comment.save
-    #   redirect_to @group
-    # else
-    #   flash[:error] = 'Your comment could not be posted, please try again.'
-    #   redirect_to @group
+      flash[:error] = 'Your comment could not be posted, please try again.'
+      redirect_to @group
      
-    #  end
+     end
   end
 
   def show
