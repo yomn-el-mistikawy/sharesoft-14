@@ -29,11 +29,15 @@ class PostsController < ApplicationController
 	end
 
 
-		
+# Definition: this method puts all group under each other.
+# Input: void
+# Output: all groups
+# Author: Nardeen Milad 	
 
 	def index
 		@all = Group.find(:all)
 	end
+
 
 # Definition: this method creates post in a group, it takes title and body as an input
 # and returns the post created. it redirects to the method index and then to the page
@@ -59,7 +63,7 @@ class PostsController < ApplicationController
 # Author: Nardeen Milad
 
 	def update
-	    @new = Post.new
+	  @new = Post.new
 		@old = Post.find( params[:id] )
 		@new.id = @old.id
 		@new.text = params[:text]
