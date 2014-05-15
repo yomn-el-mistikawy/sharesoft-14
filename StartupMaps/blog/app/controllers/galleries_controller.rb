@@ -89,7 +89,7 @@ class GalleriesController < ApplicationController
   # Output: Void.
   # Author: Sandra Youssef.
 
-    def gallery_params
-      params.require(:gallery).permit(:name)
-    end
+  def gallery_params
+    params.require(:gallery).permit(:name)
+  end
 end

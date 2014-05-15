@@ -1,4 +1,4 @@
-class PaintingsController < ApplicationController
+  class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
   # Definition: This method loops on table painting and put all data in the variable
@@ -11,7 +11,6 @@ class PaintingsController < ApplicationController
     @paintings = Painting.all
   end
 
-  
   def show
   end
 
@@ -37,7 +36,6 @@ class PaintingsController < ApplicationController
 
 def create
     @painting = Painting.new(painting_params)
-
     respond_to do |format|
       if @painting.save
         format.html { redirect_to @painting, notice: 'Painting was successfully created.' }
@@ -69,7 +67,6 @@ def create
   end
 
 
-
   # Definition: This method delete the painting.
   # Input: Void.
   # Output: Void.
@@ -91,9 +88,9 @@ def create
   # Author: Sandra Youssef.
 
   private
-    def set_painting
-      @painting = Painting.find(params[:id])
-    end
+  def set_painting
+    @painting = Painting.find(params[:id])
+  end
 
   # Definition: This method is called by method create that has the aim to create a
   # new painting. 
@@ -101,7 +98,7 @@ def create
   # Output: Void.
   # Author: Sandra Youssef.
 
-    def painting_params
-      params.require(:painting).permit(:gallery_id, :name, :image)
-    end
+  def painting_params
+    params.require(:painting).permit(:gallery_id, :name, :image)
+  end
 end
