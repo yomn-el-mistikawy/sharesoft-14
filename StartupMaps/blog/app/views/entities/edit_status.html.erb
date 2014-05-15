@@ -29,7 +29,7 @@
 -->
 
 <h1>Edit your status:  
-<%=@last%></h1>
+<%= @last.status%></h1>
 <form action="update_status" onsubmit='return check(this)'  method=get >
  
     status:<br>
@@ -39,4 +39,4 @@
   <input type=hidden name=entity_id value='1' >
   <input type=submit value='change' %>
  </form>
- <a href='show'> <button> back </button></a>
+<%= link_to "Back", current_entity, :class => "button" %>
