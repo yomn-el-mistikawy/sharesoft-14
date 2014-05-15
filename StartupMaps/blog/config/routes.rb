@@ -15,20 +15,19 @@ Blog::Application.routes.draw do
   end  
 
   resources :entities do
+    post "show_unachieved_badges"  
     post "create_startup"
     post "create_service"
     post "create_investor"
   end  
 
+post "entities/edit"
 
 
   resources :startups
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :maps do
-  end
-  
   resources :projects do
 
     get "change_launch_status", on: :member, as: :launch
@@ -37,6 +36,7 @@ Blog::Application.routes.draw do
     get "merge_request"
   end  
 
+<<<<<<< HEAD
   get 'posts/index'
   get 'posts/showPosts'
   get 'posts/input_create'
@@ -61,6 +61,13 @@ Blog::Application.routes.draw do
 
   get 'groups/new'
 
+=======
+  resources :maps do
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
+  end
+>>>>>>> master
   # You can have the root of your site routed with "root"
   root to: 'posts#red'
 
