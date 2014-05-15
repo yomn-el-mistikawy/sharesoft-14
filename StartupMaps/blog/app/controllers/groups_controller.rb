@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   
   # Defintion: This method lists all groups.
   # Input: void.
-  # Output: 
+  # Output: list of groups.
   # Author: Sherouk A.Said.
 
   def index
@@ -72,10 +72,10 @@ class GroupsController < ApplicationController
   end
 
  
- # Definition: This method deletes a group.
- # Input: void.
- # Output: void.
- # Author: Sherouk A.Said.
+  # Definition: This method deletes a group.
+  # Input: void.
+  # Output: void.
+  # Author: Sherouk A.Said.
 
   def destroy
     @group = Group.find(params[:id])
