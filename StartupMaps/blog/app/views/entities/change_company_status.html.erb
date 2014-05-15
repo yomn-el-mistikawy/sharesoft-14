@@ -13,7 +13,9 @@
  <%end%>
 </h1>
  <%if @startup.company_status == true%>
-  <a href="change_company_status?startup_id=1"><input type="button" value="online" /></a>
+<%= button_to "Online", entity_change_company_status_path %>
  <%else%>
-  <a href="change_company_status?startup_id=1"><input type="button" value="offline" /></a>
+ <%= button_to "Offline", entity_change_company_status_path %>
  <%end%>
+
+ <%= button_to "Back", current_entity %>

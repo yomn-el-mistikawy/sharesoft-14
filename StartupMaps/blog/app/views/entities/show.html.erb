@@ -126,6 +126,6 @@
   # Output: Nothing.
   # Author: Ola Enaba
 -->
-<% if current_entity == @entity && @entity.type == "Startup" %>
+<% if current_entity == @entity && @entity.type == "Startup" && @entity.completed %>
 <%= button_to "Change company status", entity_change_company_status_path(entity_id: params[:id]) %>
 <% end %>
