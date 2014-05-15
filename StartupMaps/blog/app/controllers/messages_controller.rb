@@ -49,19 +49,21 @@ class MessagesController < ApplicationController
   # Author: Sarah Fathallah. 
 
   def create
+    @entity = Entity.find_by_email(params[:message][:recepient])
     @message = Message.new(params[:message])
     @message.sender = current_entity.email
-    @message.save
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to :action => :index, notice: 'Message has been sent.' }
-        format.json { render json: @messages }
-      else
-        format.html { redirect_to :action => :new, notice: 'Error: Please try again.' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    respond_to do |format| 
+    if (@entity != nil and @message.recepient == @entity.email)
+      @message.save
+      format.html { redirect_to :action => :index, notice: 'Message has been sent.' }
+      format.json { render json: @messages }
+    else
+      format.html { redirect_to :action => :new, notice: 'Error: Entity not found.' }
+      format.json { render json: @message.errors, status: :unprocessable_entity }
     end
   end
+  end
+  
 
 
   # Definition: Destroys desired message.
