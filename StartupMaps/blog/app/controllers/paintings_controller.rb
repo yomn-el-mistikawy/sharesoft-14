@@ -14,7 +14,7 @@
   def show
   end
 
-  # Definition: This method has the aim to make a new painting.
+  # Definition: This method aims to make a new painting.
   # Input: Gallery id.
   # Output: A new painting.
   # Author: Sandra Youssef.
@@ -27,12 +27,12 @@
   end
 
 
- # Definition: This method has the aim to create a new painting and after to click 
- # on the button create painting, it generate a message that the Painting was 
- # successfully created
- # Input: Gallery id, name,
- # Output: A new painting.
- # Author: Sandra Youssef.
+  # Definition: This method aims to create a new painting and after to click 
+  # on the button create painting, it generate a message that the Painting was 
+  # successfully created.
+  # Input: Gallery id, name.
+  # Output: A new painting.
+  # Author: Sandra Youssef.
 
 def create
     @painting = Painting.new(painting_params)
@@ -48,7 +48,7 @@ def create
   end
 
 
-  # Definition: This method has the aim to edit the painting and after to click on the
+  # Definition: This method aims to edit the painting and after to click on the
   # button update painting, it generate a message that the painting was successfully updated.
   # Input: Gallery id, name, image.
   # Output: Void.
@@ -67,7 +67,7 @@ def create
   end
 
 
-  # Definition: This method delete the painting.
+  # Definition: This method deletes the painting.
   # Input: Void.
   # Output: Void.
   # Author: Sandra Youssef.
@@ -81,8 +81,8 @@ def create
   end
 
 
-  # Definition: This method loop on table painting and find retreive all data that is
-  # similar to the input id 
+  # Definition: This method loops on table painting and find retreive all data that is
+  # similar to the input id.
   # Input: Id.
   # Output: All data from table painting.
   # Author: Sandra Youssef.

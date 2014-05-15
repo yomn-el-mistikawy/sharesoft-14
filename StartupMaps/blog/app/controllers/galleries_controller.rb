@@ -2,7 +2,7 @@ class GalleriesController < ApplicationController
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]
 
 
-  # Definition: This method loop on table gallery to get all data from it and put it
+  # Definition: This method loops on table gallery to get all data from it and put it
   # into the variable @galleries.
   # Input: Void.
   # Output: All data from table gallery.
@@ -22,7 +22,7 @@ class GalleriesController < ApplicationController
   def edit
   end
 
-  # Definition: This method has the aim to create a new gallery.
+  # Definition: This method aims to create a new gallery.
   # Input: Gallery id.
   # Output: A new painting.
   # Author: Sandra Youssef.
@@ -41,7 +41,8 @@ class GalleriesController < ApplicationController
     end
   end
 
-  # Definition: This method edit the painting and create a message that the gallery was
+
+  # Definition: This method edits the painting and create a message that the gallery was
   # successfully updated.
   # Input: Name.
   # Output: A new painting.
@@ -59,7 +60,7 @@ class GalleriesController < ApplicationController
     end
   end
 
-  # Definition: This method delete the painting.
+  # Definition: This method deletes the painting.
   # Input: Void.
   # Output: Void.
   # Author: Sandra Youssef.
@@ -73,8 +74,7 @@ class GalleriesController < ApplicationController
   end
 
   private
-  
-  # Definition: This method find in table gallery all data that has id similar to the
+  # Definition: This method finds in table gallery all data that has id similar to the
   # input.
   # Input: Id.
   # Output: All data from table gallery with similar input.

@@ -15,9 +15,7 @@ Blog::Application.routes.draw do
                                          :unlocks => "entities/unlocks",
                                          :passwords => "entities/passwords"}
 
-
-
-  resources :groups do
+ resources :groups do
     get "list_group_members"
   end  
 
