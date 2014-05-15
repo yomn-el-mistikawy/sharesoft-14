@@ -10,9 +10,9 @@ Internship Availability:
 # Author: Adel Zee Badawy. 
 -->
 
-<% if @avail.available == true %>
+<% if @entity_status.available == true %>
 	<div style="background-color: green; width: 30px; height:30px"></div>
-<% elsif @avail.available == false %>
+<% elsif @entity_status.available == false %>
 	<div style="background-color: red; width: 30px; height:30px"></div>
 <% end %>
 
@@ -28,7 +28,5 @@ Internship Availability:
 -->
 
 <br>
-<%= form_for @entity do |f| %>
-	<%= f.submit "Change Internship Status" %>
-<% end %>
+	<%= button_to "Change Internship Status", :action => "internship_status" %>
 

@@ -20,7 +20,7 @@ class Entity < ActiveRecord::Base
   has_many :subscribee, :through => :subscripion
   has_many :receivers, :through => :message
   has_many :messages
-  is_impressionable
+  # is_impressionable
   TYPES = %w[Startup Investor Service]
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 end

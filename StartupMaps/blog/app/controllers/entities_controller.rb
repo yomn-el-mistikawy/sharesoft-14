@@ -10,14 +10,9 @@ class EntitiesController < ApplicationController
   # Author: Adel Zee Badawy.
 
   def internship_status
+    @entity_status = EntityAvailableInternship.find_by(entity_id: current_entity)
     @entity = Entity.find(current_entity)
-    @avail = EntityAvailableInternship.find_by_entity_id(@entity.id)
-    if @avail.update_attribute(:available, !@avail.available)
-        redirect_to entity_path
-        flash.alert = "Successfully changed!"
-      else
-        flash.alert = "Sorry, couldn't change the status."
-      end
+    EntityAvailableInternship.change_internship(@entity_status, @entity)
   end
 
 

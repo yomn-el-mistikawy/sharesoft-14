@@ -368,13 +368,6 @@ ActiveRecord::Schema.define(version: 20140513172015) do
     t.datetime "updated_at"
   end
 
-  create_table "subscriptions", force: true do |t|
-    t.integer  "subscriber_id"
-    t.integer  "subscribee_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tags", force: true do |t|
     t.string   "tags"
     t.integer  "entity_id"

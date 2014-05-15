@@ -17,10 +17,17 @@ class Entities::RegistrationsController < Devise::RegistrationsController
   # Output: Entity_id.
   # Author: Omar El Menawy.
 
+  # Definition: This method also creates a tuples in the table EntityAvailableInternships with a default value.
+  # Input: entity_params.id, 'false'.
+  # Output: Void.
+  # Author: Adel Badawy.
+
+
   def create
     @entity = Entity.create(entity_params)
     if @entity.save
       redirect_to @entity
+      EntityAvailableInternship.create(:name => @entity.name, :available => 0, :entity_id => @entity.id)
     else
       render action: 'new' 	
     end
