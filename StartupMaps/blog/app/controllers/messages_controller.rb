@@ -53,7 +53,6 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @message.sender = current_entity.email
     @message.save
-    
     respond_to do |format|
       if @message.save
         format.html { redirect_to :action => :index, notice: 'Message has been sent.' }
