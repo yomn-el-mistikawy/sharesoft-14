@@ -15,8 +15,10 @@ class GroupInvitationController < ApplicationController
 # Author: Nardeen Milad 
 
 	def search
+	
 		@all = Entity.find(:all, :conditions => ["name like ? AND type = ?","%#{params[:id]}%","Startup"])
 		# Users.find(:all,:condition => ('[name = ?]',params[id]))
+	
 	end
 
 	def create
@@ -68,6 +70,7 @@ class GroupInvitationController < ApplicationController
 			@inv.group_id = params[:groupid]
 			@inv.save
 
+			
 		end
 	end
 
@@ -98,6 +101,7 @@ class GroupInvitationController < ApplicationController
 		@new.startup_id = @all.receiver_id
 		@new.group_id = @all.group_id
 		@new.save
+		
 		@all.delete
 		redirect_to :action => 'inv' 		
 	end
