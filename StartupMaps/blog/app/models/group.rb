@@ -5,6 +5,10 @@ class Group < ActiveRecord::Base
   has_many :likes, through: :posts
   has_many :resumes
   
+def self.search_group(search)
+@group= Group.find(:all, :conditions => ["name = ?", "#{search}%"])
+
+end  
   # Defintion: This method takes the group id, 
   # returns a list of group members. 
   # Input: group_id

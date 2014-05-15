@@ -9,4 +9,9 @@ class Startup < ActiveRecord::Base
 	has_many :projects, through: :startups_projects
 	has_many :resumes, through: :groups
 	has_many :badges, through: :startups_badges
+
+  def self.search_startup(search)
+@startup= Startup.find(:all, :conditions => ['name LIKE ?', "#{search}%"])
+return @startup
+  end 
 end
