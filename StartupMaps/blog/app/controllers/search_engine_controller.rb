@@ -1,4 +1,6 @@
 class SearchEngineController < ApplicationController
+
+  #Definition:This method calls kaza w kaza mn el models to check the match of search keys
   def list 
      $name=params[:text]
     @groups=Group.search_group($name)

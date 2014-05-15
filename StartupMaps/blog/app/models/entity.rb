@@ -1,13 +1,11 @@
 class Entity < ActiveRecord::Base
 
-<<<<<<< HEAD
 	def self.search_entity(search)
     @entity= Entity.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
     return @entity
     
     end 
 
-=======
   self.inheritance_column=nil
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   has_many :services 
@@ -31,6 +29,6 @@ class Entity < ActiveRecord::Base
   has_many :messages
   TYPES = %w[Startup Investor Service]
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
->>>>>>> 7c10bc19d78f4cb16fcb1d84f904f2d90c8e27d4
+
 end
 
