@@ -1,5 +1,4 @@
 <h1>Listing group members</h1>
-
 <!-- # Defintion: This shows a list of group members
      # of the group opened.
      # Input: @group_members
@@ -19,13 +18,10 @@
         <td><%= group_member.sector %>&nbsp;&nbsp;&nbsp;</td>
         <td><%= group_member.location%>&nbsp;&nbsp;</td>
         <td><%= link_to 'Show', group_member %>&nbsp;</td>
-
       </tr>
-
     <% end %>
   </table>
 <% else %>
   <h5> "You are not a group member"  </h5>
 <% end %>  
-  
       <td><%= link_to 'Back', groups_path%></td>
