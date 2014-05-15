@@ -1,5 +1,11 @@
 class MessagesController < ApplicationController
-  
+
+
+  # Definition: Shows messages ordered in descending order.
+  # Input: current_entity.
+  # Output: Void.
+  # Author: Sarah Fathallah. 
+
   def index
     @entity = current_entity
     @messages = Message.order("created_at desc")
@@ -8,6 +14,12 @@ class MessagesController < ApplicationController
       format.json { render json: @messages }
     end
   end
+
+
+  # Definition: Shows desired message.
+  # Input: current entity.
+  # Output: Void.
+  # Author: Sarah Fathallah. 
 
   def show 
     @message = Message.find(params[:id])
@@ -21,9 +33,21 @@ class MessagesController < ApplicationController
     end
   end
 
+
+  # Definition: Creates a new message .
+  # Input: Void.
+  # Output: Void.
+  # Author: Sarah Fathallah. 
+
   def new
     @message = Message.new
   end
+
+
+  # Definition: Creates a new message.
+  # Input: Recepient email, subject, body and current entity.
+  # Output: Enters message in database.
+  # Author: Sarah Fathallah. 
 
   def create
     @message = Message.new(params[:message])
@@ -40,6 +64,12 @@ class MessagesController < ApplicationController
       end
     end
   end
+
+
+  # Definition: Destroys desired message.
+  # Input: Message id.
+  # Output: Deletes record.
+  # Author: Sarah Fathallah. 
 
   def destroy
     @message = Message.find(params[:id])

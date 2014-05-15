@@ -1,22 +1,28 @@
-<!-- <link href="/assets/messages.css" rel="stylesheet"> -->
+<!--
+ # Definition: Marks the message as read.
+ # Input: Void.
+ # Output: Changes message to be read.
+ # Author: Sarah Fathallah. 
+-->
+
+<link href="/assets/messages.css" rel="stylesheet"> 
 
 <div id="readMessage">
-<h3>Message</h3>
-<table class = "table">
+ <h3>Message</h3>
+ <table class = "table">
   <tr>
-    <td>Subject</td> 
-    <td>From</td>
-    <td>To</td>
-    <td>Date</td>
+   <td>Subject</td> 
+   <td>From</td>
+   <td>To</td>
+   <td>Date</td>
   </tr>
   <tr>
-    <td><strong><%= @message.subject%></strong></td>
-    <td><strong><%= @message.sender %></strong></td>
-    <td><strong><%= @message.recepient %></strong></td>
-    <td><strong><%= @message.created_at %></strong></td>
+   <td><strong><%= @message.subject%></strong></td>
+   <td><strong><%= @message.sender %></strong></td>
+   <td><strong><%= @message.recepient %></strong></td>
+   <td><strong><%= @message.created_at %></strong></td>
   </tr>
-</table>
-
-<p><%= @message.body %></p>
-<%= link_to 'Back', messages_path %>
+ </table>
+ <p><%= @message.body %></p>
+ <%= link_to 'Back', messages_path %>
 </div>

@@ -1,6 +1,13 @@
+<!--
+ # Definition: Form having textfields for recepient email, subject and body.
+ # Input: Recepient email, subject and body.
+ # Output: void.
+ # Author: Sarah Fathallah. 
+-->
+
 <%= form_for @message do |form| %>
   <%= form.label :recepient %>
-  <%= form.text_field :recepient %>
+  <%= form.email_field :recepient %>
   <%= form.label :subject %>
   <%= form.text_field :subject %>
   <%= form.label :body %>

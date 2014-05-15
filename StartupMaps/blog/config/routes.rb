@@ -43,7 +43,7 @@ Blog::Application.routes.draw do
     get "show_investors"
     get "show_services"
   end
->>>>>>> 4ea15b8a7721f88d876c9f45766642d22bc2bb97
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 
