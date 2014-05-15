@@ -28,11 +28,11 @@ class GroupInvitationController < ApplicationController
   # Output: new group
   # Author: Nardeen Milad 
 
-	def create
-      @n = Group.new
-      @n.name = params[:name]
-      @n.description = params[:desc]
-      @n.save    
+  def create
+    @n = Group.new
+    @n.name = params[:name]
+    @n.description = params[:desc]
+    @n.save    
   end
 
 
@@ -45,20 +45,20 @@ class GroupInvitationController < ApplicationController
   # Output: void
   # Author: Nardeen Milad 
 
-	def validate
-		 @invite = true
-		 @one = GroupsStartup.where(:startup_id => params[:id],:group_id => params[:groupid])
-		 @desc  = params[:groupid]		
+  def validate
+		@invite = true
+		@one = GroupsStartup.where(:startup_id => params[:id],:group_id => params[:groupid])
+		@desc  = params[:groupid]		
 		if 
 		 @one.count > 0
 		 @invite = false
-	     @desc = "user is already in group "
-  	    end
+	   @desc = "user is already in group "
+  	end
 			
 		 @two = GroupInvitation.where(:receiver_id => params[:id] , :group_id => params[:groupid])
 		if 
 		 @two.count > 0 
-		 @desc = "invitation was sent"
+	   @desc = "invitation was sent"
 		 @invite = false
 		end
 
@@ -96,7 +96,7 @@ class GroupInvitationController < ApplicationController
 	 	 @new = StartupHasGroup.new
 		 @new.startup_id = @all.receiver_id
 		 @new.group_id = @all.group_id
-         @new.save
+     @new.save
 		 @all.delete
 		 redirect_to :action => 'inv' 		
 	end
@@ -108,7 +108,7 @@ class GroupInvitationController < ApplicationController
   # Output: void
   # Author: Nardeen Milad
 
-	def decline
+  def decline
 		 GroupInvitation.find( params[:id] ).delete
 		 redirect_to :action => 'inv' 		
 	end
