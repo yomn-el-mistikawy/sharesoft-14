@@ -36,7 +36,7 @@ post "entities/edit"
     get "merge_request"
   end  
 
-<<<<<<< HEAD
+
   get 'posts/index'
   get 'posts/showPosts'
   get 'posts/input_create'
@@ -61,13 +61,12 @@ post "entities/edit"
 
   get 'groups/new'
 
-=======
   resources :maps do
     get "show_startups" 
     get "show_investors"
     get "show_services"
   end
->>>>>>> master
+
   # You can have the root of your site routed with "root"
   root to: 'posts#red'
 

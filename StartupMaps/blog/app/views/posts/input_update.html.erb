@@ -6,12 +6,12 @@
   # Author: Nardeen Milad.
 -->
 
-<form action='update' >
-title: <br>
-<input type=text name=title value=<%= @new.title%>><br>
-body:<br>
-<textarea name=text ><%=@new.text%></textarea><br>
-<br>
-<input type=hidden value=<%=params[:id]%> name=id>
-<input type=submit value='post'>
-</form>
+ <form action='update' >
+ title: <br>
+ <input type=text name=title value=<%= @new.title%>><br>
+ body:<br>
+ <textarea name=text ><%=@new.text%></textarea><br>
+ <br>
+ <input type=hidden value=<%=params[:id]%> name=id>
+ <input type=submit value='post'>
+ </form>

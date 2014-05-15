@@ -1,5 +1,5 @@
-<html>
-<head>
+ <html>
+ <head>
 
 <!--
   # Definition: This method checks if a startup puts only spaces or doesnot write anything in the post
@@ -9,17 +9,17 @@
   # Author: Nardeen Milad
 -->
 
-<script>
-function check(which)
-{if(which.elements[0].value.length == 0 || which.elements[1].value.length == 0)
-{alert("please input something");
-return false;}
-if(which.elements[0].value.indexOf(" ") == 0 || which.elements[1].value.indexOf(" ") == 0)
-{alert("please input something other than posts");
-return false;}
-}
-</script>
-</head>
+ <script>
+ function check(which)
+ {if(which.elements[0].value.length == 0 || which.elements[1].value.length == 0)
+ {alert("please input something");
+ return false;}
+ if(which.elements[0].value.indexOf(" ") == 0 || which.elements[1].value.indexOf(" ") == 0)
+ {alert("please input something other than posts");
+ return false;}
+ }
+ </script>
+ </head>
 
 <!--
   # Definition: this form organize the font, size of the title and body of the post in the group.
@@ -29,24 +29,24 @@ return false;}
   # Author: Nardeen Milad
 -->
 
-<table >
-<tr>
-<td><font size='4' color='black'> => </font></td> <td> <font size='4' color='black'>
-title </font></td> <td></td> <td><font size='4' color='black'>
-description </font> </td> <td></td>
-<td></td>
-</font>
-</tr>
-<% @all.each do |c|%>
-<tr>
-<td><font size='4' color='red'> => </font></td> <td> <font size='4' color='red'>
-<%= c.name %> </font></td> <td></td> <td><font size='4' color='red'>
-<%=c.description %> </font> </td> <td></td>
-<td><a href='showPosts?id=<%= c.id %>' > show posts</a> 
-</font>
-</tr>
-<br>
-<%end%>
-</table>
-<br><br>
-</html>
+ <table >
+ <tr>
+ <td><font size='4' color='black'> => </font></td> <td> <font size='4' color='black'>
+ title </font></td> <td></td> <td><font size='4' color='black'>
+ description </font> </td> <td></td>
+ <td></td>
+ </font>
+ </tr>
+ <% @all.each do |c|%>
+ <tr>
+ <td><font size='4' color='red'> => </font></td> <td> <font size='4' color='red'>
+ <%= c.name %> </font></td> <td></td> <td><font size='4' color='red'>
+ <%=c.description %> </font> </td> <td></td>
+ <td><a href='showPosts?id=<%= c.id %>' > show posts</a> 
+ </font>
+ </tr>
+ <br>
+ <%end%>
+ </table>
+ <br><br>
+ </html>

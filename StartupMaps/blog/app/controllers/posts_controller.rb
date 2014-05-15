@@ -5,19 +5,19 @@ class PostsController < ApplicationController
   # Output: all posts
   # Author: Nardeen Milad 
 
-    def showPosts
-		@id = params[:id]
+  def showPosts
+	  @id = params[:id]
 		@current = current_entity.id
 		if(Group.find(@id).private == true)
 			@res = GroupsStartup.where(:group_id => @id , :startup_id => @current)
-			if(@res.count > 0)
-			 @all = Post.where(:group_id => @id)
-			else
-		     @all = []
-			end
+		if(@res.count > 0)
+			@all = Post.where(:group_id => @id)
 		else
-		     @res = [1]
-		     @all = Post.where(:group_id => @id)	
+		  @all = []
+		end
+		else
+		  @res = [1]
+		  @all = Post.where(:group_id => @id)	
 		end	
 	end
 
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   # Output: all groups
   # Author: Nardeen Milad 	
 
-	def index
+  def index
 		@all = Group.find(:all)
 	end
 
@@ -55,15 +55,15 @@ class PostsController < ApplicationController
   # Output: post is updated
   # Author: Nardeen Milad
 
-    def update
-	    @new = Post.new
-		@old = Post.find( params[:id] )
-		@new.id = @old.id
-		@new.text = params[:text]
-		@new.title = params[:title]
-		@old.destroy
-		@new.save
-		redirect_to :action => 'index', :controller=>"posts"
+  def update
+	   @new = Post.new
+		 @old = Post.find( params[:id] )
+		 @new.id = @old.id
+		 @new.text = params[:text]
+		 @new.title = params[:title]
+		 @old.destroy
+		 @new.save
+		 redirect_to :action => 'index', :controller=>"posts"
 	end
 
 
@@ -98,7 +98,7 @@ class PostsController < ApplicationController
 	end
 
 
-  # Definition: this method redirect to index method which are in post controller 
+  # Definition: this method redirect to index method which are in post controller.
   # Input: void
   # Output: void
   # Author: Nardeen Milad
