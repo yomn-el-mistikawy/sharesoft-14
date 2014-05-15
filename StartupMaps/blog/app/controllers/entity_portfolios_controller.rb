@@ -9,6 +9,7 @@ class EntityPortfoliosController < ApplicationController
     @entity_portfolio = EntityPortfolio.all
   end
 
+
   # Definition: This method shows the portfolio that is clicked from the listed portfolio.
   # Input: EntityPortfolio_id.
   # Output: Chosen portfolio.
@@ -17,6 +18,7 @@ class EntityPortfoliosController < ApplicationController
   def show
     @entity_portfolio = EntityPortfolio.find(params[:id])
   end
+
 
   # Definition: Call portfolio object to be created in the create method.
   # Input: Void.
@@ -48,15 +50,15 @@ class EntityPortfoliosController < ApplicationController
   def create
     @entity_portfolio = EntityPortfolio.new(entity_portfolio_params)
     respond_to do |format|
-    if @entity_portfolio.save
+     if @entity_portfolio.save
       flash[:notice] = 'Portfolio was successfully created.'
       format.html { redirect_to @entity_portfolio}
       format.json { render action: 'show', status: :created, location: @entity_portfolio }
-      else
+     else
       format.html { render action: 'new' }
       format.json { render json: @entity_portfolio.errors, status: :unprocessable_entity }
-      end
     end
+   end
   end
 
 
@@ -71,14 +73,14 @@ class EntityPortfoliosController < ApplicationController
   def update
     @entity_portfolio = EntityPortfolio.find(params[:id])
     respond_to do |format|
-    if @entity_portfolio.update(entity_portfolio_params)
-        flash[:notice] = 'Portfolio was successfully updated.'
-        format.html { redirect_to @entity_portfolio}
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @entity_portfolio.errors, status: :unprocessable_entity }
-      end
+     if @entity_portfolio.update(entity_portfolio_params)
+      flash[:notice] = 'Portfolio was successfully updated.'
+      format.html { redirect_to @entity_portfolio}
+      format.json { head :no_content }
+     else
+      format.html { render action: 'edit' }
+      format.json { render json: @entity_portfolio.errors, status: :unprocessable_entity }
+     end
     end
   end
 
@@ -92,9 +94,9 @@ class EntityPortfoliosController < ApplicationController
     @entity_portfolio = EntityPortfolio.find(params[:id])
     @entity_portfolio.destroy
     respond_to do |format|
-    format.html { redirect_to entity_portfolios_url }
-    format.json { head :no_content }
-  end
+     format.html { redirect_to entity_portfolios_url }
+     format.json { head :no_content }
+    end
   end
 
 
@@ -102,8 +104,8 @@ class EntityPortfoliosController < ApplicationController
   # Input: Entity_portfolio
   # Output: Entity_portfolio_params.
   # Author: Mozdan Ahmed.
-  private
+
   def entity_portfolio_params
-      params.require(:entity_portfolio).permit(:name, :description, :launch)
+    params.require(:entity_portfolio).permit(:name, :description, :launch)
     end
 end
