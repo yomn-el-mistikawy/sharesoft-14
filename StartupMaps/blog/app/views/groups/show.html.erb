@@ -1,4 +1,3 @@
-
 <p>
   <strong>Name:</strong>
   <%= @group.name %>
@@ -13,10 +12,8 @@
   <strong>Interest:</strong>
   <%= @group.interest %>
 </p>
-
 <% if @group.private == false %>
-<h2>Posts</h2>
-<% @group.posts.each do |post| %>
+ <% @group.posts.each do |post| %>
 <%= @post = post %>
   <p>
     <strong>Title:</strong>
@@ -28,28 +25,32 @@
     <%= post.text %>
   </p>
 
+<!-- This part of code views all comments under heading Comment, with a delete link for each comment.
+Author: Maha Salah Eldin. -->
 
- <div style="background: #2F4F4F">
- <h2>Comments</h2>
- <% @post.comments.each do |comment| %>
-   <p>
+  <div style="background: #2F4F4F">
+   <h2>Comments</h2>
+   <% @post.comments.each do |comment| %>
+    <p>
     <strong style= "font-size: 10pt"><%= comment.commenter %></strong> 
     <%= ":" %>
     <%= comment.comment %>  
     <br/>
     <strong>Posted <%= time_ago_in_words(comment.created_at) %> ago</strong>
     <%= link_to 'Delete', group_post_comment_path(@group,@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+   <% end %>
 
-  <% if check_group_member == true %>
+<!-- This part of code first checks if the viewer is a member of the group, if yes then it renders the comments creation form.
+Author: Maha Salah Eldin. -->
+
+   <% if check_group_member == true %>
     <%= render :partial => 'form_comment' %>
-  <% end %>
- </div>
-<% end %> 
-
-<% if check_group_member == true %>
+   <% end %>
+  </div>
+ <% end %> 
+ <% if check_group_member == true %>
 <%= render :partial => 'form_post' %>
-<%end %>
+ <%end %>
 <% end %>
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

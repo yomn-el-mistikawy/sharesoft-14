@@ -1,9 +1,14 @@
 class CommentsController < ApplicationController
 
+  # Definition: This method instantiates a comment on a specific post 
+  #using the association between posts and comments. 
+  # Input: none.
+  # Output: Void.
+  # Author: Maha Salah Eldin.
 
   def new
-      @post = Post.find(params[:post_id])
-      @comment = @post.comments.new
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new
   end
 
 
@@ -31,34 +36,18 @@ class CommentsController < ApplicationController
      end
   end
 
-  def show
-      @comment = Comment.find(params[:id])
-  end
 
-  def edit
-   
-  @comment = Comment.find(params[:id])
-  @post = Post.find(params[:post_id])
-  end
-
-  def update
-    @post = Post.find(params[:post_id])
-    @group = Group.find(@post.group_id)
-    @comment = @post.comments.find(params[:id])
-      if @comment.update(comment_params)
-        redirect_to @group
-      else
-        flash[:error] = 'Your comment could not be updated, please try again.'
-        render 'edit'
-      end
-  end
+  # Definition: This method deletes a comment.
+  # Input: comment id.
+  # Output: Void.
+  # Author: Maha Salah Eldin.
 
   def destroy
-      @post = Post.find(params[:post_id])
-      @group = Group.find(@post.group_id)
-      @comment = Comment.find(params[:id])
-      @comment.destroy
-      redirect_to @group
+    @post = Post.find(params[:post_id])
+    @group = Group.find(@post.group_id)
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to @group
   end
  
   private
