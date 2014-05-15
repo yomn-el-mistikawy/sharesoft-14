@@ -57,18 +57,4 @@ describe Project do
     project = Project.new(@valid_project.merge!(:category => ""))
     expect(project).to_not be_valid
   end
-
-  it "should increase the count of project requirements when we create one associated with project" do
-    project = Project.create!(@valid_project)
-    req1 = project.project_requirements.build(:description => "Req1")
-    expect(req1.save).to be_true
-    expect(project.project_requirements.count).should be > 0
-  end
-
-  it "should increase the count of project targets when we create one associated with project" do
-    project = Project.create!(@valid_project)
-    target1 = project.project_targets.build(:description => "Target1")
-    expect(target1.save).to be_true
-    expect(project.project_targets.count).should be > 0
-  end
 end

@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition:This method shows all details of a project
+  # Definition: This method shows all details of a project
   # that belong to a specific startup and is linked to the show HTML file
   # which also includes the editing part
   # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
@@ -49,15 +49,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-
     respond_to do |format|
       format.html
     end
   end
 
 
-  # Definition:Allows editing the project's details, 
-  # specifically targets and requirements
+  # Definition: Allows editing the project's details,
   # This method allows you to edit a project given its project's id.
   # Input: Project_id.
   # Output: Project_id "specifically goals, milestones and requirements".
@@ -68,7 +66,7 @@ class ProjectsController < ApplicationController
   end
 
 
-  # Definition:Allows editing the project's details, specifically targets and requirements
+  # Definition: Allows editing the project's details,
   # Redirects user to project's page (show project) on success
   # Re-renders the edit project page on error and is linked to the edit HTML file
   # update_attribute --> updates the rows
@@ -77,39 +75,28 @@ class ProjectsController < ApplicationController
   # Also nested form helps editing, removing and specifing whether it is met or not
   # if any of the attributes fail, it renders to edit.
   # Input: project_id. "on the show page".
-  # Output: project_id "all project description along successfully 
-  # edited targets and requirements".
+  # Output: project_id "all project description".
   # Author: Hana Magdy.
 
-  def update
-    @project = Project.find(params[:id])
-
-    respond_to do |format|
-      if @project.update_attributes(
-          params.require(:project).permit(:name, 
-              :category, 
-              :location, 
-              :description,
-              :project_targets_attributes => [:id, :description, :reached, :_destroy],
-              :project_requirements_attributes => [:id, :description, :reached, :_destroy])
-        )
-        format.html { redirect_to @project, notice: "Successfully updated project" }
-      else
-        format.html { render :edit }
+   def update
+      @project = Project.find(params[:id])
+      respond_to do |format|
+        if @project.update_attributes(
+          params.require(:project).permit(:name, :category, :location, :description))
+          format.html { redirect_to @project, notice: "Successfully updated project" }
+        else
+          format.html { render :edit }
+        end
       end
     end
-  end
 
-
-  # Definition:Allows deleting a certain project.
+  # Definition: Allows deleting a certain project,
   # recirects to 'index' listing the rest of the projects of the user.
   # Input: project_id. "on the show page".
-  # Output: project_id "all project description along successfully 
-  # edited targets and requirements".
+  # Output: project_id "all project description".
   # Author: Hana Magdy.
 
   def destroy
-    project_startup = ProjectsStartup.where(:project_id => params[:id]).delete_all
     project = Project.find(params[:id])
     respond_to do |format|
       if project.destroy
@@ -117,21 +104,19 @@ class ProjectsController < ApplicationController
       else
         flash.alert = "Couldn't delete project, please try again."
       end
-      format.html { redirect_to current_entity }
+        format.html { redirect_to projects_path }
     end
   end
 
 
-  # Definition: permits to use the parmeters
+  # Definition: Permits to use the parmeters.
   # Input: project_id. "on the show page".
   # Output: project_id "all project description along successfully 
   # edited/deleted project".
   # Author: Hana Magdy.
 
-  private
+ private
   def project_params
-    params.require(:project).permit(:name, :category, :location, :description,
-      :project_targets_attributes => [:id, :description, :_destroy],
-      :project_requirements_attributes => [:id, :description, :_destroy])
+    params.require(:project).permit(:name, :category, :location, :description)
   end 
 end

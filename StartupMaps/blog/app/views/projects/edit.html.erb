@@ -6,56 +6,29 @@
   # inside specific atributes 'targets and requirements'
   # submit => button that renders to show with all the updates.
   # Input: project_id (with all its attributes).
-  # Output: redirects to show with all the updates
+  # Output: redirects to show with all the updates.
   # Author: Hana Magdy.
 -->
 
-<h1>Editing '<%= @project.name %>' Project</h1>
- 
-<%= nested_form_for @project do |f| %>
+ <h1>Editing '<%= @project.name %>' Project</h1>
+ <%= nested_form_for @project do |f| %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </p>
-
   <p>
     <%= f.label :category %><br>
     <%=  f.select :category, [['Agriculture','Agriculture'],['Manufacturing','Manufacturing'],['Trading ','Trading'],['Clothes ','Clothes'], ['Telecommunication','Telecommunication']]%>
   </p>
-
   <p>
     <%= f.label :location %><br>
     <%= f.text_field :location %>
   </p>
-
   <p>
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </p>
-
-  <%= f.fields_for :project_targets do |targets_f| %>
-    <%= targets_f.label :description %>
-    <%= targets_f.text_field :description %>
-    <%= targets_f.check_box :reached %>
-    <%= targets_f.link_to_remove "Remove Target" %>
-  <% end  %>
-
-  <p>
-    <%= f.link_to_add "Add a Target", :project_targets %>
-  </p>
-
-  <%= f.fields_for :project_requirements do |targets_f| %>
-    <%= targets_f.label :description %>
-    <%= targets_f.text_field :description %>
-    <%= targets_f.check_box :reached %>
-    <%= targets_f.link_to_remove "Remove Requirement" %>
-  <% end  %>
-
-  <p>
-    <%= f.link_to_add "Add a Requirement", :project_requirements %>
-  </p>
- 
   <p>
     <%= f.submit ("Edit Project") %>
   </p>
-<% end %>
+ <% end %>
