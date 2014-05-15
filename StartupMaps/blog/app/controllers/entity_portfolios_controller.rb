@@ -1,6 +1,5 @@
 class EntityPortfoliosController < ApplicationController
 
-
   # Definition: This method lists all the porfolios.
   # Input: Void.
   # Output: All portfolio.
@@ -10,7 +9,7 @@ class EntityPortfoliosController < ApplicationController
     @entity_portfolio = EntityPortfolio.all
   end
 
-  # Definition: This method shows the portfolio that clicked from the listed portfolio.
+  # Definition: This method shows the portfolio that is clicked from the listed portfolio.
   # Input: EntityPortfolio_id.
   # Output: Chosen portfolio.
   # Author: Mozdan Ahmed.
@@ -84,7 +83,7 @@ class EntityPortfoliosController < ApplicationController
   end
 
 
- # Definition: The method deletes a certain portfolio.
+ # Definition: This method deletes a certain portfolio.
  # Input: Void.
  # Output: Void.
  # Author: Mozdan Ahmed.

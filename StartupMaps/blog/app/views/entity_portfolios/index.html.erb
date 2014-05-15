@@ -1,7 +1,7 @@
 <!-- 
   # Definition: This lists all the portfolios.
   # Input: Void.
-  # Output: All portfolio.
+  # Output: All portfolios.
   # Author: Mozdan Ahmed.
 -->
 
@@ -9,7 +9,7 @@
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Name &nbsp; &nbsp; &nbsp;</th>
 <th>Description</th>
 <th></th>
 <th></th>
@@ -20,7 +20,8 @@
 <tr>
 <td><%= link_to entity_portfolio.name, entity_portfolio %></td>
 <td><%= entity_portfolio.description %></td>        
-<td><%= link_to 'Delete', entity_portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<td><%= link_to 'Delete', entity_portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
+</td>
 </tr>
 <% end %>
 </tbody>
