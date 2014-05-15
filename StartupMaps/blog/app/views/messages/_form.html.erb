@@ -1,16 +1,16 @@
 <!--
- # Definition: Form having textfields for recepient email, subject and body.
- # Input: Recepient email, subject and body.
- # Output: void.
- # Author: Sarah Fathallah. 
+  # Definition: Form having textfields for recepient email, subject and body.
+  # Input: Recepient email, subject and body.
+  # Output: Void.
+  # Author: Sarah Fathallah. 
 -->
 
 <%= form_for @message do |form| %>
-  <%= form.label :recepient %>
-  <%= form.email_field :recepient %>
-  <%= form.label :subject %>
-  <%= form.text_field :subject %>
-  <%= form.label :body %>
-  <%= form.text_area :body %><br>
-  <%= form.submit 'Send message' %>
+ <%= form.label :recepient %>
+ <%= form.email_field :recepient %>
+ <%= form.label :subject %>
+ <%= form.text_field :subject %>
+ <%= form.label :body %>
+ <%= form.text_area :body %><br>
+ <%= form.submit 'Send message' %>
 <% end %>

@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
 
-
   # Definition: Shows messages ordered in descending order.
-  # Input: current_entity.
+  # Input: Current_entity.
   # Output: Void.
   # Author: Sarah Fathallah. 
 
@@ -17,7 +16,7 @@ class MessagesController < ApplicationController
 
 
   # Definition: Shows desired message.
-  # Input: current entity.
+  # Input: Current entity.
   # Output: Void.
   # Author: Sarah Fathallah. 
 
@@ -34,7 +33,7 @@ class MessagesController < ApplicationController
   end
 
 
-  # Definition: Creates a new message .
+  # Definition: Creates a new message.
   # Input: Void.
   # Output: Void.
   # Author: Sarah Fathallah. 

@@ -1,23 +1,23 @@
 <!--
- # Definition: Form to show inbox messages of current user.
- # Input: Void.
- # Output: Subject, from and date of each message.
- # Author: Sarah Fathallah. 
+  # Definition: Form to show inbox messages of current user.
+  # Input: Void.
+  # Output: Subject, from and date of each message.
+  # Author: Sarah Fathallah. 
 -->
 
 <link href="/assets/messages.css" rel="stylesheet"> 
 <div id="inboxMessages">
  <h2>Inbox</h2>
-  <table class="table">
-   <tr>
-    <td>Subject</td>
-    <td>From</td>
-    <td>Date</td>
-    <td></td>
+ <table class="table">
+  <tr>
+   <td>Subject</td>
+   <td>From</td>
+   <td>Date</td>
+   <td></td>
    </tr>
   </table>
  <div id="messages">
- <%= render @messages %> 
+  <%= render @messages %> 
  </div>
 </div>
 
