@@ -1,6 +1,7 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_entity!
 
+
   # Definition: When a startup opens its profile, if new badges is completed,
   # then a message appears showing the new badges achieved. A button will be available
   # to give the owner the option to view the unachieved badges. Moreover, all the
@@ -128,5 +129,38 @@ class EntitiesController < ApplicationController
   
   def service_params
     params.require(:service).permit(:sector)
+  end
+
+
+  # Definition: Knows the user ID from the params and finds its last work status.
+  # Input: Entity ID.
+  # Output: Last updated work status.
+  # Author: Ola Enaba.
+
+  def edit_work_status
+    @last = EntityWorkStatus.find(:all,:conditions => ['entity_id = ?',params[:entity_id]]).last().workstatus
+  end
+
+  
+  # Definition: Puts the work status in a vaiable, keeps the entity ID and changes 
+  # the work status with the one that the user iserted and puts it in the table.
+  # Input: New work status.
+  # Output: New work status.
+  # Author: Ola Enaba.
+
+  def update_work_status
+    @new = EntityWorkStatus.new
+    @new.entity_id = params[:entity_id]
+    if params[:status] != 'other'
+      @new.workstatus = params[:status]
+    else
+      @new.workstatus = params[:other]
+    end
+    if @new.save
+      @notice = 'successful edit'
+    else
+      redirect_to :action => 'show'
+    end
+      redirect_to :action => 'edit_work_status' ,:entity_id => params[:entity_id]
   end
 end

@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140515190618) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "auth_token"
+    t.string   "work_status"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -221,11 +222,10 @@ ActiveRecord::Schema.define(version: 20140515190618) do
   end
 
   create_table "messages", force: true do |t|
-    t.string   "sender"
-    t.string   "recepient"
-    t.string   "subject"
-    t.text     "body"
-    t.integer  "read"
+    t.integer  "entity_id"
+    t.integer  "receiver_id"
+    t.string   "title"
+    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -373,11 +373,9 @@ ActiveRecord::Schema.define(version: 20140515190618) do
 
   create_table "users", force: true do |t|
     t.string   "social_account"
+    t.string   "remember_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token"
   end
-
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
