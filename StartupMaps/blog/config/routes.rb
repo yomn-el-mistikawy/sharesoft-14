@@ -14,9 +14,14 @@ Blog::Application.routes.draw do
 
 
   resources :entities do
+    post "show_unachieved_badges"  
     post "create_startup"
     post "create_service"
     post "create_investor"
+    get 'change_company_status'
+    post 'change_company_status'
+    get 'update_company_status'
+   
   end  
 
 
@@ -25,9 +30,6 @@ Blog::Application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :maps do
-  end
-  
 
   resources :projects do
 
@@ -37,11 +39,14 @@ Blog::Application.routes.draw do
     get "merge_request"
   end  
 
+  resources :maps do
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
+  end
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
-  get 'entities/change_company_status'
-  get 'entities/update_company_status'
-  get 'entities/show'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -6,9 +6,9 @@ class Startup < ActiveRecord::Base
   has_many :comments, through: :groups
   has_many :likes, through: :groups
   has_many :resumes, through: :groups
-  has_many :projects, through: :startups_projects
+  has_many :projects, through: :projects_startups
   has_many :resumes, through: :groups
   has_many :badges, through: :startups_badges
-
+  is_impressionable
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 end

@@ -12,7 +12,6 @@
   <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |entity| %>
    <div><%= entity.label :number_of_working_years %><br />
    <%= entity.text_field :number_of_working_years %></div><br>
-
    <div><%= entity.label :sector %><br />
    <%= entity.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div>
    <%= entity.submit "Insert" %>
@@ -37,11 +36,73 @@
 <% end %>
 
 
+<!-- 
+  # Definition: This part shows a button that redirects the startup that owns this profile 
+  # to its unachieved badges. If it has achieved new badges a pop up alert appears showing the badge image,
+  # name, description and level. Moreover, a list of the highest level achieved badges in each category 
+  # appear on the startup profile.
+  # Input: @all_achieved_badges, @recently_achieved_badges, @achieved_badges, entity id.
+  # Output: entity id.
+  # Author: Yomn El-Mistikawy. 
+-->
+
+<% if @searching_table_startup.size != 0 %>
+  <% if @entity.type == "Startup" %>
+    <% if @entity == current_entity %> 
+      <% if @recently_achieved_badges.size != 0 %>
+        <% @recently_achieved_badges.each do |badge| %>
+          <script>
+            alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
+          </script>
+        <% end %>
+      <% end %> 
+    <% end %>
+    <% if @achieved_badges.size != 0 %>
+      <h1> Achievements </h1>
+      <% if @entity == current_entity %>
+        <% if @all_achieved_badges.size != 25 %>
+          <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id]), :class => "button" %>
+        <% end %>
+      <% end %>
+      <table>
+        <tbody>
+          <tr>
+            <% @achieved_badges.each do |badge| %>
+              <td width="22%">
+                <% if badge.level == 1 %>
+                  <%= image_tag "Bronze_1.gif" %>
+                <% else %>
+                  <% if badge.level == 2 %>
+                    <%= image_tag "Silver_1.gif" %>
+                  <% else %>
+                    <% if badge.level == 3 %>
+                      <%= image_tag "Gold_1.gif" %>
+                    <% else %>
+                      <%= image_tag "Platinum_1.gif" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                <br>
+                <label><font color="white">Name: </label>
+                <%= badge.name %>
+                <br>
+                <label> Description: </label>
+                <%= badge.description %>
+              </td>
+            <% end %>
+          </tr> 
+        </tbody>
+      </table>
+    <% end %> 
+  <% end %>
+<% end %>
+
 <!--
   # Definition: Redirects to change company status.
   # Input: Nothing.
   # Output: Nothing.
   # Author: Ola Enaba
 -->
-
-<a href='change_company_status?startup_id=1' > <button> change company status </button> </a>
+<% if current_entity == @entity && @entity.type == "Startup" %>
+<%= button_to "Change company status", entity_change_company_status_path(entity_id: params[:id]) %>
+<% end %>
