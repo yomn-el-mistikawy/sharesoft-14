@@ -126,4 +126,9 @@ class EntitiesController < ApplicationController
   def service_params
     params.require(:service).permit(:sector)
   end
+
+  def create
+    s = Entity.new
+    s.save
+ end
 end
