@@ -1,12 +1,11 @@
-class GalleriesController < ApplicationController
-  before_action :set_gallery, only: [:show, :edit, :update, :destroy]
-
-
   # Definition: This method loops on table gallery to get all data from it and put it
   # into the variable @galleries.
   # Input: Void.
   # Output: All data from table gallery.
   # Author: Sandra Youssef.
+ 
+ class GalleriesController < ApplicationController
+  before_action :set_gallery, only: [:show, :edit, :update, :destroy]
 
   def index
     @galleries = Gallery.all
@@ -21,6 +20,7 @@ class GalleriesController < ApplicationController
 
   def edit
   end
+
 
   # Definition: This method aims to create a new gallery.
   # Input: Gallery id.
@@ -60,6 +60,7 @@ class GalleriesController < ApplicationController
     end
   end
 
+
   # Definition: This method deletes the painting.
   # Input: Void.
   # Output: Void.
@@ -73,6 +74,7 @@ class GalleriesController < ApplicationController
     end
   end
 
+
   private
   # Definition: This method finds in table gallery all data that has id similar to the
   # input.
@@ -80,9 +82,10 @@ class GalleriesController < ApplicationController
   # Output: All data from table gallery with similar input.
   # Author: Sandra Youssef.
 
-    def set_gallery
+  def set_gallery
       @gallery = Gallery.find(params[:id])
-    end
+  end
+
 
   # Definition: This method is called by method create to pass the name.
   # Input: Name.
@@ -92,4 +95,4 @@ class GalleriesController < ApplicationController
   def gallery_params
     params.require(:gallery).permit(:name)
   end
-end
+ end

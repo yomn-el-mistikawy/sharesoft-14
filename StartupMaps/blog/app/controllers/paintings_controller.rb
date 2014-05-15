@@ -14,6 +14,7 @@
   def show
   end
 
+
   # Definition: This method aims to make a new painting.
   # Input: Gallery id.
   # Output: A new painting.
@@ -91,6 +92,7 @@ def create
   def set_painting
     @painting = Painting.find(params[:id])
   end
+
 
   # Definition: This method is called by method create that has the aim to create a
   # new painting. 
