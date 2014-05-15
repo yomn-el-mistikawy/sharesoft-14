@@ -22,13 +22,23 @@ class CommentsController < ApplicationController
     @comment.commenter = @startup.name
     @comment.startup_id = current_entity.id
 
+ respond_to do |format|
     if @comment.save
-      redirect_to @group
+      format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+      format.js   {}
+      format.json { render json: @comment, status: :created, location: @comment }
     else
-      flash[:error] = 'Your comment could not be posted, please try again.'
-      redirect_to @group
+      format.html { render action: "new" }
+      format.json { render json: @comment.errors, status: :unprocessable_entity }
+    end
+  end
+    # if @comment.save
+    #   redirect_to @group
+    # else
+    #   flash[:error] = 'Your comment could not be posted, please try again.'
+    #   redirect_to @group
      
-     end
+    #  end
   end
 
   def show
