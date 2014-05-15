@@ -1,7 +1,12 @@
-<%@all.each do |c|%>
+<!-- 
+# Definition: this buttons to accept or decline invitation request.
+# Input: void
+# Output: redirect to the accept and decline.
+# Author: Nardeen Milad
+ -->	
 
-	<br>group number <%=c.id%>
+<%@all.each do |c|%>
+<br>group number <%=c.id%>
 <a href='accept?id=<%=c.id%>'> accept</a>
 <a href='decline?id=<%=c.id%>'> decline</a>
-
 <%end%>

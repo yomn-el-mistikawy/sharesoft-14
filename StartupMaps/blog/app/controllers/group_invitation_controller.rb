@@ -1,4 +1,5 @@
 class GroupInvitationController < ApplicationController
+
  # Definition: The page where the username of the invited person can be written.
 # Input: void
 # Output: void
@@ -25,11 +26,8 @@ class GroupInvitationController < ApplicationController
       @n = Group.new
       @n.name = params[:name]
       @n.description = params[:desc]
-      @n.save
-      
-  	end
-
-
+      @n.save    
+  end
 
 
 # Definition:this method checks if the startup user can be invited or not and if he can
@@ -43,47 +41,44 @@ class GroupInvitationController < ApplicationController
 
 	def validate
 		@invite = true
-		
 		@one = GroupsStartup.where(:startup_id => params[:id],:group_id => params[:groupid])
 		@desc  = params[:groupid]
 		
-		if @one.count > 0
-			@invite = false
-			@desc = "user is already in group "
-		end
+		if 
+		 @one.count > 0
+		 @invite = false
+	   @desc = "user is already in group "
+  	end
 			
 
 		@two = GroupInvitation.where(:receiver_id => params[:id] , :group_id => params[:groupid])
 		
-		if  @two.count > 0 
-				@desc = "invitation was sent"
-				@invite = false
+		if 
+		 @two.count > 0 
+		 @desc = "invitation was sent"
+		 @invite = false
 		end
 
 		
-
-		if( @invite == true)
+		if(@invite == true)
 			
-			@inv = GroupInvitation.new
-			@inv.receiver_id = params[:id]
-			@inv.sender_id = params[:senderid]
-			@inv.group_id = params[:groupid]
-			@inv.save
-
-			
+		 @inv = GroupInvitation.new
+		 @inv.receiver_id = params[:id]
+		 @inv.sender_id = params[:senderid]
+		 @inv.group_id = params[:groupid]
+		 @inv.save
 		end
 	end
 
 
 # Definition: this method confirms under the condition of id. 
-# Input: 
+# Input: void
 # Output: void
 # Author: Nardeen Milad 
 
 	def confirm
-		@id = 2
-		@all = GroupInvitation.find(:all, :conditions => ["receiver_id = ?", @id ])
-
+		 @id = 2
+		 @all = GroupInvitation.find(:all, :conditions => ["receiver_id = ?", @id ])
 	end
 
 
@@ -96,14 +91,13 @@ class GroupInvitationController < ApplicationController
 # Author: Nardeen Milad 
 
 	def accept
-		@all = GroupInvitation.find (params[:id] )
-		@new = StartupHasGroup.new
-		@new.startup_id = @all.receiver_id
-		@new.group_id = @all.group_id
-		@new.save
-		
-		@all.delete
-		redirect_to :action => 'inv' 		
+		 @all = GroupInvitation.find (params[:id] )
+	 	 @new = StartupHasGroup.new
+		 @new.startup_id = @all.receiver_id
+		 @new.group_id = @all.group_id
+     @new.save
+		 @all.delete
+		 redirect_to :action => 'inv' 		
 	end
 
 
@@ -115,8 +109,6 @@ class GroupInvitationController < ApplicationController
 
 	def decline
 		GroupInvitation.find( params[:id] ).delete
-				redirect_to :action => 'inv' 		
-
+		redirect_to :action => 'inv' 		
 	end
-
 end
