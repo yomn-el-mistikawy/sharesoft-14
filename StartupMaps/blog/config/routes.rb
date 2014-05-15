@@ -24,6 +24,7 @@ Blog::Application.routes.draw do
    
   end  
 
+post "entities/edit"
 
 
   resources :startups
