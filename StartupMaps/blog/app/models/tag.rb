@@ -4,7 +4,7 @@ class Tag < ActiveRecord::Base
 
   # Definition: This method checks if the references are already in the database or not, 
   # and if it isn't, then it adds it as a tuple in the table.
-  # Input: other, refs, entity.
+  # Input: Other, refs, entity.
   # Output: Void.
   # Author: Adel Badawy.
 
@@ -23,7 +23,7 @@ class Tag < ActiveRecord::Base
 
 
   # Definition: This method checks for the values in the dropdownlist, and deletes it.
-  # Input: deleted, entity.
+  # Input: Deleted, entity.
   # Output: Void.
   # Author: Adel Badawy.
 

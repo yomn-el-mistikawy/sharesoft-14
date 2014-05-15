@@ -1,11 +1,9 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_entity!
 
-<<<<<<< HEAD
-
   # Definition: This method sends the parameters from the checkboxes, textbox, 
   # dropdownlist, and the currently logged in user to the method.
-  # Input: :other, :prefs(the array containing the checkboxes), :delete, current_entity.
+  # Input: Other, prefs(the array containing the checkboxes), delete, current_entity.
   # Output: Void.
   # Author: Adel Badawy.
 
@@ -14,11 +12,9 @@ class EntitiesController < ApplicationController
       Tag.update_pref(params[:other], params[:prefs], current_entity)
     end
 		Tag.delete_pref(params[:delete], current_entity)
-    p Tag.where(entity_id: current_entity, tags: nil)
-    p "Hahahaha"
 	end
 
-=======
+
   # Definition: When a startup opens its profile, if new badges is completed,
   # then a message appears showing the new badges achieved. A button will be available
   # to give the owner the option to view the unachieved badges. Moreover, all the
@@ -26,7 +22,6 @@ class EntitiesController < ApplicationController
   # Input: startup_id, session_id.
   # Output: void.
   # Author: Yomn El-Mistikawy.
->>>>>>> 6cbcd178d2f3a083d2950e21605bdfe54efe4e4c
 
   # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
   # Input: Entity id.
