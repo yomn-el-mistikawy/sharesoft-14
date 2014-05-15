@@ -33,13 +33,12 @@
  <h2>Comments</h2>
  <% @post.comments.each do |comment| %>
    <p>
-    <strong style= font-size: 10pt"><%= comment.commenter %></strong> 
+    <strong style= "font-size: 10pt"><%= comment.commenter %></strong> 
     <%= ":" %>
     <%= comment.comment %>  
     <br/>
     <strong>Posted <%= time_ago_in_words(comment.created_at) %> ago</strong>
     <%= link_to 'Delete', group_post_comment_path(@group,@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-   </p>
   <% end %>
 
   <% if check_group_member == true %>
