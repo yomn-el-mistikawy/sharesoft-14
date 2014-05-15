@@ -1,8 +1,8 @@
 <!--
-    # Definition: If the other is selected it checkes if the textbox is not empty.
-    # Input: New work status.
-    # Output: Passes or error.
-    # Author: Ola Enaba.
+  # Definition: If the other is selected it checkes if the textbox is not empty.
+  # Input: New work status.
+  # Output: Passes or error.
+  # Author: Ola Enaba.
 -->
 
 <html>
@@ -10,23 +10,22 @@
   <script>
   function check(form)
   {
-        if (form.elements.status.value == 'other' && form.elements.other.value.length == 0)
-        {
-            alert("you need to fill the text box");
-            return false;
-        }
+    if (form.elements.status.value == 'other' && form.elements.other.value.length == 0)
+      {
+        alert("Please fill the text box!");
+        return false;
+      }
   }
   
-</script>
-  
+  </script>
 </head>
 
 
 <!--
-    # Definition: Page layout.
-    # Input: Nothing.
-    # Output: Updated email and password.
-    # Author: Ola Enaba.
+  # Definition: Page layout.
+  # Input: Nothing.
+  # Output: Updated email and password.
+  # Author: Ola Enaba.
 -->
 
 <h1>Edit your work status : <%= @last %></h1>
@@ -34,16 +33,13 @@
   work status:
   <br>
 <select name =status>
-<option value="other">
-        other</option>
-      <option value="working">working</option>
-      <option value="on hold">on hold</option>
-      <option value="temporary on hold">temporary on hold</option>
-    </select>
+  <option value="other">other</option>
+  <option value="working">working</option>
+  <option value="on hold">on hold</option>
+  <option value="temporary on hold">temporary on hold</option>
+</select>
 <input type=text name=other>
-    <input type=hidden name=entity_id value='1'>
-    
-
-    <input type=submit value='change' %>
- </form>
-  <%= link_to "Back", current_entity %>
+<input type=hidden name=entity_id value='1'>
+<input type=submit value='change' %>
+</form>
+<%= link_to "Back", current_entity %>
