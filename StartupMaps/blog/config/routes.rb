@@ -22,9 +22,7 @@ Blog::Application.routes.draw do
     post "update_status"
     get "update_status"
     get "entities/show"
-  end  
-
-post "entities/edit"
+  end 
 
 
   resources :startups

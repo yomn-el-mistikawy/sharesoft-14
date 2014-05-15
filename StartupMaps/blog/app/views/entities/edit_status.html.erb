@@ -1,27 +1,4 @@
 <!--
-  # Definition: Checks if the textbox is empty or full.
-  # Input: New status.
-  # Output: Passes or sends error.
-  # Author: Ola Enaba.
--->
-
-<html>
-<head>
-  <script>
-  function check(form)
-  {
-        if ( form.elements.other.value.length == 0)
-        {
-            alert("You have to write a status.");
-            return false;
-        }
-        
-  }
-  </script>
-</head>
-
-
-<!--
   # Definition: The layout of the page.
   # Input: Nothing.
   # Output: Updated status
@@ -34,7 +11,7 @@
  
     status:<br>
     
-
+    
 	<input type=text name=other >
   <input type=hidden name=entity_id value='1' >
   <input type=submit value='change' %>

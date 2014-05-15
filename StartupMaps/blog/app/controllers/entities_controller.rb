@@ -136,7 +136,8 @@ class EntitiesController < ApplicationController
   # Author: Ola Enaba.
 
     def edit_status
-      @last = EntityStatus.find(:all,:conditions => ['entity_id = ?',params[:entity_id]]).last()
+     # @last = EntityStatus.find(:all,:conditions => ['entity_id = ?',params[:entity_id]])
+     @last = EntityStatus.where(:entity_id => current_entity.id).last
     end
 
 
@@ -154,8 +155,7 @@ class EntitiesController < ApplicationController
         @new.save
         @notice = 'successful edit'
       else
-        redirect_to :action => 'show'
+        redirect_to :action => 'edit_status',:entity_id => params[:entity_id]
       end
-    redirect_to :action => 'edit_status',:entity_id => params[:entity_id]
     end
 end
