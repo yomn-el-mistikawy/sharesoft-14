@@ -12,14 +12,14 @@
    <%= f.select :sectors, [['please select a sector...'],['Agriculture','agriculture'],['Manufacturing','manufacturing'],['Trading','trading'],['Clothes','clothes'],['Telecommunications','telecommunications']] %>
   </p>
  <% end %>
-<label>Startups</label>
-<label>  <img src = "http://rideforclimate.com/nukes/all/images/blue.png">  <input type = 'checkbox' id = 'online' onclick = 'toggleLocations(this, "/maps/1/show_online");'>Online Startups</label>
-<label>  <img src = "http://rideforclimate.com/nukes/all/images/red.png">  <input type = 'checkbox' id = 'offline' onclick = 'toggleLocations(this, "/maps/1/show_offline");'>Offline Startups</label>
-<label><img src = "http://rideforclimate.com/nukes/all/images/orange.png">   <input type = 'checkbox'id = 'investors' onclick = 'toggleLocations(this, "/maps/1/show_investors");'>Investors</label>
-<label><img src = "http://rideforclimate.com/nukes/all/images/green.png">  <input type = 'checkbox'id = 'services' onclick = 'toggleLocations(this, "/maps/1/show_services");'>Services</label>
-<label>  <img src = "http://rideforclimate.com/nukes/all/images/yellow.png">  <input type = 'checkbox' id = 'merged' onclick = 'toggleLocations(this, "/maps/1/show_merged");'>Joint Ventures</label>
-<div id = "map" style = 'width: 970px; height: 500px;'>
-</div>
+ <label><img src = "http://rideforclimate.com/nukes/all/images/orange.png">   <input type = 'checkbox'id = 'investors' onclick = 'toggleLocations(this, "/maps/1/show_investors");'>Investors</label>
+ <label><img src = "http://rideforclimate.com/nukes/all/images/green.png">  <input type = 'checkbox'id = 'services' onclick = 'toggleLocations(this, "/maps/1/show_services");'>Services</label>
+ <label>Startups</label>
+ <label>  <img src = "http://rideforclimate.com/nukes/all/images/blue.png">  <input type = 'checkbox' id = 'online' onclick = 'toggleLocations(this, "/maps/1/show_online");'>Online Startups</label>
+ <label>  <img src = "http://rideforclimate.com/nukes/all/images/red.png">  <input type = 'checkbox' id = 'offline' onclick = 'toggleLocations(this, "/maps/1/show_offline");'>Offline Startups</label>
+ <label>  <img src = "http://rideforclimate.com/nukes/all/images/yellow.png">  <input type = 'checkbox' id = 'merged' onclick = 'toggleLocations(this, "/maps/1/show_merged");'>Joint Ventures</label>
+ <div id = "map" style = 'width: 970px; height: 500px;'>
+ </div>
 </html>
 
 <!-- 
@@ -38,38 +38,39 @@
   # Output: The markers on the map.
   # Author: Alia Tarek.
 -->
+
 <script>
-var locationsMap = {};
-function toggleLocations(cb, url){
+ var locationsMap = {};
+ function toggleLocations(cb, url){
   var id= cb.id;
   if(!cb.checked){
-    locationsMap[id] = [];
-    buildMap();
+   locationsMap[id] = [];
+   buildMap();
   }
   else{
-    url = url + "?sector=" + getSector();
-    $.ajax(url)
-      .done(function(data) {
-        locationsMap[id] = data;
-        buildMap();
-      if (locationsMap[id] == "" )
-         {alert("No result found")} 
-      })
-  .fail(function(data) {
-        alert.log( "error" );
-      });
+   url = url + "?sector=" + getSector();
+   $.ajax(url)
+   .done(function(data) {
+    locationsMap[id] = data;
+    buildMap();
+    if (locationsMap[id] == "" )
+    {alert("No result found")} 
+   })
+   .fail(function(data) {
+    alert.log( "error" );
+   });
   }
-  };
-  function getSector(){
-    var skillsSelect = document.getElementById("entities_sectors");
-    var selectedText = skillsSelect.options[skillsSelect.selectedIndex].text;
-    return selectedText;
+ };
+ function getSector(){
+  var skillsSelect = document.getElementById("entities_sectors");
+  var selectedText = skillsSelect.options[skillsSelect.selectedIndex].text;
+  return selectedText;
+ }
+ function isChecked(id){
+  if (document.getElementById(id).checked){
+   return id + ',';
   }
-  function isChecked(id){
-    if (document.getElementById(id).checked){
-      return id + ',';
-    }
-    return '';
+   return '';
   }
 </script>
 
@@ -81,25 +82,25 @@ function toggleLocations(cb, url){
 -->
 
 <script type = "text/javascript">
-locationsMap["investors"] = [];
-locationsMap["services"] = [];
-locationsMap["online"] = [];
-locationsMap["offline"] = [];
-locationsMap["merged"] = [];
+ locationsMap["investors"] = [];
+ locationsMap["services"] = [];
+ locationsMap["online"] = [];
+ locationsMap["offline"] = [];
+ locationsMap["merged"] = [];
 
-function buildMap (){
+ function buildMap (){
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  var loc1 = locationsMap["online"]
-      .concat(locationsMap["offline"]);
-  var loc2 = loc1.concat(locationsMap["investors"]);
-  var loc3 = loc2.concat(locationsMap["services"]);
-  var loc4 = loc3.concat(locationsMap["merged"]);
-  markers = handler.addMarkers(loc4);  
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  handler.getMap().setZoom(2);
+   var loc1 = locationsMap["online"]
+    .concat(locationsMap["offline"]);
+   var loc2 = loc1.concat(locationsMap["investors"]);
+   var loc3 = loc2.concat(locationsMap["services"]);
+   var loc4 = loc3.concat(locationsMap["merged"]);
+   markers = handler.addMarkers(loc4);  
+   handler.bounds.extendWith(markers);
+   handler.fitMapToBounds();
+   handler.getMap().setZoom(2);
   }); 
-}
+ }
  buildMap();
 </script>
