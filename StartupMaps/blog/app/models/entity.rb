@@ -45,10 +45,9 @@ class Entity < ActiveRecord::Base
         creator_id: 0, interest: "none")
       end
       @newgeo_id = @geo.id
-      if GroupsStartup.check_membership(self, @geo) == nil
+      if GroupsStartup.check_membership(self.id, @newgeo_id).size == 0
         GroupsStartup.create(startup_id: self.id, group_id: @newgeo_id)
       end
-       alert:"You have successfully been added to " @geo.name "group."
     end
   end
 
