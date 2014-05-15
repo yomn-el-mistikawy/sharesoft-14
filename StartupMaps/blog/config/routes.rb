@@ -13,12 +13,21 @@ Blog::Application.routes.draw do
   end  
 
   resources :entities do
+
+    post "create_startup"
+    post "create_service"
+    post "create_investor"  
+    get "view_projects"
     post "show_unachieved_badges"  
     post "create_startup"
     post "create_service"
     post "create_investor"
+
   end  
 
+  resources :activities do
+    get "index"
+  end 
 
 
   resources :startups
@@ -26,7 +35,6 @@ Blog::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :projects do
-
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
     get "show_suggested"

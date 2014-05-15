@@ -83,8 +83,20 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    ProjectsStartup.create(:startup_id => Startup.find_by_entity_id(current_entity).id, :project_id => @project.id
+      )
     @project.save
     redirect_to @project
+  end
+
+
+  # Defintion: View project of the logged-in startup.
+  # Input: Startup id.
+  # Output: Projects of the startup.
+  # Author: Amr Gamal
+
+  def view_project
+    @projects = Project.select(:name).where(:id => (Startup_has_project.select(:project_id).where(:startup_id => session[:startup_id])))
   end
 
 
