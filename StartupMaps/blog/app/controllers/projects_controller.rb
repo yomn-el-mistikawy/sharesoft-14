@@ -90,6 +90,7 @@ class ProjectsController < ApplicationController
       end
     end
 
+
   # Definition: Allows deleting a certain project,
   # recirects to 'index' listing the rest of the projects of the user.
   # Input: project_id. "on the show page".
