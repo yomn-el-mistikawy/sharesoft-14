@@ -98,6 +98,7 @@ class ProjectsController < ApplicationController
         end
       end
     end
+    
 
   # Definition: Allows deleting a certain project.
   # recirects to 'index' listing the rest of the projects of the user.
