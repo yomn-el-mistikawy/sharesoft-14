@@ -165,5 +165,4 @@ class EntitiesController < ApplicationController
       render 'edit'
     end
   end
-
 end
