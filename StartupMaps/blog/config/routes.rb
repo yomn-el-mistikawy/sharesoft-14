@@ -28,6 +28,16 @@ Blog::Application.routes.draw do
 
 
 
+  resources :entities do
+    post "show_unachieved_badges"  
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+post "entities/edit"
+
+
   resources :startups
 
   # The priority is based upon order of creation: first created -> highest priority.

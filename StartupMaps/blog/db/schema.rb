@@ -251,10 +251,11 @@ ActiveRecord::Schema.define(version: 20140513172015) do
   end
 
   create_table "messages", force: true do |t|
-    t.integer  "entity_id"
-    t.integer  "receiver_id"
-    t.string   "title"
-    t.string   "message"
+    t.string   "sender"
+    t.string   "recepient"
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

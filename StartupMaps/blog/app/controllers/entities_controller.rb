@@ -16,6 +16,7 @@ class EntitiesController < ApplicationController
 
   def show
     @entity = Entity.find(params[:id])
+<<<<<<< HEAD
     if @entity.type == "Startup"
       impressionist(@entity)
       if @entity == current_entity
@@ -24,6 +25,19 @@ class EntitiesController < ApplicationController
       end 
       @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 0, 1, 0)
     end
+=======
+    @searching_table_startup = Startup.where(:entity_id => params[:id])
+    if @searching_table_startup.size != 0
+      if @entity.type == "Startup"
+        impressionist(@entity)
+        if @entity == current_entity
+          @recently_achieved_badges = StartupsBadges.set_badges(params[:id])
+          @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1, 1, 0)
+        end 
+        @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 0, 1, 0)
+      end
+    end  
+>>>>>>> 6cbcd178d2f3a083d2950e21605bdfe54efe4e4c
   end
 
 

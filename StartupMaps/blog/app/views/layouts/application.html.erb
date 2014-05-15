@@ -59,6 +59,7 @@
         	<a id="goUp" href="#home-slider" title="Startup Maps">Startup Maps</a>
         </div>
         
+<<<<<<< HEAD
         <nav id="menu">
         	<ul id="menu-nav">
             <li><a href="home.html" class="external">Home</a></li>
@@ -70,6 +71,25 @@
             </ul>
         </nav>
         
+=======
+<!-- 
+  # Author: Omar El-Menawy.
+-->
+
+        <nav id="menu">
+        	<ul id="menu-nav">
+            <li><a href="/" class="external">Home</a></li> 
+            <li><a href = "/maps" class="external">Map</a></li>
+            <% if current_entity != nil %>
+             <li><a href = "/entities/<%= current_entity.id %>" class="external">Profile</a></li>
+             <li><a href = "/entities/edit" class="external">Edit Profile</a></li>
+             <li><%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'menu_nav'  %></li>
+            <% else %>
+             <li><a href = "/entities/sign_in" class="external">Sign In</a></li>
+            <% end %>
+			     </ul>
+        </nav>
+>>>>>>> 6cbcd178d2f3a083d2950e21605bdfe54efe4e4c
     </div>
 </header>
 <!-- End Header -->
