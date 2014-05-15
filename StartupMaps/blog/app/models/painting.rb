@@ -6,4 +6,6 @@
  class Painting < ActiveRecord::Base
   belongs_to :gallery
   mount_uploader :image, ImageUploader
+  validates_presence_of :name
+  validates_presence_of :image
  end
