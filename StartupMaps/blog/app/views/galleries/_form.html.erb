@@ -1,0 +1,16 @@
+<!--
+  # Definition: This method makes a gallery.
+  # Input: Name.
+  # Output: Create a new gallery.
+  # Author: Sandra Youssef.
+-->
+
+ <%= form_for(@gallery) do |f| %>
+ <div class="field">
+ <%= f.label :name %><br>
+ <%= f.text_field :name %>
+ </div>
+ <div class="actions">
+ <%= f.submit %>
+ </div>
+ <% end %>

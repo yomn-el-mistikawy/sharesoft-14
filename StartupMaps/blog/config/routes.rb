@@ -1,5 +1,13 @@
 Blog::Application.routes.draw do
  
+  post "galleries/new"
+  resources :paintings
+
+  resources :galleries do
+    get "new"
+  end
+  root :to => 'galleries#index'
+
  
   devise_for :entities, :controllers => {:registrations => "entities/registrations", 
                                          :sessions => "entities/sessions", 
@@ -7,8 +15,7 @@ Blog::Application.routes.draw do
                                          :unlocks => "entities/unlocks",
                                          :passwords => "entities/passwords"}
 
-
-  resources :groups do
+ resources :groups do
     get "list_group_members"
   end  
 
@@ -40,7 +47,7 @@ post "entities/edit"
     get "show_services"
   end
   # You can have the root of your site routed with "root"
-  root to: 'welcome#index'
+  #root to: 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

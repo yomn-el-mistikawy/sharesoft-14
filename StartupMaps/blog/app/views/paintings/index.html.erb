@@ -1,0 +1,32 @@
+<!--
+  # Definition: This method lists all paintings.
+  # Input: Void.
+  # Output: Void.
+  # Author: Sandra Youssef.
+-->
+
+ <h1>Listing paintings</h1>
+ <table>
+ <thead>
+ <tr>
+ <th>Gallery</th>
+ <th>Name</th>
+ <th></th>
+ <th></th>
+ <th></th>
+ </tr>
+ </thead>
+ <tbody>
+ <% @paintings.each do |painting| %>
+ <tr>
+ <td><%= painting.gallery %></td>
+ <td><%= painting.name %></td>
+ <td><%= link_to 'Show', painting %></td>
+ <td><%= link_to 'Edit', edit_painting_path(painting) %></td>
+ <td><%= link_to 'Destroy', painting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ </tr>
+ <% end %>
+ </tbody>
+ </table> 
+ <br>
+ <%= link_to 'New Painting', new_painting_path %>
