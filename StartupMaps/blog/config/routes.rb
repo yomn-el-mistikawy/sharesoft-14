@@ -21,6 +21,7 @@ Blog::Application.routes.draw do
     post "create_investor"
   end  
 
+post "entities/edit"
 
 
   resources :startups
