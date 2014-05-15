@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   # Author: Amr Gamal.
 
   def current_user  
-    @current_user ||= Startup.find(session[:startup_id]) if session[:startup_id]  
+    @current_user ||= current_entity
   end  
   helper_method :current_user  
   hide_action :current_user  

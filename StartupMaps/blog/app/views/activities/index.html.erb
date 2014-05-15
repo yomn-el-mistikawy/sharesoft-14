@@ -7,9 +7,16 @@
 
 <h1>Friends’ Activities</h1>  
 <% @activities.each do |activity| %>  
-   <div class="activity">  
+   <div class="activity">
+  <%if activity.trackable_type == 'Project' %> 
   <%= link_to activity.owner.name, activity.owner if activity.owner %>  
-  added comment to <%= link_to activity.trackable.project.name, activity.trackable.project %>  
+  created project <%= link_to activity.trackable.name, activity.trackable %> 
+  <% end %> 
+
+  <%if activity.trackable_type == 'Group' %> 
+  <%= link_to activity.owner.name, activity.owner if activity.owner %>  
+  created group <%= link_to activity.trackable.name, activity.trackable %> 
+  <% end %> 
   </div> 
  
     
