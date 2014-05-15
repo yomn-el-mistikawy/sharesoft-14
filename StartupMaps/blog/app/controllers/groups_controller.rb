@@ -11,10 +11,14 @@ class GroupsController < ApplicationController
   # Input: entity_id, group_id
   # Output: list of group members
   # Author: Yomn El-Mistikawy
+  # Modified By: Mina Ashraf
 
   def list_group_members 
-    session[:entity_id] = 1
-      @group_members = Group.get_group_members(params[:group_id], session[:entity_id])
+    @startup = Startup.find(session[:entity_id])
+    if (GroupsStartup.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
+      @group_members = Group.get_group_members(Group.find(params[:group_id]))
+     
+    end
   end
 
 
@@ -82,7 +86,6 @@ class GroupsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
