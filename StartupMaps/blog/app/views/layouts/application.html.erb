@@ -116,12 +116,13 @@
 
 
 <!-- Header -->
+<% if current_entity != nil %>
 <header>
     <div class="sticky-nav">
-    	<a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+      <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
         
         <div id="logo">
-        	<a id="goUp" href="#home-slider" title="Startup Maps">Startup Maps</a>
+          <a id="goUp" href="#home-slider" title="Startup Maps">Startup Maps</a>
         </div>
         
 <!-- 
@@ -129,31 +130,23 @@
 -->
 
         <nav id="menu">
-        	<ul id="menu-nav">
-
-        
-            <li><a href="home.html" class="external">Home</a></li>
-            <li><a href="Map.html" class="external">Map</a></li>
-            <li><a href="Profile.html" class="external">Profile</a></li>
-            <li><a href="Logout.html" class="external">Logout</a></li>
-       
-				
-            </ul>
+          <ul id="menu-nav">
 
             <li><a href="/" class="external">Home</a></li> 
             <li><a href = "/maps" class="external">Map</a></li>
-            <% if current_entity != nil %>
+            
              <li><a href = "/entities/<%= current_entity.id %>" class="external">Profile</a></li>
              <li><a href = "/entities/edit" class="external">Edit Profile</a></li>
              <li><%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'menu_nav'  %></li>
-            <% else %>
              <li><a href = "/entities/sign_in" class="external">Sign In</a></li>
-            <% end %>
-			     </ul>
+            
+           </ul>
 
         </nav>
     </div>
+
 </header>
+    <% end %>
 <!-- End Header -->
 
 
@@ -202,7 +195,6 @@
 <p class="credits">&copy;2014 Startup Maps. Developed By <a>Sharesoft-14</a>. Design by <a href="http://www.facebook.com/samarfikri" >Samar Fikri</a></p>
 
 
-  <!-- <p class="credits">&copy;2014 Startup Maps.Developed By Sharesoft-14. Design By <a href="http://www.facebook.com/" title="Alessio Atzeni | Web Designer &amp; Front-end Developer">Samar Fikri</a></p> -->
 </footer>
 <!-- End Footer -->
 

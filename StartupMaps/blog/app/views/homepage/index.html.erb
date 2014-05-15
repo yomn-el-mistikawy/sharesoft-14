@@ -1,5 +1,9 @@
+<% if current_entity != nil %>
+<h1>Welcome</h1>
+<%= button_to "Show Map", maps_path, :class => "button"  %>
 
 
+<% else %>
 <!-- Homepage Slider -->
 <div id="home-slider">  
     <div class="overlay"></div>
@@ -30,8 +34,8 @@
         
         <nav id="menu">
         	<ul id="menu-nav">
-            <li><a href="Login.html" class="external">Log In</a></li>
-            <li><a href="signup.html" class="external">Sign Up</a></li>
+            <li><a href="/entities/sign_in" class="external">Log In</a></li>
+            <li><a href="/entities/sign_up" class="external">Sign Up</a></li>
             	<li class="current"><a href="#home-slider">Home</a></li>
                 <li><a href="#work">Our Aim</a></li>
                 <li><a href="#about">How it Works</a></li>
@@ -157,4 +161,5 @@ provided. </p>
     </div>
 </div>
 <!-- End Socialize -->
+<% end %>
 
