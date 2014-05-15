@@ -17,10 +17,8 @@ class GroupsController < ApplicationController
     @startup = Startup.find(session[:entity_id])
     if (GroupsStartup.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
       @group_members = Group.get_group_members(Group.find(params[:group_id]))
-     
     end
   end
-
 
     # GET /groups
   # GET /groups.json
