@@ -7,7 +7,7 @@ describe Project do
       description: "Because Unicorns are awesome sauce (duh) we must save them",
       category: "Obvious stuff"
     }
-  end
+  end 
 
   it "should create a project given valid information" do
     project = Project.new(@valid_project)
@@ -39,8 +39,7 @@ describe Project do
 
   it "should have an error on category (missing)" do
     expect(Project.new(@valid_project.merge!(:category => ""))).to have(1).errors_on(:category)
-  en
-
+  end
 
   it "should not be valid if the name is not unique" do
     Project.create!(@valid_project)
@@ -57,4 +56,10 @@ describe Project do
     project = Project.new(@valid_project.merge!(:category => ""))
     expect(project).to_not be_valid
   end
-end
+
+  it "can delete a project" do
+    project = Project.create(@valid_project)
+    project = Project.find_by(name: "Save Unicorns").destroy
+    expect(project).to be_valid
+  end 
+end 

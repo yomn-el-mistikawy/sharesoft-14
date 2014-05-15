@@ -2,8 +2,8 @@
   # Definition: Doesn't submit unless name,category 
   # and description are submitted, so it just gives 
   # a red color on error.
-  # Input: Title 'name' ,project attribute values.
-  # Output: If there is no input redirects to the same page
+  # Input: title 'name' ,project attribute values.
+  # Output: if there is no input redirects to the same page
   # else redirects to show.
   # Author: Hana Magdy.
 -->
@@ -19,10 +19,10 @@
 <!--
   # Definition: Allows entering all project attributes with the necessary 
   # and unnecessary attributes
-  # can add/remove project attributes, while creating the project
+  # can add/remove targets and requirements while creating the project
   # submit button to check the entries to get redirected to the show page.
-  # Input: Project attribute values.
-  # Output: If there is no input and checks validations redirects to the same page
+  # Input:project attribute values.
+  # Output: if there is no input redirects to the same page
   # else redirects to show.
   # Author: Hana Magdy.
 -->
@@ -45,7 +45,23 @@
     <%= f.label :description %><span  style="color:red">✼</span> <br>
     <%= f.text_area :description %>
   </p>
+  <%= f.fields_for :project_targets do |targets_f| %>
+    <%= targets_f.label :description %>
+    <%= targets_f.text_field :description %>
+    <%= targets_f.link_to_remove "Remove Target" %>
+  <% end  %>
+  <p>
+    <%= f.link_to_add "Add a Target", :project_targets %>
+  </p>
+  <%= f.fields_for :project_requirements do |targets_f| %>
+    <%= targets_f.label :description %>
+    <%= targets_f.text_field :description %>
+    <%= targets_f.link_to_remove "Remove Requirement" %>
+  <% end  %>
+  <p>
+    <%= f.link_to_add "Add a Requirement", :project_requirements %>
+  </p>
   <p>
     <%= f.submit("Create project") %>
   </p>
- <% end %>
+<% end %>

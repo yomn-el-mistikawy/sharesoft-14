@@ -12,7 +12,8 @@
  </style> 
 
 <!-- 
-  # Definition: Allows showing all values all attributes for the whole project.
+  # Definition: Allows showing all values all categories for the whole project
+  # including showing whether it is reached or not in req./targets.
   # Input: before/after editing a project 'void'.
   # Output: project_id "all the project's details".
   # Author: Hana Magdy. 
@@ -36,7 +37,22 @@
   <%= @project.description %>
  </p>
  <p>
-
+  <strong>Targets:</strong>
+  <ul>
+    <% @project.project_targets.each do |target| %>
+      <li class="reached-<%=target.reached%>"><%= target.description %></li>
+    <% end %>
+  </ul>
+ </p>
+ <p>
+  <strong>Requirements:</strong>
+  <ul>
+    <% @project.project_requirements.each do |req| %>
+      <li class="reached-<%=req.reached%>"><%= req.description %></li>
+    <% end %>
+  </ul>
+ </p>
+ 
 <!--
   # Definition: Allows deleting the project's details
   # This method allows you to click on an underlined 
@@ -53,6 +69,7 @@
 
 <!--
   # Definition: Allows editing the project's details, 
+  # specifically targets and requirements
   # This method allows you to click on an underlined 
   # link "button" that redirects to the edit page.
   # Input: project_id "the button".
