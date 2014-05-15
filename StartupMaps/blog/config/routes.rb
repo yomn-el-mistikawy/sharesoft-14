@@ -13,12 +13,16 @@ Blog::Application.routes.draw do
   end  
 
   resources :entities do
+    post "show_unachieved_badges"  
     post "create_startup"
     post "create_service"
     post "create_investor"
     get "choose_preferences"
     post "choose_preferences"
   end  
+
+post "entities/edit"
+
 
   resources :startups
 
