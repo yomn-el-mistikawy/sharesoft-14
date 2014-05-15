@@ -16,10 +16,11 @@ Blog::Application.routes.draw do
     post "create_startup"
     post "create_service"
     post "create_investor"
-     get "edit_status"
-      get 'edit_work_status'
+    get "edit_status"
+    get 'edit_work_status'
     post "update_status"
     get "entity_params"
+    post 'update_work_status'
     get 'update_work_status'
   end  
 
