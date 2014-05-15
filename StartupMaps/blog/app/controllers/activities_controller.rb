@@ -1,5 +1,4 @@
 class ActivitiesController < ApplicationController
-
   # Definition: View activities in desc order.
   # Input: Activities attributes.
   # Output: Activities of startup.
