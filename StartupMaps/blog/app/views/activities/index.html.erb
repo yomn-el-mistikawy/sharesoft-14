@@ -1,8 +1,9 @@
 <!--
- #Definition: View the activities the startup made.
- #Input: Activities attributes.	
- #Output: Activities.
- #Author: Amr Gamal. 
+  # Definition: View the activities the startup made. And there are if conditions, if the activity is from projects
+  # write "startup created project", if it is form groups, write "startup created group"...and so on.
+  # Input: Activities attributes.	
+  # Output: Activities.
+  # Author: Amr Gamal. 
 -->
 
 <h1>Friends’ Activities</h1>  
@@ -17,7 +18,5 @@
   <%= link_to activity.owner.name, activity.owner if activity.owner %>  
   created group <%= link_to activity.trackable.name, activity.trackable %> 
   <% end %> 
-  </div> 
- 
-    
+  </div>   
 <% end %>  

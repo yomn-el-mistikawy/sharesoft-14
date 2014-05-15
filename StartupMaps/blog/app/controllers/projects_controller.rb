@@ -83,6 +83,8 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    ProjectsStartup.create(:startup_id => Startup.find_by_entity_id(current_entity).id, :project_id => @project.id
+      )
     @project.save
     redirect_to @project
   end
