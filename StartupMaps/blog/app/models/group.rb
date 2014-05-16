@@ -15,8 +15,14 @@ class Group < ActiveRecord::Base
     Startup.where(:id => (GroupsStartup.where(:group_id => group.id)))
   end
 
+
+  # Definition: This method checks if the name in the search box is like the name
+  # inserted in the database. 
+  # Input: Search.
+  # Output: Group name.
+  # Author: Mozdan Ahmed.
+
   def self.search_group(search)
-    @group= Group.find(:all, :conditions => ["name = ?", "#{search}%"])
- 
-   end  
+   @group= Group.find(:all, :conditions => ["name = ?", "#{search}%"])
+  end  
 end

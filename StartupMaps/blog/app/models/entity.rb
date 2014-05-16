@@ -1,11 +1,4 @@
 class Entity < ActiveRecord::Base
-
-	def self.search_entity(search)
-    @entity= Entity.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-    return @entity
-    
-    end 
-
   self.inheritance_column=nil
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   has_many :services 
@@ -30,5 +23,15 @@ class Entity < ActiveRecord::Base
   TYPES = %w[Startup Investor Service]
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 
+  # Definition: This method checks if the name in the search box is like the name
+  # inserted in the database. 
+  # Input: Search.
+  # Output: Entity name.
+  # Author: Mozdan Ahmed.
+
+  def self.search_entity(search)
+   @entity= Entity.find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+   return @entity
+  end 
 end
 

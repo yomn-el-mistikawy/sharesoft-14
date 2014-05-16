@@ -1,8 +1,14 @@
 class SearchEngineController < ApplicationController
+  
+  # Definition: This method calls the methods search_group, search_entity, search_investors,
+  # search_service and search_startup from the models group, entity, investor, service and
+  # startup to check the match of search with the name in the text.
+  # Input: Text.
+  # Output: Search result.
+  # Author: Mozdan Ahmed.
 
-  #Definition:This method calls kaza w kaza mn el models to check the match of search keys
   def list 
-     $name=params[:text]
+    $name=params[:text]
     @groups=Group.search_group($name)
   	@entities=Entity.search_entity($name)
   	@investors=Investor.search_investor($name)
@@ -11,8 +17,13 @@ class SearchEngineController < ApplicationController
   	
   end
 
+
+  # Definition: This method is viewed in the view to show the index to the search engine. 
+  # Input: Void.
+  # Output: Void.
+  # Author: Mozdan Ahmed.
+
   def index
-   
-    end
+  end
 
 end
