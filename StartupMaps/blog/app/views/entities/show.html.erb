@@ -1,13 +1,11 @@
 <!-- 
-  # Defintion: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
+  # Definition: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
   # the entity is asked to fill the extra needed information.
   # Input: Void.
   # Output: Startup, investor, service params.
   # Author: Omar El Menawy.
 -->
-<% if @entity == current_entity && current_entity.type == "Startup" %>
-<%= link_to 'create project', new_project_path, :class => "button" %>
-<% end %>
+
 <% if @entity == current_entity %>
   <% if current_entity.type == 'Startup' && @entity.completed == nil %>
    Startup
@@ -21,7 +19,7 @@
     <%= entity.text_field :verification_code %><br>
 
 <!--
-  # Defintion: The is the code of the google API in order to get access to the map 
+  # Definition: The is the code of the google API in order to get access to the map 
   # on our website.
   # Input: Google API.
   # Output: Google Map.
@@ -35,7 +33,7 @@
 </div> 
 
 <!--
-  # Defintion: This builds the map, creates markers to focus the map on Egypt,
+  # Definition: This builds the map, creates markers to focus the map on Egypt,
   # and changes the URL based on the latitude and longitude of the draggable marker.
   # Input: Latitude and longitude of the markers.
   # Output: Draggable marker on map.
@@ -104,7 +102,7 @@
  <% end %>
 
  <!-- 
-  # Defintion: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
+  # Definition: If the profile is owned by the current entity and it hasn't completed its information that is based on its type, 
   # the entity is asked to fill the extra needed information.
   # Input: Void.
   # Output: Startup, investor, service params.
@@ -120,7 +118,7 @@
      <%= entity.collection_select :sector, Investor::SECTORS, :to_s, :titleize %></div>
 
 <!--
-  # Defintion: This builds the map, creates markers to focus the map on Egypt,
+  # Definition: This builds the map, creates markers to focus the map on Egypt,
   # and changes the URL based on the latitude and longitude of the draggable marker.
   # Input: Latitude and longitude of the markers.
   # Output: Draggable marker on map.
@@ -187,7 +185,7 @@
   <% @entity.update_attribute(:lng , params[:lng])%>
 
 <!--
-  # Defintion: This builds the map, creates markers to focus the map on Egypt,
+  # Definition: This builds the map, creates markers to focus the map on Egypt,
   # and changes the URL based on the latitude and longitude of the draggable marker.
   # Input: Latitude and longitude of the markers.
   # Output: Draggable marker on map.
@@ -201,7 +199,7 @@
      <%= entity.collection_select :sector, Service::SECTORS, :to_s, :titleize %></div>
 
 <!--
-  # Defintion: This builds the map, creates markers to focus the map on Egypt,
+  # Definition: This builds the map, creates markers to focus the map on Egypt,
   # and changes the URL based on the latitude and longitude of the draggable marker.
   # Input: Latitude and longitude of the markers.
   # Output: Draggable marker on map.
