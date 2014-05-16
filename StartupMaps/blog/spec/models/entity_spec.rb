@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe Entity do
+<<<<<<< HEAD
+  it "updates company status" do
+    entity = Entity.create(name: "Ola", username: "olaenaba", email: "ola@gmail.com", password: "12345678", type: "Startup")
+    entity.update(:type => "Startup")
+    startup = Startup.create(entity_id: entity.id, company_status: 1)
+    expect(startup.company_status).to eq(true)
+    startup.update(:company_status => 0)
+    expect(startup.company_status).to eq(false)
+  end
+end
+=======
   it "It inserts longitude and latitude in Startup" do
   	entity = Entity.create(name: "Heba", email: "heba@gmail.com", password: "12345678")
   	entity.update(type: "Startup")
@@ -31,3 +42,4 @@ describe Entity do
     expect(service.longitude).to eq(30)
   end	
 end
+>>>>>>> b867e1c1a5c7f7af0d70f77647ca5336da76cfdf

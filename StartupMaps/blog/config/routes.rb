@@ -15,11 +15,16 @@ Blog::Application.routes.draw do
   end  
 resources :resumes
 
+
   resources :entities do
     post "show_unachieved_badges"  
     post "create_startup"
     post "create_service"
     post "create_investor"
+    get 'change_company_status'
+    post 'change_company_status'
+    get 'update_company_status'
+   
   end  
 
 post "entities/edit"
@@ -29,6 +34,7 @@ post "entities/edit"
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+
 
   
   # Maps routes by Alia Tarek
@@ -56,9 +62,14 @@ post "entities/edit"
 
 
   # You can have the root of your site routed with "root"
+
+  root to: 'welcome#index'
+  
+
   # root 'welcome#index'
 
   root 'homepage#index'
+
 
 
   # Example of regular route:
