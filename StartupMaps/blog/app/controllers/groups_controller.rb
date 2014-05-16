@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     if (GroupsStartup.check_membership(Startup.find(current_entity.id), Group.find(params[:group_id])).size != 0)
       @group_members = Group.get_group_members(Group.find(params[:group_id]))
     end
-  end
+ end
 
     # GET /groups
   # GET /groups.json
