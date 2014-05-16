@@ -4,7 +4,7 @@ class EntitiesController < ApplicationController
 
 def Subscribe
 
-  @subscribing = Subscription.create( :subscriber_id => session[:user_id], :subscribee_id => params[:entity_id])
+  @subscribing = Subscription.create( :subscriber_id => current_entity.id, :subscribee_id => params[:entity_id])
   
 end
 
