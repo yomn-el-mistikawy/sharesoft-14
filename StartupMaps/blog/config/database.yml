@@ -13,8 +13,6 @@ development:
   encoding: utf8
   database: blog_development
   pool: 5
-  username: root
-  password: 1
   
 
 # Warning: The database defined as "test" will be erased and
@@ -24,16 +22,10 @@ test:
   adapter: mysql2
   encoding: utf8
   database: blog_test
-  pool: 5
-  username: root
-  password: 1
- 
+  pool: 5 
 
 production:
   adapter: mysql2
   encoding: utf8
   database: blog_production
   pool: 5
-  username: root
-  password: 1
- 
