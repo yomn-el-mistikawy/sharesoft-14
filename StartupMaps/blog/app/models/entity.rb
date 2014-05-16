@@ -28,6 +28,7 @@ class Entity < ActiveRecord::Base
   before_destroy :destroyed_group_location, :destroyed_startup_id
   after_destroy :destroy_geo_group_and_remove_from_groups
 
+
   # Definition: This method takes location as input and checks if there is a gepgraphical 
   # location group for this location, if not it creates a new group for this lcation, 
   # finally it adds this startup to the geo group,
@@ -73,6 +74,7 @@ class Entity < ActiveRecord::Base
     @startup_id = self.id
     return @startup_id
   end
+
 
   # Definition: This method, when a startup is destroyed, it checks if there were no more startups in the 
   # Geograohic location group of the removed startup, if yes then this group is destroyed too, it also
