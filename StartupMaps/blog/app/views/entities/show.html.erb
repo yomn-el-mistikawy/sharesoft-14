@@ -311,6 +311,17 @@
  </p>
 <% end %>
 
+
+<!-- 
+  # Definition: This is a button that links to the entity internship status page.
+  # Input: Void.
+  # Output: Void.
+  # Author: Adel Badawy. 
+-->
+
+<%= button_to "Show Internship Status", entity_internship_status_path(current_entity.id), :class => "button" %>
+
+
 <!-- 
   # Definition: This part shows a button that redirects the startup that owns this profile 
   # to its unachieved badges. If it has achieved new badges a pop up alert appears showing the badge image,

@@ -1,0 +1,31 @@
+<h2>Welcome to your profile, <%= @entity.name %>!</h2>
+Internship Availability: 
+
+
+<!-- 
+  # Definition: This part displays the internship status of the entity, as displayed in the database.
+  # Green denotes available internships, red denotes unavaible internships.
+  # Input: Value of column in database.
+  # Output: The status of the internship.
+  # Author: Adel Zee Badawy. 
+-->
+
+<% if @entity_status.available == true %>
+  <div style="background-color: green; width: 30px; height:30px"></div>
+<% elsif @entity_status.available == false %>
+  <div style="background-color: red; width: 30px; height:30px"></div>
+<% end %>
+<br>
+<small>(green square denotes available, red square denotes unavailable)</small>
+
+
+<!-- 
+  # Definition: This tiny form calls the method update, which switches the internship status to true if it # is false, and vice versa.
+  # Input: Submit button.
+  # Output: Change in status in the database.
+  # Author: Adel Zee Badawy.
+-->
+
+<br>
+<%= button_to "Change Internship Status", :action => "internship_status" %>
+

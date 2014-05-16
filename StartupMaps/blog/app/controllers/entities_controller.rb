@@ -1,6 +1,26 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_entity!
 
+  # Definition: The show method initializes the variables @entity and @avail, which are both used in the 
+  # view. Displays the internship availability in the view. Green square denotes available == true, 
+  # and red light denotes available == false. Also updates the database based on the value that is 
+  # currently in the table. If it is true, then the column value is changed to false, and vice versa.
+  # Input: Entity and EntityAvailableInternship tuples.
+  # Output: Variables @entity and @available which are based on the session.
+  # Author: Adel Zee Badawy.
+
+  def internship_status
+    @entity_status = EntityAvailableInternship.find_by(entity_id: current_entity)
+    @entity = Entity.find(current_entity)
+    EntityAvailableInternship.change_internship(@entity_status, @entity)
+  end
+
+
+  # Definition: The show method initializes the variables @entity and @avail, which are both used in the 
+  # view. The parameter (current_entity.id) is being used since the session has not been implemented. Updates the 
+  # database based on the value that is currently in the table. If it is true, then the column value
+  # is changed to false, and vice versa.
+
   # Definition: When a startup opens its profile, if new badges is completed,
   # then a message appears showing the new badges achieved. A button will be available
   # to give the owner the option to view the unachieved badges. Moreover, all the
