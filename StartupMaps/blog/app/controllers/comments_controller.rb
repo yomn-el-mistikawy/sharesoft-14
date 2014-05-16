@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
   # Definition: This method instantiates a comment on a specific post 
-  #using the association between posts and comments. 
-  # Input: none.
+  # Using The association between posts and comments. 
+  # Input: None.
   # Output: Void.
   # Author: Maha Salah Eldin.
 
@@ -13,9 +13,9 @@ class CommentsController < ApplicationController
 
 
   # Definition: This method creates a new comment on a specific post using the association between 
-  #posts model and comments model. It sets the startup id to the id of the startup currently using the system,
-  # as well as the commenter name. It then redirects to the group page where this comment was added.
-  # Input: comment parameters: comment, the specific post id, id of the current user.
+  # Posts model and comments model. It sets the startup id to the id of the startup currently using the system,
+  # As well as the commenter name. It then redirects to the group page where this comment was added.
+  # Input: Comment parameters: comment, the specific post id, id of the current user.
   # Output: Void.
   # Author: Maha Salah Eldin.
 
@@ -26,19 +26,17 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.commenter = @startup.name
     @comment.startup_id = current_entity.id
-
     if @comment.save
       redirect_to @group
     else
       flash[:error] = 'Your comment could not be posted, please try again.'
       redirect_to @group
-     
      end
   end
 
 
   # Definition: This method deletes a comment.
-  # Input: comment id.
+  # Input: Comment id.
   # Output: Void.
   # Author: Maha Salah Eldin.
 
@@ -53,8 +51,8 @@ class CommentsController < ApplicationController
   private
 
   # Definition: This method specifies what input to be required and permitted from the user.
-  # Input: Input entered by the user.
-  # Output: comment parameters.
+  # Input: Comment entered by user.
+  # Output: Comment parameters.
   # Author: Maha Salah Eldin.
 
   def comment_params

@@ -25,8 +25,12 @@
     <%= post.text %>
   </p>
 
-<!-- This part of code views all comments under heading Comment, with a delete link for each comment.
-Author: Maha Salah Eldin. -->
+<!-- 
+  # Definition: This part lists all comments on a specific post.
+  # Inputs: None.
+  # Outputs: Void.
+  # Author: Maha Salah Eldin. 
+-->
 
   <div style="background: #2F4F4F">
    <h2>Comments</h2>
@@ -40,8 +44,12 @@ Author: Maha Salah Eldin. -->
     <%= link_to 'Delete', group_post_comment_path(@group,@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
    <% end %>
 
-<!-- This part of code first checks if the viewer is a member of the group, if yes then it renders the comments creation form.
-Author: Maha Salah Eldin. -->
+<!-- 
+  # Definition: This part checks is the viwer is a member of the group, if yse the comment creation form is rendered.
+  # Inputs: None.
+  # Outputs: Void.
+  # Author: Maha Salah Eldin. 
+-->
 
    <% if check_group_member == true %>
     <%= render :partial => 'form_comment' %>
