@@ -8,9 +8,9 @@ class EntitiesController < ApplicationController
   # Author: Adel Badawy.
 
 	def choose_preferences
-    if params[:prefs] != nil
-      Tag.update_pref(params[:other], params[:prefs], current_entity)
-    end
+		if params[:prefs] != nil
+			Tag.update_pref(params[:other], params[:prefs], current_entity)
+		end
 		Tag.delete_pref(params[:delete], current_entity)
 	end
 
