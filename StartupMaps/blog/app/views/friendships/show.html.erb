@@ -1,6 +1,16 @@
-<% if current_entity %>
-    <%= render 'friendships/show' %>
-<% else %>
-    <% flash[:error] = "Unauthorized - The page is not available." %>
-<%end%>
-
+<% provide(:title, @friendship) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        Request Sent!
+      </h1>
+    </section>
+<%= @friendship.receiver %>
+  <section>
+<% end %>
+   </section>
+  
+  </aside>
+  
+</div>

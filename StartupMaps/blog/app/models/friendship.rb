@@ -5,6 +5,14 @@ belongs_to :friend, :class_name => "entity"
 validates_presence_of  :receiver
 attr_accessible :response, :sender, :receiver
 
+ def accept_request!
+    self.update! response: true
+  end
+
+    def reject_friend!
+    self.update! response: false
+  end
+
 # #Method
 #   # Return true if the entitys are (possibly pending) friends.
 #   def self.exists?(entity, friend)

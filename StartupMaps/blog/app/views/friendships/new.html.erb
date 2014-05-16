@@ -1,5 +1,16 @@
-<% if current_entity %>
-    <%= render 'friendships/new' %>
-<% else %>
-    <% flash[:error] = "Unauthorized - The page is not available." %>
-<%end%>
+<% provide(:title, 'Request Open Call') %>
+<h1>Request Open Call</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@friendship) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.text_field :receiver %>
+
+      <br><br>
+
+      <%= f.submit "Request Friend", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

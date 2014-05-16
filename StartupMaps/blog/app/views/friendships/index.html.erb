@@ -1,5 +1,9 @@
-<% if current_entity %>
-    <%= render 'friendships/index' %>
-<% else %>
-    <% flash[:error] = "Unauthorized - The page is not available." %>
-<%end%>
+<% provide(:title, 'All Opencalls') %>
+<h1>All Friends</h1>
+
+
+
+<ul class="friendships">
+  <%= render @friendships %>
+</ul>
+

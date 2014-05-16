@@ -1,64 +1,53 @@
 class FriendshipsController < ApplicationController
-<<<<<<< HEAD
-def index
-    @entity = current_entity
-    @Friendships = Friendship.order("created_at desc")
-=======
-  before_action :authenticate_entity!
-  # Definition: searches for the desired user id, and saves it. The method also calls the method request 
-  #
-  # Input: void 
-  # Output: void
-  # Authour: Sarah Fathallah
-  def create
-    @user = User.find(params[:friendship][:friend_id])
-    Friendship.request(current_user, @user)
->>>>>>> 974c0e9183a3545f3ed97563a1018f04f49aa437
-    respond_to do |format|
-      format.html
-      format.json { render json: @Friendships }
-    end
+before_action :authenticate_entity!
+
+  def index
+    @friendships = Friendship.all
   end
 
-  def show 
-    @Friendship = Friendship.find(params[:id])
-    @entity = current_entity
-    if (@entity.email == @Friendship.sender) || (@entity.email == @Friendship.recepient)
-    else
-      respond_to do |format|
-        format.html { redirect_to :action => :index, notice: 'No Friendship found' }
-        format.json { render json: @Friendship.errors, status: :unprocessable_entity }
-      end
-    end
+  def show
+    @friendship = Friendship.find(params[:id])
   end
 
   def new
-    @Friendship = Friendship.new
+    @friendship = Friendship.new
   end
 
-  def create
-    @Friendship = Friendship.new(params[:Friendship])
-    @Friendship.sender = current_entity.email
-    @Friendship.savess
-    ss
-    respond_to do |format|
-      if @Friendship.save
-        format.html { redirect_to :action => :index, notice: 'Friendship has been sent.' }
-        format.json { render json: @Friendships }
+
+ def create
+    @friendship = Friendship.new(friendship_params)
+    @friendship.sender = current_entity.email
+      if @friendship.save
+        flash[:success] = "Friend request sent."
+        redirect_to root_url
       else
-        format.html { redirect_to :action => :new, notice: 'Error: Please try again.' }
-        format.json { render json: @Friendship.errors, status: :unprocessable_entity }
+        render 'new'
       end
-    end
   end
 
   def destroy
-    @Friendship = Friendship.find(params[:id])
-    @Friendship.destroy
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.json { head :no_content }
-    end
+    Friendship.find(params[:id]).destroy
+    flash[:success] = "Friend deleted."
+    redirect_to friendships_url
   end
-end
 
+  def edit
+    @friendship = Friendship.find(params[:id])
+  end
+
+    def friendship_params
+      params.require(:friendship).permit(:receiver, :sender, :response)
+    end
+
+  #    def accept_friend
+  #   @friendship = Friendship.find(params[:id])
+  #   @friendship.response = true
+  #   redirect_to root_url
+  # end
+
+  # def reject_friend
+  #   @friendship = Friendship.find(params[:id])
+  #   @friendship.response = false
+  #   redirect_to root_url
+  # end
+end
