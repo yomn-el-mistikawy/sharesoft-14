@@ -53,10 +53,21 @@ class Entity < ActiveRecord::Base
   end
 
 
+  # Definition: This method saves the location of a startup before it is destroyed. 
+  # Input: current entity.
+  # Output: entity's location.
+  # Author: Maha Salah Eldin.
+
   def destroyed_group_location
     @location = self.location
     return @location
   end
+
+
+  # Definition: This method saves the id of the startup before it is destroyed. 
+  # Input: current entity.
+  # Output: entity's id.
+  # Author: Maha Salah Eldin.
 
   def destroyed_startup_id
     @startup_id = self.id
