@@ -100,5 +100,5 @@ class Entity < ActiveRecord::Base
     end
   end
 end
-end
+
 
