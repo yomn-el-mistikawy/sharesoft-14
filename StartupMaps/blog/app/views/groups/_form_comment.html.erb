@@ -1,0 +1,18 @@
+<!-- 
+  # Definition: This form creates new comments, by calling the comments create method when submitted.
+  # Inputs: Text comment.
+  # Outputs: Void.
+  # Author: Maha Salah Eldin.
+-->
+
+<% if flash[:error] %>
+ <p class="notice"><%= flash[:error] %></p>
+<% end %>
+<%= form_for([@group,@post, @post.comments.build]) do |f| %>
+ <p>
+  <%= f.text_area :comment %>
+ </p>
+ <p>
+  <%= f.submit %>
+ </p>
+<% end %>

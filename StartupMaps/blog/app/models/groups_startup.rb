@@ -8,8 +8,9 @@ class GroupsStartup < ActiveRecord::Base
   # Input: startup_id, group_id
   # Output: record containing startup_id and group_id
   # Author: Yomn El-Mistikawy
+  # Modified by: Maha Salah Eldin.
 
-  def self.check_membership(startup, group)
-    GroupsStartup.where(:startup_id => startup.id, :group_id => group.id)
+  def self.check_membership(startup_id, group_id)
+    GroupsStartup.where(:startup_id => startup_id, :group_id => group_id)
   end
 end

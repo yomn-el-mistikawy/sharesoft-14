@@ -48,11 +48,35 @@ post "entities/edit"
   # See how all your routes lay out with "rake routes"
 
   resources :projects do
-    get "change_launch_status", on: :member, as: :launch
-    get "suggest"
-    get "show_suggested"
-    get "merge_request"
-  end  
+
+     get "suggest"
+     get "show_suggested"
+     get "merge_request"
+     get "change_launch_status", on: :member, as: :launch
+  end
+
+
+  concern :likable do
+    resources :likes
+  end
+
+  resources :groups do
+    resources :posts, concerns: :likable do
+      resources :comments, concerns: :likable
+    end
+  end
+
+
+  resources :messages
+
+  # resources :friendships
+
+  resources :maps do
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
+  end
+
 
 
   # You can have the root of your site routed with "root"

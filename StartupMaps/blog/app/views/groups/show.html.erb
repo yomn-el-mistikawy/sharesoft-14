@@ -1,13 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @group.name %>
-</p>
-
-<p>
-  <strong>Group name:</strong>
-  <%= @group.group_name %>
 </p>
 
 <p>
@@ -15,5 +8,57 @@
   <%= @group.description %>
 </p>
 
+<p>
+  <strong>Interest:</strong>
+  <%= @group.interest %>
+</p>
+<% if @group.private == false %>
+ <% @group.posts.each do |post| %>
+<%= @post = post %>
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+    <strong>Text:</strong>
+    <%= post.text %>
+  </p>
+
+<!-- 
+  # Definition: This part lists all comments on a specific post.
+  # Inputs: Void.
+  # Outputs: Void.
+  # Author: Maha Salah Eldin. 
+-->
+
+  <div style="background: #2F4F4F">
+   <h2>Comments</h2>
+   <% @post.comments.each do |comment| %>
+    <p>
+    <strong style= "font-size: 10pt"><%= comment.commenter %></strong> 
+    <%= ":" %>
+    <%= comment.comment %>  
+    <br/>
+    <strong>Posted <%= time_ago_in_words(comment.created_at) %> ago</strong>
+    <%= link_to 'Delete', group_post_comment_path(@group,@post,comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+   <% end %>
+
+<!-- 
+  # Definition: This part checks is the viwer is a member of the group, if yse the comment creation form is rendered.
+  # Inputs: Void.
+  # Outputs: Void.
+  # Author: Maha Salah Eldin. 
+-->
+
+   <% if check_group_member == true %>
+    <%= render :partial => 'form_comment' %>
+   <% end %>
+  </div>
+ <% end %> 
+ <% if check_group_member == true %>
+<%= render :partial => 'form_post' %>
+ <%end %>
+<% end %>
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
