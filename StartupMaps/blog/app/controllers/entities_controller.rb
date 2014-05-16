@@ -56,7 +56,9 @@ class EntitiesController < ApplicationController
   # Definition: This copies the longitude and latitude from table Entity to table Startup.
   # Input: Longitude and latitude from table Entity.
   # Output: Void.
-  # Author: Heba Abdelfattah.   
+  # Author: Heba Abdelfattah. 
+  # Modified: Yomn El-Mistikawy
+
 
   def create_startup
     @startup = Startup.create(startup_params)
