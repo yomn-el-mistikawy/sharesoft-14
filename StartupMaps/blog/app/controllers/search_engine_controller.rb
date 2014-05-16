@@ -13,8 +13,7 @@ class SearchEngineController < ApplicationController
    @entities=Entity.search_entity($name)
    @investors=Investor.search_investor($name)
    @services=Service.search_service($name)
-   @startups=Startup.search_startup($name)
-  	
+   @startups=Startup.search_startup($name) 	
   end
 
 
