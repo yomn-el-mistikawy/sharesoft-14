@@ -16,10 +16,8 @@ class GroupInvitationController < ApplicationController
   # Author: Nardeen Milad 
 
 	def search
-	
 		@all = Entity.find(:all, :conditions => ["name like ? AND type = ?","%#{params[:id]}%","Startup"])
 		# Users.find(:all,:condition => ('[name = ?]',params[id]))
-	
 	end
 
 
