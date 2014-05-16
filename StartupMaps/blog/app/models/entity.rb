@@ -1,3 +1,4 @@
+
 class Entity < ActiveRecord::Base
   self.inheritance_column=nil
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable

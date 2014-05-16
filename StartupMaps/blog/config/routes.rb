@@ -20,6 +20,8 @@ resources :resumes
     post "create_startup"
     post "create_service"
     post "create_investor"
+    get "choose_preferences"
+    post "choose_preferences"
   end  
 
 post "entities/edit"
@@ -52,7 +54,8 @@ post "entities/edit"
     get "suggest"
     get "show_suggested"
     get "merge_request"
-  end  
+  end
+
 
 
   # You can have the root of your site routed with "root"
