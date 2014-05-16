@@ -11,9 +11,9 @@ Internship Availability:
 -->
 
 <% if @entity_status.available == true %>
-	<div style="background-color: green; width: 30px; height:30px"></div>
+  <div style="background-color: green; width: 30px; height:30px"></div>
 <% elsif @entity_status.available == false %>
-	<div style="background-color: red; width: 30px; height:30px"></div>
+  <div style="background-color: red; width: 30px; height:30px"></div>
 <% end %>
 <br>
 <small>(green square denotes available, red square denotes unavailable)</small>
@@ -27,5 +27,5 @@ Internship Availability:
 -->
 
 <br>
-	<%= button_to "Change Internship Status", :action => "internship_status" %>
+<%= button_to "Change Internship Status", :action => "internship_status" %>
 
