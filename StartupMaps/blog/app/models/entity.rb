@@ -25,6 +25,7 @@ class Entity < ActiveRecord::Base
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 
   after_save :create_geo_group_and_add_startup
+  before_destroy :destroyed_group_location, :destroyed_startup_id
   after_destroy :destroy_geo_group_and_remove_from_groups
 
   # Definition: This method takes location as input and checks if there is a gepgraphical 
@@ -52,6 +53,16 @@ class Entity < ActiveRecord::Base
   end
 
 
+  def destroyed_group_location
+    @location = self.location
+    return @location
+  end
+
+  def destroyed_startup_id
+    @startup_id = self.id
+    return @startup_id
+  end
+
   # Definition: This method, when a startup is destroyed, it checks if there were no more startups in the 
   # geograohic location group of the removed startup, if yes then this group is destroyed too, it also
   # destroys all entries for this startup in groups.
@@ -61,17 +72,19 @@ class Entity < ActiveRecord::Base
 
   def destroy_geo_group_and_remove_from_groups
     if self.type == "Startup"
-      @s = Entity.find_by_location(self.location)
+      @location = destroyed_group_location
+      @startup_id = destroyed_startup_id
+      @s = Entity.find_by_location(@location)
       if @s == nil
-       @geo = Group.find_by_location(self.location)
+       @geo = Group.find_by_location(@location)
         if @geo != nil
           @geo.destroy
         end
       end
-      @sg = GroupsStartup.find_by_startup_id(self.id)
+      @sg = GroupsStartup.find_by_startup_id(@startup_id)
       while @sg != nil do
         @sg.destroy
-        @sg = GroupsStartup.find_by_startup_id(self.id)
+        @sg = GroupsStartup.find_by_startup_id(@startup_id)
       end
     end
   end
