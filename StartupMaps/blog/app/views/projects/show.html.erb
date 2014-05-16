@@ -1,28 +1,29 @@
- <!--
-  # Definition: if reached -> true the cross it with a line.
+<!--
+  # Definition: If reached -> true then cross it with a line.
   # Input: title 'name' ,attribute values, reached value 'true/false'.
   # Output: crossed value if reached and vice verca.
   # Author: Hana Magdy.
- -->
+-->
 
-<style type="text/css">
+ <style type="text/css">
   .reached-true {
     text-decoration: line-through;
   }
- </style> 
+  </style>
 
 <!-- 
   # Definition: Allows showing all values all categories for the whole project
   # including showing whether it is reached or not in req./targets.
   # Input: before/after editing a project 'void'.
   # Output: project_id "all the project's details".
-  # Author: Hana Magdy. 
+  # Author: Hana Magdy.
+
 -->
 
  <h1> Your project details </h1>
  <p>
-   <strong>Name:</strong>
-   <%= @project.name %>
+  <strong>Name:</strong>
+  <%= @project.name %>
  </p>
  <p>
   <strong>Category:</strong>
@@ -52,6 +53,25 @@
     <% end %>
   </ul>
  </p>
+
+<!--   
+  Definition: "A startup can launch its project"
+  Changes the status of a project and redirects to the project's 
+  page (show project) on success or error
+  update the status of launch project from unlaunch to launched and vice versa.
+  Input: project_id. "on the show page".
+  Output: project_id"it's an action" returns the success of the
+  changeable button of launch upon of it's previous status. 
+  Author: Hana Magdy.
+-->
+
+ <% if current_entity %>
+ <p>
+  <strong>Launched?</strong>
+  <%= @project.launched? %>
+  <%= link_to( (@project.launch ? "Unlaunch" : "Launch"), launch_project_path) %>
+ </p>
+
  
 <!--
   # Definition: Allows deleting the project's details
@@ -63,7 +83,6 @@
   # Author: Hana Magdy. 
 -->
 
-<% if current_entity %>
   <%= link_to "Delete Project", @project, method: :delete, 
   confirm: "Are you sure? This cannot be undone!" %>
 
