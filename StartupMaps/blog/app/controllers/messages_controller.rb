@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
     @messages = Message.order("created_at desc")
     respond_to do |format|
       format.html
-      format.json { render json: @messages }
+      format.json {render json: @messages}
     end
   end
 
@@ -26,8 +26,8 @@ class MessagesController < ApplicationController
     if (@entity.email == @message.sender) || (@entity.email == @message.recepient)
     else
       respond_to do |format|
-        format.html { redirect_to :action => :index, notice: 'No message found' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+        format.html {redirect_to :action => :index, notice: 'No message found'}
+        format.json {render json: @message.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -55,11 +55,11 @@ class MessagesController < ApplicationController
     respond_to do |format| 
       if (@entity != nil and @message.recepient == @entity.email)
        @message.save
-       format.html { redirect_to :action => :index, notice: 'Message has been sent.' }
-       format.json { render json: @messages }
+       format.html {redirect_to :action => :index, notice: 'Message has been sent.'}
+       format.json {render json: @messages}
       else
-        format.html { redirect_to :action => :new, notice: 'Error: Entity not found.' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+        format.html {redirect_to :action => :new, notice: 'Error: Entity not found.'}
+        format.json {render json: @message.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -75,8 +75,8 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to :back }
-      format.json { head :no_content }
+      format.html {redirect_to :back}
+      format.json {head :no_content}
     end
   end
 end

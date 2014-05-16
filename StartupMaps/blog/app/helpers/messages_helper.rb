@@ -1,6 +1,6 @@
 module MessagesHelper
 
-	# Definition: Checks if the message if read or not.
+  # Definition: Checks if the message if read or not.
   # Input: Message.
   # Output: If read marks at read.
   # Author: Sarah Fathallah. 

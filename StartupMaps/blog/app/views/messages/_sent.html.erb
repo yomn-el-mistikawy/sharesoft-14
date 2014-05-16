@@ -4,8 +4,8 @@
   # Output: Message sent.
   # Author: Sarah Fathallah. 
 -->
-<link href="/assets/messages.css" rel="stylesheet"> 
 
+<link href = "/assets/messages.css" rel="stylesheet"> 
 <% @messages.each do |m| %>
  <% if m.sender == current_entity.email %>
   <table class="table">
