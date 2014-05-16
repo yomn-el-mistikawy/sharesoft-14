@@ -1,20 +1,13 @@
-  <!--
-    # Definition: Finds the entity to edit the email and password.
-    # Input: Email and Password.
-    # Output: Updated email and password.
-    # Author: Ola Enaba.
-  -->
+<!--
+  # Definition: Finds the entity to edit the email and password.
+  # Input: Email and Password.
+  # Output: Updated email and password.
+  # Author: Ola Enaba.
+-->
 
-<%= form_for :entity, url: entities_path do |f| %>
+<%= form_for :entity, url: entities_path do |entity| %>
  <p>
-  <%= f.label :Status %><br>
-  <%= f.text_field :status %>
+  <%= entity.label :Status %><br>
+  <%= entity.text_field :status %>
  </p>
   <%= button_to "Post", entity_update_status_path(:status) %>
-<!-- <p>
-<strong>Status</strong>
-</p>
-<br>
-<%= text_field_tag() %> 
- 
-<%= button_to , entity_update_status_path(:) %> -->
