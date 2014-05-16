@@ -1,0 +1,25 @@
+<h1>Listing groups and their descriptions </h1>
+ <table>
+   <thead>
+     <tr>
+       <th>Group name&nbsp;</th>
+       <th>Description</th>
+       <th></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @groups.each do |group| %>
+       <tr>
+         <td><%= group.name %></td>
+         <td><%= group.description %></td>
+         <td><%= link_to 'Show', group %></td>
+         <td><%= link_to 'Edit', edit_group_path(group) %></td>
+         <td><%= link_to 'List Group Members', group_list_group_members_path(group) %></td>
+       </tr>
+     <% end %>
+   </tbody>
+ </table>
+ <br>
+ <%= link_to 'Create New Group', new_group_path %>

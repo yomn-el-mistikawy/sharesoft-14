@@ -1,4 +1,31 @@
 Blog::Application.configure do
+
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+
+  # config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i -t'}
+
+  # Definition: Added mailer configuration.
+  # Input: Void.
+  # Output: Void.
+  # Author: Omar El Menawy.
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'no-replay@example.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            'sharesoft.2014@gmail.com',
+  password:             'Sharesoft1234',
+  authentication:       'plain',
+  enable_starttls_auto: true}
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

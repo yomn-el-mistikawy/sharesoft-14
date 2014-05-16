@@ -1,9 +1,81 @@
 Blog::Application.routes.draw do
+ 
+ 
+  get "homepage/index"
+  get "homepage/show"
+  devise_for :entities, :controllers => {:registrations => "entities/registrations", 
+                                         :sessions => "entities/sessions", 
+                                         :confirmations => "entities/confirmations",
+                                         :unlocks => "entities/unlocks",
+                                         :passwords => "entities/passwords"}
+
+
+  resources :groups do
+  get "list_group_members"
+  end  
+resources :resumes
+
+  resources :entities do
+    post "show_unachieved_badges"  
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+  resources :event do
+    get "new"
+    post "new"
+    get "show"
+    
+
+  end
+
+
+
+  resources :entities do
+    post "show_unachieved_badges"  
+    post "create_startup"
+    post "create_service"
+    post "create_investor"
+  end  
+
+post "entities/edit"
+
+  resources :startups 
+
+  get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  
+  # Maps routes by Alia Tarek
+   resources :maps do
+    get "show_startups" 
+    get "show_investors"
+    get "show_services"
+    get "show_launched"
+    get "show_not_launched"
+    get "show_offline"
+    get "show_online"
+    get "show_merged"
+    end
+
+ # You can have the root of your site routed with "root"
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes"
+
+  resources :projects do
+    get "change_launch_status", on: :member, as: :launch
+    get "suggest"
+    get "show_suggested"
+    get "merge_request"
+  end  
+
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+
+  root 'homepage#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

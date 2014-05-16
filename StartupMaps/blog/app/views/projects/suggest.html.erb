@@ -1,0 +1,29 @@
+<!-- # Defintion: This shows a a list of suggested
+     # projects and it enables the user to show 
+     # the profile of a suggested project.
+     # Input: project_id, @suggested
+     # Output: project_id, suggested_project
+     # Author: Yomn El-Mistikawy -->
+
+<% if @suggested.size <= 0 %>
+  <div>
+    <p> There are no suggestions </p>
+  </div>
+<% else %>
+  <h1>Listing suggested projects</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Location</th>
+    </tr>
+    <% @suggested.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.category%></td>
+        <td><%= p.location%></td>
+        <td><%= link_to 'Show',project_show_suggested_path(suggested_project: p)%></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
