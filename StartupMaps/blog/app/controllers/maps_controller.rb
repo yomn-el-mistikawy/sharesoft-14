@@ -1,31 +1,67 @@
 class MapsController < ApplicationController
-  # Definition: Gets all Startups in the db and shows them on the map.
-  # Input: Startups Table.
-  # Output: All Investors.
-  # Author: Alia Tarek.
+before_action :authenticate_entity!
+# Definition: Gets all online startups in the db and shows them on the map.
+# Input: Startup Table.
+# Output: Online Startups.
+# Author: Alia Tarek.
 
-  def show_startups
-    @startups = Startup.all
-    @markers = Gmaps4rails.build_markers(@startups) do |startups, marker| 
-      marker.lat startups.latitude 
-      marker.lng startups.longitude 
-      marker.infowindow startups.name 
-      marker.picture({  
+  def show_online
+    if params[:sector] == "please select a sector..."
+      @online = Startup.where(:online_status => true)
+    end
+    if  params[:sector ]!= "please select a sector..." 
+      @online = Startup.where(sector: params[:sector]).where(:online_status == true)
+    end
+    @markers = Gmaps4rails.build_markers(@online) do |online, marker| 
+      marker.lat online.latitude
+      marker.lng online.longitude 
+      marker.infowindow online.name  
+      marker.picture({
         "url" => "http://rideforclimate.com/nukes/all/images/blue.png",
         "width" => 32, 
         "height" => 32})
-    end
-      render :json => @markers
+    end   
+    render :json => @markers
   end
 
 
-  # Definition: Gets all Investors in the db and shows them on the map.
-  # Input: Investors Table.
-  # Output: All Investors.
-  # Author: Alia Tarek.
+# Definition: Gets all offline startups in the db and shows them on the map.
+# Input: Startup Table.
+# Output: Onffline Startups.
+# Author: Alia Tarek.
+
+  def show_offline
+    if params[:sector] == "please select a sector..."
+      @offline = Startup.where(:online_status => false)
+    end
+    if params[:sector] != "please select a sector..." 
+      @offline = Startup.where(sector: params[:sector]).where(:online_status == false)
+    end
+    @markers = Gmaps4rails.build_markers(@offline) do |offline, marker| 
+      marker.lat offline.latitude
+      marker.lng offline.longitude 
+      marker.infowindow offline.name 
+      marker.picture({  
+        "url" => "http://rideforclimate.com/nukes/all/images/red.png", 
+        "width" => 32, 
+        "height" => 32})      
+    end
+    render :json => @markers
+  end
+
+
+# Definition: Gets all Investors in the db and shows them on the map.
+# Input: Investors Table.
+# Output: All Investors.
+# Author: Alia Tarek.
 
   def show_investors
-    @investors = Investor.all
+    if params[:sector] == "please select a sector..."
+      @investors = Investor.all
+    end
+    if params[:sector] != "please select a sector..." 
+      @investors = Investor.where(sector: params[:sector])
+    end
     @markers = Gmaps4rails.build_markers(@investors) do |investors, marker| 
       marker.lat investors.latitude 
       marker.lng investors.longitude 
@@ -39,13 +75,18 @@ class MapsController < ApplicationController
   end
 
 
-  # Definition: Gets all Services in the db and shows them on the map.
-  # Input: Services Table.
-  # Output: All Services.
-  # Author: Alia Tarek.
+#  Definition: Gets all Services in the db and shows them on the map.
+#  Input: Services Table.
+#  Output: All Services.
+#  Author: Alia Tarek.
 
   def show_services
-    @services = Service.all
+    if params[:sector] == "please select a sector..."
+      @services = Service.all
+    end
+    if params[:sector] != "please select a sector..." 
+      @services = Service.where(sector: params[:sector])
+    end
     @markers = Gmaps4rails.build_markers(@services) do |services, marker| 
       marker.lat services.latitude
       marker.lng services.longitude 
@@ -58,7 +99,28 @@ class MapsController < ApplicationController
     render :json => @markers
   end
 
-  def  create
-    render :template => 'maps/index'
+
+  # Definition: Gets all merged startups in the db and shows them on the map.
+  # Input: Startup Table.
+  # Output: Merged Startups.
+  # Author: Alia Tarek.
+
+  def show_merged
+    if params[:sector] == "please select a sector..."
+      @merged = Startup.where.not(:joint_ventures => "")
+    end
+    if params[:sector] != "please select a sector..." 
+      @merged = Startup.where(sector: params[:sector]).where.not(:joint_ventures => "")
+    end
+    @markers = Gmaps4rails.build_markers(@merged) do |joint, marker| 
+      marker.lat joint.latitude
+      marker.lng joint.longitude 
+      marker.infowindow joint.name 
+      marker.picture({  
+        "url" => "http://rideforclimate.com/nukes/all/images/yellow.png",
+        "width" => 32, 
+        "height" => 32})
+    end
+    render :json => @markers
   end
 end
