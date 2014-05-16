@@ -10,17 +10,17 @@ module ApplicationHelper
 
   def create_geo_group(location)
     @geo = Group.find_by_location(location)
-		@newgeo_id
-		if @geo == nil
-			@newgeo = Group.create(name: location, 
-			description: "this group is to link startups in " + location, location: location, 
-      creator_id: 0, interest: "none")
-      @newgeo_id = @newgeo.id
-    else
-      @newgeo_id = @geo.id
-   	end
+	@newgeo_id
+	if @geo == nil
+	  @newgeo = Group.create(name: location, 
+	  description: "this group is to link startups in " + location, location: location, 
+          creator_id: 0, interest: "none")
+          @newgeo_id = @newgeo.id
+        else
+       @newgeo_id = @geo.id
+    	end
    	return @newgeo_id
-	end
+   end
 
 
   # Definition: This method finds the id of the startup using its name, it then adds this startup to 
