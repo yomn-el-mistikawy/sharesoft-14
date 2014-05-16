@@ -8,7 +8,7 @@ class EntitiesController < ApplicationController
   # Input: startup_id, session_id.
   # Output: void.
   # Author: Yomn El-Mistikawy.
-
+  
   # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
   # Input: Entity id.
   # Output: Startup, investor, service params.
@@ -28,7 +28,6 @@ class EntitiesController < ApplicationController
       end
     end
   end
-
 
   # Definition: This is a pop-up page that shows a list of all the unachieved badges.
   # The button directing to it only appears to the profile owner.
