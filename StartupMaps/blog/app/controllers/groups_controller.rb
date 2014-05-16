@@ -4,9 +4,7 @@
 
   # this method is just added for scenario reviewing purposes.
   def index
-      session[:entity_ID] = 1
       @groups =  Group.all
-      #@groups = @groups.paginate(:page => params[:page], :per_page => 5) 
   end
 
   # this method is just added for scenario reviewing purposes.

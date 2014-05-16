@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   # Definition: This method instantiates a comment on a specific post 
   # Using The association between posts and comments. 
-  # Input: None.
+  # Input: Void.
   # Output: Void.
   # Author: Maha Salah Eldin.
 
