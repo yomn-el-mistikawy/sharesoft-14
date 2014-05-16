@@ -1,3 +1,10 @@
+  <!--
+  # Definition: Make a email notification buttom which make it send when true else not send.
+  # Input: Notification buttom.
+  # Output: Void.
+  # Author: Youssef Attaby.
+  -->
+
 <%= form_for(@group) do |f| %>
   <% if @group.errors.any? %>
     <div id="error_explanation">
@@ -16,12 +23,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :group_name %><br>
+    <%= f.text_field :group_name %>
   </div>
   <div class="field">
-    <%= f.label :interest %><br>
-    <%= f.text_area :interest %>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
   </div>
   <div class="field">
   <%= f.label :notification %><br>
@@ -35,4 +42,3 @@
      <%= f.submit ("Add description") %>
   </div>
 <% end %>
-<!-- 
