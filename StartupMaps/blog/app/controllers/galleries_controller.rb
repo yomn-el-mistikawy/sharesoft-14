@@ -74,7 +74,6 @@ class GalleriesController < ApplicationController
   end
 
 
-  
   # Definition: This method finds in table gallery all data that has id similar to the
   # input.
   # Input: Id.
