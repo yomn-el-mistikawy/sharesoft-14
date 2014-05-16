@@ -18,6 +18,30 @@ class Entity < ActiveRecord::Base
 	has_many :subscribee, :through => :subscrtipion
 	has_many :receivers, :through => :message
 	has_many :messages
+	has_many :userposts, dependent: :destroy
+    has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+    has_many :followed_entities, through: :relationships, source: :followed
+    
+    has_many :reverse_relationships, foreign_key: "followed_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy
+    has_many :followers, through: :reverse_relationships, source: :follower
+
+  def feed
+    Micropost.from_users_followed_by(self)
+  end
+
+  def following?(other_entity)
+    relationships.find_by(followed_id: other_entity.id)
+  end
+
+  def follow!(other_entity)
+    relationships.create!(followed_id: other_entity.id)
+  end
+
+  def unfollow!(other_entity)
+    relationships.find_by(followed_id: other_entity.id).destroy
+  end
 
 end
 
