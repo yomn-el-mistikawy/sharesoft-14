@@ -6,9 +6,10 @@ Blog::Application.routes.draw do
   resources :galleries do
     get "new"
   end
-  root :to => 'galleries#index'
 
- 
+  root :to => 'galleries#index'
+  
+
   devise_for :entities, :controllers => {:registrations => "entities/registrations", 
                                          :sessions => "entities/sessions", 
                                          :confirmations => "entities/confirmations",
