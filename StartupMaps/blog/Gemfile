@@ -38,11 +38,8 @@ gem 'gmaps4rails'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
-<<<<<<< HEAD
   gem 'factory_girl_rails'
   gem 'faker'
-=======
->>>>>>> 6cbcd178d2f3a083d2950e21605bdfe54efe4e4c
 end
 
 gem 'impressionist'
