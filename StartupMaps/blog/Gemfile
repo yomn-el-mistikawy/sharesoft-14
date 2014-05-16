@@ -27,7 +27,13 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+
 gem 'protected_attributes'
+
+gem 'database_cleaner'
+
+# Nested forms
+gem 'nested_form'
 
 
 gem 'devise'
