@@ -4,7 +4,6 @@
   # Output: list of uploads.
   # Author: Essam Azzam.
 -->
-  
 
 <% if !flash[:notice].blank? %>
  <div class="alert alert-info">
