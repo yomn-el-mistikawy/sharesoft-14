@@ -10,6 +10,10 @@ Blog::Application.routes.draw do
 
   resources :groups do
     get "list_group_members"
+    post "join_request"
+    get "list_join_request"
+    get "accept_join_request"
+    get "reject_join_request"
   end  
 
   resources :entities do
@@ -22,6 +26,7 @@ Blog::Application.routes.draw do
 post "entities/edit"
 
   resources :startups 
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

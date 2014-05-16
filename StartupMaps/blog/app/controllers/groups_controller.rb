@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  #before_action :set_group, only: [:show, :edit, :update, :destroy]
   
   # Defintion: This method takes the session id 
   # and group id, then checks if the logged in
@@ -31,7 +31,69 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @group = Group.find(params[:id])
   end
+  
+
+  # Definition: This method adds join requests in the database.
+  # input: group_id and session.
+  # output: void.
+  # Author: Sherouk A.Said.
+
+  def join_request
+    startup = Startup.find_by_entity_id(current_entity.id)
+    if JoinRequest.create(:group_id => params[:group_id], :sender_id => startup.id)
+      render text: "Request Sent"
+    end  
+  end
+
+  
+  # Definition: This method lists the join requests.
+  # input: group_id.
+  # output: void.
+  # Authour: Sherouk A.Said.
+
+  def list_join_request
+    @requester = JoinRequest.get_startups(Group.find(params[:group_id]))
+  end 
+
+  
+  # Definition: This method accepts join request
+  # inserts in table groups_startup the request
+  # deletes the request from join request table after the acceptance
+  # and checks if the user is the creator.
+  # input: group_id requester_id session.
+  # output: void.
+  # Author: Sherouk A.Said.
+
+  def accept_join_request
+    if session[:entity_id] != Group.find(params[:group_id]).creator_id
+      render text: "You aren't the creator"
+    else  
+      GroupsStartup.create(:startup_id => params[:requester], :group_id => params[:group_id])
+      if JoinRequest.where(:sender_id => params[:requester], :group_id => params[:group_id]).delete_all
+        render text: "request accepted" 
+      end
+    end  
+  end
+
+  
+  # Definition: This method rejects join request
+  # deletes the request from join request table after the acceptance
+  # and checks if the user is the creator.
+  # input: group_id requester_id session.
+  # output: void.
+  # Author: Sherouk A.Said.
+
+  def reject_join_request
+    if session[:entity_id] != Group.find(params[:group_id]).creator_id
+      render text: "You aren't the creator"
+    else  
+      if JoinRequest.where(:sender_id => params[:requester], :group_id => params[:group_id]).delete_all
+        render text: "request rejected"
+      end 
+    end       
+  end 
 
   # GET /groups/new
   def new
@@ -82,14 +144,4 @@ class GroupsController < ApplicationController
     end
   end 
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name, :group_name, :description)
-    end 
-end
+  end
