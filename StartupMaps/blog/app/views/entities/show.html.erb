@@ -4,24 +4,28 @@
 <!-- Adel Zee Badawy -->
 
 <p>
-  <strong>Name:</strong>
-  <%= @entity.name %>
+ <strong>Name:</strong>
+ <%= @entity.name %>
 </p>
-
 <p>
-  <strong>Email:</strong>
-  <%= @entity.email %>
+ <strong>Email:</strong>
+ <%= @entity.email %>
 </p>
-
 <p>
-  <strong>Password:</strong>
-  <%= @entity.password %>
+ <strong>Password:</strong>
+ <%= @entity.password %>
 </p>
 
 <!-- The following two lines link to "Edit" and "Back" urls -->
 <!-- Adel Zee Badawy -->
+
+<!-- 
+  # Definition: Added a button for subscription.
+  # Input: Void.
+  # Output: Void
+  # Author: Ziad Abdelkader.
+-->
+
 <%= link_to 'Edit', edit_entity_path(@entity) %> |
 <%= link_to 'Back', entities_path %>
 <%= button_to 'Subscribe', entity_subscribe_path(entity_id: params[:id]) %>
-
-</table>

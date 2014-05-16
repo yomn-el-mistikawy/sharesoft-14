@@ -1,11 +1,13 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
 
+  # Defination: Subscribe entity to entity and add the entries in the database.
+  # Input: Void.
+  # Ouput: Void.
+  # Authored by: Ziad Abdelkader.
 
 def Subscribe
-
-  @subscribing = Subscription.create( :subscriber_id => current_entity.id, :subscribee_id => params[:entity_id])
-  
+  @subscribing = Subscription.create(:subscriber_id => current_entity.id, :subscribee_id => params[:entity_id])
 end
 
 
