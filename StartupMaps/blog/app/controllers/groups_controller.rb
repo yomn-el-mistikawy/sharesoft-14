@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
 
   def list_group_members
     @startup = Startup.find_by_entity_id(current_entity.id)
-    if (GroupsStartup.check_membership(Startup.find(session[:entity_id]), Group.find(params[:group_id])).size != 0)
+    if (GroupsStartup.check_membership(Startup.find(current_entity.id), Group.find(params[:group_id])).size != 0)
       @group_members = Group.get_group_members(Group.find(params[:group_id]))
     end
   end
