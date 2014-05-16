@@ -20,17 +20,18 @@ resources :resumes
     post "create_startup"
     post "create_service"
     post "create_investor"
-  end  
-
-post "entities/edit"
+    get "edit_status"
+    post "edit_status"
+    post "update_status"
+    get "update_status"
+    get "entities/show"
+  end 
 
   resources :startups 
 
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  
   # Maps routes by Alia Tarek
    resources :maps do
     get "show_startups" 
@@ -55,11 +56,18 @@ post "entities/edit"
   end  
 
 
+
+  # You can have the root of your site routed with "root"
+  root to: 'welcome#index'
+ 
+
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
   root 'homepage#index'
 
+>
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

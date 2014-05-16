@@ -93,7 +93,7 @@ class EntitiesController < ApplicationController
     else 
       redirect_to root_url
     end
-  end	
+  end 
 
 
   # Definition: This method takes is the service_params and creates a service that has the current user entity id. It then sets completed to 1
@@ -148,6 +148,35 @@ class EntitiesController < ApplicationController
   def service_params
     params.require(:service).permit(:sector)
   end
+
+
+  # Definition: Knows the user ID from the params and finds its last status.
+  # Input: Entity ID.
+  # Output: Last status.
+  # Author: Ola Enaba.
+
+    def edit_status
+      @last = EntityStatus.where(:entity_id => current_entity.id).last
+    end
+
+
+  # Definition: Puts the status in a vaiable, keeps the entity ID and changes 
+  # the status with the one that the user iserted and puts it in the table.
+  # Input: New status.
+  # Output: Updated new status.
+  # Author: Ola Enaba.
+    
+    def update_status
+      @new = EntityStatus.new
+      @new.entity_id = params[:entity_id]
+      @new.status = params[:other]    
+      if 
+        @new.save
+        @notice = 'successful edit'
+      else
+        redirect_to :action => 'edit_status',:entity_id => params[:entity_id]
+      end
+    end
 
   def create
     s = Entity.new
