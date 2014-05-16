@@ -1,4 +1,3 @@
 class StartupsController < ApplicationController
-
 end
 
