@@ -23,6 +23,8 @@ post "entities/edit"
 
 
   resources :startups
+  resources :messages
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -35,7 +37,13 @@ post "entities/edit"
   end  
 
 
-  resources :friendships
+  resources :friendships do
+    get "destroy"
+    get "new"
+    get "accept"
+    get "reject"
+    get "request"
+  end
 
   resources :maps do
     get "show_startups" 
