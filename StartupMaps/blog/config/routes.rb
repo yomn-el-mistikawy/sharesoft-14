@@ -65,14 +65,6 @@ post "entities/edit"
     get :reject_friend
   end
 
-  resources :opencalls do
-    patch :accept_friend
-    get :accept_friend
-    patch :reject_friend
-    get :reject_friend
-  end
-
-
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -3,6 +3,8 @@
 <% if current_entity != nil %>
   <h1>Welcome</h1>
   <%= button_to "Show Map", maps_path, :class => "button"  %>
+  <%= link_to 'Friends', friendships_path  %> |
+  <%= link_to 'Add Friend', new_friendship_path  %> |
  <% else %>
  
 <!-- Homepage Slider -->
