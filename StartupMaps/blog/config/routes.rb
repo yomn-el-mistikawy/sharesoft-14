@@ -13,6 +13,7 @@ Blog::Application.routes.draw do
   resources :groups do
     get "list_group_members"
   end  
+resources :resumes
 
   resources :entities do
     post "show_unachieved_badges"  
