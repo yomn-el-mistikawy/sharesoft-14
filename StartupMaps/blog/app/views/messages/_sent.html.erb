@@ -1,0 +1,25 @@
+<!--
+  # Definition: Sends the message.
+  # Input: Void.
+  # Output: Message sent.
+  # Author: Sarah Fathallah. 
+-->
+
+<link href = "/assets/messages.css" rel="stylesheet"> 
+<% @messages.each do |m| %>
+ <% if m.sender == current_entity.email %>
+  <table class="table">
+   <tr>
+    <td>
+     <%= link_to m.subject, message_path(m) %>
+     <% if m.read %>
+      [read by user]
+     <% end %>
+     </td>
+     <td><%= m.recepient %></td>
+     <td><%= m.created_at %></td>
+     <td><%= link_to 'Delete Message', m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   </tr>
+  </table>
+ <% end %>
+<% end %>
