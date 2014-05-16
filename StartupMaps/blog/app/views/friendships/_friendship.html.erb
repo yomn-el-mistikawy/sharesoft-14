@@ -1,0 +1,15 @@
+
+<li>
+  <%= link_to friendship.receiver, friendship %>
+  
+  	<% if friendship.response? %>
+    	(Friends)
+    <% elsif friendship.response == false %>
+    	(Rejected)
+		<% else %>
+    	| <%= link_to "Accept", friendship_accept_friend_path(friendship), method: :patch,
+                                  data: { confirm: "You sure?" } %>
+      | <%= link_to "Reject", friendship_reject_friend_path(friendship), method: :patch,
+                                  data: { confirm: "You sure?" } %>
+		<% end %>
+  </li>

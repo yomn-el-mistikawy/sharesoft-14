@@ -1,12 +1,12 @@
-<% provide(:title, 'Request Open Call') %>
-<h1>Request Open Call</h1>
+
+<h1>Friend </h1>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="">
     <%= form_for(@friendship) do |f| %>
 
       <%= f.label :email %>
-      <%= f.text_field :receiver %>
+      <%= f.email_field :receiver %>
 
       <br><br>
 

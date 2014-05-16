@@ -39,15 +39,15 @@ before_action :authenticate_entity!
       params.require(:friendship).permit(:receiver, :sender, :response)
     end
 
-  #    def accept_friend
-  #   @friendship = Friendship.find(params[:id])
-  #   @friendship.response = true
-  #   redirect_to root_url
-  # end
+     def accept_friend
+    @friendship = Friendship.find(params[:id])
+    @friendship.response = true
+    redirect_to root_url
+  end
 
-  # def reject_friend
-  #   @friendship = Friendship.find(params[:id])
-  #   @friendship.response = false
-  #   redirect_to root_url
-  # end
+  def reject_friend
+    @friendship = Friendship.find(params[:id])
+    @friendship.response = false
+    redirect_to root_url
+  end
 end

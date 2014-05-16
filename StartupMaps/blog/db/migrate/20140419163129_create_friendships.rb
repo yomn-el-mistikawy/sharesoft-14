@@ -1,8 +1,9 @@
 class CreateFriendships < ActiveRecord::Migration
   def change
     create_table :friendships do |t|
-      t.belongs_to :sender_id
-      t.belongs_to :receiver_id
+      t.string :sender
+      t.string :receiver
+      t.boolean :response
       t.timestamps
     end
   end
