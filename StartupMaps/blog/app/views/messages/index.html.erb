@@ -1,5 +1,0 @@
-<% if current_user %>
-    <%= render 'messages/index' %>
-<% else %>
-    <% flash[:error] = "Unauthorized - The page is not available." %>
-<%end%>

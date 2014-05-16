@@ -1,7 +1,19 @@
 class FriendshipsController < ApplicationController
+<<<<<<< HEAD
 def index
     @entity = current_entity
     @Friendships = Friendship.order("created_at desc")
+=======
+  before_action :authenticate_entity!
+  # Definition: searches for the desired user id, and saves it. The method also calls the method request 
+  #
+  # Input: void 
+  # Output: void
+  # Authour: Sarah Fathallah
+  def create
+    @user = User.find(params[:friendship][:friend_id])
+    Friendship.request(current_user, @user)
+>>>>>>> 974c0e9183a3545f3ed97563a1018f04f49aa437
     respond_to do |format|
       format.html
       format.json { render json: @Friendships }
