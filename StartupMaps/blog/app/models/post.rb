@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   # Output: Void.
   # Author: Youssef Attaby.
 
-  after_save:create_post_email
+  after_save:create_post_email 
   def create_post_email
   	if @group.notification?
         UserMailer.post_email(@post).deliver
@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   # Author: Youssef Attaby.
 
   after_update:update_post_email
-  def update_post_email
+  def update_post_email 
     if @group.notification?
       UserMailer.post_email(@post).deliver
     end

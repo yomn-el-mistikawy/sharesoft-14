@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :post
-  belongs_to :startup
+  belongs_to :startup  
   has_many :likes, :as => :likable
 
   # Definition: This methods calls create method in the group controller to send with a notification email with the comment.
@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
         UserMailer.comment_email(@comment).deliver
     end
   end
-
+  
 
   # Definition: This methods calls update method in the group controller to send with a notification email with the comment.
   # Input: Comments.
