@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+before_action :authenticate_entity!
 # Definition: Gets all online startups in the db and shows them on the map.
 # Input: Startup Table.
 # Output: Online Startups.
