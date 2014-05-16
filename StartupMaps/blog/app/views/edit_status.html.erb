@@ -4,10 +4,10 @@
   # Author: Ola Enaba.-->
 
 <%= form_for :entity, url: entities_path do |f| %>
-  <p>
-    <%= f.label :Status %><br>
-    <%= f.text_field :status %>
-  </p>
+ <p>
+  <%= f.label :Status %><br>
+  <%= f.text_field :status %>
+ </p>
   <%= button_to "Post", entity_update_status_path(:status) %>
 
 <!-- <p>
