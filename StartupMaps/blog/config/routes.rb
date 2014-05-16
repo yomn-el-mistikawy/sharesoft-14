@@ -34,17 +34,11 @@ post "entities/edit"
     get "merge_request"
   end  
 
-
-  resources :messages
-
-  # resources :friendships
-
   resources :maps do
     get "show_startups" 
     get "show_investors"
     get "show_services"
   end
-
   # You can have the root of your site routed with "root"
   root 'homepage#index'
 
