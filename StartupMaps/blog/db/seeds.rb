@@ -38,21 +38,21 @@
     Badge.create(:id => 25, :name => "Badge collector", :description => "Collected all badges", :level => 4, :category => "collector")  
   end
 
-  puts("Seeds database for badges testing")
+  puts("Seeds for testing")
     entity = Entity.create!(name: "Yomn", username: "Yomn", email: "yomn@gmail.com", password: "12345678")
     entity.update(:type => "Startup")
     startup = Startup.create!(entity_id: entity.id, number_of_working_years: 6, longitude: 20, latitude: 30)
     entity2 = Entity.create!(name: "Yomn2", username: "Yomn2", email: "yomn2@gmail.com", password: "12345678")
     entity2.update(:type => "Startup")
     startup2 = Startup.create!(entity_id: entity2.id, number_of_working_years: 6, longitude: 50, latitude: 60)
-    project1, project2 = Project.create!(launch: 1), Project.create!(launch: 1)
+    project1, project2 = Project.create!(name: "yomn", launch: 1, description: "yomn", category: "Clothes"), Project.create!(name: "yomn2", launch: 1, description: "yomn", category: "Clothes")
     ProjectsStartup.create(startup_id: startup.id, project_id: project1.id)
     ProjectsStartup.create(startup_id: startup.id, project_id: project2.id)
     counter = 0
     projects_id_counter = 3
-    while counter <= 48 do
-      project = Project.create(launch: 1)
-      ProjectsStartup.create(startup_id: startup.id, project_id: project.id)
+    while projects_id_counter <= 60 do
+      project = Project.create(name: counter + counter, launch: 1, description: "yomn", category: "Clothes")
+      ProjectsStartup.create(startup_id: startup.id, project_id: projects_id_counter)
       counter = counter + 1
       projects_id_counter = projects_id_counter + 1
     end 

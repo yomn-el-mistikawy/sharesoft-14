@@ -79,10 +79,10 @@ BRUSHED.slider = function(){
 		thumb_links				:	0,			// Individual thumb links for each slide
 		thumbnail_navigation    :   0,			// Thumbnail navigation
 		slides 					:  	[			// Slideshow Images
-											{image : 'assets/images/image01.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''},
-											{image : 'assets/images/image02.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''},
-											{image : 'assets/images/image03.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''},
-											{image : 'assets/images/image04.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''}  
+											{image : 'assets/image01.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''},
+											{image : 'assets/image02.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''},
+											{image : 'assets/image03.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''},
+											{image : 'assets/image04.jpg', title : '<div class="slide-content">Startup Maps</div>', thumb : '', url : ''}  
 									],
 									
 		// Theme Options			   
@@ -407,7 +407,7 @@ $(document).ready(function(){
 	Modernizr.load([
 	{
 		test: Modernizr.placeholder,
-		nope: '_include/js/placeholder.js', 
+		nope: 'assets/placeholder.js', 
 		complete : function() {
 				if (!Modernizr.placeholder) {
 						Placeholders.init({
