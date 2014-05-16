@@ -375,11 +375,11 @@
 
 <!--
   # Definition: Redirects to change company status.
-  # Input: Nothing.
-  # Output: Nothing.
+  # Input: Void.
+  # Output: Void.
   # Author: Ola Enaba
 -->
 
 <% if current_entity == @entity && @entity.type == "Startup" && @entity.completed %>
-<%= button_to "Change company status", entity_change_company_status_path(entity_id: params[:id]) %>
+ <%= button_to "Change company status", entity_change_company_status_path(entity_id: params[:id]) %>
 <% end %>
