@@ -1,3 +1,14 @@
-<h1>Welcome</h1>
-<%= button_to "Show Map", maps_path, :class => "button"  %>
 
+<h1>Welcome</h1>
+
+ <div class="span8">
+    <%= render 'follow_form' if signed_in? %>
+    <% if @entity.userposts.any? %>
+      <h3>My Newsfeed (<%= @entity.posts.count %>)</h3>
+      <ol class="userposts">
+        <%= render @userposts %>
+      </ol>
+    <% end %>
+</div>
+
+<%= button_to "Show Map", maps_path, :class => "button"  %>

@@ -1,0 +1,15 @@
+<% @entity ||= current_entity %>
+<div class="stats">
+  <a href="<%= following_entity_path(@entity) %>">
+    <strong id="following" class="stat">
+      <%= @entity.followed_entities.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_entity_path(@entity) %>">
+    <strong id="followers" class="stat">
+      <%= @entity.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>
