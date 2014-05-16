@@ -1,5 +1,4 @@
 class Entity < ActiveRecord::Base
-
   self.inheritance_column=nil
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   has_many :services 
@@ -17,10 +16,11 @@ class Entity < ActiveRecord::Base
   has_many :receivers, :through => :group_invitation
   has_many :senders, :through => :send_merge_request
   has_many :receivers, :through => :send_merge_request
-  has_many :subscriber, :through => :subscrtipion
-  has_many :subscribee, :through => :subscrtipion
+  has_many :subscriber, :through => :subscripion
+  has_many :subscribee, :through => :subscripion
   has_many :receivers, :through => :message
   has_many :messages
+  is_impressionable
   TYPES = %w[Startup Investor Service]
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
 
@@ -99,5 +99,6 @@ class Entity < ActiveRecord::Base
       end
     end
   end
+end
 end
 
