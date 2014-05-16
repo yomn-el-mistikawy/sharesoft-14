@@ -1,0 +1,3 @@
+class GroupsStartupsController < ApplicationController
+end
+
