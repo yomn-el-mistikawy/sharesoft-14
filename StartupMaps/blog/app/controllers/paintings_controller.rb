@@ -1,6 +1,7 @@
   class PaintingsController < ApplicationController
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
+
   # Definition: This method loops on table painting and put all data in the variable
   # @paintings.
   # Input: Void.
@@ -21,7 +22,7 @@
   # Author: Sandra Youssef.
 
   def new
-    @painting = Painting.new( :gallery_id => params[:gallery_id])
+    @painting = Painting.new(:gallery_id => params[:gallery_id])
   end
 
   def edit
@@ -35,7 +36,7 @@
   # Output: A new painting.
   # Author: Sandra Youssef.
 
-def create
+  def create
     @painting = Painting.new(painting_params)
     respond_to do |format|
       if @painting.save
@@ -103,4 +104,4 @@ def create
   def painting_params
     params.require(:painting).permit(:gallery_id, :name, :image)
   end
-end
+  end
