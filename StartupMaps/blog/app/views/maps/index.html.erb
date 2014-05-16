@@ -41,13 +41,16 @@
 
 <script>
  var locationsMap = {};
+ var x = 3;
  function toggleLocations(cb, url){
   var id= cb.id;
   if(!cb.checked){
    locationsMap[id] = [];
    buildMap();
+   x = 2;
   }
   else{
+   x = 10;
    url = url + "?sector=" + getSector();
    $.ajax(url)
    .done(function(data) {
@@ -87,7 +90,6 @@
  locationsMap["online"] = [];
  locationsMap["offline"] = [];
  locationsMap["merged"] = [];
-
  function buildMap (){
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
@@ -99,7 +101,7 @@
    markers = handler.addMarkers(loc4);  
    handler.bounds.extendWith(markers);
    handler.fitMapToBounds();
-   handler.getMap().setZoom(2);
+   handler.getMap().setZoom(x);
   }); 
  }
  buildMap();
