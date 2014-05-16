@@ -21,17 +21,17 @@
 
 <!--
   # Definition: The layout of the page.
-  # Input: Nothing.
+  # Input: Void.
   # Output: Updated status
   # Author: Ola Enaba.
 -->
 
 <h1>Edit your status:  
  <%=@last%></h1>
-<form action="update_status" onsubmit='return check(this)'  method=get >
+<form action = "update_status" onsubmit = 'return check(this)'  method = get >
  status:<br>
- <input type=text name=other >
- <input type=hidden name=entity_id value='1' >
- <input type=submit value='change' %>
+ <input type = text name = other >
+ <input type = hidden name = entity_id value = '1' >
+ <input type = submit value = 'change' %>
 </form>
-<a href='show'> <button> back </button></a>
+<a href = 'show'> <button> back </button></a>
