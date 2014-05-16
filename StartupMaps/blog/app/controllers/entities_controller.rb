@@ -161,6 +161,6 @@ class EntitiesController < ApplicationController
     else
       redirect_to :action => 'show'
     end
-      redirect_to :action => 'edit_work_status' ,:entity_id => params[:entity_id]
+    redirect_to :action => 'edit_work_status' ,:entity_id => params[:entity_id]
   end
 end
