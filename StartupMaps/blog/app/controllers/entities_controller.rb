@@ -73,7 +73,6 @@ class EntitiesController < ApplicationController
   # Output: Void.
   # Author: Omar El Menawy.
 
-
   def create_startup
     @startup = Startup.create(startup_params)
     @startup.update(:entity_id => params[:entity_id])
