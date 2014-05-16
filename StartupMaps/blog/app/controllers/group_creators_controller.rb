@@ -1,3 +1,3 @@
 class GroupCreatorsController < ApplicationController
-	    before_action :authenticate_entity!
+  before_action :authenticate_entity!
 end

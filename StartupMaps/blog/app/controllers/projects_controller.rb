@@ -1,6 +1,5 @@
 class ProjectsController < ApplicationController
-
-    before_action :authenticate_entity!
+  before_action :authenticate_entity!
   # == Begin  == 
   # Definition: "A startup can see a list of his projects" 
   # This method allows you to get a list of projects and 
