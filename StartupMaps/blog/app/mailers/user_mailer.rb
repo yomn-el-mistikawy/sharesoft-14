@@ -2,6 +2,7 @@ class UserMailer < ActionMailer::Base
   default from: "from@example.com"
   default from: 'notifications@example.com'
  
+ 
   # Definition: This methods takes as input an entity and retieves its email to send a creation confirmation email to the entity.
   # Input: Entity.
   # Output: Void.
