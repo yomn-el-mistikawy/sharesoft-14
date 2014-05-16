@@ -65,7 +65,6 @@ class MessagesController < ApplicationController
   end
   
 
-
   # Definition: Destroys desired message.
   # Input: Message id.
   # Output: Deletes record.
