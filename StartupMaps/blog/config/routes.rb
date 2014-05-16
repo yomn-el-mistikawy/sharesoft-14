@@ -52,6 +52,8 @@ post "entities/edit"
     get "show_suggested"
     get "merge_request"
   end  
+
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
