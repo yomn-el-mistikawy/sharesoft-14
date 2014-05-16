@@ -1,27 +1,31 @@
 <h1>Listing group members</h1>
-<!-- # Defintion: This shows a list of group members
+
+<!-- 
+     # Defintion: This shows a list of group members
      # of the group opened.
      # Input: @group_members
      # Output: group_member
      # Author: Yomn El-Mistikawy 
-     # Modified By: Mina Ashraf -->
-<% if @group_members.present? %>
-  <table>
-    <tr>
-      <th>Name &nbsp;&nbsp;&nbsp;&nbsp;</th>
-      <th>Sector &nbsp;&nbsp;&nbsp;&nbsp;</th>
-      <th>Location</th>
-    </tr>
-    <% @group_members.each do |group_member| %>
-      <tr>
-        <td><%= group_member.name %>&nbsp;&nbsp;&nbsp;</td>
-        <td><%= group_member.sector %>&nbsp;&nbsp;&nbsp;</td>
-        <td><%= group_member.location%>&nbsp;&nbsp;</td>
-        <td><%= link_to 'Show', group_member %>&nbsp;</td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <h5> "You are not a group member"  </h5>
-<% end %>  
-      <td><%= link_to 'Back', groups_path%></td>
+     # Modified By: Mina Ashraf 
+-->
+     
+ <% if @group_members.present? %>
+   <table>
+     <tr>
+       <th>Name &nbsp;&nbsp;&nbsp;&nbsp;</th>
+       <th>Sector &nbsp;&nbsp;&nbsp;&nbsp;</th>
+       <th>Location</th>
+     </tr>
+     <% @group_members.each do |group_member| %>
+       <tr>
+         <td><%= group_member.name %>&nbsp;&nbsp;&nbsp;</td>
+         <td><%= group_member.sector %>&nbsp;&nbsp;&nbsp;</td>
+         <td><%= group_member.location%>&nbsp;&nbsp;</td>
+         <td><%= link_to 'Show', group_member %>&nbsp;</td>
+       </tr>
+     <% end %>
+   </table>
+ <% else %>
+   <h5> "You are not a group member"  </h5>
+ <% end %>  
+ <td><%= link_to 'Back', groups_path%></td>
