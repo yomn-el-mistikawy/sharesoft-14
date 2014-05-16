@@ -47,3 +47,5 @@ class EntityPortfoliosControllerTest < ActionController::TestCase
     assert_redirected_to entity_portfolios_path
   end
 end
+ 
+
