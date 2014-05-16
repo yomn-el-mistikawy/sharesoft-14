@@ -24,15 +24,9 @@ Blog::Application.routes.draw do
 post "entities/edit"
 
   resources :startups 
-
-<<<<<<< HEAD
-  resources :startups
   resources :messages
 
 
-=======
-  get "welcome/index"
->>>>>>> 974c0e9183a3545f3ed97563a1018f04f49aa437
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -59,25 +53,26 @@ post "entities/edit"
     get "show_suggested"
     get "merge_request"
   end  
-<<<<<<< HEAD
+
 
 
   resources :friendships do
     get "destroy"
     get "new"
-    get "accept"
-    get "reject"
-    get "request"
+    patch :accept_friend
+    get :accept_friend
+    patch :reject_friend
+    get :reject_friend
   end
 
-  resources :maps do
-    get "show_startups" 
-    get "show_investors"
-    get "show_services"
+  resources :opencalls do
+    patch :accept_friend
+    get :accept_friend
+    patch :reject_friend
+    get :reject_friend
   end
 
-=======
->>>>>>> 974c0e9183a3545f3ed97563a1018f04f49aa437
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
