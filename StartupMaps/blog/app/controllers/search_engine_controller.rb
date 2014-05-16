@@ -8,12 +8,12 @@ class SearchEngineController < ApplicationController
   # Author: Mozdan Ahmed.
 
   def list 
-    $name=params[:text]
-    @groups=Group.search_group($name)
-  	@entities=Entity.search_entity($name)
-  	@investors=Investor.search_investor($name)
-  	@services=Service.search_service($name)
-  	@startups=Startup.search_startup($name)
+   $name=params[:text]
+   @groups=Group.search_group($name)
+   @entities=Entity.search_entity($name)
+   @investors=Investor.search_investor($name)
+   @services=Service.search_service($name)
+   @startups=Startup.search_startup($name)
   	
   end
 
@@ -25,5 +25,4 @@ class SearchEngineController < ApplicationController
 
   def index
   end
-
 end

@@ -7,10 +7,8 @@ belongs_to :Entity
   # Output: Investor name.
   # Author: Mozdan Ahmed.
 
-
   def self.search_investor(search)
    @investor= Investor.find(:all, :conditions => ['name LIKE ?', "#{search}%"])
    return @investor
   end 
-
 end
