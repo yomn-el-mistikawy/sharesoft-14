@@ -21,13 +21,11 @@ Blog::Application.routes.draw do
 
 post "entities/edit"
 
-
-  resources :startups
+  resources :startups 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :projects do
-
      get "suggest"
      get "show_suggested"
      get "merge_request"
