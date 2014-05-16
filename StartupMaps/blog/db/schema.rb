@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140512174723) do
+ActiveRecord::Schema.define(version: 20140516091511) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140512174723) do
     t.string   "last_sign_in_ip"
     t.string   "type"
     t.boolean  "completed"
+    t.float    "lng"
+    t.float    "lat"
   end
 
   add_index "entities", ["email"], name: "index_entities_on_email", unique: true, using: :btree
@@ -231,9 +233,9 @@ ActiveRecord::Schema.define(version: 20140512174723) do
   create_table "paintings", force: true do |t|
     t.integer  "gallery_id"
     t.string   "name"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
   end
 
   add_index "paintings", ["gallery_id"], name: "index_paintings_on_gallery_id", using: :btree
@@ -273,11 +275,18 @@ ActiveRecord::Schema.define(version: 20140512174723) do
     t.datetime "updated_at"
   end
 
-  create_table "resumes", force: true do |t|
-    t.string   "name"
-    t.string   "attachement"
+  create_table "projects_startups", force: true do |t|
+    t.integer  "startup_id"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "resumes", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment"
   end
 
   create_table "send_merge_requests", force: true do |t|
