@@ -4,10 +4,11 @@ class GroupsStartup < ActiveRecord::Base
   
   # Defintion: This checks if the startup is a member
   # of the opened group and returns the record containing 
-  # both the startup_id and group_id.
-  # Input: startup_id, group_id
-  # Output: record containing startup_id and group_id
+  # Both the startup_id and group_id.
+  # Input: Startup_id, group_id
+  # Output: Record containing startup_id and group_id
   # Author: Yomn El-Mistikawy
+  # MOdified by: maha Salah Eldin.
 
   def self.check_membership(startup_id, group_id)
     GroupsStartup.where(:startup_id => startup_id, :group_id => group_id)

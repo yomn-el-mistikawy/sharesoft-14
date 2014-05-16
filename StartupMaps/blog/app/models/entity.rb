@@ -65,8 +65,8 @@ class Entity < ActiveRecord::Base
 
 
   # Definition: This method saves the id of the startup before it is destroyed. 
-  # Input: current entity.
-  # Output: entity's id.
+  # Input: Current entity.
+  # Output: Entity's id.
   # Author: Maha Salah Eldin.
 
   def destroyed_startup_id
@@ -75,10 +75,10 @@ class Entity < ActiveRecord::Base
   end
 
   # Definition: This method, when a startup is destroyed, it checks if there were no more startups in the 
-  # geograohic location group of the removed startup, if yes then this group is destroyed too, it also
-  # destroys all entries for this startup in groups.
-  # Input: location, and id of the startup.
-  # Output: void.
+  # Geograohic location group of the removed startup, if yes then this group is destroyed too, it also
+  # Destroys all entries for this startup in groups.
+  # Input: Location, and id of the startup.
+  # Output: Void.
   # Author: Maha Salah Eldin.
 
   def destroy_geo_group_and_remove_from_groups
