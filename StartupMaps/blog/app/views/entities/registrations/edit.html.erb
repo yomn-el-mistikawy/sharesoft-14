@@ -8,7 +8,6 @@
 
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |entity| %>
-<<<<<<< HEAD
   <%= devise_error_messages! %>
   <div>
     <%= entity.label :email %><br/>
@@ -44,7 +43,6 @@
   <div>
     <%= entity.submit "Update" %>
   </div>
-=======
  <%= devise_error_messages! %>
  <div>
   <%= entity.label :email %><br/>
@@ -80,7 +78,6 @@
  <div>
   <%= entity.submit "Update" %>
  </div>
->>>>>>> 6cbcd178d2f3a083d2950e21605bdfe54efe4e4c
 <% end %>
 <h3>Cancel my account</h3>
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
