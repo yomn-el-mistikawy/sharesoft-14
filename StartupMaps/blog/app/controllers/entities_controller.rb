@@ -53,10 +53,17 @@ class EntitiesController < ApplicationController
   # Output: Void.
   # Author: Omar El Menawy.
 
+  # Definition: This copies the longitude and latitude from table Entity to table Startup.
+  # Input: Longitude and latitude from table Entity.
+  # Output: Void.
+  # Author: Heba Abdelfattah.
+  # Modified: Yomn El-Mistikawy   
+
   def create_startup
     @startup = Startup.create(startup_params)
     @startup.update(:entity_id => params[:entity_id])
-    if @startup.save
+    if @startup.save   
+      @startup.update(:longitude => current_entity.lng, :latitude => current_entity.lat, :online_status => true)
       current_entity.update(:completed => 1)
       redirect_to root_url
     else 
@@ -71,10 +78,16 @@ class EntitiesController < ApplicationController
   # Output: Void.
   # Author: Omar El Menawy.
 
+  # Definition: This copies the longitude and latitude from table Entity to table Investor.
+  # Input: Longitude and latitude from table Entity.
+  # Output: Void.
+  # Author: Heba Abdelfattah.   
+
   def create_investor
     @investor = Investor.create(investor_params)
     @investor.update(:entity_id => params[:entity_id])
     if @investor.save
+      @investor.update(:longitude => current_entity.lng, :latitude => current_entity.lat)
       current_entity.update(:completed => 1)
       redirect_to root_url
     else 
@@ -89,10 +102,16 @@ class EntitiesController < ApplicationController
   # Output: Void.
   # Author: Omar El Menawy.
 
+  # Definition: This copies the longitude and latitude from table Entity to table Service.
+  # Input: Longitude and latitude from table Entity.
+  # Output: Void.
+  # Author: Heba Abdelfattah.   
+
   def create_service
     @service = Service.create(service_params)
     @service.update(:entity_id => params[:entity_id])
     if @service.save
+      @service.update(:longitude => current_entity.lng, :latitude => current_entity.lat)
       current_entity.update(:completed => 1)
       redirect_to root_url
     else 
@@ -129,4 +148,9 @@ class EntitiesController < ApplicationController
   def service_params
     params.require(:service).permit(:sector)
   end
+
+  def create
+    s = Entity.new
+    s.save
+ end
 end

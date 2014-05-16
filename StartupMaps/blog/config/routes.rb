@@ -13,6 +13,7 @@ Blog::Application.routes.draw do
   resources :groups do
     get "list_group_members"
   end  
+resources :resumes
 
   resources :entities do
     post "show_unachieved_badges"  
@@ -47,6 +48,7 @@ post "entities/edit"
   # See how all your routes lay out with "rake routes"
 
   resources :projects do
+
      get "suggest"
      get "show_suggested"
      get "merge_request"
@@ -74,6 +76,7 @@ post "entities/edit"
     get "show_investors"
     get "show_services"
   end
+
 
 
   # You can have the root of your site routed with "root"
