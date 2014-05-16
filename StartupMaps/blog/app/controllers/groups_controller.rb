@@ -1,18 +1,18 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_entity!
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+ before_action :authenticate_entity!
+ before_action :set_group, only: [:show, :edit, :update, :destroy]
   
-  # Defintion: This method takes the session id 
-  # and group id, then checks if the logged in
-  # entity is a group member. If it is a group member
-  # then it calls get_group_members function to get a list
-  # of group members and shows it in list_group_members view,
-  # else a message appears stating that the 
-  # entity isn't a group member. 
-  # Input: entity_id, group_id
-  # Output: list of group members
-  # Author: Yomn El-Mistikawy
-  # Modified By: Mina Ashraf
+ # Defintion: This method takes the session id
+ # and group id, then checks if the logged in
+ # entity is a group member. If it is a group member
+ # then it calls get_group_members function to get a list
+ # of group members and shows it in list_group_members view,
+ # else a message appears stating that the 
+ # entity isn't a group member. 
+ # Input: entity_id, group_id
+ # Output: list of group members
+ # Author: Yomn El-Mistikawy
+ # Modified By: Mina Ashraf
 
   def list_group_members
     @startup = Startup.find_by_entity_id(current_entity.id)
