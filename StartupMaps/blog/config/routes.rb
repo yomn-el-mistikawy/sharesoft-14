@@ -21,8 +21,7 @@ Blog::Application.routes.draw do
 
 post "entities/edit"
 
-
-  resources :startups
+  resources :startups 
 
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -47,7 +46,6 @@ post "entities/edit"
   # See how all your routes lay out with "rake routes"
 
   resources :projects do
-
     get "change_launch_status", on: :member, as: :launch
     get "suggest"
     get "show_suggested"
