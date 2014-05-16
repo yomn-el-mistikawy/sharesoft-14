@@ -1129,13 +1129,12 @@ nav#menu #menu-nav li a:hover {
 ================================================== */
 
 footer {
-	position: absolute;
+	position: relative;
 	width: 100%;
 	height: auto;
 	background: #26292E;
 	text-align: center;
 	z-index: 99;
-	bottom:0px;
 }
 
 footer .credits {
