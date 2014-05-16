@@ -1,4 +1,16 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_entity!
+  # == Begin  == 
+  # Definition: "A startup can see a list of his projects" 
+  # This method allows you to get a list of projects and 
+  # moves with a session_id of an entity in order to 
+  # list all the project's of the startup
+  # that belong to a specific startup and is linked to the index HTML file
+  # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
+  # it's reachable and knows what's happening in the file.
+  # Input: entity_id, startup_id.
+  # Output: project_id "all project description in a list".
+
   before_action :authenticate_entity!, :only => [:new, :create, :edit, :update, :destroy]
 
   # Definition: This method creates new project 
@@ -6,6 +18,7 @@ class ProjectsController < ApplicationController
   # and gets linked to create -->new.html.
   # Input: Name, Category, Location and description. 
   # Output: project_id. "on the show page".
+
   # Author: Hana Magdy.
 
   def new
@@ -54,6 +67,32 @@ class ProjectsController < ApplicationController
     end
   end
 
+  
+  # Definition: "A startup can launch its project"
+  # Changes the status of a project and redirects to the project's 
+  # page (show project) on success or error
+  # with the exception of displaying a success/error message
+  # update_attribute --> updates the rows
+  # update the status of launch project from unlaunch to launched and vice versa
+  # redirects to the show page.
+  # Input: project_id. "on the show page".
+  # Output: project_id/Void "it's an action" returns the success of the
+  # changeable button of launch upon of it's previous status. 
+  # Author: Hana Magdy.
+
+
+  def change_launch_status
+    project = Project.find(params[:id])
+    respond_to do |format|
+      if project.update_attribute(:launch, !project.launch)
+        flash.notice = "Successfully launched project"
+      else
+        flash.alert = "Oops, couldn't launch project"
+      end
+      format.html { redirect_to project }
+    end
+  end 
+
 
   # Definition: Allows editing the project's details, 
   # specifically targets and requirements
@@ -65,6 +104,7 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
   end
+
 
 
   # Definition: Allows editing the project's details, specifically targets and requirements
