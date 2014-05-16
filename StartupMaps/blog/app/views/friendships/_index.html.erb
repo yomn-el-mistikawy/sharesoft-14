@@ -4,14 +4,12 @@
     <h2>Pending</h2>
     <table class="table">
       <tr>
-        <td>Subject</td>
-        <td>From</td>
-        <td>Date</td>
+        <td>Name</td>
         <td></td>
       </tr>
     </table>
     <div id="friends">
-      <%= render @friends %> 
+      
     </div>
   </div>
 
@@ -19,13 +17,12 @@
     <h2>Requested</h2>
     <table class="table">
       <tr>
-        <td>Subject</td>
-        <td>To</td>
-        <td>Date</td>
+        <td>Name</td>
+        <td>Response</td>
         <td></td>
       </tr>
     </table>
     <div id="friends">
-      <%= render 'friendships/requested' %> 
+      <%= render new_friendship_path %> 
     </div>
   </div>

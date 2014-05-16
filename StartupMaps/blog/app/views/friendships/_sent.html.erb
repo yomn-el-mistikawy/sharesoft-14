@@ -1,16 +1,15 @@
-<% @messages.each do |m| %>
-<% if m.sender == current_entity.email %>
+<% @friendships.each do |m| %>
+<% if f.sender == current_entity.email %>
 <table class="table">
   <tr>
+   <td><%= f.receiver %></td>
     <td>
-      <%= link_to m.subject, message_path(m) %>
-      <% if m.read %>
-        [read by user]
+      <%= link_to f.response, Accept_path(f) %>
+      <%= link_to f.response, Accept_path(f) %>
       <% end %>
     </td>
-    <td><%= m.recepient %></td>
-    <td><%= m.created_at %></td>
-    <td><%= link_to 'Delete Message', m, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <td><%= link_to 'Delete Message', f, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 </table>
 <% end %>

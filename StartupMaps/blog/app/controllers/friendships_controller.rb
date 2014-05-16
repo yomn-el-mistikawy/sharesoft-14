@@ -1,87 +1,52 @@
 class FriendshipsController < ApplicationController
-  before_filter :setup_friends
+def index
+    @entity = current_entity
+    @Friendships = Friendship.order("created_at desc")
+    respond_to do |format|
+      format.html
+      format.json { render json: @Friendships }
+    end
+  end
+
+  def show 
+    @Friendship = Friendship.find(params[:id])
+    @entity = current_entity
+    if (@entity.email == @Friendship.sender) || (@entity.email == @Friendship.recepient)
+    else
+      respond_to do |format|
+        format.html { redirect_to :action => :index, notice: 'No Friendship found' }
+        format.json { render json: @Friendship.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   def new
-    @friendship = Friendship.new 
-  end 
-
-  def accept
-    if @entity.requested_friends.include?(@friend)
-      Friendship.accept(@sender, @receiver)
-      flash[:notice] = "Friendship Accepted"
-    else
-      flash[:notice] = "No Friendship request"
-    end
-    redirect_to root_url
+    @Friendship = Friendship.new
   end
 
-  def reject
-    if @entity.requested_friends.include?(@receiver)
-      Friendship.breakup(@sender, @receiver)
-      flash[:notice] = "Friendship Declined"
-    else
-      flash[:notice] = "No Friendship request"
-    end
-    redirect_to root_url
-  end
-
-  def cancel
-    if @entity.pending_friends.include?(@receiver)
-      Friendship.breakup(@sender, @receiver)
-      flash[:notice] = "Friendship Canceled"
-    else 
-      flash[:notice] = "No Friendship request"
-    end
-    redirect_to root_url
-  end
-
-  def delete
-    if @entity.friends.include?(@receiver)
-      Friendship.breakup(@sender, @receiver)
-      flash[:notice] = "Friendship Deleted"
-    else
-      flash[:notice] = "No Friendship request"
-    end
-    redirect_to root_url
-  end
-
-  def index
-    @entities = Entity.all
-  end
-
-  #Send a friendship request
-  # def create
-  #   @entity = current_entity.email
-  #   @friendship = Friendship.create(:sender => @entity)
-  #   # @friendship.sender = current_entity.email
-  #   @friendship.save
-  #   redirect_to @friendship
-  #  #  if @friendship.save
-  #  # redirect_to(:action => 'index')
-  #  #  else
-  #  # render'new'
-  #  #  end
-  # end
-
-   def create
-    @user = Friendship.new(params[:friendship])
-    @user.sender = current_entity.email
-    @user.save
-    if @user.save
-        redirect_to @user, notice: "Successfully created."
-    else
-      render :action => 'edit'
+  def create
+    @Friendship = Friendship.new(params[:Friendship])
+    @Friendship.sender = current_entity.email
+    @Friendship.savess
+    ss
+    respond_to do |format|
+      if @Friendship.save
+        format.html { redirect_to :action => :index, notice: 'Friendship has been sent.' }
+        format.json { render json: @Friendships }
+      else
+        format.html { redirect_to :action => :new, notice: 'Error: Please try again.' }
+        format.json { render json: @Friendship.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  def friendship_params 
-    params.require(:friendship).permit(:response, :receiver, :sender)
-  end
-
-  private
-    def setup_friends
-      @sender = current_entity
-      @receiver = Entity.find_by_email(params[:email])
+  def destroy
+    @Friendship = Friendship.find(params[:id])
+    @Friendship.destroy
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { head :no_content }
     end
+  end
 end
 
