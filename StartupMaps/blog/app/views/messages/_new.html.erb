@@ -1,0 +1,13 @@
+<!--
+  # Definition: Displays the message, having delete button to delete the message.
+  # Input: Void.
+  # Output: Message, delete if user wants to.
+  # Author: Sarah Fathallah. 
+-->
+
+<link href="/assets/messages.css" rel="stylesheet">
+<div id="newMessage">
+  <h2>New message</h2>
+  <%= render 'form' %>
+  <%= link_to 'Back', messages_path %>
+</div>
