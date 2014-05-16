@@ -1,20 +1,20 @@
 <!--
 	# Definition: Layout.
-	# Input: Nothing.
-	# Output: Nothing.
+	# Input: Void.
+	# Output: Void.
 	# Author: Ola Enaba.
 -->
 
 <h1> Company Status:
-	<%if @startup.company_status == false%> 
- 	online
- <%else%>
- 	offline
- <%end%>
+<%if @startup.company_status == false%> 
+ online
+<%else%>
+ offline
+<%end%>
 </h1>
-	<%if @startup.company_status == true%>
-<%= button_to "Online", entity_change_company_status_path %>
-	<%else%>
-<%= button_to "Offline", entity_change_company_status_path %>
-	<%end%>
+<%if @startup.company_status == true%>
+ <%= button_to "Online", entity_change_company_status_path %>
+<%else%>
+ <%= button_to "Offline", entity_change_company_status_path %>
+<%end%>
 <%= link_to "Back", current_entity %>
