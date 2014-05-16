@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_entity!
 
   # Definition: This method instantiates a comment on a specific post 
   # Using The association between posts and comments. 
