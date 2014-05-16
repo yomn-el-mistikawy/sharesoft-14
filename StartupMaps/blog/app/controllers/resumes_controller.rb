@@ -1,4 +1,5 @@
 class ResumesController < ApplicationController
+  before_action :authenticate_entity!
   # Definition: Lists all resumes.
   # Input: void.
   # Output: @resumes.
