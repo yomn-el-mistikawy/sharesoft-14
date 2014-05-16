@@ -149,15 +149,14 @@ class EntitiesController < ApplicationController
     params.require(:service).permit(:sector)
   end
 
-<<<<<<< HEAD
+
   # Definition: Knows the user ID from the params and finds its last status.
   # Input: Entity ID.
   # Output: Last status.
   # Author: Ola Enaba.
 
     def edit_status
-     # @last = EntityStatus.find(:all,:conditions => ['entity_id = ?',params[:entity_id]])
-     @last = EntityStatus.where(:entity_id => current_entity.id).last
+      @last = EntityStatus.where(:entity_id => current_entity.id).last
     end
 
 
