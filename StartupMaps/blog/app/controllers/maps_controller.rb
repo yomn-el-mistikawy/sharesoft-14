@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-# Defintion: Gets all online startups in the db and shows them on the map.
+# Definition: Gets all online startups in the db and shows them on the map.
 # Input: Startup Table.
 # Output: Online Startups.
 # Author: Alia Tarek.
@@ -24,7 +24,7 @@ class MapsController < ApplicationController
   end
 
 
-# Defintion: Gets all offline startups in the db and shows them on the map.
+# Definition: Gets all offline startups in the db and shows them on the map.
 # Input: Startup Table.
 # Output: Onffline Startups.
 # Author: Alia Tarek.
@@ -49,7 +49,7 @@ class MapsController < ApplicationController
   end
 
 
-# Defintion: Gets all Investors in the db and shows them on the map.
+# Definition: Gets all Investors in the db and shows them on the map.
 # Input: Investors Table.
 # Output: All Investors.
 # Author: Alia Tarek.
@@ -74,7 +74,7 @@ class MapsController < ApplicationController
   end
 
 
-#  Defintion: Gets all Services in the db and shows them on the map.
+#  Definition: Gets all Services in the db and shows them on the map.
 #  Input: Services Table.
 #  Output: All Services.
 #  Author: Alia Tarek.
@@ -99,22 +99,22 @@ class MapsController < ApplicationController
   end
 
 
-  # Defintion: Gets all merged startups in the db and shows them on the map.
+  # Definition: Gets all merged startups in the db and shows them on the map.
   # Input: Startup Table.
   # Output: Merged Startups.
   # Author: Alia Tarek.
 
   def show_merged
     if params[:sector] == "please select a sector..."
-      @merged = Startup.where(:joint_ventures != "")
+      @merged = Startup.where.not(:joint_ventures => "")
     end
-    if params[:sector ] != "please select a sector..." 
-      @merged = Startup.where( sector: params[:sector]).where(:joint_ventures != "")
+    if params[:sector] != "please select a sector..." 
+      @merged = Startup.where(sector: params[:sector]).where.not(:joint_ventures => "")
     end
     @markers = Gmaps4rails.build_markers(@merged) do |joint, marker| 
       marker.lat joint.latitude
       marker.lng joint.longitude 
-      marker.infowindow (joint.name + " merged with:" + joint.joint_ventures)
+      marker.infowindow joint.name 
       marker.picture({  
         "url" => "http://rideforclimate.com/nukes/all/images/yellow.png",
         "width" => 32, 
