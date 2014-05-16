@@ -127,6 +127,38 @@ ActiveRecord::Schema.define(version: 20140516091511) do
     t.datetime "updated_at"
   end
 
+  create_table "event_members", force: true do |t|
+    t.integer  "receiver_id"
+    t.integer  "sender_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_startups", force: true do |t|
+    t.integer  "events_id"
+    t.integer  "startups_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.date     "start_time"
+    t.date     "end_time"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events_startups", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "startup_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friendships", force: true do |t|
     t.integer  "sender_id_id"
     t.integer  "receiver_id_id"
@@ -221,11 +253,10 @@ ActiveRecord::Schema.define(version: 20140516091511) do
   end
 
   create_table "messages", force: true do |t|
-    t.string   "sender"
-    t.string   "recepient"
-    t.string   "subject"
-    t.text     "body"
-    t.integer  "read"
+    t.integer  "entity_id"
+    t.integer  "receiver_id"
+    t.string   "title"
+    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

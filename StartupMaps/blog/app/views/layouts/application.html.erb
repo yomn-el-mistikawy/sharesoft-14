@@ -8,12 +8,12 @@
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
 <!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html lang = "en-US"> <!--<![endif]-->
 <head>
 
 <!-- Meta Tags -->
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv = "Content-Type" content = "text/html; charset=UTF-8" />
 <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
@@ -40,67 +40,67 @@
 
 <!-- Mobile Specifics -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="HandheldFriendly" content="true"/>
-<meta name="MobileOptimized" content="320"/>   
+<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+<meta name = "HandheldFriendly" content = "true"/>
+<meta name = "MobileOptimized" content = "320"/>   
 
 <!-- Mobile Internet Explorer ClearType Technology -->
 <!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
 
 <!-- Bootstrap -->
 
-<link href="assets/bootstrap.min.css" rel="stylesheet">
+<link href = "assets/bootstrap.min.css" rel = "stylesheet">
 
 <!-- Main Style -->
 
-<link href="assets/main.css" rel="stylesheet">
+<link href = "assets/main.css" rel = "stylesheet">
 
 <!-- Supersized -->
 
-<link href="assets/supersized.css" rel="stylesheet">
-<link href="assets/supersized.shutter.css" rel="stylesheet">
+<link href = "assets/supersized.css" rel = "stylesheet">
+<link href = "assets/supersized.shutter.css" rel = "stylesheet">
 
 <!-- FancyBox -->
 
-<link href="assets/fancybox/jquery.fancybox.css" rel="stylesheet">
+<link href = "assets/fancybox/jquery.fancybox.css" rel = "stylesheet">
 
 <!-- Font Icons -->
 
-<link href="assets/fonts.css" rel="stylesheet">
+<link href = "assets/fonts.css" rel="stylesheet">
 
 <!-- Shortcodes -->
 
-<link href="assets/shortcodes.css" rel="stylesheet">
+<link href = "assets/shortcodes.css" rel="stylesheet">
 
 <!-- Responsive -->
 
-<link href="assets/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="assets/responsive.css" rel="stylesheet">
+<link href = "assets/bootstrap-responsive.min.css" rel = "stylesheet">
+<link href = "assets/responsive.css" rel = "stylesheet">
 
 <!-- Supersized -->
 
-<link href="assets/supersized.css" rel="stylesheet">
-<link href="assets/supersized.shutter.css" rel="stylesheet">
+<link href = "assets/supersized.css" rel = "stylesheet">
+<link href = "assets/supersized.shutter.css" rel = "stylesheet">
 
 <!-- Google Font -->
 
-<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+<link href = 'http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel = 'stylesheet' type = 'text/css'>
 
 <!-- Fav Icon -->
 
-<link rel="shortcut icon" href="#">
-<link rel="apple-touch-icon" href="#">
-<link rel="apple-touch-icon" sizes="114x114" href="#">
-<link rel="apple-touch-icon" sizes="72x72" href="#">
-<link rel="apple-touch-icon" sizes="144x144" href="#">
+<link rel = "shortcut icon" href = "#">
+<link rel = "apple-touch-icon" href = "#">
+<link rel = "apple-touch-icon" sizes = "114x114" href = "#">
+<link rel = "apple-touch-icon" sizes = "72x72" href = "#">
+<link rel = "apple-touch-icon" sizes = "144x144" href = "#">
 
 <!-- Modernizr -->
 
-<script src="assets/modernizr.js"></script>
+<script src = "assets/modernizr.js"></script>
 
 <!-- Analytics -->
 
-<script type="text/javascript">
+<script type = "text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'Insert Your Code']);
   _gaq.push(['_trackPageview']);
@@ -118,9 +118,9 @@
 
 <!-- This section is for Splash Screen -->
 
-<div class="ole">
-<section id="jSplash">
-  <div id="circle"></div>
+<div class = "ole">
+<section id = "jSplash">
+  <div id = "circle"></div>
 </section>
 </div>
 
@@ -130,25 +130,35 @@
 
 <% if current_entity != nil %>
 <header>
-    <div class="sticky-nav">
-      <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+    <div class = "sticky-nav">
+      <a id = "mobile-nav" class = "menu-nav" href = "#menu-nav"></a>
         
-        <div id="logo">
-          <a id="goUp" href="#home-slider" title="Startup Maps">Startup Maps</a>
+        <div id = "logo">
+          <a id = "goUp" href = "#home-slider" title = "Startup Maps">Startup Maps</a>
         </div>
+        <nav id = "menu">
+        	<ul id = "menu-nav">
+            <li><a href = "home.html" class = "external">Home</a></li>
+            <li><a href = "Map.html" class = "external">Map</a></li>
+            <li><a href = "Profile.html" class = "external">Profile</a></li>
+            <li><a href = "Logout.html" class = "external">Logout</a></li>
+     
+				
+            </ul>
+        </nav>
 
 <!-- 
   # Author: Omar El-Menawy.
 -->
 
-        <nav id="menu">
-          <ul id="menu-nav">
-            <li><a href="/" class="external">Home</a></li> 
+        <nav id = "menu">
+          <ul id = "menu-nav">
+            <li><a href = "/" class = "external">Home</a></li> 
             <li><a href = "/maps" class="external">Map</a></li>
-             <li><a href = "/entities/<%= current_entity.id %>" class="external">Profile</a></li>
-             <li><a href = "/entities/edit" class="external">Edit Profile</a></li>
+             <li><a href = "/entities/<%= current_entity.id %>" class = "external">Profile</a></li>
+             <li><a href = "/entities/edit" class = "external">Edit Profile</a></li>
              <li><%= link_to "Logout", destroy_entity_session_path, method: :delete, :class => 'menu_nav'  %></li>
-             <li><a href = "/entities/sign_in" class="external">Sign In</a></li>
+             <li><a href = "/entities/sign_in" class = "external">Sign In</a></li>
            </ul>
         </nav>
     </div>
@@ -167,26 +177,26 @@
 
 <!-- Js -->
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
-<script src="/assets/bootstrap.min.js"></script> <!-- Bootstrap -->
-<script src="/assets/supersized.3.2.7.min.js"></script> <!-- Slider -->
-<script src="/assets/waypoints.js"></script> <!-- WayPoints -->
-<script src="/assets/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
-<script src="/assets/jquery.isotope.js"></script> <!-- Isotope Filter -->
-<script src="/assets/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
-<script src="/assets/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
-<script src="/assets/jquery.tweet.js"></script> <!-- Tweet -->
-<script src="/assets/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
-<script src="/assets/main.js"></script> <!-- Default JS -->
+<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> <!-- jQuery Core -->
+<script src = "/assets/bootstrap.min.js"></script> <!-- Bootstrap -->
+<script src = "/assets/supersized.3.2.7.min.js"></script> <!-- Slider -->
+<script src = "/assets/waypoints.js"></script> <!-- WayPoints -->
+<script src = "/assets/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
+<script src = "/assets/jquery.isotope.js"></script> <!-- Isotope Filter -->
+<script src = "/assets/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
+<script src = "/assets/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
+<script src = "/assets/jquery.tweet.js"></script> <!-- Tweet -->
+<script src = "/assets/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+<script src = "/assets/main.js"></script> <!-- Default JS -->
 
 <!-- End Js -->
 
 <% if flash.notice %>
-	<div class="notification success">
+	<div class = "notification success">
 		<%= flash.notice %>
 	</div>
 <% else %>
-	<div class="notification error">
+	<div class = "notification error">
 		<%= flash.alert %>
 	</div>
 <% end %>
@@ -195,7 +205,7 @@
 <!-- Footer -->
 
 <footer>
-<p class="credits">&copy;2014 Startup Maps. Developed By <a>Sharesoft-14</a>. Design by <a href="http://www.facebook.com/samarfikri" >Samar Fikri</a></p>
+<p class = "credits">&copy;2014 Startup Maps. Developed By <a>Sharesoft-14</a>. Design by <a href = "http://www.facebook.com/samarfikri" >Samar Fikri</a></p>
 </footer>
 
 <!-- End Footer -->

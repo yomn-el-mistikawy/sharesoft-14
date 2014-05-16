@@ -1,20 +1,20 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_entity!
 
-  # Definition: When a startup opens its profile, if new badges is completed,
-  # then a message appears showing the new badges achieved. A button will be available
-  # to give the owner the option to view the unachieved badges. Moreover, all the
-  # achieved badges with highest level are shown for to users viewing the profile.
-  # Input: startup_id, session_id.
-  # Output: void.
-  # Author: Yomn El-Mistikawy.
-
-  # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
-  # Input: Entity id.
-  # Output: Startup, investor, service params.
-  # Author: Omar El Menawy.
-
-  def show
+ # Definition: When a startup opens its profile, if new badges is completed,
+ # then a message appears showing the new badges achieved. A button will be available
+ # to give the owner the option to view the unachieved badges. Moreover, all the
+ # achieved badges with highest level are shown for to users viewing the profile.
+ # Input: startup_id, session_id.
+ # Output: void.
+ # Author: Yomn El-Mistikawy.
+  
+ # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
+ # Input: Entity id.
+ # Output: Startup, investor, service params.
+ # Author: Omar El Menawy.
+  
+ def show
     @entity = Entity.find(params[:id])
     @searching_table_startup = Startup.where(:entity_id => params[:id])
     if @searching_table_startup.size != 0
@@ -23,12 +23,11 @@ class EntitiesController < ApplicationController
         if @entity == current_entity
           @recently_achieved_badges = StartupsBadges.set_badges(params[:id])
           @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1, 1, 0)
-        end 
+        end
         @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 0, 1, 0)
       end
-    end 
+    end
   end
-
 
   # Definition: This is a pop-up page that shows a list of all the unachieved badges.
   # The button directing to it only appears to the profile owner.

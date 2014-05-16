@@ -3,6 +3,7 @@ class Entity < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   has_many :services 
   has_many :startups
+  has_many :event
   has_many :investors
   has_many :entity_statuses
   has_many :entity_work_portfolio 
@@ -14,6 +15,8 @@ class Entity < ActiveRecord::Base
   has_many :entity_available_internships
   has_many :senders, :through => :group_invitation
   has_many :receivers, :through => :group_invitation
+  has_many :senders, :through => :event_invitation
+  has_many :receivers, :through => :event_invitation
   has_many :senders, :through => :send_merge_request
   has_many :receivers, :through => :send_merge_request
   has_many :subscriber, :through => :subscripion
