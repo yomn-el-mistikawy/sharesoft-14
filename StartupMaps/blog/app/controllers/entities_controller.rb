@@ -1,18 +1,18 @@
 class EntitiesController < ApplicationController
   before_action :authenticate_entity!
 
-  # Definition: When a startup opens its profile, if new badges is completed,
-  # then a message appears showing the new badges achieved. A button will be available
-  # to give the owner the option to view the unachieved badges. Moreover, all the
-  # achieved badges with highest level are shown for to users viewing the profile.
-  # Input: startup_id, session_id.
-  # Output: void.
-  # Author: Yomn El-Mistikawy.
+ # Definition: When a startup opens its profile, if new badges is completed,
+ # then a message appears showing the new badges achieved. A button will be available
+ # to give the owner the option to view the unachieved badges. Moreover, all the
+ # achieved badges with highest level are shown for to users viewing the profile.
+ # Input: startup_id, session_id.
+ # Output: void.
+ # Author: Yomn El-Mistikawy.
   
-  # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
-  # Input: Entity id.
-  # Output: Startup, investor, service params.
-  # Author: Omar El Menawy.
+ # Definition: This method takes from the user the extra information needed according to the entity type. This is done only once.
+ # Input: Entity id.
+ # Output: Startup, investor, service params.
+ # Author: Omar El Menawy.
   
  def show
     @entity = Entity.find(params[:id])
