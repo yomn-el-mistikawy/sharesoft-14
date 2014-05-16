@@ -1,41 +1,66 @@
-  <!-- Just added the colors :)
-  Author: Hana Magdy  -->
+<!--
+  # Definition: Doesn't submit unless name,category 
+  # and description are submitted, so it just gives 
+  # a red color on error.
+  # Input: title 'name' ,project attribute values.
+  # Output: if there is no input redirects to the same page
+  # else redirects to show.
+  # Author: Hana Magdy.
+-->
 
 <style type="text/css">
-
-  h1 {
-    color: #FF3399;
+  .field_with_errors {
+    padding: 2px;
+    background-color: rgb(252, 22, 68);
+    display: table;
   }
+</style>
 
-  p {
-    color: #0099FF;
-  }
-  </style>
+<!--
+  # Definition: Allows entering all project attributes with the necessary 
+  # and unnecessary attributes
+  # can add/remove targets and requirements while creating the project
+  # submit button to check the entries to get redirected to the show page.
+  # Input:project attribute values.
+  # Output: if there is no input redirects to the same page
+  # else redirects to show.
+  # Author: Hana Magdy.
+-->
 
-<h1> Create New Project </h1>
-
-
-<%= form_for @project do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+ <h1> Create New Project </h1>
+ <%= nested_form_for @project do |f| %>
+   <p>
+     <%= f.label :name %><span  style="color:red">✼</span> <br>
+     <%= f.text_field :name %>
+   </p>
+ <p>
+    <%= f.label :category %><span  style="color:red">✼</span><br>
+    <%=  f.select :category, [['Please Select Category', nil], ['Agriculture','Agriculture'],['Manufacturing','Manufacturing'],['Trading ','Trading'],['Clothes ','Clothes'], ['Telecommunication','Telecommunication']]%>
   </p>
- 
-  <p>
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-  </p>
-
   <p>
     <%= f.label :location %><br>
     <%= f.text_field :location %>
   </p>
-
   <p>
-    <%= f.label :description %><br>
+    <%= f.label :description %><span  style="color:red">✼</span> <br>
     <%= f.text_area :description %>
   </p>
- 
+  <%= f.fields_for :project_targets do |targets_f| %>
+    <%= targets_f.label :description %>
+    <%= targets_f.text_field :description %>
+    <%= targets_f.link_to_remove "Remove Target" %>
+  <% end  %>
+  <p>
+    <%= f.link_to_add "Add a Target", :project_targets %>
+  </p>
+  <%= f.fields_for :project_requirements do |targets_f| %>
+    <%= targets_f.label :description %>
+    <%= targets_f.text_field :description %>
+    <%= targets_f.link_to_remove "Remove Requirement" %>
+  <% end  %>
+  <p>
+    <%= f.link_to_add "Add a Requirement", :project_requirements %>
+  </p>
   <p>
     <%= f.submit("Create project") %>
   </p>
