@@ -129,4 +129,61 @@ class EntitiesController < ApplicationController
   def service_params
     params.require(:service).permit(:sector)
   end
+
+
+ 
+ 
+
+  def update 
+  end 
+
+
+  #Definition: This method is used to link the needs , jobs, and goals to the view.
+  #input: links
+  #output:
+  #Author: Mohamed sharawy
+
+  def create
+  end
+
+
+  #Definition: This method creates a new entity job  from the job specified in the text field  and  then save it in the database.
+  #input: Jobs
+  #output: Params jobs 
+  #Author: Mohamed sharawy
+
+  def createjobs
+    @spec = EntityJob.new
+    @spec.jobs = params[:jobs]
+    @spec.save
+  end
+
+
+  #Definition: This method creates a new entity goals from the goal specified in the text field  and  then save it in the database..
+  #input: Goals
+  #output: Params goals
+  #Author: Mohamed sharawy
+
+  def creategoals
+    @spec = EntityGoal.new
+    @spec.goals = params[:goals]
+    @spec.save
+  end
+
+
+  #Definition: This method creates a new entity needs from the need specified in the text field  and  then save it in the database..
+  #input: Needs
+  #output: Params needs
+  #Author: Mohamed sharawy
+
+  def createneeds
+    @spec = EntityNeed.new
+    @spec.needs = params[:needs]
+    @spec.save
+  end
+
+  def editneeds
+  end
+
 end
+

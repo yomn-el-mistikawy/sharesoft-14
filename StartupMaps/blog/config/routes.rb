@@ -7,7 +7,7 @@ Blog::Application.routes.draw do
                                          :unlocks => "entities/unlocks",
                                          :passwords => "entities/passwords"}
 
-
+ get "entities_controller/editneeds"
   resources :groups do
     get "list_group_members"
   end  
@@ -39,6 +39,14 @@ post "entities/edit"
     get "show_investors"
     get "show_services"
   end
+  get "entities/view"
+  resources :entities do
+  get "create"
+  get "createjobs"
+  get "creategoals"
+  get "createneeds"
+  end
+
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
 

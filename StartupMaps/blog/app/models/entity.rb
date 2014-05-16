@@ -23,4 +23,15 @@ class Entity < ActiveRecord::Base
   is_impressionable
   TYPES = %w[Startup Investor Service]
   SECTORS = %w[Agriculture Manufacturing Trading Clothes Telecommunications]
+  def self.specify(jobs,goals,needs)
+    @flag=false
+    @spec.Entity.new
+    @spec.jobs = jobs
+    @spec.needs = needs
+    @spec.goals = goals
+    @spec.id = id
+    @spec.save
+    @spec.save
+    return @flag
+  end
 end
