@@ -1,4 +1,5 @@
 class GroupMembersController < ApplicationController
+  before_action :authenticate_entity!
   before_action :set_group_member, only: [:show, :edit, :update, :destroy]
 
   # GET /group_members

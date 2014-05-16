@@ -1,4 +1,16 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_entity!
+  # == Begin  == 
+  # Definition: "A startup can see a list of his projects" 
+  # This method allows you to get a list of projects and 
+  # moves with a session_id of an entity in order to 
+  # list all the project's of the startup
+  # that belong to a specific startup and is linked to the index HTML file
+  # respond_to --> gives a direct access to the HTML/XML/PDF whatever is it
+  # it's reachable and knows what's happening in the file.
+  # Input: entity_id, startup_id.
+  # Output: project_id "all project description in a list".
+
   before_action :authenticate_entity!, :only => [:new, :create, :edit, :update, :destroy]
 
   # Definition: This method creates new project 
@@ -6,6 +18,7 @@ class ProjectsController < ApplicationController
   # and gets linked to create -->new.html.
   # Input: Name, Category, Location and description. 
   # Output: project_id. "on the show page".
+
   # Author: Hana Magdy.
 
   def new

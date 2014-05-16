@@ -1,4 +1,5 @@
 class MapsController < ApplicationController
+  before_action :authenticate_entity!
   # Definition: Gets all Startups in the db and shows them on the map.
   # Input: Startups Table.
   # Output: All Investors.
