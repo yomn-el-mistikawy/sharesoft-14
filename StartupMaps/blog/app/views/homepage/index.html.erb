@@ -180,3 +180,182 @@
  </div>
  <!-- End Socialize -->
  <% end %>
+=======
+<% if current_entity != nil %>
+ <h1>Welcome</h1>
+ <%= button_to "Show Map", maps_path, :class => "button"  %>
+<% else %>
+
+<!-- Homepage Slider -->
+
+<div id="home-slider">  
+ <div class="overlay"></div>
+ <div class="slider-text">
+  <div id="slidecaption"></div>
+ </div>   
+ <div class="control-nav">
+  <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+  <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+  <ul id="slide-list"></ul>
+  <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
+ </div>
+</div>
+
+<!-- End Homepage Slider -->
+
+<!-- Header -->
+
+<header>
+ <div class="sticky-nav">
+  <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+  <div id="logo">
+   <a id="goUp" href="#home-slider" title="Startup Maps">Startup Maps</a>
+  </div>
+  <nav id="menu">
+   <ul id="menu-nav">
+    <li><a href="/entities/sign_in" class="external">Log In</a></li>
+    <li><a href="/entities/sign_up" class="external">Sign Up</a></li>
+    <li class="current"><a href="#home-slider">Home</a></li>
+    <li><a href="#work">Our Aim</a></li>
+    <li><a href="#about">How it Works</a></li>
+   </ul>
+  </nav>
+ </div>
+</header>
+
+<!-- End Header -->
+
+<!-- Our Aim Section -->
+
+<div id="work" class="page">
+ <div class="container">
+
+<!-- Title Page -->
+
+  <div class="row">
+   <div class="span12">
+    <div class="title-page">
+     <h2 class="title">Our Aim</h2>
+      <h3 class="title-description">We want to create a visualized network of Egyptian startup and entrepreneurship on the
+map to give them an outlet to publish themselves from and also to ease the search of
+specific aspects of work in Egypt. Based on purely crowd-sourced data, the website aims to
+form an accessible database, networking platform, and digital incubator for startups,
+initiatives, and co-working spaces on the ground.</h3>
+    </div>
+   </div>
+  </div>
+  
+<!-- End Title Page -->
+
+ </div>
+</div>
+
+<!-- End Our Aim Section -->
+
+<!-- How it Works Section -->
+
+<div id="about" class="page-alternate">
+ <div class="container">
+   
+<!-- Title Page -->
+   
+  <div class="row">
+   <div class="span12">
+    <div class="title-page">
+     <h2 class="title">How It Works</h2>
+      <h3 class="title-description">Who can Join Us</h3>
+    </div>
+   </div>
+  </div>
+
+<!-- End Title Page -->
+    
+<!-- People -->
+    
+  <div class="row">
+        
+        <!-- Start Profile -->
+        
+   <div class="span4 profile">
+    <div class="image-wrap">
+     <div class="hover-wrap">
+      <span class="overlay-img"></span>
+      <span class="overlay-text-thumb">Start Ups</span>
+     </div>
+     <%= image_tag "profile-01.jpg"%>
+    </div>
+    <h3 class="profile-name"> Start Ups</h3>
+     <p class="profile-description">There are user accounts who can browse through the system. Every user account
+should have one project that they want to initiate. They also have a geographical
+location.</p>
+   </div>
+  
+<!-- End Profile -->
+        
+<!-- Start Profile -->
+  
+   <div class="span4 profile">
+    <div class="image-wrap">
+     <div class="hover-wrap">
+      <span class="overlay-img"></span>
+      <span class="overlay-text-thumb">Investors</span>
+     </div>
+     <%= image_tag("profile-02.jpg") %>
+    </div>
+    <h3 class="profile-name">Investors</h3>
+     <p class="profile-description">Investors only display their name and a brief about themselves. They are the ones
+who can contact startups through the system and not the other way around. We can
+add a part where they add their contact information and control its privacy.</p>
+   </div>
+        
+<!-- End Profile -->
+        
+<!-- Start Profile -->
+
+   <div class="span4 profile">
+    <div class="image-wrap">
+     <div class="hover-wrap">
+      <span class="overlay-img"></span>
+      <span class="overlay-text-thumb">Existing Organizations</span>
+     </div>
+     <%= image_tag("profile-03.jpg") %>
+    </div>
+    <h3 class="profile-name">Services</h3>
+     <p class="profile-description">
+Existing services or startups can have accounts on the system. Those
+accounts have to be verified by the admin before any interactions can be made.
+For startups and services a headquarters location is defined and a zone of effect is
+provided. </p>
+    </div>
+   
+<!-- End Profile -->
+        
+   </div>
+    
+<!-- End People -->
+
+ </div>
+</div>
+
+<!-- End About Section -->
+
+<!-- Socialize -->
+
+<div id="social-area" class="page">
+ <div class="container">
+   <div class="row">
+    <div class="span12">
+     <nav id="social">
+      <ul>
+       <li><a href="https://twitter.com" title="Follow Me on Twitter" target="_blank"><span class="font-icon-social-twitter"></span></a></li>
+       <li><a href="https://www.facebook.com" title="Follow Me on Facebook" target="_blank"><span class="font-icon-social-facebook"></span></a></li>
+       <li><a href="https://plus.google.com" title="Follow Me on Google Plus" target="_blank"><span class="font-icon-social-google-plus"></span></a></li>
+       <li><a href="http://www.linkedin.com/" title="Follow Me on LinkedIn" target="_blank"><span class="font-icon-social-linkedin"></span></a></li>
+      </ul>
+     </nav>
+    </div>
+   </div>
+  </div>
+</div>
+<!-- End Socialize -->
+<% end %>
