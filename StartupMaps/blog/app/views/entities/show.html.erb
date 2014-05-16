@@ -7,7 +7,6 @@
 -->
 
 <% if @entity == current_entity %>
-<<<<<<< HEAD
  <% if current_entity.type == 'Startup' && @entity.completed == nil %>
   Startup
   <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |entity| %>
@@ -94,7 +93,6 @@
     </tbody>
   </table>
   <% end %> 
-=======
   <% if current_entity.type == 'Startup' && @entity.completed == nil %>
    Startup
    <br><br>
@@ -458,5 +456,4 @@
       </table>
     <% end %> 
   <% end %>
->>>>>>> 6cbcd178d2f3a083d2950e21605bdfe54efe4e4c
 <% end %>
