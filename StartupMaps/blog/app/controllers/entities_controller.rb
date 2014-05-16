@@ -56,13 +56,14 @@ class EntitiesController < ApplicationController
   # Definition: This copies the longitude and latitude from table Entity to table Startup.
   # Input: Longitude and latitude from table Entity.
   # Output: Void.
-  # Author: Heba Abdelfattah.   
+  # Author: Heba Abdelfattah.
+  # Modified: Yomn El-Mistikawy   
 
   def create_startup
     @startup = Startup.create(startup_params)
     @startup.update(:entity_id => params[:entity_id])
     if @startup.save   
-      @startup.update(:longitude => current_entity.lng, :latitude => current_entity.lat)
+      @startup.update(:longitude => current_entity.lng, :latitude => current_entity.lat, :online_status => true)
       current_entity.update(:completed => 1)
       redirect_to root_url
     else 
