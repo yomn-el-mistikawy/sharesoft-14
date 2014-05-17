@@ -32,7 +32,13 @@ Blog::Application.routes.draw do
     get "view_projects"
     post "subscribe"
     post "unsubscribe"
-  end  
+    get "edit_status"
+    post "edit_status"
+    post "update_status"
+    get "update_status"
+    get "entities/show"
+  end
+    
   resources :event do
     get "new"
     post "new"

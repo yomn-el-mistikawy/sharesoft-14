@@ -176,4 +176,31 @@ class EntitiesController < ApplicationController
       @projects = @projects.paginate(:page => params[:page])
     end  
   end
+
+  # Definition: Knows the user ID from the params and finds its last status.
+  # Input: Entity ID.
+  # Output: Last status.
+  # Author: Ola Enaba.
+
+  def edit_status
+    @last = EntityStatus.where(:entity_id => current_entity.id).last
+  end
+
+  # Definition: Puts the status in a vaiable, keeps the entity ID and changes 
+  # the status with the one that the user iserted and puts it in the table.
+  # Input: New status.
+  # Output: Updated new status.
+  # Author: Ola Enaba.
+
+  def update_status
+    @new = EntityStatus.new
+    @new.entity_id = params[:entity_id]
+    @new.status = params[:other]    
+    if  @new.save
+      redirect_to :action => 'edit_status',:entity_id => params[:entity_id]
+      @notice = 'successful edit'
+    else
+      redirect_to :action => 'edit_status',:entity_id => params[:entity_id]
+    end
+  end
 end

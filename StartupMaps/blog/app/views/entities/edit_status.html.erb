@@ -1,0 +1,17 @@
+<!--
+  # Definition: The layout of the page.
+  # Input: Nothing.
+  # Output: Updated status.
+  # Author: Ola Enaba.
+-->
+
+<h1>Edit your status: 
+<% if @last != nil %> 
+<%= @last.status%></h1>
+<% end %>
+<form action = "update_status" onsubmit = 'return check(this)'  method = get >
+<input type = text name = other>
+<input type = hidden name = entity_id value = '1'>
+<input type = submit value = 'change'%>
+</form>
+<%=link_to "Back", current_entity, :class => "button"%>
