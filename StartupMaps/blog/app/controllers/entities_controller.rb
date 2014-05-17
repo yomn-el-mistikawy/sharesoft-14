@@ -173,7 +173,7 @@ class EntitiesController < ApplicationController
     if @searching_table_startup.size != 0
       @startup = Startup.find_by_entity_id(params[:entity_id])
       @projects = Project.where(:id => ProjectsStartup.select(:project_id).where(:startup_id => @startup.id))
-      # @projects = @projects.paginate(:page => params[:page])
+      @projects = @projects.paginate(:page => params[:page])
     end  
   end
 end

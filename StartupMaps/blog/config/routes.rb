@@ -20,7 +20,8 @@ Blog::Application.routes.draw do
   resources :groups do
   get "list_group_members"
   end  
-resources :resumes
+  
+  resources :resumes
 
   resources :entities do
     post "show_unachieved_badges"  
@@ -29,6 +30,8 @@ resources :resumes
     post "create_investor"
     post "view_projects"
     get "view_projects"
+    post "subscribe"
+    post "unsubscribe"
   end  
   resources :event do
     get "new"
