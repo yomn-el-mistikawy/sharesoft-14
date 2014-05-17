@@ -62,6 +62,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @check = Project.check_ownership(params[:id], current_entity.id)
     respond_to do |format|
       format.html
     end
@@ -151,11 +152,12 @@ class ProjectsController < ApplicationController
     project = Project.find(params[:id])
     respond_to do |format|
       if project.destroy
+        ProjectsStartup.where(:project_id => params[:id]).delete_all
         flash.notice = "Delete project successfully."
       else
         flash.alert = "Couldn't delete project, please try again."
       end
-        format.html { redirect_to projects_path }
+        format.html { redirect_to entity_view_projects_path(current_entity.id) }
     end
   end
 

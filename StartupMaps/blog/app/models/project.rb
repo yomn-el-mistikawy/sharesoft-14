@@ -26,4 +26,12 @@ class Project < ActiveRecord::Base
   def launched?
     @launch ? "Yes" : "No"
   end 
+
+  def self.check_ownership(project_id, entity_id)
+    if ProjectsStartup.where(:project_id => project_id, :startup_id => Startup.select(:id).where(:entity_id => entity_id)).size == 0
+      return 0
+    else
+      return 1
+    end    
+  end 
 end

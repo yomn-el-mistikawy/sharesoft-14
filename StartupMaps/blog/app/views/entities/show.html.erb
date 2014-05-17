@@ -5,92 +5,18 @@
   # Output: Startup, investor, service params.
   # Author: Omar El Menawy.
 -->
+
+<% if @searching_table_startup.size != 0 %>
+  <% if @entity == current_entity && current_entity.type == "Startup" %>
+    <%= link_to 'create project', new_project_path, :class => "button" %>
+  <% end %>  
+  <% if @entity.type == "Startup" && @number_of_projects.size != 0 %>
+    <%= link_to 'View projects', entity_view_projects_path(entity_id: params[:id]), :class => "button" %>
+  <% end %>
+<% end %>
+
+
 <% if @entity == current_entity %>
- <% if current_entity.type == 'Startup' && @entity.completed == nil %>
-  Startup
-  <%= form_for :startup, url: entity_create_startup_path(:startup, entity_id: params[:id]) do |entity| %>
-   <div><%= entity.label :number_of_working_years %><br />
-   <%= entity.text_field :number_of_working_years %></div><br>
-   <div><%= entity.label :sector %><br />
-   <%= entity.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div>
-   <%= entity.submit "Insert" %>
-   <% end %>
- <% elsif current_entity.type == 'Investor' && @entity.completed == nil %>
-  Investor
-  <%= form_for :investor, url: entity_create_investor_path(:investor, entity_id: params[:id]) do |entity| %>
-   <div><%= entity.label :contact_information %><br />
-   <%= entity.text_field :contact_information %></div><br>
-
-   <div><%= entity.label :sector %><br />
-   <%= entity.collection_select :sector, Investor::SECTORS, :to_s, :titleize %></div>
-   <%= entity.submit "Insert" %>
-  <% end %>
- <% elsif current_entity.type == 'Service' && @entity.completed == nil %>
-  <%= form_for :service, url: entity_create_service_path(:service, entity_id: params[:id]) do |entity| %>
-   <div><%= entity.label :sector %><br />
-   <%= entity.collection_select :sector, Service::SECTORS, :to_s, :titleize %></div>
-   <%= entity.submit "Insert" %>
-  <% end %>
- <% end %>
-<% end %>
-
-<!-- 
-  # Definition: This part shows a button that redirects the startup that owns this profile 
-  # to its unachieved badges. If it has achieved new badges a pop up alert appears showing the badge image,
-  # name, description and level. Moreover, a list of the highest level achieved badges in each category 
-  # appear on the startup profile.
-  # Input: @all_achieved_badges, @recently_achieved_badges, @achieved_badges, entity id.
-  # Output: entity id.
-  # Author: Yomn El-Mistikawy. 
--->
-
-<% if @entity.type == "Startup" %>
-  <% if @entity == current_entity %> 
-  <% if @recently_achieved_badges.size != 0 %>
-    <% @recently_achieved_badges.each do |badge| %>
-      <script>
-        alert("Congratulations! You have achieved the badge: " + '<%= badge.name %>' + "\n Description: " + '<%= badge.description %>' + "\n Level: " + '<%= badge.level %>');
-      </script>
-    <% end %>
-  <% end %> 
-<% end %>
-<% if @achieved_badges.size != 0 %>
-  <h1> Achievements </h1>
-  <% if @entity == current_entity %>
-    <% if @all_achieved_badges.size != 25 %>
-      <%= button_to 'View unachieved badges', entity_show_unachieved_badges_path(entity_id: params[:id]), :class => "button" %>
-    <% end %>
-  <% end %>
-  <table>
-    <tbody>
-      <tr>
-        <% @achieved_badges.each do |badge| %>
-          <td width="22%">
-            <% if badge.level == 1 %>
-              <%= image_tag "Bronze_1.gif" %>
-            <% else %>
-              <% if badge.level == 2 %>
-                <%= image_tag "Silver_1.gif" %>
-              <% else %>
-                <% if badge.level == 3 %>
-                  <%= image_tag "Gold_1.gif" %>
-                <% else %>
-                  <%= image_tag "Platinum_1.gif" %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <br>
-            <label><font color="white">Name: </label>
-            <%= badge.name %>
-            <br>
-            <label> Description: </label>
-            <%= badge.description %>
-          </td>
-        <% end %>
-      </tr> 
-    </tbody>
-  </table>
-  <% end %> 
   <% if current_entity.type == 'Startup' && @entity.completed == nil %>
    Startup
    <br><br>
@@ -99,8 +25,6 @@
      <%= entity.text_field :number_of_working_years %></div><br>
     <div><%= entity.label :sector %>
      <%= entity.collection_select :sector, Startup::SECTORS, :to_s, :titleize %></div><br>
-    <%= entity.label :verification_code %>
-    <%= entity.text_field :verification_code %><br>
 
 <!--
   # Definition: The is the code of the google API in order to get access to the map 
@@ -377,22 +301,64 @@
   <strong>Name:</strong>
   <%= @entity.name %>
  </p>
- <p>
-  <strong>Description:</strong>
-  <%= @entity.description %>
- </p>
- <p>
-  <strong>Email:</strong>
-  <%= @entity.email %>
- </p>
- <p>
-  <strong>Location:</strong>
-  <%= @entity.location %>
- </p>
- <p>
-  <strong>Headquarters:</strong>
-  <%= @entity.headquarter %>
- </p>
+  <% if @entity.description != "" %>
+    <p>
+      <strong>Description:</strong>
+      <%= @entity.description %>
+    </p>
+  <% end %>
+  <p>
+    <strong>Email:</strong>
+    <%= @entity.email %>
+  </p>
+  <% if @entity.location != "" %>
+    <p>
+      <strong>Location:</strong>
+      <%= @entity.location %>
+    </p>
+  <% end %>
+  <% if @entity.headquarter != "" %>
+    <p>
+      <strong>Headquarters:</strong>
+      <%= @entity.headquarter %>
+    </p>
+  <% end %>
+  <% if @entity.type == "Startup" %>
+    <% if @startup.number_of_working_years != nil %>
+      <p>
+        <strong>Number of working years:</strong>
+        <%= @startup.number_of_working_years %>
+      </p>
+    <% end %>
+    <% if @startup.sector != nil %>
+      <p>
+        <strong>Sector:</strong>
+        <%= @startup.sector %>
+      </p>
+    <% end %>
+  <% else %> 
+    <% if @entity.type == "Service" %>
+      <% if @service.sector != nil %>
+        <p>
+          <strong>Sector:</strong>
+          <%= @service.sector %>
+        </p>
+      <% end %>
+    <% else %>
+      <% if @investor.contact_information != "" %>
+        <p>
+          <strong>Contact information:</strong>
+          <%= @investor.contact_information %>
+        </p>
+      <% end %>
+      <% if @investor.sector != nil %>
+        <p>
+          <strong>Sector:</strong>
+          <%= @investor.sector %>
+        </p>
+      <% end %>
+    <% end %>
+  <% end %>  
 <% end %>
 
 <!-- 

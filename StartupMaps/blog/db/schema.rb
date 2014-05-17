@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516091511) do
+ActiveRecord::Schema.define(version: 20140516145309) do
 
   create_table "badges", force: true do |t|
     t.string   "name"
@@ -127,38 +127,6 @@ ActiveRecord::Schema.define(version: 20140516091511) do
     t.datetime "updated_at"
   end
 
-  create_table "event_members", force: true do |t|
-    t.integer  "receiver_id"
-    t.integer  "sender_id"
-    t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "event_startups", force: true do |t|
-    t.integer  "events_id"
-    t.integer  "startups_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "events", force: true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.date     "start_time"
-    t.date     "end_time"
-    t.integer  "creator_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "events_startups", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "startup_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "friendships", force: true do |t|
     t.integer  "sender_id_id"
     t.integer  "receiver_id_id"
@@ -253,10 +221,11 @@ ActiveRecord::Schema.define(version: 20140516091511) do
   end
 
   create_table "messages", force: true do |t|
-    t.integer  "entity_id"
-    t.integer  "receiver_id"
-    t.string   "title"
-    t.string   "message"
+    t.string   "sender"
+    t.string   "recepient"
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "read"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -309,6 +278,13 @@ ActiveRecord::Schema.define(version: 20140516091511) do
   create_table "projects_startups", force: true do |t|
     t.integer  "startup_id"
     t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -404,6 +380,13 @@ ActiveRecord::Schema.define(version: 20140516091511) do
   create_table "tags", force: true do |t|
     t.string   "tags"
     t.integer  "entity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "userposts", force: true do |t|
+    t.integer  "entity_id"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -20,6 +20,8 @@ resources :resumes
     post "create_startup"
     post "create_service"
     post "create_investor"
+    post "view_projects"
+    get "view_projects"
   end  
   resources :event do
     get "new"
@@ -28,15 +30,6 @@ resources :resumes
     
 
   end
-
-
-
-  resources :entities do
-    post "show_unachieved_badges"  
-    post "create_startup"
-    post "create_service"
-    post "create_investor"
-  end  
 
 post "entities/edit"
 

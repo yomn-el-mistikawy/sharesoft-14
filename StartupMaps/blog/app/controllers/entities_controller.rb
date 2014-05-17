@@ -14,19 +14,33 @@ class EntitiesController < ApplicationController
  # Output: Startup, investor, service params.
  # Author: Omar El Menawy.
   
- def show
+   def show
     @entity = Entity.find(params[:id])
     @searching_table_startup = Startup.where(:entity_id => params[:id])
     if @searching_table_startup.size != 0
+      @number_of_projects = ProjectsStartup.where(:startup_id => Startup.select(:id).where(:entity_id => params[:id]))
       if @entity.type == "Startup"
         impressionist(@entity)
         if @entity == current_entity
           @recently_achieved_badges = StartupsBadges.set_badges(params[:id])
           @all_achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 1, 1, 0)
-        end
+        end 
         @achieved_badges = StartupsBadges.get_achieved_unachieved_badges(params[:id], 1, 0, 1, 0)
       end
-    end
+    end 
+    if @entity.completed?
+      if @entity.type == "Startup" 
+        @startup = Startup.find_by_entity_id(params[:id])
+      else
+        if @entity.type == "Service"
+          @service = Service.find_by_entity_id(params[:id])
+        else
+          if @entity.type == "Investor"
+            @investor = Investor.find_by_entity_id(params[:id]) 
+          end
+        end    
+      end
+    end    
   end
 
   # Definition: This is a pop-up page that shows a list of all the unachieved badges.
@@ -152,4 +166,14 @@ class EntitiesController < ApplicationController
     s = Entity.new
     s.save
  end
+
+ def view_projects
+    @entity = Entity.find(params[:entity_id])
+    @searching_table_startup = Startup.where(:entity_id => params[:entity_id])
+    if @searching_table_startup.size != 0
+      @startup = Startup.find_by_entity_id(params[:entity_id])
+      @projects = Project.where(:id => ProjectsStartup.select(:project_id).where(:startup_id => @startup.id))
+      # @projects = @projects.paginate(:page => params[:page])
+    end  
+  end
 end
