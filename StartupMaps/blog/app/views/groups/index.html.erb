@@ -10,6 +10,7 @@
      </tr>
    </thead>
    <tbody>
+     <%= will_paginate @groups %>
      <% @groups.each do |group| %>
        <tr>
          <td width="12%"><%= link_to group.name, group %></td>

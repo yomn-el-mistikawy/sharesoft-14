@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    @groups = @groups.paginate(:page => params[:page])
   end
 
   

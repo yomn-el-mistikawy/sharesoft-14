@@ -8,6 +8,7 @@ class ResumesController < ApplicationController
 
   def index
     @resumes = Resume.all
+    @resumes = @resumes.paginate(:page => params[:page])
   end
 
 
