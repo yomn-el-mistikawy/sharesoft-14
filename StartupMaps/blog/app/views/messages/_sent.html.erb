@@ -1,0 +1,24 @@
+<!--
+  # Definition: Redirects to neww message.
+  # Input: Void.
+  # Output: Void.
+  # Author: Sarah Fathallah. 
+-->
+
+<% @messages.each do |messagesend| %>
+ <% if messagesend.sender == @user.email %>
+  <table class = "table">
+   <tr>
+    <td>
+     <%= link_to messagesend.subject, message_path(m) %>
+     <% if messagesend.read %>
+      [read by user]
+     <% end %>
+    </td>
+    <td><%= messagesend.recepient %></td>
+    <td><%= messagesend.created_at %></td>
+    <td><%= link_to 'Delete Message', messagesend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   </tr>
+  </table>
+ <% end %>
+<% end %>
