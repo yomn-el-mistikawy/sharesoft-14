@@ -2,6 +2,9 @@
 
 <% if current_entity != nil %>
   <h1>Welcome</h1>
+  <% if current_entity.type == "Startup" %>
+    <%= link_to "Groups",  groups_path, :class => "button" %>
+  <% end %>
  <% else %>
  
 <!-- Homepage Slider -->

@@ -14,7 +14,7 @@
     <%= entity.email_field :email, autofocus: true %>
   </div>
   <div>
-    <%= entity.submit "Resend confirmation instructions" %>
+    <%= entity.submit "Resend confirmation instructions", :class => "button" %>
   </div>
 <% end %>
 <%= render "devise/shared/links" %>

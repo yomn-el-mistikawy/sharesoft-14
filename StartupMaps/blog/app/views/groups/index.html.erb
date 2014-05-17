@@ -2,8 +2,8 @@
  <table>
    <thead>
      <tr>
-       <th>Group name&nbsp;</th>
-       <th>Description</th>
+       <th width="12%", align="left">Group name&nbsp;</th>
+       <th width="12%", align="left">Description</th>
        <th></th>
        <th></th>
        <th></th>
@@ -12,14 +12,15 @@
    <tbody>
      <% @groups.each do |group| %>
        <tr>
-         <td><%= group.name %></td>
-         <td><%= group.description %></td>
-         <td><%= link_to 'Show', group %></td>
-         <td><%= link_to 'Edit', edit_group_path(group) %></td>
-         <td><%= link_to 'List Group Members', group_list_group_members_path(group) %></td>
+         <td width="12%"><%= link_to group.name, group %></td>
+         <td width="12%"><%= group.description %></td>
+         <td width="12%"><%= link_to 'Edit', edit_group_path(group) %></td>
+        <td width="12%"><%= link_to 'Destroy', group_path(group), method: :delete, data: { confirm:
+          'Are you sure you want to delete group?'} %></td>
+         <td width="22%"><%= link_to 'List Group Members', group_list_group_members_path(group) %></td>
        </tr>
      <% end %>
    </tbody>
  </table>
  <br>
- <%= link_to 'Create New Group', new_group_path %>
+ <%= link_to 'Create New Group', new_group_path, :class => "button" %>

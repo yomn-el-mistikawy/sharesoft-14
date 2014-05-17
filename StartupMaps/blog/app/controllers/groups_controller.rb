@@ -2,93 +2,95 @@ class GroupsController < ApplicationController
  before_action :authenticate_entity!
  before_action :set_group, only: [:show, :edit, :update, :destroy]
   
- # Defintion: This method takes the session id
- # and group id, then checks if the logged in
- # entity is a group member. If it is a group member
- # then it calls get_group_members function to get a list
- # of group members and shows it in list_group_members view,
- # else a message appears stating that the 
- # entity isn't a group member. 
- # Input: entity_id, group_id
- # Output: list of group members
- # Author: Yomn El-Mistikawy
- # Modified By: Mina Ashraf
 
-  def list_group_members
-    @startup = Startup.find_by_entity_id(current_entity.id)
-    if (GroupsStartup.check_membership(Startup.find(current_entity.id), Group.find(params[:group_id])).size != 0)
-      @group_members = Group.get_group_members(Group.find(params[:group_id]))
-    end
-  end
-
-    # GET /groups
-  # GET /groups.json
   def index
     @groups = Group.all
   end
 
-  # GET /groups/1
-  # GET /groups/1.json
+  
+  # Definition: This method shows the group.
+  # Input: void.
+  # Output: Group.
+  # Author: Sherouk A.Said.
+
   def show
+    @group = Group.find(params[:id])
   end
 
-  # GET /groups/new
+
+  # Definition: This method creates a group.
+  # Input: void.
+  # Output: name, description, location, private, interest.
+  # Author: Sherouk A.Said.
+
   def new
-    @group = Group.new
   end
 
-  # GET /groups/1/edit
+  
+  # Definition: This method edits a group.
+  # Input: void.
+  # Output: Group.
+  # Author: Sherouk A.Said.
+
   def edit
+    @group = Group.find(params[:id])
   end
 
-  # POST /groups
-  # POST /groups.json
+
+  # Definition: This method creates a group.
+  # Input: name, description, location, private, interest.
+  # Output: void.
+  # Author: Sherouk A.Said.
+
   def create
-    @group = Group.new(group_params)
-
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to @group, notice: 'Description Added.' }
-        format.json { render action: 'show', status: :created, location: @group }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
-    end
+    group = Group.new
+    group.creator_id = current_entity.id
+    group.name = params[:name] 
+    group.description = params[:description] 
+    group.private = params[:private]
+    group.interest = params[:interests]
+    if group.save
+      redirect_to group
+    end  
   end
+  
 
-  # PATCH/PUT /groups/1
-  # PATCH/PUT /groups/1.json
+  # Definition: This method edits a group.
+  # Input: name, description.
+  # Output: void.
+  # Author: Sherouk A.Said.
+
   def update
-    respond_to do |format|
-      if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      redirect_to @group
+    else
+      render 'edit'
     end
   end
 
-  # DELETE /groups/1
-  # DELETE /groups/1.json
+ 
+  # Definition: This method deletes a group.
+  # Input: void.
+  # Output: void.
+  # Author: Sherouk A.Said.
+
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url }
-      format.json { head :no_content }
+      format.html {redirect_to :back}
+      format.json {head :no_content}
     end
-  end 
+  end
 
+ 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
+  def group_params
+    params.require(:group).permit(:name, :description)
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def group_params
-      params.require(:group).permit(:name, :group_name, :description)
-    end 
+ 
+  def set_group
+  end 
 end

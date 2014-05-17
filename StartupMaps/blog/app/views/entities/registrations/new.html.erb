@@ -44,6 +44,6 @@
     <%= entity.label :type %><br />
     <%= entity.collection_select :type, Entity::TYPES, :to_s, :titleize %><br>
   </div>  
-  <div><%= entity.submit "Sign up" %></div>
+  <div><%= entity.submit "Sign up", :class => "button" %></div>
 <% end %>
 <%= render "devise/shared/links" %>

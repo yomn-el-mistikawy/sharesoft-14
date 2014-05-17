@@ -17,7 +17,7 @@
     <%= entity.label :password_confirmation, "Confirm new password" %><br/>
     <%= entity.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-  <div><%= entity.submit "Change my password" %>
+  <div><%= entity.submit "Change my password", :class => "button" %>
   </div>
 <% end %>
 <%= render "devise/shared/links" %>

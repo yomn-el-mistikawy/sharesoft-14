@@ -1,0 +1,33 @@
+<!-- 
+ # Definition: This view is intended to create text fields and adds a button "create".
+ # Input: group name, group id, group descrition, group interest location, privacy  type. 
+ # Author: Sherouk A.Said.
+--> 
+
+<html> 
+ <script>
+   function myFunction()
+  {
+   alert("Group Successfully Created");
+     }
+ </script>
+ <body> 
+  <form action='create'>
+   Group Name <br> <input type='text' name='name' id='group_name'>
+   </br>
+   <br>
+   Group description <br> <textarea name = 'description'></textarea>
+   </br> 
+   <br>
+   Group Interests <br> <input type='text' name='interests' id='group_interests'>
+   </br>
+   <br>
+   Privacy: 
+   <br>
+   <input type="radio" name="private" value="private">Private<br> 
+   <input type="radio" name="private" value="public">Public<br>
+   <br>
+   <button onclick="myFunction()" >Create</button>
+  </form>
+ </body>
+</html>
