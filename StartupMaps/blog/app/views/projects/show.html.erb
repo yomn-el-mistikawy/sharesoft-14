@@ -5,6 +5,11 @@
   # Output: crossed value if reached and vice verca.
   # Author: Hana Magdy.
 -->
+  <style type="text/css">
+  .reached-true {
+    text-decoration: line-through;
+    }
+    </style>
 
 <!-- 
   # Definition: Allows showing all values all categories for the whole project
@@ -69,23 +74,6 @@
 -->
 
 <% if @check == 1 %>
-
-  <%= link_to "Delete Project", @project, method: :delete, 
-  confirm: "Are you sure? This cannot be undone!" %>
-
-<!--
-  # Definition: Allows editing the project's details, 
-  # specifically targets and requirements
-  # This method allows you to click on an underlined 
-  # link "button" that redirects to the edit page.
-  # Input: project_id "the button".
-  # Output: edit.html.erb, because it does not return anything, it just redirects.
-  # Author: Hana Magdy. 
--->
- 
-  <%= link_to "Edit this project", edit_project_path(@project) %>
-
-
 <!--   
   Definition: "A startup can launch its project"
   Changes the status of a project and redirects to the project's 
@@ -102,4 +90,19 @@
   <%= @project.launched? %>
   <%= link_to( (@project.launch ? "Unlaunch" : "Launch"), launch_project_path) %>
  </p>
+
+  <%= link_to "Delete Project", @project, method: :delete, 
+  confirm: "Are you sure? This cannot be undone!" %>
+
+<!--
+  # Definition: Allows editing the project's details, 
+  # specifically targets and requirements
+  # This method allows you to click on an underlined 
+  # link "button" that redirects to the edit page.
+  # Input: project_id "the button".
+  # Output: edit.html.erb, because it does not return anything, it just redirects.
+  # Author: Hana Magdy. 
+-->
+ 
+  <%= link_to "Edit this project", edit_project_path(@project) %>
 <% end %>
