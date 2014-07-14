@@ -16,9 +16,8 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-  <label>Retype password if you don't want to renew it</label>
   <div>
-    <%= entity.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+    <%= entity.label :password %> <i>(Retype password if you don't want to renew it)</i><br/>
     <%= entity.password_field :password, autocomplete: "off" %>
   </div>
   <div>

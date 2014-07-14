@@ -4,7 +4,7 @@
   <h1>Welcome</h1>
   <%= link_to "Resumes",  resumes_path, :class => "button" %>
   <% if current_entity.type == "Startup" %>
-    <%= link_to "Groups",  groups_path, :class => "button" %>
+    <%= link_to "Groups",  groups_index_path, :class => "button" %>
   <% end %>
  <% else %>
  
@@ -33,13 +33,13 @@
   <div class="sticky-nav">
    <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
    <div id="logo">
-    <a id="goUp" href="#home-slider" title="Startup Maps">Startup Maps</a>
+    <a id="goUp" href="/" title="Startup Maps">Startup Maps</a>
    </div>
    <nav id="menu">
     <ul id="menu-nav">
      <li><a href="/entities/sign_in" class="external">Log In</a></li>
      <li><a href="/entities/sign_up" class="external">Sign Up</a></li>
-     <li class="current"><a href="#home-slider">Home</a></li>
+     <li class="current"><a href="/">Home</a></li>
      <li><a href="#work">Our Aim</a></li>
      <li><a href="#about">How it Works</a></li>
     </ul>

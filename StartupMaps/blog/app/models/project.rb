@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   
   has_many :project_requirements, :dependent => :destroy
   has_many :project_targets, :dependent => :destroy
-  has_many :startups, through: :startups_projects
+  has_many :startups, through: :projects_startup
   belongs_to :startup
  
   validates_presence_of :name, :description, :category
