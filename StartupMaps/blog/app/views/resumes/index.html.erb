@@ -14,6 +14,9 @@
 <%= link_to "New Resume", new_resume_path, :class => "button" %>
 <br />
 <br />
+<% if @resumes.size <= 0 %>
+<p> There are no resumes<p>  
+<% else %>  
 <table class="table table-bordered table-striped">
  <thead>
   <tr>
@@ -33,3 +36,4 @@
  <% end %>
 </tbody>
 </table>
+<%end  %>

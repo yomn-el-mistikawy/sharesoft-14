@@ -10,35 +10,42 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |entity| %>
   <%= devise_error_messages! %>
   <div>
-    <%= entity.label :email %><br/>
+    <%= entity.label :email %>
     <%= entity.email_field :email, autofocus: true %>
   </div>
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
+  <br/>
   <div>
     <%= entity.label :password %> <i>(Retype password if you don't want to renew it)</i><br/>
     <%= entity.password_field :password, autocomplete: "off" %>
   </div>
+  <br/>
   <div>
-    <%= entity.label :password_confirmation %><br/>
+    <%= entity.label :password_confirmation %>
     <%= entity.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+  <br/>
   <div><%= entity.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
     <%= entity.password_field :current_password, autocomplete: "off" %>
   </div>
+  <br />
   <div>
-    <%= entity.label :location %><br />
-    <%= entity.email_field :location %>
+    <%= entity.label :location %>
+    <%= entity.text_field :location %>
   </div>
+  <br />
   <div>
-    <%= entity.label :headquarter %><br />
-    <%= entity.email_field :headquarter %>
+    <%= entity.label :headquarter %>
+    <%= entity.text_field :headquarter %>
   </div>
+  <br />
   <div>
-    <%= entity.label :description %><br />
-    <%= entity.email_field :description %>
+    <%= entity.label :description %>
+    <%= entity.text_field :description %>
   </div>
+  <br />
  <div>
   <%= entity.submit "Update", :class => "button" %>
  </div>

@@ -9,41 +9,50 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |entity| %>
   <%= devise_error_messages! %>
   <div>
-    <%= entity.label :name %><br/>
+    <%= entity.label :name %>
     <%= entity.text_field :name, autofocus: true %>
   </div>
+  <br/>
   <div>
-    <%= entity.label :username %><br/>
+    <%= entity.label :username %>
     <%= entity.text_field :username %>
   </div>
+  <br/>
   <div>
-    <%= entity.label :email %><br/>
+    <%= entity.label :email %>
     <%= entity.email_field :email %>
   </div>
+  <br/>
   <div>
-    <%= entity.label :password %><br/>
+    <%= entity.label :password %>
     <%= entity.password_field :password, autocomplete: "off" %>
   </div>
+  <br/>
   <div>
-    <%= entity.label :password_confirmation %><br/>
+    <%= entity.label :password_confirmation %>
     <%= entity.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+  <br/>
   <div>
-    <%= entity.label :headquarter %><br />
+    <%= entity.label :headquarter %>
     <%= entity.text_field :headquarter %>
   </div>
+  <br />
   <div>
-    <%= entity.label :location %><br />
+    <%= entity.label :location %>
     <%= entity.text_field :location %>
   </div>
+  <br />
   <div>
-    <%= entity.label :description %><br />
+    <%= entity.label :description %>
     <%= entity.text_field :description %>
   </div>
+  <br />
   <div>
-    <%= entity.label :type %><br />
-    <%= entity.collection_select :type, Entity::TYPES, :to_s, :titleize %><br>
+    <%= entity.label :type %>
+    <%= entity.collection_select :type, Entity::TYPES, :to_s, :titleize %>
   </div>  
+  <br />
   <div><%= entity.submit "Sign up", :class => "button" %></div>
 <% end %>
 <%= render "devise/shared/links" %>

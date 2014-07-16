@@ -9,7 +9,5 @@ class GroupsStartup < ActiveRecord::Base
   # Output: record containing startup_id and group_id
   # Author: Yomn El-Mistikawy
 
-  def self.check_membership(startup, group)
-    GroupsStartup.where(:startup_id => startup.id, :group_id => group.id)
-  end
+
 end
