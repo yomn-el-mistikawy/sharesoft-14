@@ -1,0 +1,62 @@
+img {
+	display: block;
+	height: 100px;
+	
+width: 140px;
+
+	}
+
+
+p {
+	text-align: left;
+	
+font-family: Garamond, serif;
+	
+font-size: 18px;
+}
+
+
+div {
+	border-radius: 5px;
+	
+border: 2px solid #6495ED;
+	
+background-color: #BCD2AA;
+	
+height: 50px;
+
+width: 120px;
+	
+margin: auto;
+	
+text-align: center;
+}
+
+
+
+a {
+	text-decoration: none;
+	
+color: #3D59AB;
+	
+font-family: Verdana, sans-serif;
+}
+
+
+
+span {
+	font-weight: bold;
+	
+font-size: 18px;
+	
+color: #ffffff;
+}
+
+
+h1{
+font-size: 15 px;
+    
+font-family: Verdana;
+    
+color:#3E59AB;
+}
