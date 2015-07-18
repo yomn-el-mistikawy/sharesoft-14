@@ -1,0 +1,11 @@
+  <!--
+  # Definition: to show the username and the links shared by him . 
+	# Input: void.
+	# Output: only the links displayed beside each username .
+	# Author: Tharey.
+  -->
+
+  <%= cookies [ :username ] %>
+    <%@links.each do |c|%>
+    <a href = <%= c.socialLinks%>> <%=c.socialLinks%></a><br>
+  <%end%>

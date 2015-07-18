@@ -1,0 +1,2 @@
+module EntitySocialLinksHelper
+end
